@@ -75,7 +75,8 @@ class AppGraphTest {
         assertIs<DocumentSnapshotStore>(g.seams.snapshots)
         assertIs<ZipRestoreBundleWriter>(g.seams.bundleWriter)
         assertIs<IndexRegistry>(g.registry)
-        assertIs<ForkRegistry>(g.seams.registry)   // fork: the bundled add-ons in front of the index
+        // Fork: the bundled add-ons in front of the index, in a build with add-ons (not the Play build).
+        if (g.store.rules.addOns) assertIs<ForkRegistry>(g.seams.registry) else assertIs<IndexRegistry>(g.seams.registry)
         // The fetcher is the flavour's (FullStoreTest, PlayStoreTest); the graph uses this build's Store.
         assertSame(Store, g.store)
         assertIs<MaterializedThemeSource>(g.seams.themes)

@@ -121,7 +121,8 @@ class CityLookup(private val http: HttpFetcher?) {
             val r = http.get(url, null, null)
             val body = r.body
             if (r.code != 200 || body == null) return Result.Offline
-            val text = withContext(Dispatchers.IO) { body.use { it.readNBytes(MAX_BYTES).decodeToString() } }
+            // InputStream.readNBytes is Android 13+; the app runs from Android 9.
+            val text = withContext(Dispatchers.IO) { body.use { readCapped(it) }.decodeToString() }
             Result.Found(parse(text))
         } catch (e: Exception) {
             Result.Offline
@@ -131,6 +132,18 @@ class CityLookup(private val http: HttpFetcher?) {
     companion object {
         const val HOST = "geocoding-api.open-meteo.com"
         private const val MAX_BYTES = 256 * 1024
+
+        // At most MAX_BYTES of the answer (a city search is a few kilobytes).
+        internal fun readCapped(input: java.io.InputStream): ByteArray {
+            val out = java.io.ByteArrayOutputStream()
+            val buf = ByteArray(8 * 1024)
+            while (out.size() < MAX_BYTES) {
+                val n = input.read(buf, 0, minOf(buf.size, MAX_BYTES - out.size()))
+                if (n < 0) break
+                out.write(buf, 0, n)
+            }
+            return out.toByteArray()
+        }
 
         fun parse(text: String): List<WidgetCity> {
             val o = Json.parseToJsonElement(text).jsonObject
