@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The TV banner, drawn for this add-on: three tiles (a chequered flag, a sun, a star) on a night-blue field. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="180dp"
+    android:viewportWidth="320" android:viewportHeight="180">
+    <path android:fillColor="#FF0E1116" android:pathData="M0,0h320v180h-320z" />
+    <path android:fillColor="#FF181C24" android:pathData="M40,50h64a10,10 0,0 1,10 10v60a10,10 0,0 1,-10 10h-64a10,10 0,0 1,-10 -10v-60a10,10 0,0 1,10 -10z M128,50h64a10,10 0,0 1,10 10v60a10,10 0,0 1,-10 10h-64a10,10 0,0 1,-10 -10v-60a10,10 0,0 1,10 -10z M216,50h64a10,10 0,0 1,10 10v60a10,10 0,0 1,-10 10h-64a10,10 0,0 1,-10 -10v-60a10,10 0,0 1,10 -10z" />
+    <path android:fillColor="#FFFFFFFF" android:pathData="M52,66h12v12h-12z M76,66h12v12h-12z M64,78h12v12h-12z M88,78h4v12h-4z M52,90h12v12h-12z M76,90h12v12h-12z M64,102h12v12h-12z" />
+    <path android:fillColor="#FFE10600" android:pathData="M52,66h40v2h-40z" />
+    <path android:fillColor="#FFFFC145" android:pathData="M160,90m-14,0a14,14 0,1 1,28 0a14,14 0,1 1,-28 0" />
+    <path android:fillColor="#FF4FA3FF" android:pathData="M248,66l7,15 16,2 -12,11 3,16 -14,-8 -14,8 3,-16 -12,-11 16,-2z" />
+</vector>

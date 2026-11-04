@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application'
+}
+
+// The release APK is built unsigned; scripts/fork/bundle-addons.sh signs it with apksigner and the fork's key
+// (never the runner's random debug key, which would make every TV ask about the card again).
+android {
+    namespace 'tv.cleanyour.ru.widgets'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'tv.cleanyour.ru.widgets'
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+        buildConfigField 'String', 'FORK_REPO', "\"${project.property('cyt.forkRepo')}\""
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    // Test only (never in the APK): plain JVM tests, src/test.
+    testImplementation 'junit:junit:4.13.2'
+    // Android's own org.json, which the JVM tests cannot reach through android.jar's stubs.
+    testImplementation 'org.json:json:20231013'
+}

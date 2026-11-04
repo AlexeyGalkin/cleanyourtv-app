@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clean Your TV module card (docs/specs/card.md): ASCII only, literal values. -->
+<card spec="1" label="Widgets" caption="F1 weather holidays" accent="#E10600" />
