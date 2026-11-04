@@ -113,7 +113,7 @@ object ConfigKeys {
         key("vpn_app", STRING, V20, SettingsSection.WIDGETS),
         key("show_home_settings_shortcut", BOOL, V20, null),
         key("show_stats", BOOL, V24, SettingsSection.WIDGETS),
-        key("game_day", STRING, V32, null),
+        key("game_day", STRING, V32, SettingsSection.WIDGETS),   // fork: the Widgets add-on's lines under the clock
         key("app_library", BOOL, V24, SettingsSection.APPS),
         key("app_library_selection", BOOL, V27, null),
         key("library_ok_opens", BOOL, V30, null),

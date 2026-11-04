@@ -54,7 +54,7 @@ class FullStoreTest {
         assertTrue(Store.updatesMayGoOff)
         val g = graph()
         assertSame(Store, g.store)
-        assertIs<InstallableOnlyFetcher>(g.seams.fetcher)
+        assertIs<ForkFetcher>(g.seams.fetcher)   // fork: the bundled add-ons, then the index's InstallableOnlyFetcher
         assertEquals(StoreRules.FULL, g.manageDeps.store)
         assertEquals(StoreRules.FULL, g.setupDeps.store)
         for (h in DownloadHosts.ALL) assertTrue(DownloadHosts.isAllowed("https://$h/x", Store.hosts), h)

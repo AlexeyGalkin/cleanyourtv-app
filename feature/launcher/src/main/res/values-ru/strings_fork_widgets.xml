@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clean Your TV RU (форк): строки надстройки «Виджеты» под часами на странице «Виджеты». -->
+<resources>
+    <string name="fork_widgets_f1_name">F1</string>
+    <string name="fork_widgets_f1_sub">Следующая сессия</string>
+    <string name="fork_widgets_f1_line">Этап 20 · Квалификация через 2 ч 14 мин</string>
+    <string name="fork_widgets_weather_name">Погода</string>
+    <string name="fork_widgets_weather_sub">С рассветом и закатом</string>
+    <string name="fork_widgets_weather_line">Ваш город · +3° · Закат через 1 ч 12 мин</string>
+    <string name="fork_widgets_weather_line_city">{city} · +3° · Закат через 1 ч 12 мин</string>
+    <string name="fork_widgets_holidays_name">Праздники</string>
+    <string name="fork_widgets_holidays_sub">Сегодня и ближайший</string>
+    <string name="fork_widgets_holidays_line">Сегодня: Всемирный день телевидения</string>
+
+    <string name="fork_widgets_city_label">Город для погоды</string>
+    <string name="fork_widgets_city_now">Сейчас: {city}</string>
+    <string name="fork_widgets_city_field">Город</string>
+    <string name="fork_widgets_city_hint">Введите город, нажмите «Найти» и выберите нужный.</string>
+    <string name="fork_widgets_city_search">Найти</string>
+    <string name="fork_widgets_city_searching">Ищем…</string>
+    <string name="fork_widgets_city_offline">Поиск города не ответил. Проверьте интернет на телефоне.</string>
+    <string name="fork_widgets_city_none">Город с таким названием не найден.</string>
+    <string name="fork_widgets_fun">Ещё и шуточные дни</string>
+    <string name="fork_widgets_fun_sub">День пиццы, День программиста и другие в обычные дни</string>
+    <string name="fork_widgets_hint">Строки сменяют друг друга под часами, по 20 секунд. Их показывает надстройка «Виджеты», которую ставит кнопка «Отправить на телевизор»; её карточка открывает полные экраны F1, погоды и праздников.</string>
+    <string name="fork_widgets_install_hint">Кнопка «Отправить на телевизор» заодно поставит надстройку «Виджеты» на телевизор. Телевизор может один раз спросить, показывать ли её карточку.</string>
+</resources>

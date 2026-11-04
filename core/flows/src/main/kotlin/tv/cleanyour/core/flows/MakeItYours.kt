@@ -9,6 +9,7 @@ import tv.cleanyour.core.model.TvId
 import tv.cleanyour.core.planner.HomeHelper
 import tv.cleanyour.core.planner.PlanRequest
 import tv.cleanyour.core.probe.LaunchableApps
+import tv.cleanyour.core.registry.FetchResult
 import tv.cleanyour.core.spec.AppsSettings
 import tv.cleanyour.core.spec.ClockFormats
 import tv.cleanyour.core.spec.ConfigKeys
@@ -213,7 +214,17 @@ data class MakeItYoursState(
     val failed: Boolean = false,                          // the last send did not
     val shot: ByteArray? = null,                          // the TV right after the send, when it gave one
     val canSend: Boolean = true,                          // the new home screen is on this TV
+    // Fork (Clean Your TV RU): the Widgets add-on's lines under the clock (ForkWidgets).
+    val fork: ForkWidgets = ForkWidgets(),                // as chosen on the page
+    val forkSent: ForkWidgets = ForkWidgets(),            // as last sent to this TV
+    val forkAddon: Boolean = false,                       // this build carries the add-on
+    val forkInstalled: Boolean = false,                   // the add-on is on the TV
+    val cities: List<WidgetCity>? = null,                 // the last city search (null before one)
+    val citySearching: Boolean = false,
+    val cityOffline: Boolean = false,                     // the last search could not reach the internet
 ) {
+    // Fork: a send would change the add-on (its settings, or putting it on the TV again).
+    val forkPending: Boolean get() = forkAddon && (fork != forkSent || (fork.any && !forkInstalled))
     fun reads(key: String): Boolean = ConfigKeys.reads(key, versionCode)
     val secondDate: SecondDate get() = MakeItYoursEdits.secondDate(shown.widgets)
     val buttonsLook: ButtonsLook get() = MakeItYoursEdits.buttonsLook(shown.widgets)
@@ -263,6 +274,11 @@ sealed interface MakeItYoursIntent {
     data object Discard : MakeItYoursIntent
     data object Reload : MakeItYoursIntent        // after the look or the dock went to the TV from the hub
     data object DismissSent : MakeItYoursIntent
+    // Fork (Clean Your TV RU): the Widgets add-on's lines under the clock.
+    data class ForkWidget(val which: String, val on: Boolean) : MakeItYoursIntent   // "f1", "weather", "holidays"
+    data class ForkFun(val on: Boolean) : MakeItYoursIntent
+    data class ForkCitySearch(val query: String) : MakeItYoursIntent
+    data class ForkCity(val city: WidgetCity) : MakeItYoursIntent
 }
 
 class MakeItYoursMachine(
@@ -278,6 +294,7 @@ class MakeItYoursMachine(
     private data class BusyNow(val busy: Busy?)
     private data class SendResult(val ok: Boolean)
     private class Shot(val png: ByteArray?)
+    private class Cities(val result: CityLookup.Result?)
 
     init { scope.launch { load() } }
 
@@ -287,6 +304,12 @@ class MakeItYoursMachine(
         is BusyNow -> state.copy(busy = event.busy)
         is SendResult -> state.copy(sent = event.ok, failed = !event.ok)
         is Shot -> state.copy(shot = event.png)
+        is Cities -> when (val r = event.result) {
+            null -> state.copy(citySearching = true, cityOffline = false)
+            is CityLookup.Result.Found -> state.copy(citySearching = false, cities = r.cities, cityOffline = false)
+            CityLookup.Result.Offline -> state.copy(citySearching = false, cityOffline = true)
+        }
+        is MakeItYoursIntent.ForkCitySearch -> state
         MakeItYoursIntent.DismissSent -> state.copy(sent = false, failed = false, shot = null)
         MakeItYoursIntent.Discard -> edited(state, SettingsDraft.of(base))
         is MakeItYoursIntent -> if (state.busy != null || state.loading) state else edit(state, event)
@@ -330,14 +353,42 @@ class MakeItYoursMachine(
             is MakeItYoursIntent.SaverAfter -> dr.copy(screensaver = dr.screensaver.copy(idleMinutes = i.minutes.coerceIn(1, 1440)))
             is MakeItYoursIntent.Behind -> dr.copy(screensaver = e.withBehind(dr.screensaver, i.behind))
             is MakeItYoursIntent.Captions -> dr.copy(wallpaper = dr.wallpaper.copy(captions = i.on))
+            is MakeItYoursIntent.ForkWidget, is MakeItYoursIntent.ForkFun, is MakeItYoursIntent.ForkCity -> return forkEdited(state, i)
             else -> return state
         }
         return edited(state, next)
     }
 
+    // Fork: a widget switched, the light-hearted days, or the weather's city chosen. game_day names the add-on while
+    // any of its lines is on (and the TV's home screen reads the key), and goes back to the launcher's default when
+    // none is, unless it names another app.
+    private fun forkEdited(state: MakeItYoursState, i: MakeItYoursIntent): MakeItYoursState {
+        val f = state.fork
+        val next = when (i) {
+            is MakeItYoursIntent.ForkWidget -> when (i.which) {
+                "f1" -> f.copy(f1 = i.on)
+                "weather" -> f.copy(weather = i.on && f.city != null)
+                "holidays" -> f.copy(holidays = i.on)
+                else -> f
+            }
+            is MakeItYoursIntent.ForkFun -> f.copy(funHolidays = i.on)
+            is MakeItYoursIntent.ForkCity -> f.copy(city = i.city, weather = true)
+            else -> f
+        }
+        val w = state.draft.widgets
+        val gameDay = when {
+            !state.reads(ForkWidgets.GAME_DAY_KEY) -> w.gameDay
+            next.any -> ForkWidgets.PKG
+            w.gameDay == ForkWidgets.PKG || state.shown.widgets.gameDay == ForkWidgets.PKG -> ""
+            else -> w.gameDay
+        }
+        val s = state.copy(fork = next, cities = if (i is MakeItYoursIntent.ForkCity) null else state.cities)
+        return edited(s, state.draft.copy(widgets = w.copy(gameDay = gameDay)))
+    }
+
     // The draft and what it changes, counted against the TV's file.
     private fun edited(state: MakeItYoursState, draft: SettingsDraft): MakeItYoursState =
-        state.copy(draft = draft, shown = draft.shown(), changes = changed(draft).size, sent = false, failed = false)
+        state.copy(draft = draft, shown = draft.shown(), changes = changed(draft).size + (if (state.forkPending) 1 else 0), sent = false, failed = false)
 
     private fun changed(draft: SettingsDraft): Set<String> = draft.applyTo(base).changedKeys(base)
 
@@ -347,13 +398,17 @@ class MakeItYoursMachine(
                 sending = true
                 scope.launch { try { push(after.draft) } finally { sending = false } }
             }
-            MakeItYoursIntent.Reload -> if (before.busy == null) scope.launch { load(keep = after.draft) }
+            MakeItYoursIntent.Reload -> if (before.busy == null) scope.launch { load(keep = after.draft, keepFork = after.fork) }
+            is MakeItYoursIntent.ForkCitySearch -> scope.launch {
+                send(Cities(null))
+                send(Cities(CityLookup(d.forkHttp).search(event.query, forkLanguage())))
+            }
             else -> {}
         }
     }
 
     // `keep`: a draft to carry over (Reload after a look push): its changes go on top of the TV's new file.
-    private suspend fun load(keep: SettingsDraft? = null) {
+    private suspend fun load(keep: SettingsDraft? = null, keepFork: ForkWidgets? = null) {
         val tv = d.tv(tvId) ?: return
         val snap = attempt { d.snapshots.latest(tvId) }.getOrNull()
         val packages = snap?.packages.orEmpty()
@@ -373,6 +428,8 @@ class MakeItYoursMachine(
         val cards = attempt { Cards.current(d, tvId, choice, overlay) }.getOrNull() ?: Cards.MANAGE_DEFAULT
         val draft = keep?.let { k -> SettingsDraft.of(settings.withKeysOf(k.applyTo(base), k.applyTo(base).changedKeys(base))) } ?: SettingsDraft.of(settings)
         val ours = tv.launcher != null || (snap != null && (Launcher.pkg in packages || HomeHelper.listed(snap)))
+        val forkModule = if (d.store.addOns) d.registry.module(ForkWidgets.MODULE_ID) else null
+        val forkSent = attempt { d.forkWidgets.load(tvId) }.getOrNull() ?: ForkWidgets()
         val s = MakeItYoursState(
             tvName = tv.nickname, loading = false, versionCode = versionCode,
             apps = apps, dock = dock, vpnApps = apps.filter { looksLikeVpn(it) },
@@ -380,6 +437,8 @@ class MakeItYoursMachine(
             retroOn = retro != null && retro.pkg in packages && cards,
             captionsWork = (settings.doc.wallpaperRotationMinutes ?: 0) > 0,
             greetingName = settings.widgets.greetingName.orEmpty(), canSend = ours,
+            fork = keepFork ?: forkSent, forkSent = forkSent, forkAddon = forkModule != null,
+            forkInstalled = PackageName(ForkWidgets.PKG) in packages,
         )
         send(Loaded(s.copy(draft = draft), settings))
     }
@@ -394,9 +453,12 @@ class MakeItYoursMachine(
         val next = now.withKeysOf(wanted, wanted.changedKeys(base))
         val look = attempt { Look.encode(d.encoder, d.blobs, next.pushDoc(), null) }.getOrNull()
             ?: run { send(SendResult(false)); effect(ManageEffect.Snackbar(SnackKind.FAILED, "", false)); return }
-        val r = writer.write(tvId, PlanRequest.ApplySettings(look.doc, look.config)) { send(BusyNow(it)) }
+        val st = state.value
+        val widgets = if (st.forkPending) attempt { forkPush(st) }.getOrNull() else null
+        val r = writer.write(tvId, PlanRequest.ApplySettings(look.doc, look.config, widgets)) { send(BusyNow(it)) }
         send(BusyNow(null))
         if (r is WriteResult.Done) {
+            if (widgets != null) attempt { d.forkWidgets.save(tvId, st.fork) }
             rememberPushedLook(d, tvId, look)
             load()
             send(SendResult(true))
@@ -407,6 +469,28 @@ class MakeItYoursMachine(
         send(SendResult(false))
         if (r !is WriteResult.GateCancelled && r !is WriteResult.NoTv && r !is WriteResult.Paused) effect(ManageEffect.Snackbar(SnackKind.FAILED, "", false))
     }
+
+    // Fork: the add-on from the copy bundled in the app when the TV lacks it (or has an older one) and a line is on,
+    // checked like a module download, and its settings as a blob.
+    private suspend fun forkPush(s: MakeItYoursState): PlanRequest.WidgetsPush? {
+        val m = d.registry.module(ForkWidgets.MODULE_ID) ?: return null
+        val v = m.versions.maxByOrNull { it.versionCode } ?: return null
+        val have = d.snapshots.latest(tvId)?.packages?.get(m.pkg)?.versionCode
+        val apk = if (s.fork.any && (have == null || have < v.versionCode)) {
+            val blob = (d.fetcher.fetch(v.artifact) { _, _ -> } as? FetchResult.Ok)?.blob ?: return null
+            val info = attempt { d.inspector.inspect(blob) }.getOrNull()
+            if (info == null || info.pkg != m.pkg || info.signer != v.artifact.signer || info.sha256 != v.artifact.sha256 ||
+                info.versionCode != v.versionCode) return null
+            blob
+        } else null
+        val bytes = s.fork.configJson(forkLanguage())
+        val config = d.blobs.put(sha256Of(bytes), bytes.inputStream(), bytes.size.toLong())
+        return PlanRequest.WidgetsPush(if (apk != null) m else null, if (apk != null) v else null, apk, config)
+    }
+
+    // The language of the add-on's lines: the app's, or the phone's when the app follows the phone.
+    private fun forkLanguage(): String =
+        d.appLanguage().ifEmpty { java.util.Locale.getDefault().language }.let { if (it == "ru" || it == "en") it else "" }
 
     private suspend fun shot(status: RunStatus) {
         if (status != RunStatus.COMPLETED && status != RunStatus.COMPLETED_WITH_SKIPS) return

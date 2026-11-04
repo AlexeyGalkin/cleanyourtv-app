@@ -91,6 +91,7 @@ import tv.cleanyour.ui.design.component.CytTextField
 import tv.cleanyour.ui.design.component.LinkRow
 import tv.cleanyour.ui.design.component.ListDivider
 import tv.cleanyour.ui.design.component.ListGroup
+import tv.cleanyour.ui.design.component.ListRow
 import tv.cleanyour.ui.design.component.Overline
 import tv.cleanyour.ui.design.component.SwitchRow
 import tv.cleanyour.ui.design.icon.CytIcons
@@ -125,8 +126,42 @@ class WidgetEntry(
     val later: Boolean get() = why != null
 }
 
+// Fork (Clean Your TV RU): the Widgets add-on's lines under the clock (core/flows ForkWidgets). The launcher reads
+// one game_day package, so they are one add-on whose lines take turns; each is switched on its own. Declared before
+// WIDGETS, which adds them.
+internal val FORK_WIDGETS: List<WidgetEntry> = listOf(
+    WidgetEntry(
+        "fork_f1", WidgetPlace.UNDER_CLOCK, R.string.fork_widgets_f1_name, R.string.fork_widgets_f1_sub,
+        line = { stringResource(R.string.fork_widgets_f1_line) },
+        on = { it.fork.f1 },
+        toggle = { _, on -> MakeItYoursIntent.ForkWidget("f1", on) },
+        configKeys = listOf("game_day"),
+        offered = { it.forkAddon && it.reads("game_day") },
+    ),
+    // Switched from the strip once a city is chosen (the editor's city search).
+    WidgetEntry(
+        "fork_weather", WidgetPlace.UNDER_CLOCK, R.string.fork_widgets_weather_name, R.string.fork_widgets_weather_sub,
+        line = { s -> s.fork.city?.let { msg(R.string.fork_widgets_weather_line_city, "city" to it.name) } ?: stringResource(R.string.fork_widgets_weather_line) },
+        on = { it.fork.weather && it.fork.city != null },
+        toggle = { s, on -> if (s.fork.city == null) null else MakeItYoursIntent.ForkWidget("weather", on) },
+        configKeys = listOf("game_day"),
+        offered = { it.forkAddon && it.reads("game_day") },
+    ),
+    WidgetEntry(
+        "fork_holidays", WidgetPlace.UNDER_CLOCK, R.string.fork_widgets_holidays_name, R.string.fork_widgets_holidays_sub,
+        line = { stringResource(R.string.fork_widgets_holidays_line) },
+        on = { it.fork.holidays },
+        toggle = { _, on -> MakeItYoursIntent.ForkWidget("holidays", on) },
+        configKeys = listOf("game_day"),
+        offered = { it.forkAddon && it.reads("game_day") },
+    ),
+)
+
+// The Later widgets the Widgets add-on does now (weather, sunrise and sunset, F1, a countdown to a holiday).
+internal val FORK_REPLACES: Set<String> = setOf("weather", "sun", "f1", "countdown")
+
 // The widgets 0.5.0 offers (design WIDGETS), in the home screen's order within each place.
-internal val WIDGETS: List<WidgetEntry> = listOf(
+internal val WIDGETS: List<WidgetEntry> = FORK_WIDGETS + listOf(
     WidgetEntry(
         "second", WidgetPlace.UNDER_CLOCK, R.string.widgets_second_name, R.string.widgets_second_sub,
         line = { s -> stringResource(if (s.secondDate == SecondDate.LUNAR) R.string.widgets_line_lunar else R.string.widgets_line_shamsi) },
@@ -732,7 +767,7 @@ private fun PlaceStrip(
     note: String?, onNote: (String?) -> Unit,
 ) {
     val now = WIDGETS.filter { it.place == place && it.offered(s) }
-    val later = LATER.filter { it.place == place }
+    val later = LATER.filter { it.place == place && !(s.forkAddon && it.key in FORK_REPLACES) }
     val onWord = stringResource(R.string.widgets_pick_on)
     val offWord = stringResource(R.string.widgets_pick_off)
     Label(label)
@@ -871,6 +906,43 @@ private fun ColumnScope.UnderClockEditor(s: MakeItYoursState, onIntent: (MakeItY
         Hint(stringResource(if (s.secondDate == SecondDate.LUNAR) R.string.widgets_second_lunar_hint else R.string.widgets_second_shamsi_hint))
     }
     if (s.shown.widgets.showStats == true && s.reads("show_stats")) Hint(stringResource(R.string.widgets_stats_hint), top = 16.dp)
+    ForkEditor(s, onIntent)
+}
+
+// Fork (Clean Your TV RU): the weather's city (searched here on the phone, then chosen), the light-hearted days, and
+// what puts the Widgets add-on on the TV.
+@Composable
+private fun ColumnScope.ForkEditor(s: MakeItYoursState, onIntent: (MakeItYoursIntent) -> Unit) {
+    if (!s.forkAddon || !s.reads("game_day")) return
+    Label(stringResource(R.string.fork_widgets_city_label))
+    s.fork.city?.let { Hint(msg(R.string.fork_widgets_city_now, "city" to it.label)) }
+    var query by rememberSaveable { mutableStateOf("") }
+    CytTextField(query, { v -> query = v.take(80) }, stringResource(R.string.fork_widgets_city_field), Modifier.padding(top = 10.dp),
+        supporting = stringResource(R.string.fork_widgets_city_hint))
+    ListGroup(Modifier.padding(top = 8.dp)) {
+        LinkRow(stringResource(R.string.fork_widgets_city_search), onClick = { if (query.trim().length >= 2) onIntent(MakeItYoursIntent.ForkCitySearch(query)) })
+    }
+    when {
+        s.citySearching -> Hint(stringResource(R.string.fork_widgets_city_searching))
+        s.cityOffline -> Hint(stringResource(R.string.fork_widgets_city_offline))
+        s.cities?.isEmpty() == true -> Hint(stringResource(R.string.fork_widgets_city_none))
+    }
+    s.cities?.takeIf { it.isNotEmpty() }?.let { list ->
+        ListGroup(Modifier.padding(top = 8.dp)) {
+            list.forEachIndexed { i, c ->
+                if (i > 0) ListDivider()
+                ListRow(c.name, subtitle = c.label, onClick = { onIntent(MakeItYoursIntent.ForkCity(c)) })
+            }
+        }
+    }
+    if (s.fork.holidays) {
+        ListGroup(Modifier.padding(top = 12.dp)) {
+            SwitchRow(stringResource(R.string.fork_widgets_fun), s.fork.funHolidays, { onIntent(MakeItYoursIntent.ForkFun(it)) },
+                subtitle = stringResource(R.string.fork_widgets_fun_sub))
+        }
+    }
+    Hint(stringResource(R.string.fork_widgets_hint), top = 12.dp)
+    if (s.fork.any && !s.forkInstalled) Hint(stringResource(R.string.fork_widgets_install_hint))
 }
 
 // Buttons (design editButtons, D14)

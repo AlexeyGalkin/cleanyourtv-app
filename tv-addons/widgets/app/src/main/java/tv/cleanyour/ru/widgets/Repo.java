@@ -22,6 +22,8 @@ import java.util.Locale;
  */
 final class Repo {
     static final String CONFIG = "config.json";
+    /** The last config.json that parsed, for a write that did not. */
+    static final String GOOD = "config.good.json";
     static final String F1_SEASON = "f1-current.json";
     static final String F1_DRIVERS = "f1-drivers.json";
     static final String F1_TEAMS = "f1-constructors.json";
@@ -74,13 +76,17 @@ final class Repo {
     }
 
     Config config() {
-        String text = read(CONFIG);
-        if (text == null) return Config.defaults();
-        try {
-            return Config.parse(text);
-        } catch (JSONException e) {
-            return Config.defaults();
+        for (String name : new String[] {CONFIG, GOOD}) {
+            String text = read(name);
+            if (text == null) continue;
+            if (text.startsWith("﻿")) text = text.substring(1);
+            try {
+                return Config.parse(text);
+            } catch (JSONException ignored) {
+                // a write still checking, or a bad one: the last good copy
+            }
         }
+        return Config.defaults();
     }
 
     /** The language: the phone's choice, else the TV's. */

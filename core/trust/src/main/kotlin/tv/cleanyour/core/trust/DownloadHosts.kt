@@ -13,6 +13,8 @@ object DownloadHosts {
         "api.github.com",
         "objects.githubusercontent.com",
         "release-assets.githubusercontent.com",
+        // Fork (Clean Your TV RU): the city search of the Weather widget (Open-Meteo geocoding, no key).
+        "geocoding-api.open-meteo.com",
     )
 
     const val MAX_URL_LENGTH = 2048

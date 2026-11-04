@@ -51,43 +51,62 @@ public final class ConfigProvider extends ContentProvider {
         Context ctx = getContext();
         if (!Repo.CONFIG.equals(uri.getLastPathSegment())) throw new FileNotFoundException(uri.getLastPathSegment());
         Repo repo = new Repo(ctx);
+        File saved = repo.file(Repo.CONFIG);
         if (mode.contains("w")) {
-            File received = new File(ctx.getCacheDir(), "config-received.json");
+            // Straight into config.json, so the phone's check (content read | sha256sum) reads what it wrote at once;
+            // when the file closes it is checked, and a bad one is replaced by the last good copy.
             try {
-                return ParcelFileDescriptor.open(received, ParcelFileDescriptor.MODE_WRITE_ONLY
+                return ParcelFileDescriptor.open(saved, ParcelFileDescriptor.MODE_WRITE_ONLY
                                 | ParcelFileDescriptor.MODE_CREATE | ParcelFileDescriptor.MODE_TRUNCATE,
-                        new Handler(Looper.getMainLooper()), e -> apply(ctx, received));
+                        new Handler(Looper.getMainLooper()), e -> apply(ctx));
             } catch (IOException e) {
                 throw new FileNotFoundException(e.getMessage());
             }
         }
-        File saved = repo.file(Repo.CONFIG);
         if (!saved.isFile()) throw new FileNotFoundException("no settings yet");
         return ParcelFileDescriptor.open(saved, ParcelFileDescriptor.MODE_READ_ONLY);
     }
 
-    private static void apply(Context ctx, File received) {
+    private static void apply(Context ctx) {
         Context app = ctx.getApplicationContext();
         Background.execute(() -> {
+            Repo repo = new Repo(app);
+            File saved = repo.file(Repo.CONFIG);
+            String before = repo.read(Repo.GOOD);
             try {
-                if (received.length() > Config.MAX_BYTES) throw new IOException("too big");
-                String text = new String(Files.readAllBytes(received.toPath()), StandardCharsets.UTF_8);
+                if (saved.length() > Config.MAX_BYTES) throw new IOException("too big");
+                String text = new String(Files.readAllBytes(saved.toPath()), StandardCharsets.UTF_8);
                 if (text.startsWith("﻿")) text = text.substring(1);
-                Config.parse(text);
-                Repo repo = new Repo(app);
-                repo.write(Repo.CONFIG, text);
-                // A new city: the old forecast belongs to another place.
-                //noinspection ResultOfMethodCallIgnored
-                repo.file(Repo.WEATHER).delete();
+                Config next = Config.parse(text);
+                repo.write(Repo.GOOD, text);
+                // Another city: the saved forecast belongs to the old one.
+                Config old = before == null ? null : parseOrNull(before);
+                if (old == null || old.city == null || next.city == null || old.city.latitude != next.city.latitude
+                        || old.city.longitude != next.city.longitude) {
+                    //noinspection ResultOfMethodCallIgnored
+                    repo.file(Repo.WEATHER).delete();
+                }
                 GamesProvider.changed(app);
                 Background.refresh(app, false, null);
             } catch (IOException | JSONException e) {
                 Log.w(TAG, "settings not applied: " + e.getMessage());
-            } finally {
-                //noinspection ResultOfMethodCallIgnored
-                received.delete();
+                try {
+                    if (before != null) repo.write(Repo.CONFIG, before);
+                    else //noinspection ResultOfMethodCallIgnored
+                        saved.delete();
+                } catch (IOException ignored) {
+                    // config() falls back to the defaults
+                }
             }
         });
+    }
+
+    private static Config parseOrNull(String text) {
+        try {
+            return Config.parse(text);
+        } catch (JSONException e) {
+            return null;
+        }
     }
 
     @Override
@@ -105,9 +124,17 @@ public final class ConfigProvider extends ContentProvider {
         throw new UnsupportedOperationException();
     }
 
+    /** The phone's undo: {@code content delete --uri …/config.json} puts the add-on back to its defaults. */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        throw new UnsupportedOperationException();
+        guard();
+        if (!Repo.CONFIG.equals(uri.getLastPathSegment())) return 0;
+        Repo repo = new Repo(getContext());
+        boolean gone = repo.file(Repo.CONFIG).delete();
+        //noinspection ResultOfMethodCallIgnored
+        repo.file(Repo.GOOD).delete();
+        GamesProvider.changed(getContext());
+        return gone ? 1 : 0;
     }
 
     @Override

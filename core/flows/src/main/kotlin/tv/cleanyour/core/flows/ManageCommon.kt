@@ -134,6 +134,11 @@ class ManageDeps(
     val restarts: Restarts = Restarts(documents),
     // RFC-REACH-1: how the phone is connected, for "Copy connection details" (the app reads ConnectivityManager).
     val phoneNetwork: PhoneNetwork = PhoneNetwork { PhoneNetworkFacts.UNKNOWN },
+    // Fork (Clean Your TV RU): the TV widgets chosen per TV, and the fetcher the city search uses (null: no search).
+    val forkWidgets: ForkWidgetsPrefs = ForkWidgetsPrefs(documents),
+    val forkHttp: tv.cleanyour.core.registry.HttpFetcher? = null,
+    // The app's language ("" the phone's), which the add-on's lines under the clock follow.
+    val appLanguage: () -> String = { "" },
 ) {
     fun tv(id: TvId): Tv? = tvs.tvs.value.firstOrNull { it.id == id }
 

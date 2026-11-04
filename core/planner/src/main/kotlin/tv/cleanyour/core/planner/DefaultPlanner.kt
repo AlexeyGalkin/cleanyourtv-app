@@ -100,7 +100,7 @@ class DefaultPlanner(
             is PlanRequest.SwitchOff -> { d.switchOff(request.pkgs); PlanKind.SWITCH_OFF }
             is PlanRequest.Leftovers -> { d.leftovers(request.expectedDisabled); PlanKind.LEFTOVERS }
             is PlanRequest.ApplyTheme -> { d.applyTheme(request.config, request.wallpaper); PlanKind.THEME }
-            is PlanRequest.ApplySettings -> { d.applySettings(request.config); PlanKind.THEME }
+            is PlanRequest.ApplySettings -> { d.applySettings(request.config, request.widgets); PlanKind.THEME }
             is PlanRequest.AddModule -> { d.addModule(request); PlanKind.ADD_MODULE }
             is PlanRequest.RemoveModule -> { d.removeModule(request.pkg); PlanKind.REMOVE_MODULE }
             is PlanRequest.UseStockHome -> { d.useStockHome(request.stock, null); PlanKind.USE_STOCK_HOME }
@@ -776,10 +776,38 @@ class DefaultPlanner(
 
         // 0.5.0 Make it yours: the TV's settings document (TvSettings) as config.json, with the same steps, priors
         // and failure policy as ApplyTheme but no wallpaper step: the picture on the TV stays as it is.
-        fun applySettings(config: BlobRef) {
+        fun applySettings(config: BlobRef, widgets: PlanRequest.WidgetsPush? = null) {
             if (!installed(launcher.pkg)) { refuse("the new home screen is not installed"); return }
+            // Fork: the add-on and its settings first, so the launcher's restart finds the package game_day names.
+            if (widgets != null) widgetsSteps(widgets)
             look(config, null, overlayGone = false, pushPolicy = FailurePolicy.STOP_AND_ROLLBACK, route = themeRoute(state(launcher.pkg)?.versionCode),
                 keepWallpaper = true)
+        }
+
+        // Fork (Clean Your TV RU): the Widgets add-on (tv-addons/widgets), added or updated from the app's pinned copy
+        // like a module, then its settings written through its provider the way the look goes through the launcher's
+        // (ThemeProviderLines, Android 10 and later). A failed settings write leaves the look to go on (CONTINUE).
+        fun widgetsSteps(w: PlanRequest.WidgetsPush) {
+            val pkg = PackageName(WIDGETS_PKG)
+            val current = state(pkg)
+            var there = current != null
+            val m = w.module; val v = w.version; val apk = w.apk
+            if (m != null && v != null && apk != null && m.pkg == pkg) {
+                if (apk.sha256 != v.artifact.sha256 || apk.size != v.artifact.size) { refuse("the widgets add-on does not match its pinned copy"); return }
+                if (v.minSdk > snapshot.facts.sdk) { refuse("${m.name} needs Android ${v.minSdk}+ and this TV has ${snapshot.facts.sdk}"); return }
+                if (snapshot.facts.installRefusal) { refuse("this TV refuses app installs"); return }
+                if (current != null && current.signer != null && current.signer != v.artifact.signer) { refuse("${m.name} is already on the TV, installed with another key"); return }
+                if (current == null || current.versionCode < v.versionCode) {
+                    installApk(apk, v.artifact.sha256, pkg, v.versionCode, v.artifact.signer, present = current != null, group = GROUP_MODULE,
+                        narration = "Adding ${m.name} to the TV")
+                    there = true
+                }
+            }
+            if (!there || snapshot.facts.sdk < ThemeProviderLines.MIN_SDK) return
+            if (w.config.size !in 1..WIDGETS_CONFIG_MAX) { refuse("the widgets' settings are too big"); return }
+            step(Op.Mkdir(RemoteDir.TMP), null, GROUP_MODULE, "Preparing the TV", FailurePolicy.CONTINUE)
+            step(Op.PushAsset(w.config, RemotePath(RemoteDir.WIDGETS, listOf("config.json")), w.config.sha256, FileRoute.THEME_PROVIDER),
+                Prior(present = null), GROUP_MODULE, "Sending the widgets' settings to the TV", FailurePolicy.CONTINUE)
         }
 
         // RFC-THEME-1 (issues #1279, #1649, #1094, #1290): the look goes through the launcher's ThemeProvider where
@@ -1086,6 +1114,9 @@ class DefaultPlanner(
         const val GROUP_LEFTOVERS = "leftovers"
         const val GROUP_THEME = "theme"
         const val GROUP_MODULE = "module"
+        // Fork (Clean Your TV RU): the Widgets add-on's package and the size cap of its settings.
+        const val WIDGETS_PKG = "tv.cleanyour.ru.widgets"
+        const val WIDGETS_CONFIG_MAX = 16L * 1024
         const val GROUP_UNDO = "undo"
         const val GROUP_SESSION_END = "session_end"
         const val GROUP_RESTORE = "restore"

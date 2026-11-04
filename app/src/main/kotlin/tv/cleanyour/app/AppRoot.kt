@@ -391,7 +391,8 @@ fun AppRoot(graph: AppGraph, start: Dest, onExit: () -> Unit) {
                     SecureWindow(state.confirm == AppConfirm.RESET_KEY)
                     AppSettingsScreen(state, m::dispatch, onBack = { go("back") },
                         onOpenRelease = { graph.store.releasePage?.let { url -> scope.launch { onManageEffect(ManageEffect.OpenUrl(url)) } } },
-                        details = details, onDetails = { collectDetails(it) })
+                        details = details, onDetails = { collectDetails(it) },
+                        language = AppLanguage.current(context), onLanguage = { tag -> (context as? android.app.Activity)?.let { AppLanguage.set(it, tag) } })
                 }
             },
         )

@@ -162,15 +162,19 @@ class AppGraph(context: Context, val appVersion: String = versionOf(context), va
     val registry = IndexRegistry(http, documents, clock, seedIndex, sources = null, TrustRoots.indexVerifier())
     // F8: modules download only from installableIndex(), whatever the machine looked them up with.
     // The Play build has no add-ons: its Store hands back a fetcher that never downloads.
+    // Fork (Clean Your TV RU): the add-ons this app carries, in front of the index's (ForkAddons).
+    val forkAddons = ForkAddons(app)
+    val modules: tv.cleanyour.core.registry.Registry = if (store.rules.addOns) ForkRegistry(registry, forkAddons, scope) else registry
     val fetcher = store.addOnFetcher {
-        InstallableOnlyFetcher(ResumableArtifactFetcher(http, blobs, blobs, inspector, urlAllowed = hostAllowed)) { registry.installableIndex() }
+        ForkFetcher(InstallableOnlyFetcher(ResumableArtifactFetcher(http, blobs, blobs, inspector, urlAllowed = hostAllowed)) { registry.installableIndex() },
+            forkAddons, blobs)
     }
 
     val seams = Seams(
         sessions = sessions, keyInfo = keyInfo, prober = prober, profiles = profiles, facts = facts, themes = themes,
         planner = planner, engine = engine, journal = journal, configTransport = configTransport, snapshots = snapshots,
         restoreFiles = restoreFiles, restoreNote = restoreNote, bundleWriter = bundleWriter, blobs = blobs,
-        launcherPin = launcherPin, registry = registry, fetcher = fetcher, inspector = inspector, http = http, curtainPin = curtainPin,
+        launcherPin = launcherPin, registry = modules, fetcher = fetcher, inspector = inspector, http = http, curtainPin = curtainPin,
     )
 
     val gate = GateKeeper(credentialGate, clock, copy)
@@ -219,7 +223,7 @@ class AppGraph(context: Context, val appVersion: String = versionOf(context), va
         ledger = ledger, prober = prober, profiles = profiles, facts = facts, snapshots = snapshots,
         documents = documents, blobs = blobs, themes = themes, launcherPin = launcherPin,
         configTransport = configTransport, restorePoint = restorePoint, bundleWriter = bundleWriter,
-        registry = registry, fetcher = fetcher, inspector = inspector, cardDetector = CardAnswerDetector.Unknown,
+        registry = modules, fetcher = fetcher, inspector = inspector, cardDetector = CardAnswerDetector.Unknown,
         sessionEnd = sessionEnd, homePrefs = homePrefs, appPrefs = appPrefs, keyInfo = keyInfo, updates = updates,
         diagnostics = diagnostics, clock = clock, copy = copy, encoder = ConfigEncoder.Codec, appVersion = appVersion,
         openWrites = openWrites,
@@ -229,6 +233,8 @@ class AppGraph(context: Context, val appVersion: String = versionOf(context), va
         log = FlowLog { CytLog.i(it) },                 // 0.4.7: Manage's re-check lines (StockHomeBack)
         restarts = restarts,                            // 0.4.8: the restart count (Restarts)
         phoneNetwork = AndroidPhoneNetwork(app),        // RFC-REACH-1: "Copy connection details"
+        forkHttp = if (store.rules.addOns) http else null,   // fork: the Weather widget's city search
+        appLanguage = { AppLanguage.current(app) },          // fork: the language of the widgets' lines
     )
 
     init {

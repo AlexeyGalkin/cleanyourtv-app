@@ -1,5 +1,12 @@
 # Fork TV add-ons: the contract between the phone app and the TV add-ons
 
+> **As built (0.5.0):** the F1 and Weather add-ons below became one add-on, **Widgets** (`tv.cleanyour.ru.widgets`,
+> `tv-addons/widgets`), because the launcher's game_day hook reads one package: F1, weather (with sunrise and
+> sunset) and holidays are its lines, each switched on its own. Its config door is
+> `content://tv.cleanyour.ru.widgets.config/config.json` with the JSON in `Config.java`; the phone writes it with
+> a Make it yours send (`PlanRequest.WidgetsPush`, `RemoteDir.WIDGETS` through `ThemeProviderLines`). The signing,
+> card, bundling and trust rules below hold as written.
+
 Clean Your TV RU ships two TV add-ons of its own, built from `tv-addons/` and signed with the fork's key.
 They plug into the unchanged upstream launcher (com.gathin.tvhome 3.3, versionCode 12) through its public hooks
 (module card, game_day). Nothing in the launcher is modified.

@@ -81,6 +81,8 @@ import tv.cleanyour.ui.design.component.Spinner
 import tv.cleanyour.ui.design.component.StepCard
 import tv.cleanyour.ui.design.component.StopCard
 import tv.cleanyour.ui.design.component.SwitchRow
+import tv.cleanyour.ui.design.component.SegmentOption
+import tv.cleanyour.ui.design.component.SegmentedChoice
 import tv.cleanyour.ui.design.component.TertiaryButton
 import tv.cleanyour.ui.design.component.TvCard
 import tv.cleanyour.ui.design.component.TvStatus
@@ -476,12 +478,25 @@ internal fun ColumnScope.ForgetContent(tvName: String, onIntent: (TvSettingsInte
 @Composable
 // RFC-REACH-1: `details` and `onDetails` drive "Connection details" (the app collects and copies or shares the block).
 fun AppSettingsScreen(state: AppSettingsState, onIntent: (AppSettingsIntent) -> Unit, onBack: () -> Unit, onOpenRelease: () -> Unit, modifier: Modifier = Modifier,
-    details: DetailsUi = DetailsUi(), onDetails: (share: Boolean) -> Unit = {}) {
+    details: DetailsUi = DetailsUi(), onDetails: (share: Boolean) -> Unit = {},
+    // Fork: the app's language ("" the phone's, "en", "ru"); null hides the choice.
+    language: String = "", onLanguage: ((String) -> Unit)? = null) {
     var licences by rememberSaveable { mutableStateOf(false) }
     var connection by rememberSaveable { mutableStateOf(false) }
     var privacy by rememberSaveable { mutableStateOf(false) }
     ScreenScaffold(Glow.Tv, modifier, topBar = { CytTopBar(onBack = onBack) }) {
         ScreenTitle(stringResource(R.string.appsettings_title), titleTop)
+        if (onLanguage != null) {
+            SectionLabel(stringResource(R.string.appsettings_language))
+            val system = stringResource(R.string.appsettings_language_system)
+            val english = stringResource(R.string.appsettings_language_en)
+            val russian = stringResource(R.string.appsettings_language_ru)
+            SegmentedChoice(
+                listOf(SegmentOption("", system, stringResource(R.string.appsettings_language_system_cd)),
+                    SegmentOption("en", english, english), SegmentOption("ru", russian, russian)),
+                language, { onLanguage(it.key) }, groupLabel = stringResource(R.string.appsettings_language),
+            )
+        }
         ListGroup(Modifier.padding(top = 20.dp)) {
             SwitchRow(stringResource(R.string.appsettings_large_text), state.prefs.largeTextFollowsSystem, { onIntent(AppSettingsIntent.SetLargeText(it)) },
                 subtitle = stringResource(R.string.appsettings_large_text_note))

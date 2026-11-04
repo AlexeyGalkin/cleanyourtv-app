@@ -1,0 +1,48 @@
+# Clean Your TV RU (fork): a mirror of the four Jolpica-F1 files the Widgets TV add-on reads, on the f1-data branch,
+# served by raw.githubusercontent.com. Jolpica sits behind Cloudflare, which some networks (Russian ISPs since 2025)
+# throttle; the add-on tries Jolpica first and this mirror second (tv-addons/widgets Repo.java).
+name: f1-data
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"        # every 3 hours
+    - cron: "47 * * * 5-1"        # hourly from Friday to Monday, for race weekends
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: f1-data
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          path: src
+          sparse-checkout: tv-addons/widgets/tools
+          persist-credentials: false
+
+      - name: The f1-data branch (created empty the first time)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          git init -q data && cd data
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git"
+          if git fetch -q --depth 1 origin f1-data; then git checkout -q -b f1-data FETCH_HEAD; else git checkout -q --orphan f1-data; fi
+
+      - name: Snapshot Jolpica-F1
+        run: python3 src/tv-addons/widgets/tools/snapshot.py data/f1
+
+      - name: Commit when anything changed
+        run: |
+          cd data
+          git add f1
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git -c user.name="f1-data bot" -c user.email="actions@github.com" commit -q -m "F1 data $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -q origin f1-data

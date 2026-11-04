@@ -1,6 +1,33 @@
+<p align="center"><b>English</b> · <a href="README.ru.md">Русский</a></p>
+
 <p align="center">
   <img src="docs/images/banner-3-steps.png" width="800" alt="Community app for Clean Your TV. Clean your TV from your phone. No laptop. No coding agent. Open the app on your Android phone, tap Start, and the ads and bloat are gone in about five minutes. Three steps: connect, analyse, clean.">
 </p>
+
+> ## This fork: Clean Your TV RU
+>
+> A fork of [udhaykumarbala/cleanyourtv-app](https://github.com/udhaykumarbala/cleanyourtv-app), based on its
+> 0.5.0-beta1, with:
+>
+> - **Russian**, and a **language choice in the app's Settings** (the phone's language, English or Russian).
+> - **TV widgets under the clock**, each switched on its own on *Make it yours → Widgets*, taking turns:
+>   - **F1**: "Round 20 · São Paulo Grand Prix", then "Qualifying in 2h 14m";
+>   - **Weather** for a city you pick on the phone, with the countdown to the next sunrise or sunset;
+>   - **Holidays**: today's (Russian public holidays, well-known days, and light-hearted ones if you like), then
+>     the countdown to the next public holiday.
+>
+>   They come from the **Widgets** TV add-on ([tv-addons/widgets](tv-addons/widgets)), which the app puts on the
+>   TV with the send. Its card opens full screens: the F1 weekend in your time zone with the weather per session,
+>   both championships, the last race, the 7-day forecast, and holidays. Data: Jolpica-F1 (mirrored on this
+>   repo's `f1-data` branch for networks that throttle Cloudflare) and Open-Meteo, no keys, no tracking.
+> - Its own package (`tv.cleanyour.app.ru`), so it installs **next to** the upstream app, and "Check for updates"
+>   reads this fork's releases.
+>
+> **Download:** [the latest release](https://github.com/AlexeyGalkin/cleanyourtv-app/releases/latest). The fork's
+> APKs (the app and the add-on) are signed by the key with certificate SHA-256
+> `c02a76c8034b6ecd835dd88161e751fe5689c40b5f42d4715768769580a7051c`.
+> **Build it yourself:** Actions → *fork-apk* → Run workflow, or push a `vX.Y.Z` tag
+> (see [Building the fork](#building-the-fork)). Everything below is the upstream README.
 
 <p align="center">
   <a href="https://github.com/udhaykumarbala/cleanyourtv-app/releases/latest"><img src="https://img.shields.io/github/v/release/udhaykumarbala/cleanyourtv-app?style=flat&color=E8A84C&labelColor=15181e&label=download%20APK" alt="Download the latest APK"></a>
@@ -186,6 +213,21 @@ releases are built and signed. How the app was designed and reviewed is in
 
 The app is developed with AI coding agents under human review: the maintainer set the design and
 reviewed and tested the app, and every change went through automated tests and review.
+
+### Building the fork
+
+- **In GitHub Actions** (no tools needed): the `fork-apk` workflow builds the TV add-ons, bundles them, and
+  builds the signed release APK. It needs two repository secrets: `CYT_KEYSTORE_B64` (the PKCS12 keystore,
+  base64) and `CYT_KEYSTORE_PASSWORD`; the repository variable `CYT_SIGNER_SHA256` makes it fail if another key
+  signs. Run it by hand for a test APK (an artifact), or push a tag `vX.Y.Z` equal to `versionName` in
+  `app/build.gradle.kts` for a GitHub Release with the APK.
+- **Locally:** JDK 21 and the Android SDK (platforms 34 and 37), then
+  `scripts/fork/bundle-addons.sh` (with `CYT_ADDON_KEYSTORE` and `CYT_ADDON_KEYSTORE_PASSWORD` or `_FILE`) and
+  `./gradlew :app:assembleFullRelease` (with `CYT_RELEASE_KEYSTORE` and `CYT_RELEASE_KEYSTORE_PASSWORD`).
+- **Translations:** `python3 scripts/fork/check-translations.py . ru` checks every `values-ru` file against
+  English (keys, ICU plurals, placeholders); the terms are in [scripts/fork/GLOSSARY-ru.md](scripts/fork/GLOSSARY-ru.md).
+- **Staying up to date with upstream:** `git fetch upstream && git merge upstream/<release branch>`, then the
+  translation check for new strings.
 
 ## Credits
 

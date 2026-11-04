@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clean Your TV RU (fork): the Widgets add-on's lines under the clock on the Widgets page. Strings with an
+     argument are ICU MessageFormat with named arguments, formatted by msg(). -->
+<resources>
+    <string name="fork_widgets_f1_name">F1</string>
+    <string name="fork_widgets_f1_sub">Next session</string>
+    <string name="fork_widgets_f1_line">Round 20 · Qualifying in 2h 14m</string>
+    <string name="fork_widgets_weather_name">Weather</string>
+    <string name="fork_widgets_weather_sub">With sunrise and sunset</string>
+    <string name="fork_widgets_weather_line">Your city · +3° · Sunset in 1h 12m</string>
+    <string name="fork_widgets_weather_line_city">{city} · +3° · Sunset in 1h 12m</string>
+    <string name="fork_widgets_holidays_name">Holidays</string>
+    <string name="fork_widgets_holidays_sub">Today and the next one</string>
+    <string name="fork_widgets_holidays_line">Today: World Television Day</string>
+
+    <string name="fork_widgets_city_label">City for the weather</string>
+    <string name="fork_widgets_city_now">Now: {city}</string>
+    <string name="fork_widgets_city_field">City</string>
+    <string name="fork_widgets_city_hint">Type the city, search, then tap the right one.</string>
+    <string name="fork_widgets_city_search">Search</string>
+    <string name="fork_widgets_city_searching">Searching…</string>
+    <string name="fork_widgets_city_offline">The city search did not answer. Check the phone\'s internet.</string>
+    <string name="fork_widgets_city_none">No city by that name.</string>
+    <string name="fork_widgets_fun">Light-hearted days too</string>
+    <string name="fork_widgets_fun_sub">Pizza Day, Programmers\' Day and the like on ordinary days</string>
+    <string name="fork_widgets_hint">The lines take turns under the clock, 20 seconds each. They come from the Widgets add-on, which “Put it on the TV” puts there; its card opens the full F1, weather and holiday screens.</string>
+    <string name="fork_widgets_install_hint">“Put it on the TV” also puts the Widgets add-on on the TV. The TV may ask once whether to show its card.</string>
+</resources>

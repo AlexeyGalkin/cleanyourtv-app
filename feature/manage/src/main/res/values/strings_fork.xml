@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clean Your TV RU (fork): the app's language in Settings. -->
+<resources>
+    <string name="appsettings_language">Language</string>
+    <string name="appsettings_language_system">Phone\'s</string>
+    <string name="appsettings_language_system_cd">The phone\'s language</string>
+    <string name="appsettings_language_en" translatable="false">English</string>
+    <string name="appsettings_language_ru" translatable="false">Русский</string>
+</resources>

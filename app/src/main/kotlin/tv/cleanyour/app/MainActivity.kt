@@ -1,5 +1,6 @@
 package tv.cleanyour.app
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,6 +24,9 @@ import tv.cleanyour.ui.design.theme.CytTheme
 // opens the destination decided from disk.
 class MainActivity : ComponentActivity() {
     private val graph get() = (application as CytApplication).graph
+
+    // Fork: the language chosen in Settings, on Android 9 to 12 (AppLanguage).
+    override fun attachBaseContext(newBase: Context) = super.attachBaseContext(AppLanguage.wrap(newBase))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Always dark (D-W8-27): light icons on transparent bars whatever the phone's own mode.

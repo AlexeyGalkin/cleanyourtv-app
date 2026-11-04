@@ -33,7 +33,10 @@ sealed interface PlanRequest {
     data class SwitchOff(val pkgs: Set<PackageName>) : PlanRequest
     data class Leftovers(val expectedDisabled: Set<PackageName>) : PlanRequest
     data class ApplyTheme(val doc: LauncherConfigDoc, val config: BlobRef, val wallpaper: BlobRef?) : PlanRequest   // R0: 14 renamed from Theme; config = encode(doc) in the BlobStore
-    data class ApplySettings(val doc: LauncherConfigDoc, val config: BlobRef) : PlanRequest   // 0.5.0 Make it yours: config.json alone; the wallpaper stays as the TV has it
+    data class ApplySettings(val doc: LauncherConfigDoc, val config: BlobRef, val widgets: WidgetsPush? = null) : PlanRequest   // 0.5.0 Make it yours: config.json alone; the wallpaper stays as the TV has it
+    // Fork (Clean Your TV RU): the Widgets add-on with a Make it yours send. `apk` (with its index entry) when the
+    // add-on is to be added or updated from the copy bundled in the app; `config` its settings (its config.json).
+    data class WidgetsPush(val module: Module?, val version: ModuleVersion?, val apk: BlobRef?, val config: BlobRef)
     data class AddModule(val module: Module, val version: ModuleVersion, val apk: BlobRef,
         val config: BlobRef? = null, val wallpaper: BlobRef? = null) : PlanRequest   // R0: 14 renamed from Module; RFC-CARDS-1: config = the look with module_cards on
     data class RemoveModule(val pkg: PackageName) : PlanRequest

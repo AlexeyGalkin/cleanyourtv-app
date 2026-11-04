@@ -24,3 +24,4 @@ __pycache__/
 # local release signing (build-logic ReleaseSigning): never committed
 keystore.properties
 *.jks.properties
+android/platform/src/main/assets/fork-addons/

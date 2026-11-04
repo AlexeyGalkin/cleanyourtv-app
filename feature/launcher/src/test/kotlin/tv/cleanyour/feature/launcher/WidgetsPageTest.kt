@@ -20,9 +20,11 @@ class WidgetsPageTest {
     private val plain = WidgetsSettings()
 
     @Test fun widgetsAreThe050Rows() {
-        assertEquals(listOf("second", "stats", "caption", "retro"), WIDGETS.map { it.key })
+        // Fork: the Widgets add-on's three lines come first under the clock.
+        assertEquals(listOf("fork_f1", "fork_weather", "fork_holidays", "second", "stats", "caption", "retro"), WIDGETS.map { it.key })
         assertEquals(
-            listOf(WidgetPlace.UNDER_CLOCK, WidgetPlace.UNDER_CLOCK, WidgetPlace.UNDER_BUTTONS, WidgetPlace.BEFORE_APPS),
+            listOf(WidgetPlace.UNDER_CLOCK, WidgetPlace.UNDER_CLOCK, WidgetPlace.UNDER_CLOCK,
+                WidgetPlace.UNDER_CLOCK, WidgetPlace.UNDER_CLOCK, WidgetPlace.UNDER_BUTTONS, WidgetPlace.BEFORE_APPS),
             WIDGETS.map { it.place },
         )
         assertTrue(WIDGETS.none { it.later })

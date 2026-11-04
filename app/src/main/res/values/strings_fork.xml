@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Clean Your TV RU (fork): the Widgets TV add-on as it shows in Cards and modules. -->
+<resources>
+    <string name="fork_widgets_name">Widgets</string>
+    <string name="fork_widgets_one_line">F1, weather and holidays under the TV\'s clock</string>
+    <string name="fork_widgets_description">Lines under the clock on the TV\'s home screen, each one switched on the Widgets page: the next F1 session, the weather with the next sunrise or sunset for your city, and today\'s holidays. Its card opens the F1 weekend, both championships, the last race, the forecast and the holidays.</string>
+    <string name="fork_widgets_internet">The F1 calendar and standings (Jolpica-F1) and the weather for your city (Open-Meteo)</string>
+    <string name="fork_widgets_network">Goes online only for the F1 data and the weather, while Home or its screen is showing. No account, no tracking.</string>
+</resources>

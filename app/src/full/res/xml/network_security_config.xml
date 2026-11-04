@@ -15,6 +15,8 @@
         <domain includeSubdomains="false">api.github.com</domain>
         <domain includeSubdomains="false">objects.githubusercontent.com</domain>
         <domain includeSubdomains="false">release-assets.githubusercontent.com</domain>
+        <!-- Fork (Clean Your TV RU): the Weather widget's city search -->
+        <domain includeSubdomains="false">geocoding-api.open-meteo.com</domain>
         <certificateTransparency enabled="true" />
         <trust-anchors>
             <certificates src="system" />

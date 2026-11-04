@@ -26,6 +26,11 @@ object ThemeProviderLines {
     const val STAGE_PREFIX = "theme-"
     val FILES: Set<String> = setOf("config.json", "wallpaper.jpg")
 
+    // Fork (Clean Your TV RU): the Widgets add-on (tv-addons/widgets) takes its settings the same way, through its
+    // own provider guarded by WRITE_SECURE_SETTINGS; only its config.json, never another file or another app's.
+    const val WIDGETS_AUTHORITY = "tv.cleanyour.ru.widgets.config"
+    val WIDGETS_FILES: Set<String> = setOf("config.json")
+
     // The write: remove the shell's own copy first (the provider cannot truncate a file the shell owns), write the
     // staged file through the provider, and only when that answers anything at all (the content tool prints its
     // errors and still exits 0) copy the staged file in directly, the old way. The staged file always goes. The exit
@@ -46,17 +51,18 @@ object ThemeProviderLines {
         check(RemoteDir.OVERLAY.path == "/sdcard/Android/data/com.gathin.tvhome/files") { "the provider's folder differs from RemoteDir.OVERLAY" }
     }
 
-    fun isThemeFile(path: RemotePath): Boolean = path.dir == RemoteDir.OVERLAY && path.segments.size == 1 && path.segments[0] in FILES
+    fun isThemeFile(path: RemotePath): Boolean = path.segments.size == 1 &&
+        (path.dir == RemoteDir.OVERLAY && path.segments[0] in FILES || path.dir == RemoteDir.WIDGETS && path.segments[0] in WIDGETS_FILES)
 
     fun uri(path: RemotePath): String {
         require(isThemeFile(path)) { "the launcher's provider takes only ${FILES.joinToString()} in ${RemoteDir.OVERLAY.path}" }
-        return "content://$AUTHORITY/" + path.segments[0]
+        return "content://${if (path.dir == RemoteDir.WIDGETS) WIDGETS_AUTHORITY else AUTHORITY}/" + path.segments[0]
     }
 
     // Where a file is staged before the provider reads it: theme-config.json, theme-wallpaper.jpg in TMP.
     fun stage(path: RemotePath): RemotePath {
         require(isThemeFile(path)) { "only a theme file is staged" }
-        return RemotePath(RemoteDir.TMP, listOf(STAGE_PREFIX + path.segments[0]))
+        return RemotePath(RemoteDir.TMP, listOf((if (path.dir == RemoteDir.WIDGETS) "widgets-" else STAGE_PREFIX) + path.segments[0]))
     }
 
     fun write(dest: RemotePath): String = checked(fill(WRITE_TEMPLATE, dest), WRITE_TEMPLATE, dest)

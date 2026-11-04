@@ -105,7 +105,7 @@ class ConfigKeysTest {
             b("shamsi_date"), b("lunar_date"), -1, b("show_stats"), b("vpn_pill"), s("vpn_app"), l("top_bar_apps").map(::PackageName),
             i("wifi_label_width"), b("show_greeting"), b("date_below_clock"), b("header_white"), s("clock_format"), b("top_menu"),
             b("icon_only_buttons"), b("icon_only_inputs"), b("icon_only_vpn"), b("wifi_status_color"), b("wifi_status_warnings"),
-            b("reorder_button"), b("library_button")), WidgetsSettings.DEFAULTS)
+            b("reorder_button"), b("library_button"), s("game_day")), WidgetsSettings.DEFAULTS)
         assertEquals(AppsSettings(b("tile_menu"), b("app_library"), b("show_library_pill"),
             l("hidden_apps").map(::PackageName), l("app_labels").associate { PackageName(it.substringBefore('=')) to it.substringAfter('=') }),
             AppsSettings.DEFAULTS)

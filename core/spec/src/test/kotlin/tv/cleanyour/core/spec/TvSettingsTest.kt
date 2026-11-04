@@ -134,6 +134,7 @@ class TvSettingsTest {
             "tile_menu" to { it.withApps(it.apps.copy(tileMenu = false)) },
             "app_library" to { it.withApps(it.apps.copy(appLibrary = true)) },
             "library_button" to { it.withWidgets(it.widgets.copy(libraryButton = true)) },
+            "game_day" to { it.withWidgets(it.widgets.copy(gameDay = "tv.cleanyour.ru.widgets")) },
             "show_library_pill" to { it.withApps(it.apps.copy(showLibraryPill = false)) },
             "hidden_apps" to { it.withApps(it.apps.copy(hiddenApps = apps.drop(5).take(3))) },
             "app_labels" to { it.withApps(it.apps.copy(appLabels = mapOf(apps[0] to "Films", apps[1] to "Videos = fun"))) },

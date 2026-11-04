@@ -109,6 +109,7 @@ class TvSettings private constructor(private val keys: Map<String, JsonElement>,
         clockFormat = clockFormat("clock_format"), topMenu = bool("top_menu"), iconOnlyButtons = bool("icon_only_buttons"),
         iconOnlyInputs = bool("icon_only_inputs"), iconOnlyVpn = bool("icon_only_vpn"), wifiStatusColor = bool("wifi_status_color"),
         wifiStatusWarnings = bool("wifi_status_warnings"), reorderButton = bool("reorder_button"), libraryButton = bool("library_button"),
+        gameDay = string("game_day"),
     )
 
     fun withWidgets(t: WidgetsSettings): TvSettings = edit(SettingsSection.WIDGETS, widgets.json(), t.json())
@@ -230,6 +231,7 @@ data class WidgetsSettings(
     val wifiStatusWarnings: Boolean? = null,      // wifi_status_warnings (3.0): orange without internet, red offline
     val reorderButton: Boolean? = null,           // reorder_button (2.4): the move button in the top bar
     val libraryButton: Boolean? = null,           // library_button (2.6): the library as a top bar button
+    val gameDay: String? = null,                  // game_day (3.3): the package whose lines rotate under the clock; fork: the Widgets add-on
 ) {
     companion object {
         // config.xml at d7b0d4a5 (ConfigKeysTest reads it).
@@ -237,7 +239,7 @@ data class WidgetsSettings(
             greetingName = "", shamsiDate = false, lunarDate = false, lunarUtcOffset = -1, showStats = false, vpnPill = false,
             vpnApp = "", topBarApps = emptyList(), wifiLabelWidth = 0, showGreeting = true, dateBelowClock = false, headerWhite = false,
             clockFormat = ClockFormats.SYSTEM, topMenu = false, iconOnlyButtons = false, iconOnlyInputs = false, iconOnlyVpn = false,
-            wifiStatusColor = false, wifiStatusWarnings = false, reorderButton = false, libraryButton = false)
+            wifiStatusColor = false, wifiStatusWarnings = false, reorderButton = false, libraryButton = false, gameDay = "")
     }
 
     // Every value of this, else the launcher's own (DEFAULTS): what the TV shows.
@@ -249,6 +251,7 @@ data class WidgetsSettings(
         headerWhite ?: DEFAULTS.headerWhite, clockFormat ?: DEFAULTS.clockFormat, topMenu ?: DEFAULTS.topMenu, iconOnlyButtons ?: DEFAULTS.iconOnlyButtons,
         iconOnlyInputs ?: DEFAULTS.iconOnlyInputs, iconOnlyVpn ?: DEFAULTS.iconOnlyVpn, wifiStatusColor ?: DEFAULTS.wifiStatusColor,
         wifiStatusWarnings ?: DEFAULTS.wifiStatusWarnings, reorderButton ?: DEFAULTS.reorderButton, libraryButton ?: DEFAULTS.libraryButton,
+        gameDay ?: DEFAULTS.gameDay,
     )
 
     internal fun json(): Map<String, JsonElement?> = linkedMapOf(
@@ -262,6 +265,7 @@ data class WidgetsSettings(
         "icon_only_buttons" to iconOnlyButtons.element(), "icon_only_inputs" to iconOnlyInputs.element(), "icon_only_vpn" to iconOnlyVpn.element(),
         "wifi_status_color" to wifiStatusColor.element(), "wifi_status_warnings" to wifiStatusWarnings.element(),
         "reorder_button" to reorderButton.element(), "library_button" to libraryButton.element(),
+        "game_day" to gameDay.element(),
     )
 }
 
