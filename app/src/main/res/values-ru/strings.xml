@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Clean Your TV, :app. Russian translation of values/strings.xml.
+  ICU MessageFormat with NAMED arguments in braces, as in the English source.
+-->
+<resources>
+    <string name="app_channel_setup_name">Настройка телевизора</string>
+    <string name="app_channel_setup_description">Показывает ход работы, пока телефон меняет настройки телевизора, и сообщает, когда нужно посмотреть на телевизор.</string>
+    <string name="app_restore_read_failed">Что-то пошло не так при чтении точки восстановления</string>
+</resources>

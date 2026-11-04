@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Clean Your TV, :feature:setup. Russian translation of values/strings.xml.
+  ICU MessageFormat with NAMED arguments, as in the English source; every plural has one/few/many/other.
+  Strings that contain a percent sign are marked formatted="false", as in the English source.
+-->
+<resources>
+
+    <!-- Shared button words -->
+    <string name="action_back">Назад</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_ok">ОК</string>
+    <string name="action_done">Готово</string>
+    <string name="action_undo">Отменить</string>
+
+    <!-- Credential prompt (D17) -->
+    <string name="gate_title">Подтвердите, что это вы</string>
+    <string name="gate_subtitle">Прежде чем мы что-то изменим на телевизоре «{tv}»</string>
+    <string name="gate_negative">Отмена</string>
+    <string name="gate_failed">Не удалось подтвердить, что это вы, поэтому ничего не изменено.</string>
+
+    <!-- Notifications (D18, D16) -->
+    <string name="notify_channel_name">Настройка телевизора</string>
+    <string name="notify_channel_description">Показывает ход работы, пока телефон что-то меняет на телевизоре, и сообщает, когда нужно посмотреть на телевизор.</string>
+    <string name="notify_progress" formatted="false">Настраиваем «{tv}»: {percent}%</string>
+    <string name="notify_look">Посмотрите на телевизор. Нажмите, чтобы ответить.</string>
+    <string name="notify_rationale">Телефон завибрирует, когда пора будет посмотреть на телевизор. Разрешите уведомления, чтобы это работало, даже когда телефон в кармане.</string>
+    <string name="notify_rationale_allow">Разрешить уведомления</string>
+    <string name="notify_rationale_skip">Не сейчас</string>
+
+    <!-- S2d to S3: probing -->
+    <string name="probing_line">Смотрим, что есть на телевизоре...</string>
+    <string name="probing_progress_cd">Смотрим, что есть на телевизоре</string>
+
+    <!-- Stop: probe failure -->
+    <string name="stop_probe_failed_title">Не удалось узнать, что есть на телевизоре</string>
+    <string name="stop_probe_failed_body">Телевизор перестал отвечать, пока мы его опрашивали. Ничего не изменено. Проверьте, что он по-прежнему включён, и повторите попытку.</string>
+    <string name="stop_probe_failed_primary">Повторить</string>
+    <string name="stop_probe_failed_secondary">Назад</string>
+    <string name="stop_probe_failed_tertiary">Подробности</string>
+    <string name="stop_plan_refused_title">Не удалось составить безопасный план для этого телевизора</string>
+    <string name="stop_plan_refused_body">Телевизор ответил, но то, что мы на нём нашли, не укладывается в план, в безопасности которого мы уверены, поэтому мы остановились, ничего не сделав. Ничего не изменено. Кнопка «Сообщить о проблеме» отправит нам причину, чтобы мы могли это исправить.</string>
+
+    <!-- S3 What we found -->
+    <string name="found_title">{count, plural, =0 {Отключать нечего. Поставить новый главный экран?} =1 {Мы нашли один пункт, который можно отключить} one {Мы нашли # пункт, который можно отключить} few {Мы нашли # пункта, которые можно отключить} many {Мы нашли # пунктов, которые можно отключить} other {Мы нашли # пункта, которые можно отключить}}</string>
+    <string name="found_headline">{count, plural, =0 {Отключать нечего. Поставить новый главный экран?} one {пункт для отключения} few {пункта для отключения} many {пунктов для отключения} other {пункта для отключения}}</string>
+    <string name="found_overline">Мы нашли</string>
+    <string name="found_zero_body">На этом телевизоре и так чисто.</string>
+    <!-- 0.4.7 (UX finding 5, PM 7): nothing to switch off while the TV keeps its own home screen -->
+    <string name="found_title_zero_kept">Отключать нечего</string>
+    <string name="found_zero_kept_body">На этом телевизоре и так чисто, а главный экран у него остаётся родным, так что делать ничего не нужно.</string>
+    <!-- 0.4.9 (issue #1222): an empty plan with apps left on for the person to choose -->
+    <string name="found_zero_kept_choices">Некоторые приложения оставлены включёнными на ваш выбор. Они перечислены на экране «Выбор».</string>
+    <string name="found_zero_kept_unknown_body">Мы ни в чём не были уверены на этом телевизоре, а главный экран у него остаётся родным, так что пока делать нечего. Мы составляем списки по таким отчётам, как ваш, и напишем в вашем обращении, когда появится что попробовать.</string>
+    <string name="found_switch_home">Сменить главный экран</string>
+    <string name="found_group_ads">Реклама и рекламные ряды</string>
+    <string name="found_group_tracking">Слежка и аналитика</string>
+    <string name="found_group_nobody">Приложения, о которых никто не просил</string>
+    <string name="found_group_brand">Фирменные дополнения {brand}</string>
+    <string name="found_group_shop">Магазинный и демо-режим</string>
+    <string name="found_group_needed">Нужно для нового главного экрана</string>
+    <string name="found_group_count_cd">{group}: {count, plural, one {# пункт} few {# пункта} many {# пунктов} other {# пункта}}</string>
+    <string name="found_see_list">Посмотреть список</string>
+    <string name="found_keep_intro">Всё, чем вы пользуетесь, остаётся:</string>
+    <string name="found_keep_paragraph">Всё, чем вы пользуетесь, остаётся: {apps}, {fixed}.</string>
+    <string name="found_keep_paragraph_no_apps">Всё, чем вы пользуетесь, остаётся: {fixed}.</string>
+    <string name="found_keep_fixed">эфирное ТВ и HDMI, пульт, клавиатура, Chromecast, голосовой помощник и обновления ПО</string>
+    <!-- UX finding 25: a Fire TV has no Chromecast -->
+    <string name="found_keep_fixed_fire">эфирное ТВ и HDMI, пульт, клавиатура, голосовой помощник и обновления ПО</string>
+    <string name="found_home_row">Главный экран: {dock}</string>
+    <!-- The dock with rows under it: the dock's apps, then how many more sit in the rows -->
+    <string name="found_home_row_rows">Главный экран: {dock} и ещё {count, plural, one {# приложение} few {# приложения} many {# приложений} other {# приложения}} ниже</string>
+    <string name="found_home_row_cd">Панель приложений главного экрана: {dock}</string>
+    <string name="found_home_change">Изменить</string>
+    <!-- An empty dock: the row names the new home screen (UX 2 dock card title) instead of a blank list -->
+    <string name="found_home_row_empty">Ваш новый главный экран</string>
+    <string name="found_safety">Сначала сохраняется точка восстановления, так что всё можно вернуть.</string>
+    <string name="found_make_clean">Навести чистоту</string>
+    <string name="found_customise">Выбор</string>
+    <!-- D36 (RF-LAUNCHER-240 F1): the plan replaces a home screen app signed with another key -->
+    <string name="found_replaces_launcher">Заменяет приложение главного экрана, которое уже стоит на этом телевизоре. Его оформление, порядок приложений, настройки и ответы в карточках будут сброшены.</string>
+    <string name="found_tcl_remote_keys">На TCL Google TV с новым главным экраном перестают работать кнопки пульта «Настройки» (шестерёнка), Netflix и YouTube. Чтобы вернуть их, выберите «Использовать родной главный экран телевизора» на странице «Главный экран».</string>
+    <!-- Issue #3059: a Google TV of another brand than TCL, whose remote's Settings button may stop working -->
+    <string name="found_google_tv_settings_key">На Google TV кнопка «Настройки» (шестерёнка) на пульте открывает собственную панель настроек Google TV, где на многих телевизорах есть и настройки изображения и звука для текущего источника. С новым главным экраном она может перестать работать. Чтобы вернуть её, выберите «Использовать родной главный экран телевизора» на странице «Главный экран».</string>
+    <string name="found_no_lock">На этом телефоне нет блокировки экрана, поэтому мы не можем дополнительно убедиться, что это вы.</string>
+    <!-- Unknown model (no profile) -->
+    <string name="found_unknown_title">{count, plural, =0 {Мы не нашли ничего, в чём были бы уверены} =1 {Мы нашли один пункт, в котором уверены} one {Мы нашли # пункт, в котором уверены} few {Мы нашли # пункта, в которых уверены} many {Мы нашли # пунктов, в которых уверены} other {Мы нашли # пункта, в которых уверены}}</string>
+    <string name="found_unknown_headline">{count, plural, =0 {Мы не нашли ничего, в чём были бы уверены} one {пункт, в котором мы уверены} few {пункта, в которых мы уверены} many {пунктов, в которых мы уверены} other {пункта, в которых мы уверены}}</string>
+    <string name="found_unknown_body">Мы ещё не встречали именно этот телевизор, поэтому действуем осторожно. Когда у нас появится список для этого телевизора, можно будет отключить больше. Кнопка «Помочь добавить телевизор» поможет его составить.</string>
+    <string name="found_help_add_tv">Помочь добавить телевизор</string>
+    <!-- 0.4.7: this TV's report was sent before (SentReports) -->
+    <string name="found_report_sent">Вы уже отправляли отчёт об этом телевизоре ({date}). Мы напишем в вашем обращении, когда будут новости. Отчёт можно отправить ещё раз.</string>
+    <!-- 0.4.7, the "home screen kept" state (HomeKept, UX findings 4, 12 and 13): one outcome line on
+         every screen, one short reason per block, and the long reason with what would change it in
+         the Why sheet. Every long reason ends with the same sentence. -->
+    <string name="kept_outcome">У телевизора остаётся родной главный экран.</string>
+    <!-- RFC-HELPER-1 (test build): the outcome with the Home button helper, on What we found, Customise and Done -->
+    <string name="helper_outcome">Кнопка «Домой» открывает новый главный экран.</string>
+    <string name="helper_outcome_body">Родной экран телевизора остаётся включённым, поэтому трансляция продолжает работать.</string>
+    <string name="kept_outcome_short">Главный экран: родной</string>
+    <string name="kept_why">Почему</string>
+    <string name="kept_why_title">Почему у телевизора остаётся родной главный экран</string>
+    <string name="kept_what_changes_title">Что может это изменить</string>
+    <string name="kept_tv_list">Какие телевизоры получают новый главный экран</string>
+    <string name="kept_clean_up_note">Рекламу, слежку и фоновые приложения мы всё равно отключаем. Реклама, которую показывает сам родной главный экран, остаётся вместе с ним.</string>
+    <!-- The short reasons, one per HomeBlock -->
+    <string name="kept_reason_tv_refuses">Телевизоры {brand} допускают только свой главный экран.</string>
+    <string name="kept_reason_fire_tv">Fire TV допускает только свой главный экран.</string>
+    <string name="kept_reason_old_android">Новому главному экрану нужен Android 8 или новее.</string>
+    <string name="kept_reason_unknown_home">Мы недостаточно знаем главный экран этого телевизора, чтобы безопасно его заменить.</string>
+    <string name="kept_reason_wizard_wifi">Wi-Fi сохранил мастер настройки, а для смены мастер нужно отключить.</string>
+    <string name="kept_reason_wizard_wifi_unknown">Не удалось проверить, кто сохранил Wi-Fi.</string>
+    <string name="kept_reason_casting">После смены трансляция с телефонов перестанет работать после каждой перезагрузки.</string>
+    <string name="kept_reason_boot_loop">Смена может помешать телевизорам этой серии запускаться.</string>
+    <string name="kept_reason_remote_buttons">Кнопки приложений на пульте работают только с родным главным экраном.</string>
+    <string name="kept_reason_wizard_stays_on">Мастер настройки остался бы включённым, а это может вызывать сбои телевизора.</string>
+    <string name="kept_reason_home_changed">Кнопка «Домой» ведёт в установленный вами лаунчер, поэтому мы его не трогаем.</string>
+    <string name="kept_reason_home_changed_off">Родной главный экран отключён, а кнопка «Домой» ведёт в ваш лаунчер, поэтому мы его не трогаем.</string>
+    <string name="kept_reason_home_changed_ours">Главный экран Clean Your TV уже установлен на нём другим способом.</string>
+    <string name="kept_reason_other_home">На нём настроено другое приложение главного экрана.</string>
+    <string name="kept_reason_vendor_home">На кнопку «Домой» отвечает ещё и системная служба.</string>
+    <string name="kept_reason_patchwall_feeds">PatchWall включён, а Mi TV+ отключён. Отключите PatchWall, чтобы получить новый главный экран.</string>
+    <string name="kept_reason_none">Сейчас смена на этом телевизоре невозможна.</string>
+    <!-- The long reasons (the Why sheet) -->
+    <string name="found_home_tv_refuses">Телевизоры {brand} допускают только свой главный экран, и новый установить нельзя. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_fire_tv">Fire TV допускает только свой главный экран, и новый установить нельзя. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_old_android">Новому главному экрану нужен Android 8 или новее, а на этом телевизоре более старая версия. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_changed">Кнопка «Домой» ведёт в установленное вами приложение главного экрана, а родной главный экран мы на телевизоре не находим. Такой выбор мы не отменяем, поэтому у этого телевизора остаётся его текущий главный экран.</string>
+    <string name="found_home_changed_off">Кнопка «Домой» ведёт в установленное вами приложение главного экрана, а родной главный экран телевизора отключён, причём не этим приложением. Такой выбор мы не отменяем, поэтому у этого телевизора остаётся его текущий главный экран.</string>
+    <string name="found_home_changed_ours">На этом телевизоре уже есть главный экран Clean Your TV, установленный другим способом (например, через инструмент для компьютера) и подписанный другим ключом. Мы оставляем его как есть и не ставим свою копию.</string>
+    <string name="found_home_unknown_stock">Мы недостаточно знаем родной главный экран этого телевизора, чтобы безопасно его заменить. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <!-- RF-SAFETY-250: home screen switches skipped up front for safety -->
+    <string name="found_home_wizard_wifi">Wi-Fi на этом телевизоре сохранил мастер настройки. Новому главному экрану нужно, чтобы мастер был отключён, но тогда телевизор забудет Wi-Fi, а если мастер оставить включённым, телевизор может давать сбои. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_wizard_wifi_unlisted">Wi-Fi на этом телевизоре сохранил мастер настройки, а мы пока недостаточно знаем этот телевизор, чтобы безопасно отключить мастер. Если мастер оставить включённым, новый главный экран может вызывать сбои телевизора. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_wizard_wifi_unknown">Не удалось проверить, кто сохранил Wi-Fi на этом телевизоре. Новому главному экрану нужно, чтобы мастер настройки был отключён, но тогда телевизор может забыть Wi-Fi, а если мастер оставить включённым, телевизор может давать сбои. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_casting">На этом устройстве Google новому главному экрану нужно, чтобы мастер настройки был отключён, а без него трансляция с телефонов перестаёт работать после каждой перезагрузки. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_boot_loop">На телевизорах этой серии мастер настройки возвращается при каждой перезагрузке, и если родной главный экран отключён, телевизор может перестать запускаться. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_remote_buttons">На этом телевизоре кнопки приложений на пульте (Netflix, YouTube, Prime Video и YouTube Music) работают только через родной главный экран. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <!-- beta3: another home screen app claims Home, where the switch could otherwise go ahead -->
+    <!-- beta4: a system service also answers Home (issue #825), where the switch could otherwise go ahead -->
+    <string name="found_home_vendor_home">На этом телевизоре на кнопку «Домой» отвечает ещё и системная служба. Один такой телевизор не смог запуститься после смены главного экрана. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <!-- beta4: PatchWall stays on while Mi TV+ or its web content is off, not by this app (issue #945) -->
+    <string name="found_home_patchwall_feeds">Здесь PatchWall включён, а Mi TV+ или его веб-контент отключены. Один такой телевизор не смог запуститься после смены главного экрана. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_other_home">На этом телевизоре настроено другое приложение главного экрана, а незнакомые приложения мы не отключаем. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_wizard_stays_on">Мы недостаточно знаем этот телевизор, чтобы отключить его мастер настройки, а если мастер включён, а родной главный экран отключён, телевизор может давать сбои. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <string name="found_home_none">В текущем состоянии этого телевизора сменить главный экран невозможно. Поэтому у этого телевизора остаётся родной главный экран.</string>
+    <!-- What would change it (the Why sheet), where something can -->
+    <string name="kept_next_wifi">Чтобы это изменить, удалите на телевизоре все сохранённые сети Wi-Fi, а затем снова подключитесь к своей. Одного подключения кабелем недостаточно. После этого снова запустите настройку.</string>
+    <string name="kept_next_wifi_unknown">При повторном запуске настройки мы проверим это ещё раз.</string>
+    <string name="kept_next_home_changed">Пожалуйста, не удаляйте свой лаунчер: без него у телевизора может не остаться главного экрана. Если хотите новый главный экран, напишите нам через «Сообщить о проблеме», и мы вместе найдём безопасный способ для этого телевизора.</string>
+    <string name="kept_next_home_changed_off">Если хотите новый главный экран, сначала снова включите родной главный экран телевизора. На телевизоре: «Настройки», «Приложения», «Все приложения», «Показать системные приложения», затем {app} и «Включить» (на разных телевизорах названия немного отличаются). Лаунчер не удаляйте. Потом снова запустите настройку, и она всё проверит ещё раз.</string>
+    <string name="kept_next_home_changed_ours">Чтобы этим главным экраном управляло это приложение (панель приложений, оформление и обновления), сначала отмените его установку через восстановление в том инструменте, которым он был установлен: так вернётся родной главный экран телевизора. Затем снова запустите настройку. До этого, пожалуйста, не удаляйте его: у телевизора может не остаться другого главного экрана.</string>
+    <string name="kept_own_home_screen">родной главный экран телевизора</string>
+    <string name="kept_next_other_home">Чтобы использовать новый, удалите это приложение и снова запустите настройку. Или напишите нам через «Сообщить о проблеме».</string>
+    <string name="kept_next_patchwall_feeds">Чтобы получить новый, отключите PatchWall в разделе «Реклама и рекламные ряды» на экране «Выбор».</string>
+    <string name="kept_next_list">Изменить это может список, составленный для этого телевизора. Кнопка «Помочь добавить телевизор» отправляет нам его отчёт; мы составляем списки по таким отчётам, как ваш, и напишем в вашем обращении, когда появится что попробовать.</string>
+    <string name="kept_next_nothing">Это ограничение самого телевизора, поэтому никакое обновление этого приложения его не изменит. Ему достаётся только очистка.</string>
+
+    <!-- S3a Customise sheet -->
+    <string name="customise_title">Выбор</string>
+    <string name="customise_live">{total, plural, one {Отключено: {off} из #} few {Отключено: {off} из #} many {Отключено: {off} из #} other {Отключено: {off} из #}}</string>
+    <string name="customise_nothing_deleted">Ничего не удаляется: „отключено“ значит „спит“.</string>
+    <string name="customise_show_fewer">Показать меньше</string>
+    <string name="customise_group_voice">Голосовой помощник</string>
+    <string name="customise_group_cast">Chromecast</string>
+    <string name="customise_group_updates">Обновления ПО</string>
+    <string name="customise_group_streaming">Стриминговые приложения, которыми вы не пользуетесь</string>
+    <string name="customise_group_brand_features">Функции {brand}</string>
+    <string name="customise_updates_note">Оставлены, чтобы телевизор продолжал получать исправления безопасности. Если отключить, пропадут и напоминания об обновлениях.</string>
+    <!-- 0.4.7 (UX finding 3): the home screen's own rows in the app's words, by HomeRole -->
+    <string name="customise_wizard_name">Мастер настройки</string>
+    <string name="customise_wizard_off">Отключается при смене главного экрана. Включится обратно, если её отменить.</string>
+    <string name="customise_own_home_off">Родной главный экран телевизора. Отключается, только когда заработает новый.</string>
+    <string name="customise_switch_part">Часть смены главного экрана: включится обратно, если смену отменить.</string>
+    <string name="customise_wizard_kept">Остаётся включённым. У этого телевизора остаётся родной главный экран, а вместе с ним и мастер настройки.</string>
+    <string name="customise_wizard_helper">Остаётся включённым. Помощник кнопки «Домой» работает с родным главным экраном телевизора и его мастером настройки.</string>
+    <string name="customise_own_home_helper">Родной главный экран телевизора. Он остаётся включённым, а кнопка «Домой» открывает новый.</string>
+    <string name="customise_own_home_kept">Родной главный экран телевизора. Он остаётся, потому что этот телевизор сохраняет его.</string>
+    <string name="customise_protected_title">Это мы оставляем</string>
+    <string name="customise_protected_pill">Защищено</string>
+    <string name="customise_protected_why_title">Почему это остаётся</string>
+    <string name="customise_group_home">Главный экран</string>
+    <string name="customise_dock_row">Панель приложений: {names}</string>
+    <string name="customise_dock_row_rows">Панель приложений: {names} и ещё {count, plural, one {# приложение} few {# приложения} many {# приложений} other {# приложения}} в {rows, plural, one {ряду} few {рядах} many {рядах} other {рядах}} ниже</string>
+    <string name="customise_dock_row_empty">Панель приложений</string>
+    <string name="customise_look_row">Оформление: {theme}</string>
+    <!-- 0.4.7: the {theme} of the two rows for a look with the person's own photo, or a picture of the gallery -->
+    <string name="customise_look_photo">{style} с вашим фото</string>
+    <string name="customise_look_picture">{style} с картинкой «{picture}»</string>
+    <!-- 0.4.0: the look and its apps in a row, when that is not the look's own -->
+    <string name="customise_look_row_count">Оформление: {theme}, {count, plural, one {# приложение в ряду} few {# приложения в ряду} many {# приложений в ряду} other {# приложения в ряду}}</string>
+    <!-- look2: the photo crop in Setup's look step, under Use this crop (Setup has no Put it on the TV) -->
+    <string name="look_photo_after">Пока ничего не отправлено. Фото уйдёт на телевизор, когда вы нажмёте «Навести чистоту».</string>
+    <!-- RFC-CURTAIN-1: Custom only; the TV shows the progress while the phone works -->
+    <string name="customise_group_tv">На телевизоре</string>
+    <string name="customise_show_on_tv">Показывать ход работы на телевизоре</string>
+    <string name="customise_show_on_tv_note">Телевизор показывает каждый шаг, пока мы работаем</string>
+    <string name="customise_group_afterwards">После завершения</string>
+    <string name="customise_keep_debugging">Не выключать отладку</string>
+    <string name="customise_keep_debugging_warning">Другие в вашей сети Wi-Fi смогут запросить подключение</string>
+    <string name="customise_group_commands">Показать команды</string>
+    <string name="customise_commands_intro">Все команды, которые мы бы выполнили, по порядку.</string>
+    <string name="customise_copy_commands">Скопировать как команды</string>
+    <string name="customise_commands_copied">Скопировано</string>
+    <string name="customise_snackbar_kept">Оставим: {name}.</string>
+    <string name="customise_snackbar_off">Отключим: {name}.</string>
+    <!-- 0.4.7 (UX finding 15): a PatchWall toggle that changes the home screen decision says so -->
+    <string name="customise_snackbar_off_home_back">Отключим: {name}. Новый главный экран снова в плане.</string>
+    <string name="customise_snackbar_kept_home_own">Оставим: {name}. У телевизора останется родной главный экран.</string>
+
+    <!-- Themes (S3a theme picker) -->
+    <string name="theme_default">Стандартная</string>
+    <string name="theme_aurora">Аврора</string>
+    <string name="theme_six_columns">Шесть столбцов</string>
+    <string name="theme_card_cd">{name}. {description}</string>
+    <string name="theme_card_selected_cd">{name}, выбрано. {description}</string>
+
+    <!-- S3b Your dock (sheet) -->
+    <string name="dock_title">Ваша панель приложений</string>
+    <string name="dock_body">Приложения стоят вдоль нижнего края, максимум {count, spellout}. Чтобы изменить порядок, перетащите приложение за значок с точками.</string>
+
+    <!-- S4a Making it clean -->
+    <string name="working_title">Наводим чистоту</string>
+    <string name="working_step_restore_active">Сохраняем точку восстановления...</string>
+    <string name="working_step_restore_done">Точка восстановления сохранена</string>
+    <string name="working_group_ads">Реклама</string>
+    <string name="working_group_tracking">Слежка</string>
+    <string name="working_group_nobody">Приложения, о которых никто не просил</string>
+    <string name="working_group_brand">Фирменные дополнения {brand}</string>
+    <string name="working_group_shop">Магазинный и демо-режим</string>
+    <string name="working_step_group_active">{total, plural, one {{group}: {done} из #...} few {{group}: {done} из #...} many {{group}: {done} из #...} other {{group}: {done} из #...}}</string>
+    <string name="working_step_group_done">{count, plural, one {{group}: отключено (#)} few {{group}: отключено (#)} many {{group}: отключено (#)} other {{group}: отключено (#)}}</string>
+    <string name="working_step_install_active">Устанавливаем новый главный экран</string>
+    <string name="working_step_install_done">Новый главный экран установлен</string>
+    <string name="working_step_replace_active">Заменяем приложение главного экрана</string>
+    <string name="working_step_replace_done">Приложение главного экрана заменено</string>
+    <string name="working_step_home_active">Переключаем кнопку «Домой»</string>
+    <string name="working_step_home_done">Кнопка «Домой» переключена</string>
+    <string name="working_step_done_cd">{step}, готово</string>
+    <string name="working_thumbnail_caption">Прямо с телевизора</string>
+    <string name="working_thumbnail_cd">Изображение с телевизора в реальном времени</string>
+    <string name="working_keep_on">Не выключайте телевизор. Телефон можно отложить: он завибрирует, когда нужно будет посмотреть на телевизор.</string>
+    <!-- 0.4.7 (UX finding 10): no home screen check comes, so no "look at the TV" -->
+    <string name="working_keep_on_no_check">Не выключайте телевизор. Телефон можно отложить: он завибрирует, когда всё будет готово.</string>
+    <string name="working_stop">Остановить и отменить</string>
+    <string name="working_putting_back">Возвращаем родной главный экран телевизора...</string>
+    <string name="working_stopping">Останавливаемся и отменяем сделанное...</string>
+
+    <!-- S4b Can you see it? -->
+    <string name="check_overline">Посмотрите на телевизор</string>
+    <string name="check_title">Вы его видите?</string>
+    <string name="check_thumbnail_cd">{count, plural, =0 {На телевизоре новый главный экран с пустой панелью приложений} =1 {На телевизоре новый главный экран с одним приложением на панели} one {На телевизоре новый главный экран с # приложением на панели} few {На телевизоре новый главный экран с # приложениями на панели} many {На телевизоре новый главный экран с # приложениями на панели} other {На телевизоре новый главный экран с # приложениями на панели}}</string>
+    <string name="check_dock_sentence">Новый главный экран, внизу приложения: {dock}.</string>
+    <string name="check_dock_sentence_empty">Новый главный экран.</string>
+    <string name="check_press_home">Нажмите на пульте только кнопку «Домой», один раз. Больше ничего на телевизоре не открывайте.</string>
+    <string name="check_live_ok">Кнопка «Домой» открывает новый экран</string>
+    <string name="check_live_pending_cd">Ещё не проверено</string>
+    <string name="check_live_done_cd">Проверено</string>
+    <string name="check_countdown_text">Если вы не ответите, мы сами вернём родной главный экран телевизора. Волноваться не о чем.</string>
+    <string name="check_thumbnail_note">Если вам не видно телевизор, на картинке выше то, что он показывает прямо сейчас.</string>
+    <string name="check_no_thumbnail_note">Не удалось получить картинку, посмотрите на телевизор.</string>
+    <string name="check_yes">Да, вижу</string>
+    <string name="check_no">Нет, верните как было</string>
+
+    <!-- S4c Stopped: the TV's own home screen is back (UX 4.7). 0.4.7 (UX finding 20): it is "the TV's
+         own home screen" everywhere, never "the old home screen"; the way back in is "Run Setup again"
+         and "open Home screen for this TV" (the page's visible title), never "from Manage". -->
+    <string name="stop_show_details">Подробности</string>
+    <string name="stop_report">Сообщить о проблеме</string>
+    <string name="stop_home_wait_hint">Подождите несколько секунд.</string>
+    <string name="stop_home_setupwraith_title">Родной главный экран телевизора вернулся</string>
+    <!-- UX finding 16: the primary keeps the TV's own home screen (the card asks for something first) -->
+    <string name="stop_home_setupwraith_secondary">Оставить родной главный экран</string>
+    <!-- D3: the wizard saved the TV's Wi-Fi (or the TV could not say), so it is never switched off. -->
+    <string name="stop_home_setupwraith_wifi_body">Wi-Fi на вашем телевизоре сохранил мастер настройки, поэтому, если отключить мастер, телевизор забудет сеть. Чтобы попробовать смену, сначала удалите на телевизоре все сохранённые сети Wi-Fi и снова подключитесь к своей. Одного подключения кабелем недостаточно.</string>
+    <string name="stop_home_setupwraith_wifi_secondary">Сделано, повторить</string>
+    <!-- RF-LAUNCHER-240 F6: the TV could not say who saved its Wi-Fi, so the wizard stayed on. -->
+    <string name="stop_home_setupwraith_wifi_unknown_body">Не удалось проверить, кто сохранил Wi-Fi на этом телевизоре, поэтому мы оставили мастер настройки включённым, чтобы не потерять Wi-Fi.</string>
+    <string name="stop_home_other_launcher_title">Родной главный экран телевизора вернулся</string>
+    <string name="stop_home_other_launcher_body">Кнопкой «Домой» управляет другое приложение главного экрана: {launcher}. Незнакомые приложения мы не отключаем. Выберите, какое вам нужно.</string>
+    <string name="stop_home_other_launcher_primary">Использовать новый главный экран</string>
+    <string name="stop_home_other_launcher_secondary">Оставить {launcher}</string>
+    <!-- Issue #629: the check rolled back because a Settings page was open on the TV. -->
+    <string name="stop_home_settings_open_body">Во время проверки на телевизоре была открыта страница настроек, поэтому мы на всякий случай вернули родной главный экран. С телевизором всё в порядке. Попробуйте ещё раз и на этот раз нажмите на пульте только кнопку «Домой».</string>
+    <!-- Issues #3221, #3101, #2851: the TV ended the new home screen's install and is low on storage. -->
+    <string name="stop_home_low_storage_body">На телевизоре почти не осталось места (свободно {free, plural, one {# МБ} few {# МБ} many {# МБ} other {# МБ}}), поэтому новый главный экран не удалось установить. Родной главный экран остаётся, а всё остальное, что мы сделали, сохранено. Освободите место на телевизоре в «Настройки > Хранилище» и снова запустите настройку.</string>
+    <!-- Issues #3301, #3305: home screen apps the person installed tie with ours, so Android showed its chooser. -->
+    <string name="stop_home_chooser_body">{count, plural, =1 {На телевизоре установлено другое приложение главного экрана ({names}), поэтому Android спросил, какой главный экран использовать, и смена не завершилась. Мы вернули родной главный экран телевизора. Удалите это приложение на телевизоре и снова запустите настройку.} one {На телевизоре установлены другие приложения главного экрана ({names}), поэтому Android спросил, какой главный экран использовать, и смена не завершилась. Мы вернули родной главный экран телевизора. Удалите их на телевизоре и снова запустите настройку.} few {На телевизоре установлены другие приложения главного экрана ({names}), поэтому Android спросил, какой главный экран использовать, и смена не завершилась. Мы вернули родной главный экран телевизора. Удалите их на телевизоре и снова запустите настройку.} many {На телевизоре установлены другие приложения главного экрана ({names}), поэтому Android спросил, какой главный экран использовать, и смена не завершилась. Мы вернули родной главный экран телевизора. Удалите их на телевизоре и снова запустите настройку.} other {На телевизоре установлены другие приложения главного экрана ({names}), поэтому Android спросил, какой главный экран использовать, и смена не завершилась. Мы вернули родной главный экран телевизора. Удалите их на телевизоре и снова запустите настройку.}}</string>
+    <!-- 0.5.0 (issues #2293, #4756): a copy of the new home screen signed with another key (put on with the computer tool) is on the TV. -->
+    <string name="stop_home_other_key_title">Сначала удалите старый главный экран</string>
+    <string name="stop_home_other_key_body">На телевизоре уже есть копия нового главного экрана, установленная другим способом, например через инструмент для компьютера. Она подписана другим ключом, поэтому телевизор не даёт нам её обновить. Родной главный экран остаётся, а всё остальное, что мы сделали, сохранено. Чтобы безопасно удалить старую копию, сначала убедитесь, что родной главный экран телевизора включён и открывается по кнопке «Домой» (если тот инструмент его отключил, включите его обратно тем же инструментом). Никогда не оставляйте телевизор без главного экрана. Затем удалите старую копию (com.gathin.tvhome) в «Настройки > Приложения» и снова запустите настройку.</string>
+    <string name="stop_home_unknown_title">Родной главный экран телевизора вернулся</string>
+    <string name="stop_home_unknown_body">Не получилось сделать новый главный экран основным на этом телевизоре, поэтому мы вернули родной. Всё остальное, что мы сделали, сохранено. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора или отправьте нам отчёт, чтобы мы разобрались с этой моделью.</string>
+    <string name="stop_home_unknown_primary">Сообщить о проблеме</string>
+    <string name="stop_home_unknown_secondary">ОК</string>
+    <string name="stop_home_user_said_no_title">Родной главный экран телевизора вернулся</string>
+    <string name="stop_home_user_said_no_body">Вернули. Что-то было не так или вы просто хотели сначала посмотреть?</string>
+    <string name="stop_home_user_said_no_primary">Повторить</string>
+    <string name="stop_home_user_said_no_secondary">Что-то выглядело не так</string>
+    <string name="stop_home_timed_out_title">Родной главный экран телевизора вернулся</string>
+    <string name="stop_home_timed_out_body">Возвращаем родной главный экран телевизора... Готово. Телевизор такой же, как был. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора.</string>
+    <string name="stop_home_timed_out_body_off">{count, plural, one {Возвращаем родной главный экран телевизора... Готово. # пункт по-прежнему отключён, а главный экран такой же, как был. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора.} few {Возвращаем родной главный экран телевизора... Готово. # пункта по-прежнему отключены, а главный экран такой же, как был. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора.} many {Возвращаем родной главный экран телевизора... Готово. # пунктов по-прежнему отключены, а главный экран такой же, как был. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора.} other {Возвращаем родной главный экран телевизора... Готово. # пункта по-прежнему отключены, а главный экран такой же, как был. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора.}}</string>
+    <string name="stop_home_timed_out_primary">ОК</string>
+    <string name="stop_home_timed_out_secondary">Повторить</string>
+
+    <!-- Stop: undone -->
+    <string name="stop_step_failed_title">Мы остановились</string>
+    <string name="stop_step_failed_body">{total, plural, one {Один шаг не сработал, поэтому мы остановились, отключив {done} из #. Больше ничего не изменено.} few {Один шаг не сработал, поэтому мы остановились, отключив {done} из #. Больше ничего не изменено.} many {Один шаг не сработал, поэтому мы остановились, отключив {done} из #. Больше ничего не изменено.} other {Один шаг не сработал, поэтому мы остановились, отключив {done} из #. Больше ничего не изменено.}}</string>
+    <string name="stop_undone_title">Мы отменили свои изменения</string>
+    <string name="stop_undone_body">Телевизор такой же, как был. Настройку можно снова запустить в любой момент.</string>
+    <string name="stop_undone_primary">ОК</string>
+    <string name="stop_undone_secondary">Подробности</string>
+
+    <!-- S4d Stopped: connection lost mid-plan (UX 4.14) -->
+    <string name="stop_connection_lost_title">Телевизор перестал отвечать</string>
+    <string name="stop_connection_lost_body">{total, plural, one {Телевизор перестал отвечать, когда мы отключили {done} из # пункта. Обычно он возвращается через несколько секунд.} few {Телевизор перестал отвечать, когда мы отключили {done} из # пунктов. Обычно он возвращается через несколько секунд.} many {Телевизор перестал отвечать, когда мы отключили {done} из # пунктов. Обычно он возвращается через несколько секунд.} other {Телевизор перестал отвечать, когда мы отключили {done} из # пункта. Обычно он возвращается через несколько секунд.}}</string>
+    <string name="stop_connection_lost_reconnecting">Переподключаемся...</string>
+    <string name="stop_connection_lost_back">Снова на связи. Продолжить?</string>
+    <string name="stop_connection_lost_primary">Продолжить с остальным</string>
+    <string name="stop_connection_lost_secondary">Остановиться здесь</string>
+    <string name="stop_connection_lost_tertiary">Отменить сделанное</string>
+    <string name="stop_connection_lost_suspect">Похоже, от «{name}» зависит Wi-Fi на этом телевизоре, поэтому мы снова это включили. Продолжаем без этого пункта.</string>
+    <string name="stop_connection_lost_gone_body">Телевизор всё ещё не отвечает. Проверьте, что он включён и подключён к той же сети Wi-Fi, что и этот телефон.</string>
+    <string name="stop_connection_lost_keep_trying">Пробовать дальше</string>
+
+    <!-- S4e Resume after process death (UX 4.9, 4.14) -->
+    <string name="stop_resume_title">Мы не закончили настраивать телевизор «{tv}»</string>
+    <string name="stop_resume_body">{total, plural, one {Отключено {done} из # пункта; главный экран пока не менялся. Продолжить?} few {Отключено {done} из # пунктов; главный экран пока не менялся. Продолжить?} many {Отключено {done} из # пунктов; главный экран пока не менялся. Продолжить?} other {Отключено {done} из # пункта; главный экран пока не менялся. Продолжить?}}</string>
+    <string name="stop_resume_primary">Продолжить</string>
+    <string name="stop_resume_secondary">Отменить сделанное</string>
+    <string name="stop_resume_tertiary">Оставить как есть</string>
+    <string name="stop_resume_home_title">Мы вернули родной главный экран телевизора</string>
+    <string name="stop_resume_home_body">Мы на всякий случай вернули родной главный экран телевизора. Попробовать смену ещё раз?</string>
+    <string name="stop_resume_home_primary">Попробовать ещё раз</string>
+    <string name="stop_resume_home_secondary">Оставить как есть</string>
+    <string name="stop_resume_change_title">Мы не закончили изменения на телевизоре «{tv}»</string>
+    <string name="stop_resume_change_body">Изменение прервалось, не завершившись. Продолжить с остальным или отменить сделанное?</string>
+    <string name="stop_reconnect_home_body">Переподключитесь к телевизору, чтобы вернуть его родной главный экран. Мы сделаем это, как только телевизор «{tv}» ответит.</string>
+
+    <!-- Stop: install failure (UX 4.14) -->
+    <string name="stop_install_failed_title">Не удалось установить новый главный экран</string>
+    <string name="stop_install_failed_body">На телевизоре закончилось место: свободно {free, plural, one {# МБ} few {# МБ} many {# МБ} other {# МБ}}, нужно {needed, plural, one {# МБ} few {# МБ} many {# МБ} other {# МБ}}. Мы очистили кэш и попробовали снова. Всё равно не хватает. Очистка выполнена; чтобы попробовать главный экран позже, освободите место в «Настройки > Хранилище» и снова запустите настройку.</string>
+    <string name="stop_install_failed_generic_body">Телевизор не принял новый главный экран. Очистка выполнена; позже можно снова запустить настройку и ещё раз попробовать главный экран.</string>
+    <string name="stop_install_failed_primary">ОК</string>
+    <string name="stop_install_failed_secondary">Подробности</string>
+
+    <!-- Stop: the TV has not come back (UX 4.8) -->
+    <string name="stop_not_back_title">Телевизор не вернулся</string>
+    <string name="stop_not_back_body">Если телевизор завис на логотипе, удерживайте кнопку питания на самом телевизоре (не на пульте) 10 секунд, затем снова включите его. Если на экране написано «Не удалось загрузить систему Android», выберите «Повторить попытку». Не выбирайте сброс до заводских настроек: он не нужен.</string>
+    <string name="stop_not_back_auto">Как только телевизор снова подключится к Wi-Fi, мы переподключимся и автоматически вернём родной главный экран, так что вы сможете спокойно решить, что делать.</string>
+    <string name="stop_not_back_primary">Он снова включён</string>
+    <string name="stop_not_back_secondary">Помогите мне</string>
+
+    <!-- S5 Done -->
+    <string name="done_title">Телевизор готов</string>
+    <!-- 0.4.7 (PM 4): the TV keeps its own home screen, so the check mark is for the clean-up -->
+    <string name="done_title_kept">Очистка завершена</string>
+    <string name="done_title_nothing">Ничего не изменено</string>
+    <string name="done_body_nothing">Отключать было нечего, поэтому телевизор остался таким, как был.</string>
+    <string name="done_body_nothing_kept">Всё, что мы пытались отключить, осталось включённым, поэтому телевизор остался таким, как был.</string>
+    <string name="done_body_nothing_stopped">Настройка остановилась до каких-либо изменений, поэтому телевизор остался таким, как был.</string>
+    <string name="done_body_nothing_unknown">Мы ни в чём не были уверены на этом телевизоре, поэтому он остался таким, как был. Нажмите «Помочь добавить телевизор», и следующая версия сможет сделать больше.</string>
+    <string name="done_hero_cd">Чистый главный экран со стеклянной галочкой</string>
+    <string name="done_body">{count, plural, =0 {Новый главный экран включён. Всё можно вернуть.} one {Отключён # пункт. Новый главный экран включён. Всё можно вернуть.} few {Отключено # пункта. Новый главный экран включён. Всё можно вернуть.} many {Отключено # пунктов. Новый главный экран включён. Всё можно вернуть.} other {Отключено # пункта. Новый главный экран включён. Всё можно вернуть.}}</string>
+    <string name="done_body_helper">{count, plural, =0 {Кнопка «Домой» открывает новый главный экран. Родной экран телевизора остаётся включённым, поэтому трансляция продолжает работать. Всё можно вернуть.} one {Отключён # пункт. Кнопка «Домой» открывает новый главный экран. Родной экран телевизора остаётся включённым, поэтому трансляция продолжает работать. Всё можно вернуть.} few {Отключено # пункта. Кнопка «Домой» открывает новый главный экран. Родной экран телевизора остаётся включённым, поэтому трансляция продолжает работать. Всё можно вернуть.} many {Отключено # пунктов. Кнопка «Домой» открывает новый главный экран. Родной экран телевизора остаётся включённым, поэтому трансляция продолжает работать. Всё можно вернуть.} other {Отключено # пункта. Кнопка «Домой» открывает новый главный экран. Родной экран телевизора остаётся включённым, поэтому трансляция продолжает работать. Всё можно вернуть.}}</string>
+    <string name="done_body_no_home">{count, plural, one {Отключён # пункт. Всё можно вернуть.} few {Отключено # пункта. Всё можно вернуть.} many {Отключено # пунктов. Всё можно вернуть.} other {Отключено # пункта. Всё можно вернуть.}}</string>
+    <!-- 0.4.7 (UX finding 6, PM 4): the lead on a TV that keeps its own home screen by Setup's decision -->
+    <string name="done_body_home_kept">{count, plural, =0 {У телевизора остаётся родной главный экран, так что внешне ничего не изменится. Всё можно вернуть.} one {Отключён # пункт. У телевизора остаётся родной главный экран, так что внешне ничего не изменится. Всё можно вернуть.} few {Отключено # пункта. У телевизора остаётся родной главный экран, так что внешне ничего не изменится. Всё можно вернуть.} many {Отключено # пунктов. У телевизора остаётся родной главный экран, так что внешне ничего не изменится. Всё можно вернуть.} other {Отключено # пункта. У телевизора остаётся родной главный экран, так что внешне ничего не изменится. Всё можно вернуть.}}</string>
+    <string name="done_body_partial">{total, plural, one {Отключено {done} из #; главный экран не изменился. Всё можно вернуть.} few {Отключено {done} из #; главный экран не изменился. Всё можно вернуть.} many {Отключено {done} из #; главный экран не изменился. Всё можно вернуть.} other {Отключено {done} из #; главный экран не изменился. Всё можно вернуть.}}</string>
+    <string name="done_body_partial_home_on">{total, plural, one {Отключено {done} из #. Новый главный экран включён. Всё можно вернуть.} few {Отключено {done} из #. Новый главный экран включён. Всё можно вернуть.} many {Отключено {done} из #. Новый главный экран включён. Всё можно вернуть.} other {Отключено {done} из #. Новый главный экран включён. Всё можно вернуть.}}</string>
+    <string name="done_home_kept_timed_out">Родной главный экран телевизора вернулся: время на проверку на телевизоре истекло. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора.</string>
+    <string name="done_home_kept_said_no">Родной главный экран телевизора вернулся: вы сказали, что новый выглядит не так. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора.</string>
+    <string name="done_home_kept">Родной главный экран телевизора вернулся: новый не смог стать основным. Чтобы попробовать позже, откройте «Главный экран» для этого телевизора.</string>
+    <!-- 0.4.7 (UX finding 18, issues #1279, #1649): the look's send (a sync push or the launcher's ThemeProvider) did not reach the TV while the switch held -->
+    <string name="done_look_failed">Ваше оформление не дошло до телевизора. Отправьте его ещё раз на странице «Главный экран».</string>
+    <string name="done_restore_saved">Точка восстановления сохранена на этом телефоне ({date})</string>
+    <!-- beta3: a later run; the restore point is the one from the first Setup, which Undo everything goes back to -->
+    <string name="done_restore_earlier">Точка восстановления на этом телефоне (от {date})</string>
+    <string name="done_debug_note">Отладка на телевизоре отключится, когда вы нажмёте «Завершить». В следующий раз снова включите её с пульта.</string>
+    <string name="done_debug_kept">Отладка на телевизоре остаётся включённой, как вы и выбрали</string>
+    <string name="done_skipped">Не удалось отключить {name}, но это не страшно.</string>
+    <!-- RF-LAUNCHER-250 F1 (owner copy): a switch-off the TV refused because the app runs the TV's inputs, on Done and in Manage -->
+    <string name="kept_tv_input">{name}. Оставлено: отвечает за источники HDMI и тюнер телевизора.</string>
+    <string name="done_skipped_many">{count, plural, one {# пункт не отключился, но это не страшно.} few {# пункта не отключились, но это не страшно.} many {# пунктов не отключились, но это не страшно.} other {# пункта не отключились, но это не страшно.}}</string>
+    <string name="done_mibox_usb">USB-порт снова получает питание.</string>
+    <string name="done_add_card_title">Добавьте карточку на главный экран</string>
+    <!-- Optional, never a step of Setup: the new home screen starts with module cards off (RFC-CARDS-1) -->
+    <string name="done_add_card_body">Необязательно. Карточки можно добавить позже в разделе «Карточки и модули».</string>
+    <string name="done_note_title">Сохраните памятку о восстановлении для семьи</string>
+    <!-- 0.4.9 (issue #3870): above Finish after a home switch, until the restart check has run -->
+    <string name="done_restart_first">Прежде чем завершить, перезагрузите телевизор и убедитесь, что новый главный экран сохранится.</string>
+    <string name="done_finish">Завершить</string>
+    <string name="done_finishing">Отключаем отладку...</string>
+    <string name="done_finished">Отключаем отладку... готово.</string>
+
+    <!-- S5 restart card and flow (D24, UX 4.8) -->
+    <string name="restart_card_title">Перезагрузите телевизор, чтобы проверить, что всё сохранилось</string>
+    <string name="restart_card_recommended">2 минуты, рекомендуется</string>
+    <string name="restart_card_optional">Необязательно</string>
+    <string name="restart_button">Перезагрузить</string>
+    <string name="restart_getting_ready">{seconds, plural, one {Подготовка... # с} few {Подготовка... # с} many {Подготовка... # с} other {Подготовка... # с}}</string>
+    <string name="restart_intro">Перезагружаем телевизор. Обычно это занимает около минуты. Мы следим за ним.</string>
+    <string name="restart_progress_off">Телевизор выключен...</string>
+    <string name="restart_progress_starting">Запускается...</string>
+    <string name="restart_progress_found">Нашёлся в {time}...</string>
+    <string name="restart_progress_home">Главный экран новый.</string>
+    <!-- 0.4.7 (UX finding 7): the TV keeps its own home screen, by Setup's decision or after a failed switch -->
+    <string name="restart_progress_home_helper">Кнопка «Домой» открывает новый главный экран.</string>
+    <string name="restart_progress_home_own">Главный экран родной, как и раньше.</string>
+    <string name="restart_progress_good">Всё в порядке.</string>
+    <!-- 0.4.8: what the app counted across the restart (Restarts), and the one tap that tells us (the confirmation) -->
+    <string name="restart_progress_held">Новый главный экран сохранился после перезагрузки.</string>
+    <string name="restart_progress_failed">После перезагрузки вернулся родной главный экран телевизора.</string>
+    <string name="done_tell_us">Сообщить, что всё работает</string>
+    <string name="done_tell_us_note">Это учитывается для этой модели телевизора. Вы увидите, что именно отправляется, и ничего не уйдёт, пока вы не опубликуете это на GitHub.</string>
+    <string name="done_restart_report_note">Сообщите нам, чтобы мы разобрались с этой моделью телевизора. В отчёте будет то, что насчитало приложение.</string>
+    <!-- 0.4.8: "This is your TV now", the TV's screenshot after Setup sent the look -->
+    <string name="done_tv_now_title">Так ваш телевизор выглядит сейчас</string>
+    <string name="done_tv_now_cd">Что сейчас показывает телевизор</string>
+    <string name="done_tv_now_again">Что-то не так? Отправить ещё раз</string>
+    <string name="restart_came_back">{count, plural, one {После перезагрузки снова включился # пункт, мы опять его отключили.} few {После перезагрузки снова включились # пункта, мы опять их отключили.} many {После перезагрузки снова включились # пунктов, мы опять их отключили.} other {После перезагрузки снова включились # пункта, мы опять их отключили.}}</string>
+    <string name="restart_slow">Это дольше, чем обычно. Некоторые телевизоры медленно переподключаются к Wi-Fi. Если на телевизоре только логотип, подождите ещё две минуты.</string>
+
+
+    <!-- Stop and undo ask first (Confirmations): a question, one calm sentence, the verb and a way back -->
+    <string name="confirm_stop_title">Остановить?</string>
+    <string name="confirm_stop_body">Мы остановимся и вернём всё, что успели изменить. С телевизором ничего не случится.</string>
+    <string name="confirm_stop_button">Остановить и отменить</string>
+    <string name="confirm_keep_going">Продолжить</string>
+    <string name="confirm_stop_here_title">Остановиться здесь?</string>
+    <string name="confirm_stop_here_body">Мы оставим то, что уже сделано, и больше ничего не будем менять. С телевизором ничего не случится.</string>
+    <string name="confirm_stop_here_button">Остановиться</string>
+    <string name="confirm_undo_title">Отменить изменения на телевизоре?</string>
+    <string name="confirm_undo_body">Мы вернём всё, что изменило это действие, и телевизор станет таким, как был. Ничего не удаляется.</string>
+    <string name="confirm_undo_button">Отменить изменения</string>
+    <!-- Test build: the card before the plan when this TV's list is a candidate (made from reports, not tested yet). -->
+    <string name="candidate_overline">Тестовая сборка</string>
+    <string name="candidate_title">Список для этого телевизора новый</string>
+    <string name="candidate_body">Мы составили список для этого телевизора по отчётам о той же модели, но его ещё никто не проверял. Что он отключает, как обычно, указано в плане, а вернуть всё можно в разделе «Точка восстановления».</string>
+    <string name="candidate_ask_issue">Если попробуете, пожалуйста, через несколько дней расскажите в обращении {issue}, как всё прошло:</string>
+    <string name="candidate_ask">Если попробуете, пожалуйста, через несколько дней расскажите через «Сообщить о проблеме», как всё прошло:</string>
+    <string name="candidate_check_wifi">Wi-Fi после перезагрузки</string>
+    <string name="candidate_check_remote">Все кнопки пульта, включая выбор источника и голосовой ввод</string>
+    <string name="candidate_check_hdmi">Каждый вход HDMI</string>
+    <string name="candidate_check_live_tv">Эфирное ТВ</string>
+    <string name="candidate_check_casting">Трансляция с телефона</string>
+    <string name="candidate_try">Попробовать тестовый список</string>
+    <string name="candidate_careful">Осторожный режим, как в 0.3.4</string>
+    <string name="candidate_careful_note">Осторожный режим отключает только то, в чём мы уверены для телевизоров этой марки, так же как версия 0.3.4.</string>
+    <!-- RFC-HELPER-1 (test build): the Customise switch "Home button helper" and its consent (PLAN 4.2). -->
+    <string name="helper_group">Кнопка «Домой»</string>
+    <string name="helper_row">Помощник кнопки «Домой»</string>
+    <string name="helper_row_note">Родной главный экран телевизора остаётся включённым, а кнопка «Домой» открывает новый</string>
+    <string name="helper_row_on">Включено: кнопка «Домой» открывает новый главный экран, а родной остаётся включённым</string>
+    <!-- 0.4.9 (issue #4288, test build): why Customise does not offer the helper on this TV now -->
+    <string name="helper_not_offered_new_home">Недоступно, пока кнопка «Домой» ведёт на новый главный экран. Чтобы попробовать, выберите «Использовать родной главный экран телевизора» на странице «Главный экран» этого телевизора и снова запустите настройку.</string>
+    <string name="helper_not_offered_not_google">Недоступно: сейчас кнопка «Домой» на этом телевизоре не открывает главный экран Google. Если раньше это изменило наше приложение, «Отменить всё» вернёт как было; затем снова запустите настройку.</string>
+    <string name="helper_not_offered_home_unknown">Недоступно: мы недостаточно знаем главный экран этого телевизора.</string>
+    <string name="helper_not_offered_tv">Недоступно: этот телевизор не поддерживает новый главный экран.</string>
+    <string name="helper_not_offered_accessibility">Недоступно: специальные возможности телевизора нельзя безопасно изменить.</string>
+    <string name="helper_consent_title">Помощник кнопки «Домой»</string>
+    <string name="helper_consent_keep">Родной главный экран телевизора остаётся включённым, а кнопка «Домой» открывает новый. Мастер настройки тоже остаётся включённым, поэтому трансляция и ваш Wi-Fi не затрагиваются. Небольшой помощник внутри нового главного экрана следит за появлением главного экрана телевизора и вместо него открывает новый.</string>
+    <string name="helper_consent_sees">Помощник работает как служба специальных возможностей Android. Android предупредит, что она может видеть ваш экран и нажимаемые кнопки. Этот помощник запрашивает у Android только то, какое приложение открыто, а не содержимое экрана и не нажатия кнопок. У него нет доступа в интернет. Он входит в главный экран с открытым исходным кодом от Gathin (github.com/Gathin23/cleanyourtv), и именно это приложение устанавливает наше.</string>
+    <string name="helper_consent_changes">Что изменится: перед новым главным экраном на мгновение может появляться родной. Если телевизор или приложение для очистки принудительно остановит главный экран, помощник выключится, пока вы снова не включите его здесь.</string>
+    <string name="helper_consent_off">Выключить его можно в любой момент: здесь, кнопкой «Отменить» или на телевизоре в «Настройки &gt; Специальные возможности &gt; Кнопка „Домой“».</string>
+    <string name="helper_consent_yes">Включить помощника</string>
+    <string name="helper_consent_no">Не сейчас</string>
+</resources>

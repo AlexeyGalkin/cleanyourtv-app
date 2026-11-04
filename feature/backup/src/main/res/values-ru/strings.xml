@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Clean Your TV, :feature:backup. Russian translation of values/strings.xml.
+  ICU MessageFormat with NAMED arguments in braces, as in the English source. No printf placeholders,
+  no Android plurals elements. Counts go through the plural selector.
+  Screens: M6 Restore point, the undo preview and confirmation (UX 4.13), export, before a factory reset.
+-->
+<resources>
+
+    <!-- Shared button words -->
+    <string name="action_back">Назад</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_ok">ОК</string>
+    <string name="action_done">Готово</string>
+
+    <!-- Credential prompt (D17), raised by "Put everything back" -->
+    <string name="gate_title">Подтвердите, что это вы</string>
+    <string name="gate_subtitle">Прежде чем что-то менять на телевизоре «{tv}»</string>
+    <string name="gate_negative">Отмена</string>
+    <string name="gate_failed">Не удалось подтвердить, что это вы, поэтому ничего не изменилось.</string>
+
+    <!-- M6 Restore point -->
+    <string name="restore_title">Точка восстановления</string>
+    <string name="restore_current">Сохранена: {date}</string>
+    <string name="restore_none">Точки восстановления пока нет. Она сохраняется перед первым изменением.</string>
+    <string name="restore_read_failed">Что-то пошло не так при чтении точки восстановления</string>
+    <string name="restore_row_undo">Отменить всё</string>
+    <string name="restore_row_undo_sub">Вернуть телевизор к состоянию на {date}</string>
+    <string name="restore_row_save">Сохранить копию</string>
+    <string name="restore_row_save_sub">Сохраняет ZIP-файл в выбранное вами место.</string>
+    <string name="restore_row_factory">Перед сбросом к заводским настройкам</string>
+    <string name="restore_row_factory_sub">Снова включает мастер настройки, чтобы после сброса телевизор смог нормально запуститься.</string>
+
+    <!-- Undo everything: preview (UX 4.13) -->
+    <string name="restore_preview_title">Телевизор вернётся к состоянию на {date}:</string>
+    <string name="restore_preview_things">{count, plural, one {Включить обратно # компонент} few {Включить обратно # компонента} many {Включить обратно # компонентов} other {Включить обратно # компонента}}</string>
+    <string name="restore_preview_home">Родной главный экран телевизора ({name}) снова используется по умолчанию</string>
+    <string name="restore_preview_wizard">Мастер настройки снова включён</string>
+    <!-- RFC-HELPER-1 (test build): Undo everything takes the Home button helper out -->
+    <string name="restore_preview_helper">Помощник кнопки «Домой» отключён</string>
+    <string name="restore_preview_screensaver">Вместо заставки с часами снова родная заставка телевизора</string>
+    <string name="restore_preview_keyboard">Снова родная клавиатура телевизора</string>
+    <string name="restore_launcher_title">Новый главный экран</string>
+    <string name="restore_launcher_keep">Оставить его как обычное приложение</string>
+    <string name="restore_launcher_remove">Удалить его с телевизора</string>
+    <string name="restore_launcher_remove_note">Вместе с ним удалятся и ответы, которые карточки модулей получили на телевизоре.</string>
+    <string name="restore_preview_button">Вернуть всё как было</string>
+
+    <!-- Undo everything: confirmation sheet -->
+    <string name="restore_confirm_title">Вернуть всё как было?</string>
+    <string name="restore_confirm_body">Реклама и слежка тоже вернутся. Очистку всегда можно запустить снова.</string>
+    <string name="restore_confirm_button">Вернуть всё как было</string>
+
+    <!-- Undo everything: narration and end -->
+    <string name="restore_working_title">Возвращаем всё как было</string>
+    <string name="restore_working_things">{total, plural, one {Включаем обратно: {done} из #...} few {Включаем обратно: {done} из #...} many {Включаем обратно: {done} из #...} other {Включаем обратно: {done} из #...}}</string>
+    <string name="restore_working_home">Возвращаем родной главный экран телевизора...</string>
+    <string name="restore_working_wizard">Снова включаем мастер настройки...</string>
+    <string name="restore_done_title">Всё вернулось</string>
+    <string name="restore_done_body">Телевизор вернулся к состоянию на {date}. Точка восстановления сохранена на случай, если вы передумаете.</string>
+    <string name="restore_clean_again">Пройти настройку снова</string>
+
+    <!-- Before a factory reset -->
+    <string name="restore_factory_title">Перед сбросом к заводским настройкам</string>
+    <string name="restore_factory_body">После сброса к заводским настройкам на телевизоре снова запускается мастер настройки, поэтому мы включим его сейчас, и потом телевизор сможет нормально запуститься.</string>
+    <string name="restore_factory_button">Включить мастер настройки</string>
+    <string name="restore_factory_working">Снова включаем мастер настройки...</string>
+    <string name="restore_factory_done">Мастер настройки снова включён. Теперь телевизор можно сбросить.</string>
+
+    <!-- Save a copy (export) -->
+    <string name="restore_export_saved">Копия точки восстановления сохранена.</string>
+    <string name="restore_export_failed">Не удалось сохранить копию. Выберите другое место.</string>
+
+</resources>

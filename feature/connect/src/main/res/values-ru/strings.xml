@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Clean Your TV, :feature:connect. Russian translation of values/strings.xml.
+  ICU MessageFormat with named arguments, the same as the English source; plurals use one/few/many/other.
+  The Wi-Fi name is never shown (D19).
+-->
+<resources>
+
+    <!-- Shared button words -->
+    <string name="action_back">Назад</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_ok">OK</string>
+
+    <!-- S1 Welcome. The overline is the product name, as on the TV launcher. -->
+    <string name="welcome_title">Ваш телевизор — без лишнего.</string>
+    <string name="welcome_body">Отключите лишнее, оставьте приложения, которыми пользуетесь, и получите спокойный главный экран. Пять минут. Всё можно вернуть.</string>
+    <string name="welcome_hero_cd">Главный экран телевизора, заполненный рекламными рядами, превращается в чистый с четырьмя приложениями внизу</string>
+    <string name="welcome_looking">Ищем телевизоры в вашей сети Wi-Fi...</string>
+    <string name="welcome_found_one">Найден телевизор «{name}» ({room})</string>
+    <string name="welcome_found_one_noroom">Найден телевизор «{name}»</string>
+    <string name="welcome_found_many">{count, plural, one {Найден # телевизор} few {Найдено # телевизора} many {Найдено # телевизоров} other {Найдено # телевизора}}</string>
+    <string name="welcome_none_yet">Телевизоров пока нет. Продолжайте, а мы будем искать дальше.</string>
+    <string name="welcome_start">Начать</string>
+    <string name="welcome_returning">У меня уже есть настроенный телевизор</string>
+
+    <!-- S1b Which TV? -->
+    <string name="picker_title">Какой телевизор?</string>
+    <string name="picker_body">Не уверены? На экране выбранного телевизора скоро появится сообщение.</string>
+    <string name="picker_row">{name}, {room} · {platform}</string>
+    <string name="picker_row_noroom">{name} · {platform}</string>
+    <string name="picker_name_with_suffix">{name} ...{suffix}</string>
+    <string name="picker_platform_android_tv">Android TV {version}</string>
+    <string name="picker_platform_google_tv">Google TV {version}</string>
+    <string name="picker_platform_fire_tv">Fire TV</string>
+    <string name="picker_footer">Телефон и телевизор должны быть в одной сети Wi-Fi.</string>
+    <string name="picker_primary">Выбрать «{name}»</string>
+    <string name="picker_tertiary">Ввести адрес телевизора</string>
+
+    <!-- S1c Enter the TV's address (sheet): its words are in ui/design (AddressEntry) -->
+
+    <!-- S2a Let the phone in (steps) -->
+    <string name="door_title">Впустите телефон</string>
+    <string name="door_body">Возьмите пульт от телевизора. Это займёт около минуты, и это единственный непростой этап.</string>
+    <string name="door_step_cd">Шаг {current} из {total}</string>
+    <string name="door_next">Далее</string>
+    <string name="door_menu_names_vary">Названия пунктов меню на вашем телевизоре могут немного отличаться.</string>
+    <string name="door_same_wifi">Телефон и телевизор должны быть в одной сети Wi-Fi.</string>
+    <string name="door_waiting">Ждём телевизор...</string>
+    <string name="door_connecting">Подключаемся...</string>
+    <string name="door_still_waiting">Всё ещё ждём. Включилась ли отладка по USB? Некоторым телевизорам нужна ещё и отладка по сети.</string>
+    <string name="door_still_waiting_show_me">Показать</string>
+    <string name="door_change_model">Это не {model}? Сменить модель</string>
+    <string name="door_change_model_generic">Не этот телевизор? Сменить модель</string>
+    <!-- Round 3: the S1b tertiary's words, for a door Start opened on the one device found -->
+    <string name="door_not_this_tv">Не этот телевизор? Ввести адрес телевизора</string>
+    <string name="door_brand_prompt">Какая марка?</string>
+    <string name="door_brand_xiaomi">Xiaomi</string>
+    <string name="door_brand_tcl">TCL</string>
+    <string name="door_brand_sony">Sony</string>
+    <string name="door_brand_hisense">Hisense</string>
+    <string name="door_brand_philips">Philips</string>
+    <string name="door_brand_google">Google</string>
+    <string name="door_brand_amazon">Amazon</string>
+    <string name="door_brand_other">Другая</string>
+    <!-- After the TCL chip: China-market TCL firmware and TCL's Android TV or Google TV need different steps. -->
+    <string name="door_tcl_menus_prompt">На каком языке меню телевизора?</string>
+    <string name="door_tcl_menus_global">Меню на английском или моём языке</string>
+    <string name="door_tcl_menus_chinese">Меню на китайском</string>
+    <!-- 0.3.6: the TV's port answered but the connection failed; {kind} is a short code such as unreachable -->
+    <string name="door_connect_failed_title">Телевизор ответил, но этот телефон не смог подключиться</string>
+    <string name="door_connect_failed_body">Ошибка подключения ({kind}). Пока этот экран открыт, мы продолжаем попытки.</string>
+    <string name="door_connect_failed_hint">Если ADB с компьютера работает, а это приложение не может связаться с телевизором, возможно, мешает что-то на телефоне: ограничение сети для отдельных приложений (MIUI, Samsung), VPN, «Персональный DNS-сервер» или мобильный интернет. Ненадолго отключите это и повторите попытку.</string>
+    <!-- 0.4.8: the TV turned the connection away (refused): nothing listens on its debugging port. {kind} is the short code, refused -->
+    <string name="door_connect_refused_title">На телевизоре выключена отладка</string>
+    <string name="door_connect_refused_body">Телевизор отклонил подключение ({kind}), значит, отладка на нём выключена. Мы специально отключаем её после настройки, так что для телевизора, который мы уже настраивали, это ожидаемо.</string>
+    <string name="door_connect_refused_hint">Чтобы включить её снова, откройте на телевизоре «Настройки», затем «Настройки устройства» или «Система», затем «Для разработчиков» и включите «Отладку по USB». Пока этот экран открыт, мы продолжаем попытки.</string>
+    <string name="door_copy_error">Скопировать ошибку</string>
+    <string name="door_error_copied">Скопировано. Вставьте это в своё обращение.</string>
+    <!-- 0.4.6: under a connect that failed; opens the GitHub form with the phone's side filled in. The wording of every report button. -->
+    <string name="connect_report">Сообщить о проблеме</string>
+    <string name="door_unknown_note">Мы ещё не встречали именно этот телевизор. Обычно шаги те же.</string>
+
+    <!-- S2a step cards by platform family (UX 2 table). Note to translators: match the TV's own menu names. -->
+    <!-- Android TV 9 to 11 -->
+    <string name="family_atv_step1">На телевизоре откройте «Настройки» (значок шестерёнки справа вверху), затем «Настройки устройства > Об устройстве». Нажмите OK на пункте «Сборка» семь раз, пока телевизор не сообщит «Вы стали разработчиком!».</string>
+    <string name="family_atv_step2">Вернитесь на один экран назад. Откройте «Для разработчиков» и включите «Отладку по USB». Если на телевизоре есть ещё «Отладка по сети» или «Отладка ADB», включите и её.</string>
+    <string name="family_atv_step3">Оставьте телевизор на этом экране. Телефон подключится сам.</string>
+    <string name="family_atv_extra_shield">На Shield главное — «Отладка по сети».</string>
+    <!-- Google TV 12 to 14 -->
+    <string name="family_gtv_step1">На телевизоре откройте «Настройки», затем «Система > Об устройстве». Нажмите OK на пункте «Сборка ОС Android TV» семь раз, пока телевизор не сообщит «Вы стали разработчиком!».</string>
+    <string name="family_gtv_step2">Вернитесь на один экран назад. Откройте «Система > Для разработчиков» и включите «Отладку по USB», а затем ещё и «Отладку по Wi-Fi».</string>
+    <string name="family_gtv_step3">Оставьте телевизор на этом экране. Телефон подключится сам.</string>
+    <!-- Fire TV (Fire OS 7) -->
+    <string name="family_fire_step1">На телевизоре откройте «Настройки > Мой Fire TV > Об устройстве» (Settings > My Fire TV > About). Выберите название устройства семь раз, пока телевизор не сообщит, что вы стали разработчиком (You are now a developer).</string>
+    <string name="family_fire_step2">Вернитесь на один экран назад. Откройте «Для разработчиков» (Developer options) и включите «Отладку ADB» (ADB debugging).</string>
+    <string name="family_fire_step3">Оставьте телевизор на этом экране. Телефон подключится сам.</string>
+    <!-- TCL China (Android 9) -->
+    <string name="family_tcl_step1">На телевизоре откройте «Настройки > Об устройстве > 本机信息», затем нажмите на пульте вверх, вниз, влево, вправо.</string>
+    <string name="family_tcl_step2">Появится небольшое окно «ADB» с адресом. Не закрывайте его.</string>
+    <string name="family_tcl_step3">Оставьте телевизор на этом экране. Телефон подключится сам.</string>
+    <!-- TCL outside China (menus in English or the person's language): the Android TV steps plus these lines on steps 1 and 2 -->
+    <string name="family_tcl_extra_gtv_step1">На Google TV: «Система > Об устройстве», затем семь раз нажмите OK на пункте «Сборка ОС Android TV».</string>
+    <string name="family_tcl_extra_gtv">На Google TV включите также «Отладку по Wi-Fi».</string>
+    <!-- Unknown brand: the generic Android TV path -->
+    <string name="family_unknown_step1">На телевизоре откройте «Настройки» (значок шестерёнки справа вверху), затем «Настройки устройства > Об устройстве». Нажмите OK на пункте «Сборка» семь раз, пока телевизор не сообщит «Вы стали разработчиком!».</string>
+    <string name="family_unknown_step2">Вернитесь на один экран назад. Откройте «Для разработчиков» и включите «Отладку по USB». Если на телевизоре есть ещё «Отладка по сети» или «Отладка ADB», включите и её.</string>
+    <string name="family_unknown_step3">Оставьте телевизор на этом экране. Телефон подключится сам.</string>
+
+    <!-- S2a profile banners (UX 2 and 4.15) -->
+    <string name="banner_fire">Fire TV позволяет отключить рекламу и слежку, но оставляет свой главный экран. Очистку вы всё равно получите.</string>
+    <string name="banner_tcl">Этот телевизор оставляет свой главный экран (TCL не разрешает другие). Очистку вы всё равно получите.</string>
+    <string name="banner_mibox_usb">Пока включена отладка, эта приставка отключает свой USB-порт. USB-колонка или накопитель перестанут работать, пока мы не закончим (в конце мы снова отключим отладку).</string>
+
+    <!-- S2c Look at the TV (Allow) -->
+    <string name="allow_title">Посмотрите на телевизор</string>
+    <string name="allow_body">Телевизор спрашивает, доверять ли этому телефону. Отметьте «Всегда разрешать с этого компьютера» и нажмите OK.</string>
+    <!-- The two parts of allow_body shown in text.primary; each must appear in allow_body exactly. -->
+    <string name="allow_body_emphasis_always">«Всегда разрешать с этого компьютера»</string>
+    <string name="allow_body_emphasis_ok">OK.</string>
+    <string name="allow_code_label">Код на телевизоре заканчивается на</string>
+    <string name="allow_code_caption">Это код этого телефона.</string>
+    <string name="allow_waiting">Ждём вашего нажатия на телевизоре...</string>
+    <string name="allow_still_waiting">Всё ещё ждём нажатия OK на телевизоре.</string>
+    <string name="allow_trusted">Доступ разрешён</string>
+    <string name="allow_dont_see">Я не вижу запрос на телевизоре</string>
+    <string name="allow_art_cd">Окно телевизора «Разрешить отладку по USB?». Отпечаток заканчивается на {tail}.</string>
+
+    <!-- S2c sheet: I don't see it on the TV (UX 4.4) -->
+    <string name="notseen_title">Я не вижу запрос на телевизоре</string>
+    <string name="notseen_hidden">Окно может прятаться за другим экраном. Нажмите на пульте кнопку «Домой», а затем один раз «Назад». Если окна всё равно нет, мы снова отправим запрос на телевизор.</string>
+    <string name="notseen_cancelled">Если кто-то нажал «Отмена», выключите и снова включите отладку по USB на телевизоре, затем нажмите «Запросить ещё раз».</string>
+    <string name="notseen_greyed">Если пункт «Всегда разрешать с этого компьютера» на телевизоре неактивен, достаточно нажать OK — в следующий раз мы спросим снова.</string>
+    <string name="notseen_ask_again">Запросить ещё раз</string>
+    <string name="notseen_asking">Отправляем запрос на телевизор ещё раз...</string>
+    <string name="notseen_restart">Телевизор не принимает телефон. Так бывает на некоторых моделях, если отладку включили до того, как телевизор полностью загрузился. Перезагрузите телевизор, снова включите отладку и возвращайтесь.</string>
+    <string name="notseen_restarted">Телевизор перезагружен</string>
+
+    <!-- S2d Connected, and the identity check "Is this your TV?" (D38) -->
+    <string name="connected_title">Подключено к телевизору «{tv}»</string>
+    <string name="connected_cd">Подключено</string>
+    <string name="identity_question">Это ваш телевизор?</string>
+    <string name="identity_detail">{name}, серийный номер заканчивается на {serial}</string>
+    <string name="identity_body">Убедитесь, что на картинке то же, что сейчас показывает ваш телевизор.</string>
+    <string name="identity_screenshot_cd">Что сейчас показывает телевизор</string>
+    <string name="identity_yes">Да, это мой</string>
+    <string name="identity_no">Нет</string>
+
+    <!-- S2x Pairing needed (D9). The three commands are code and are not translated. -->
+    <string name="pairing_title">Этому телевизору нужен код подключения</string>
+    <string name="pairing_body">Эта версия пока не умеет вводить коды подключения, следующая будет уметь. Если у вас есть компьютер, один раз подключите телевизор через adb и выполните adb tcpip 5555, затем возвращайтесь: дальше телефон всё сделает сам.</string>
+    <string name="pairing_show_steps">Показать шаги для компьютера</string>
+    <string name="pairing_steps_title">Однократное подключение с компьютера</string>
+    <string name="pairing_steps_intro">На телевизоре откройте «Для разработчиков > Отладка по Wi-Fi > Подключить устройство с помощью кода подключения». Затем выполните на компьютере эти три команды по очереди.</string>
+    <string name="pairing_steps_note">Используйте адрес, порты и шестизначный код, которые показывает телевизор. Когда последняя команда выполнится, вернитесь в это приложение. После перезагрузки телевизора снова выполните две последние команды с портом, который он покажет в тот момент; подключать заново по коду не нужно.</string>
+
+    <!-- Stop: TV not found (UX 4.1, no Wi-Fi name, D19) -->
+    <string name="stop_tv_not_found_title">Телевизор пока не найден</string>
+    <string name="stop_tv_not_found_body">Убедитесь, что телевизор включён и подключён к той же сети Wi-Fi, что и этот телефон. После выхода из спящего режима телевизор может появиться не сразу, а через минуту.</string>
+    <string name="stop_tv_not_found_primary">Продолжить поиск</string>
+    <string name="stop_tv_not_found_secondary">Ввести адрес телевизора</string>
+    <string name="stop_tv_not_found_tertiary">Справка</string>
+    <string name="stop_tv_not_found_help_title">Почему телевизор может не находиться</string>
+    <string name="stop_tv_not_found_help_isolation">Гостевая сеть Wi-Fi или роутер, который изолирует устройства друг от друга. Найдите в настройках роутера изоляцию точки доступа («AP isolation») или изоляцию клиентов («client isolation») и отключите её.</string>
+    <string name="stop_tv_not_found_help_ethernet">Телевизор подключён по Ethernet, а телефон — по Wi-Fi. На большинстве роутеров это не мешает, но некоторые изолируют их друг от друга. Если ввести адрес телевизора вручную, это можно обойти.</string>
+    <string name="stop_tv_not_found_help_mesh">Mesh-система с отдельной гостевой сетью. Подключите телефон к основной сети.</string>
+
+    <!-- Stop: wrong network (UX 4.2 with D19 copy) -->
+    <string name="stop_wrong_network_title">Телефон и телевизор в разных сетях</string>
+    <string name="stop_wrong_network_body">В последний раз телевизор был в другой сети. Подключитесь к той же сети Wi-Fi, что и телевизор, и мы продолжим.</string>
+    <string name="stop_wrong_network_primary">Открыть настройки Wi-Fi</string>
+    <string name="stop_wrong_network_secondary">Сеть правильная, искать снова</string>
+    <string name="stop_wrong_network_off_title">Этот телефон не подключён к Wi-Fi</string>
+    <string name="stop_wrong_network_off_body">Wi-Fi выключен. Связаться с телевизором можно только через ту же сеть Wi-Fi.</string>
+
+    <!-- Stop: identity changed (D37) -->
+    <string name="stop_identity_changed_title">По этому адресу ответил другой телевизор</string>
+    <string name="stop_identity_changed_body">Телевизор по этому адресу — не тот, который мы настроили как «{name}». Возможно, его адрес изменился или этот адрес занял другой телевизор. Мы остановились, ничего не меняя.</string>
+    <string name="stop_identity_changed_primary">Искать снова</string>
+    <string name="stop_identity_changed_secondary">Назад</string>
+
+    <!-- Stop: shell v2 missing (F1) -->
+    <string name="stop_tv_not_supported_title">Этот телевизор пока нельзя настроить с телефона</string>
+    <string name="stop_tv_not_supported_body">Подключение для отладки на этом телевизоре слишком примитивное, чтобы телефон мог безопасно вносить изменения, поэтому мы остановились, ничего не трогая. На телевизоре ничего не изменено.</string>
+    <string name="stop_tv_not_supported_primary">Назад</string>
+
+</resources>

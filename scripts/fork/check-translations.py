@@ -40,7 +40,9 @@ def icu_args(s):
             warns.append(f"ICU quote before {s[i + 1]!r}: {s[:60]!r}")
         if c == "{":
             m = re.match(r"\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*(?:,\s*(plural|select|selectordinal|number|date|time)\s*)?[,}]", s[i:])
-            if m:
+            # A plural branch body like `one {row}` is text, not an argument.
+            branch = re.search(r"(?:=\d+|zero|one|two|few|many|other)\s*$", s[:i])
+            if m and not branch:
                 args.add((m.group(1), m.group(2) or ""))
             depth += 1
         elif c == "}":

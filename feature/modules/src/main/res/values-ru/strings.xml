@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Clean Your TV, :feature:modules. Russian translation of values/strings.xml.
+  ICU MessageFormat with NAMED arguments, as in the English source; plurals use one/few/many/other.
+  Screens: M3, M3a, M3b, M3c, update re-consent, the index and fetch failure lines.
+  Module names, publisher handles and index text are data and are never put in these strings.
+-->
+<resources>
+
+    <!-- Shared button words -->
+    <string name="action_back">Назад</string>
+    <string name="action_cancel">Отменить</string>
+    <string name="action_ok">ОК</string>
+    <string name="action_done">Готово</string>
+    <string name="action_undo">Отменить</string>
+
+    <!-- Credential prompt (D17), raised by "Add to {tv}" -->
+    <string name="gate_title">Подтвердите, что это вы</string>
+    <string name="gate_subtitle">Прежде чем что-то менять на телевизоре «{tv}»</string>
+    <string name="gate_negative">Отменить</string>
+    <string name="gate_failed">Не удалось подтвердить, что это вы, поэтому ничего не изменено.</string>
+
+    <!-- M3 Cards and modules -->
+    <string name="modules_title">Карточки и модули</string>
+    <string name="modules_state_shown">Показывается</string>
+    <string name="modules_state_hidden">Скрыто</string>
+    <string name="modules_state_over_limit">Сверх лимита</string>
+    <string name="modules_over_limit_note">Главный экран показывает не больше восьми карточек.</string>
+    <string name="modules_remove">Удалить с телевизора</string>
+    <string name="modules_show_card">Показать карточку</string>
+    <string name="modules_cards_off_note">На главном экране этого телевизора карточки отключены. Если показать карточку, телевизор попросит вас подтвердить.</string>
+    <string name="modules_update">Обновить</string>
+    <string name="modules_add">Добавить</string>
+    <string name="modules_update_available">Доступна версия {version}</string>
+    <string name="modules_empty">Карточек пока нет. Добавьте карточку, чтобы она появилась на главном экране.</string>
+    <string name="modules_normal_app_note">На этом телевизоре отображается как обычное приложение</string>
+    <string name="modules_remove_title">Удалить «{name}» с телевизора «{tv}»?</string>
+    <string name="modules_remove_body">Приложение будет удалено с телевизора. Главный экран и другие карточки останутся как есть.</string>
+    <string name="modules_remove_confirm">Удалить</string>
+    <string name="modules_removed">Приложение «{name}» удалено.</string>
+    <string name="modules_state_cd">{name}: {state}</string>
+
+    <!-- Update re-consent (UX 5.4) -->
+    <string name="modules_update_consent">Версии {version} приложения «{name}» теперь также нужно: {permissions}. Разрешить эту версию?</string>
+    <string name="modules_update_skip">Пропустить эту версию</string>
+
+    <!-- M3a Add to {tv} -->
+    <string name="addmodule_title">Добавить на телевизор «{tv}»</string>
+    <string name="addmodule_search_hint">Поиск</string>
+    <string name="addmodule_search_cd">Поиск модулей</string>
+    <string name="addmodule_open_source">Открытый код</string>
+    <string name="addmodule_size">{size, plural, one {# МБ} few {# МБ} many {# МБ} other {# МБ}}</string>
+    <string name="addmodule_tier_community">Сообщество</string>
+    <string name="addmodule_tier_verified">Проверено</string>
+    <string name="addmodule_tier_paused">Приостановлено</string>
+    <string name="addmodule_loading">Загружаем список...</string>
+    <string name="addmodule_empty">Нет модулей по вашему запросу.</string>
+    <string name="addmodule_refresh">Обновить</string>
+    <string name="addmodule_footer">Все модули созданы участниками сообщества и проверяются автоматически.</string>
+    <string name="addmodule_footer_link">Кто их сделал</string>
+    <string name="addmodule_tiers_title">Кто их сделал</string>
+    <string name="addmodule_tiers_community">Сообщество: модуль сделан не авторами этого приложения и автоматически сверен с тем, что опубликовал его автор.</string>
+    <string name="addmodule_tiers_verified">Проверено: эту версию просмотрел человек, чьё имя указано.</string>
+    <string name="addmodule_tiers_paused">Приостановлено: сопровождающие пока перестали его предлагать.</string>
+
+    <!-- M3b Module detail -->
+    <string name="module_what_title">ЧТО ОН МОЖЕТ НА ТЕЛЕВИЗОРЕ</string>
+    <string name="module_who_title">КТО ЕГО СДЕЛАЛ</string>
+    <string name="module_runs_background">Работает в фоне: {reason}</string>
+    <string name="module_no_background">Без фоновой службы</string>
+    <string name="module_perm_can_cd">{statement}. Это ему доступно.</string>
+    <string name="module_perm_cannot_cd">{statement}. Этого он не делает.</string>
+    <string name="module_maker">{handle} на GitHub</string>
+    <string name="module_version_line">Версия {version}, выпущена {date}</string>
+    <string name="module_checks">{count, plural, =0 {Проверено автоматически: файл совпадает с опубликованным автором и не запрашивает разрешений.} one {Проверено автоматически: файл совпадает с опубликованным автором и запрашивает только # разрешение, указанное выше.} few {Проверено автоматически: файл совпадает с опубликованным автором и запрашивает только # разрешения, указанные выше.} many {Проверено автоматически: файл совпадает с опубликованным автором и запрашивает только # разрешений, указанных выше.} other {Проверено автоматически: файл совпадает с опубликованным автором и запрашивает только # разрешения, указанные выше.}}</string>
+    <string name="module_not_reviewed">Проверено автоматически. Человеком пока не просмотрено.</string>
+    <string name="module_key_line">Ключ {key}, такой же, как на телевизоре</string>
+    <string name="module_source">Исходный код</string>
+    <string name="module_report">Сообщить о проблеме</string>
+    <string name="module_hero_badge">Его карточка на вашем телевизоре</string>
+    <string name="module_add">Добавить на телевизор «{tv}»</string>
+    <!-- Shown before the first add-on download (F-Droid Inclusion Policy, security item 5). -->
+    <string name="module_outside_store">Надстройки загружаются из релизов их авторов на GitHub, в обход магазинов приложений. F-Droid их не собирает и не проверяет.</string>
+    <string name="module_add_turns_cards_on">После добавления на главном экране этого телевизора включатся карточки; телевизор спросит вас, прежде чем показать карточку.</string>
+    <string name="module_paused_reason">Приостановлено сопровождающими: {reason}</string>
+    <string name="module_install_adding">Добавляем «{name}»...</string>
+    <string name="module_install_downloading">{size, plural, one {Загрузка (# МБ)...} few {Загрузка (# МБ)...} many {Загрузка (# МБ)...} other {Загрузка (# МБ)...}}</string>
+    <string name="module_install_checking">Проверяем, что файл совпадает с копией автора...</string>
+    <string name="module_install_installing">Устанавливаем на телевизор...</string>
+    <string name="module_install_asking">Просим телевизор показать вопрос...</string>
+    <string name="module_install_failed">Не удалось установить «{name}» на телевизор. Больше ничего не изменилось.</string>
+
+    <!-- M3c Look at the TV (card prompt, D1 and D45) -->
+    <string name="cardprompt_title">Посмотрите на телевизор</string>
+    <string name="cardprompt_art_keep">Не показывать</string>
+    <string name="cardprompt_art_cd">Телевизор спрашивает: приложение «{name}» хочет показывать карточку на главном экране. Ключ {key}. Варианты: «Не показывать» и «Показать карточку».</string>
+    <string name="cardprompt_body">Телевизор переспрашивает вас, чтобы ни одно приложение не могло попасть на главный экран без спроса.</string>
+    <string name="cardprompt_instruction">Выберите пультом «Показать карточку». Ключ на телевизоре должен быть {key}, как здесь.</string>
+    <string name="cardprompt_waiting">Ждём вашего ответа на телевизоре...</string>
+    <string name="cardprompt_later">Можно позже: на телевизоре удерживайте OK на кнопке «Настройки» и выберите «Карточки приложений».</string>
+    <string name="cardprompt_shown">«{name}» теперь на главном экране.</string>
+    <string name="cardprompt_hidden">Приложение «{name}» установлено, а его карточка скрыта. Оно по-прежнему отображается как обычное приложение. Показать карточку можно в любой момент в разделе «Карточки и модули».</string>
+    <string name="cardprompt_signer_changed">Новая версия «{name}» подписана другим ключом, чем раньше. Это необычно, поэтому телевизор специально спрашивает снова. Если вы не ждали обновления, выберите «Не показывать».</string>
+
+    <!-- Module list (index) failures. Calm, never blame the user. -->
+    <string name="index_failure_bad_signature">Не удалось подтвердить подлинность списка модулей, поэтому мы его не использовали. На телевизоре ничего не изменилось.</string>
+    <string name="index_failure_unknown_key">Список модулей подписан незнакомым нам ключом, поэтому мы его не использовали. На телевизоре ничего не изменилось.</string>
+    <string name="index_failure_revoked_key">Список модулей подписан отозванным ключом, поэтому мы его не использовали. На телевизоре ничего не изменилось.</string>
+    <string name="index_failure_bad_keys_file">Список доверенных ключей не прошёл нашу проверку, поэтому мы не использовали список модулей. На телевизоре ничего не изменилось.</string>
+    <string name="index_failure_expired">Список модулей устарел. Подключитесь к интернету и обновите его.</string>
+    <string name="index_failure_rollback">Полученный список модулей старше того, что у нас уже есть, поэтому мы оставили более новый.</string>
+    <string name="index_failure_malformed">Не удалось прочитать список модулей. Повторите попытку чуть позже.</string>
+    <string name="index_stale_warning">Список модулей мог устареть; обновите его, когда будете в сети</string>
+
+    <!-- Download (fetch) failures -->
+    <string name="fetch_failure_offline">Сейчас у телефона нет подключения к интернету. Подключитесь и повторите попытку.</string>
+    <string name="fetch_failure_host_not_allowed">Эта загрузка не из того источника, которым мы пользуемся, поэтому мы её остановили. Ничего не установлено.</string>
+    <string name="fetch_failure_http_error">Сайт загрузки ответил ошибкой ({code}). Повторите попытку чуть позже.</string>
+    <string name="fetch_failure_too_large">Загружаемый файл больше ожидаемого, поэтому мы остановили загрузку. Ничего не установлено.</string>
+    <string name="fetch_failure_hash_mismatch">Загруженный файл не совпадает с копией автора, поэтому мы его не установили.</string>
+    <string name="fetch_failure_size_mismatch">Размер загруженного файла не совпадает с указанным в списке, поэтому мы остановили загрузку. Ничего не установлено.</string>
+    <string name="fetch_failure_signer_mismatch">Приложение подписано не тем автором, который указан в списке, поэтому мы его не установили.</string>
+    <string name="fetch_failure_try_again">Повторить</string>
+
+</resources>

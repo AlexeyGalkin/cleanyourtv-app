@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Clean Your TV, :feature:launcher. Russian translation of values/strings_widgets.xml (Widgets page, 0.5.0, Make it yours).
+  ICU MessageFormat with NAMED arguments, as in the English source.
+  The sample lines show what the TV draws; the board shows them in capitals, as the TV does.
+-->
+<resources>
+
+    <!-- The five places, as the TV has them -->
+    <string name="widgets_place_clock">Часы</string>
+    <string name="widgets_place_under_clock">Под часами</string>
+    <string name="widgets_place_buttons">Кнопки</string>
+    <string name="widgets_place_under_buttons">Под кнопками</string>
+    <string name="widgets_place_before_apps">Перед приложениями</string>
+
+    <!-- The board -->
+    <!-- One place on the board for TalkBack: its name, then what is in it now -->
+    <string name="widgets_board_place_cd">{place}. {now}</string>
+    <string name="widgets_board_add">+ Добавить</string>
+    <string name="widgets_board_add_card">+ Добавить карточку</string>
+    <string name="widgets_board_nothing">Здесь пока ничего нет</string>
+    <string name="widgets_board_no_cards">В этой версии карточек нет</string>
+    <string name="widgets_board_hint">Расположение как на телевизоре. Места не меняются, а что в них будет, выбираете вы.</string>
+
+    <!-- What the TV draws, as samples -->
+    <string name="widgets_sample_greeting">Добрый вечер</string>
+    <string name="widgets_sample_greeting_name">Добрый вечер, {name}</string>
+    <string name="widgets_sample_time_12">8:41</string>
+    <string name="widgets_sample_am_pm">PM</string>
+    <string name="widgets_sample_time_24">20:41</string>
+    <string name="widgets_sample_date">Вторник, 28 октября</string>
+
+    <!-- The widgets this version offers: name, the line under it, and the line the TV draws -->
+    <string name="widgets_second_name">Вторая дата</string>
+    <string name="widgets_second_sub">Солнечная хиджра или лунный календарь</string>
+    <string name="widgets_line_shamsi">6 абана 1405</string>
+    <string name="widgets_line_lunar">Лунный 13/9 · Год Лошади</string>
+    <string name="widgets_stats_name">Состояние ТВ</string>
+    <string name="widgets_stats_sub">Раз в 10 секунд</string>
+    <string name="widgets_line_stats" formatted="false">CPU 14% · Память 1,2 ГБ свободно · Накопитель 61% свободно</string>
+    <string name="widgets_caption_name">Название картинки</string>
+    <string name="widgets_caption_sub">Включается ниже</string>
+    <string name="widgets_line_caption">Название картинки</string>
+    <string name="widgets_retro_name">Retro</string>
+    <string name="widgets_retro_sub">Карточка надстройки</string>
+    <string name="widgets_line_retro">Классические игры</string>
+
+    <!-- Later widgets: not on TVs yet, shown dimmed at the end of their place -->
+    <string name="widgets_later_tag">Позже</string>
+    <string name="widgets_later_sub">Пока нет на телевизорах</string>
+    <!-- A Later widget for TalkBack: its name, then that it is not on TVs yet -->
+    <string name="widgets_later_cd">{name}. Позже, пока нет на телевизорах.</string>
+    <string name="widgets_later_action">Что для этого нужно</string>
+    <string name="widgets_weather_name">Погода</string>
+    <string name="widgets_weather_line">29° небольшой дождь</string>
+    <string name="widgets_weather_why">Главный экран не показывает здесь погоду. Он остаётся компактным и никогда не выходит в интернет, поэтому для погоды сначала нужно немного доработать главный экран.</string>
+    <string name="widgets_world_name">Мировое время</string>
+    <string name="widgets_world_line">Лондон 15:12 · Нью-Йорк 10:12</string>
+    <string name="widgets_countdown_name">Обратный отсчёт</string>
+    <string name="widgets_countdown_line">До Дивали 4 дня</string>
+    <string name="widgets_sun_name">Восход и закат</string>
+    <string name="widgets_sun_line">Закат 18:04</string>
+    <string name="widgets_note_name">Заметка</string>
+    <string name="widgets_note_line">К стоматологу в 4</string>
+    <!-- World clock, Countdown, Sunrise and sunset, and Note share this reason -->
+    <string name="widgets_small_change_why">Нужна доработка главного экрана. Его основа остаётся компактной, поэтому это была бы наша собственная небольшая доработка.</string>
+    <string name="widgets_prayer_name">Время намаза</string>
+    <string name="widgets_prayer_line">Аср 15:42</string>
+    <string name="widgets_prayer_why">Через строку «Скоро», когда надстройка Prayer Times начнёт её поддерживать, или в виде карточки, когда надстройка будет подписана.</string>
+    <string name="widgets_f1_name">Уик-энды F1</string>
+    <string name="widgets_f1_line">F1 · В эти выходные</string>
+    <string name="widgets_f1_why">Главный экран уже сейчас может это показывать. Сначала приложению нужно научиться загружать календарь гонок каждого сезона, поэтому виджет появится в одной из следующих версий.</string>
+    <string name="widgets_match_name">Скоро</string>
+    <string name="widgets_match_line">IND – NZ · сб 14:00</string>
+    <string name="widgets_match_why">Главный экран 3.3 уже умеет показывать здесь матчи и события из надстройки (Game Day). Виджет появится, когда эта надстройка будет подписана.</string>
+    <string name="widgets_sources_name">Источники</string>
+    <string name="widgets_sources_line">Ваши источники</string>
+    <string name="widgets_sources_why">Карточка из надстроек Gathin. Появится, когда её подпишут, как и Retro.</string>
+    <string name="widgets_wcard_name">Карточка погоды</string>
+    <string name="widgets_wcard_line">Прогноз и качество воздуха</string>
+    <string name="widgets_wclock_name">Мировое время</string>
+    <string name="widgets_wclock_line">Время в разных городах мира</string>
+    <!-- The Weather card and World Clock share this reason -->
+    <string name="widgets_card_why">Карточка из надстроек Gathin. Появится, когда её подпишут.</string>
+
+    <!-- A pick's state for TalkBack -->
+    <string name="widgets_pick_on">Включено</string>
+    <string name="widgets_pick_off">Отключено</string>
+
+    <!-- Clock -->
+    <string name="widgets_greeting">Приветствие</string>
+    <string name="widgets_greeting_sub">Над часами: «Доброе утро», «Добрый день», «Добрый вечер» или «Доброй ночи».</string>
+    <string name="widgets_greeting_plain">Без имени</string>
+    <string name="widgets_greeting_with_name">С вашим именем</string>
+    <string name="widgets_name_label">Ваше имя</string>
+    <string name="widgets_name_hint">Оно хранится на телевизоре и никогда не попадает в отчёт о проблеме.</string>
+    <string name="widgets_greeting_times">Утро до 12:00, день до 17:00, вечер до 22:00, затем ночь. В праздничный сезон, например с картинкой к Дивали, приветствие меняется вместе с ним.</string>
+    <string name="widgets_date_label">Дата</string>
+    <string name="widgets_date_below">Дата под часами</string>
+    <string name="widgets_date_below_sub">Если выключено: рядом с часами, после короткой черты.</string>
+    <string name="widgets_bright_date">Яркая дата</string>
+    <string name="widgets_bright_date_sub">Полностью белая, как часы, а не приглушённая.</string>
+    <string name="widgets_time_label">Время</string>
+    <string name="widgets_time_system">Как на телевизоре</string>
+    <string name="widgets_time_12">12 часов</string>
+    <string name="widgets_time_24">24 часа</string>
+    <string name="widgets_time_hint">Главный экран этого телевизора берёт эту настройку с телефона. Вариант «Как на телевизоре» следует собственной настройке телевизора.</string>
+    <string name="widgets_time_older">Главный экран этого телевизора следует собственной настройке телевизора (12 или 24 часа). Изменить её можно в настройках телевизора.</string>
+    <string name="widgets_clock_always">Часы видны всегда, как только телевизор знает время: подключите его к интернету или установите дату.</string>
+
+    <!-- Under the clock -->
+    <string name="widgets_under_hint">Они идут друг под другом в порядке главного экрана. Нажмите на виджет с пометкой «Позже», чтобы узнать, что для него нужно.</string>
+    <string name="widgets_second_label">Вторая дата</string>
+    <string name="widgets_second_shamsi">Солнечная хиджра</string>
+    <string name="widgets_second_lunar">Лунный (китайский и вьетнамский)</string>
+    <string name="widgets_second_shamsi_hint">Над обычной датой, которая становится чуть меньше, чтобы обе поместились.</string>
+    <string name="widgets_second_lunar_hint">Под обычной датой, с расчётом для вашего часового пояса.</string>
+    <string name="widgets_stats_hint">Состояние ТВ: насколько загружен телевизор и сколько у него осталось места. Полезно на медленном телевизоре.</string>
+
+    <!-- Buttons -->
+    <string name="widgets_look_label">Как выглядят</string>
+    <string name="widgets_look_names">С подписями</string>
+    <string name="widgets_look_names_sub">Текст и значки</string>
+    <string name="widgets_look_icons">Круглые значки</string>
+    <string name="widgets_look_icons_sub">Включая источники</string>
+    <string name="widgets_look_menu">Одно меню</string>
+    <string name="widgets_look_menu_sub">Как в Google TV</string>
+    <string name="widgets_look_menu_hint">Одна кнопка-шестерёнка. В её меню собраны «Источники», сеть, «Изменить порядок» и «Настройки».</string>
+    <string name="widgets_which_label">Какие кнопки</string>
+    <string name="widgets_which_hint">На телевизоре они идут в этом порядке, слева направо.</string>
+    <string name="widgets_btn_inputs">Источники</string>
+    <string name="widgets_btn_inputs_sub">Скрывается, когда ничего не подключено</string>
+    <string name="widgets_btn_apps">Ваши приложения</string>
+    <string name="widgets_btn_apps_sub">Круглые логотипы, убираются из рядов</string>
+    <string name="widgets_btn_wifi">Wi-Fi</string>
+    <string name="widgets_btn_wifi_sub">Показывает название сети</string>
+    <string name="widgets_btn_vpn">VPN</string>
+    <string name="widgets_btn_vpn_sub">Зелёная при включённом VPN, красная при отключённом</string>
+    <string name="widgets_btn_reorder">Изменить порядок</string>
+    <string name="widgets_btn_reorder_sub">Перемещать приложения</string>
+    <string name="widgets_btn_library">Библиотека</string>
+    <string name="widgets_btn_library_sub">Все приложения на телевизоре</string>
+    <string name="widgets_btn_library_needs">Нужна библиотека приложений. Она тоже включится.</string>
+    <string name="widgets_btn_settings">Настройки</string>
+    <string name="widgets_btn_settings_sub">Всегда на месте</string>
+    <string name="widgets_btn_settings_always">Кнопка «Настройки» всегда видна на телевизоре, так что его настройки всегда в одном нажатии.</string>
+    <string name="widgets_btn_menu">Меню</string>
+    <string name="widgets_apps_label">Ваши приложения на верхней панели</string>
+    <string name="widgets_apps_hint">До 3, в виде круглых логотипов. Из рядов ниже они убираются, так что каждое приложение находится только в одном месте.</string>
+    <string name="widgets_apps_full">На верхней панели не больше 3 приложений. Сначала уберите одно.</string>
+    <!-- An app picked for the top bar, for TalkBack: its place in the order -->
+    <string name="widgets_apps_number">Номер {n} на верхней панели</string>
+    <string name="widgets_wifi_label">Кнопка Wi-Fi</string>
+    <string name="widgets_wifi_green">Зелёная, когда есть интернет</string>
+    <string name="widgets_wifi_green_sub">Значок Wi-Fi становится зелёным, когда телевизор в сети.</string>
+    <string name="widgets_wifi_warn">Оранжевая или красная, если что-то не так</string>
+    <string name="widgets_wifi_warn_sub">Оранжевая: подключено, но нет интернета. Красная: нет сети.</string>
+    <string name="widgets_wifi_name">Название сети рядом со значком</string>
+    <string name="widgets_wifi_name_sub">Если выключено: только круглый значок.</string>
+    <string name="widgets_opens_label">При нажатии OK открывается</string>
+    <string name="widgets_wifi_opens_wifi">Настройки Wi-Fi</string>
+    <string name="widgets_wifi_opens_vpn">Приложение VPN</string>
+    <string name="widgets_wifi_hold">Удержание OK по-прежнему открывает настройки Wi-Fi.</string>
+    <string name="widgets_vpn_app_label">Какое приложение VPN</string>
+    <string name="widgets_vpn_none">На этом телевизоре не найдено приложений VPN.</string>
+    <string name="widgets_vpn_label">Кнопка VPN открывает</string>
+    <string name="widgets_vpn_hint">Зелёная с замком, пока VPN подключён, и красная с надписью «VPN отключён», пока нет. Кнопка Wi-Fi тогда всегда открывает настройки Wi-Fi.</string>
+    <string name="widgets_settings_label">Кнопка «Настройки»</string>
+    <string name="widgets_settings_tv">Настройки телевизора</string>
+    <string name="widgets_settings_home">Настройки главного экрана</string>
+    <string name="widgets_settings_hint">Удержание OK открывает меню с обоими вариантами.</string>
+    <string name="widgets_collide">Дата наезжает на кнопки. При таком количестве кнопок на телевизоре не хватает места для даты рядом с часами.</string>
+    <string name="widgets_collide_action">Перенести дату под часы</string>
+
+    <!-- Under the buttons -->
+    <string name="widgets_caption_none">У ваших картинок пока нет названий. Это приложение отправляет одну картинку, а названия появятся вместе с коллекциями картинок.</string>
+    <string name="widgets_caption_showing">Сейчас показывается: название каждой картинки под кнопками.</string>
+    <string name="widgets_caption_off">У ваших картинок есть названия, но их показ отключён.</string>
+    <string name="widgets_caption_switch">Названия картинок</string>
+    <string name="widgets_caption_switch_sub">Название каждой картинки под кнопками.</string>
+
+    <!-- Before your apps -->
+    <string name="widgets_cards_label">Карточки перед приложениями</string>
+    <string name="widgets_cards_hint">Карточка похожа на плитку приложения: название и одна короткая строка. Она стоит в начале ряда под панелью приложений. Каждая карточка является надстройкой, собранной из репозитория Gathin и подписанной нами; автор указан на телевизоре. Не больше 8 карточек.</string>
+    <string name="widgets_retro_hint">Retro открывает игры из надстройки. Без интернета и особых разрешений.</string>
+    <string name="widgets_retro_action">Изменить в «Карточках и модулях»</string>
+    <string name="widgets_cards_link">Карточки и модули</string>
+    <string name="widgets_cards_play">Карточки приходят с надстройками, а в этой версии приложения надстроек нет.</string>
+</resources>

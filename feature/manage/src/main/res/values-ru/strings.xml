@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Clean Your TV, :feature:manage. Russian translation of values/strings.xml.
+  ICU MessageFormat with named arguments, the same as the English source; plurals use one/few/many/other.
+-->
+<resources>
+
+    <!-- Shared button words -->
+    <string name="action_back">Назад</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_ok">OK</string>
+    <string name="action_done">Готово</string>
+    <string name="action_undo">Отменить</string>
+
+    <!-- Credential prompt (D17) -->
+    <string name="gate_title">Подтвердите, что это вы</string>
+    <string name="gate_subtitle">Перед изменениями на телевизоре «{tv}»</string>
+    <string name="gate_subtitle_reset_key">Перед сбросом ключа этого телефона</string>
+    <string name="gate_subtitle_delete_all">Перед удалением всех данных</string>
+    <string name="gate_negative">Отмена</string>
+    <string name="gate_failed">Не удалось подтвердить, что это вы, поэтому ничего не изменено.</string>
+
+    <!-- M1 Manage -->
+    <string name="manage_settings_cd">Настройки приложения</string>
+    <string name="manage_tv_title">{tv}, {room}</string>
+    <string name="manage_tv_title_noroom">{tv}</string>
+    <string name="manage_state_clean">Очищен</string>
+    <string name="manage_state_original">Исходный</string>
+    <string name="manage_checked">Проверено: {date}</string>
+    <string name="manage_tv_card_cd">{tv}. {state}. {checked}</string>
+    <string name="manage_thumbnail_cd">Последний снимок экрана телевизора «{tv}». Нажмите, чтобы обновить.</string>
+    <!-- 0.4.7 (UX finding 20, PM 11): the one name for the way back into Setup, shown for every TV -->
+    <string name="manage_clean_again">Пройти настройку заново</string>
+    <string name="manage_level_simple">Простой</string>
+    <string name="manage_level_custom">Выборочный</string>
+    <string name="manage_level_simple_note">Отключает обычный мусор и оставляет всё остальное.</string>
+    <string name="manage_level_custom_note">Позволяет выбрать каждый пункт самостоятельно.</string>
+    <string name="manage_row_home">Под себя</string>
+    <string name="manage_row_home_own">У телевизора остаётся свой экран. Почему?</string>
+    <!-- 0.4.7 (UX finding 8): the new home screen is installed but not in use -->
+    <string name="manage_row_home_not_in_use">Сейчас работает родной экран телевизора</string>
+    <!-- 0.4.7 (StockHomeBack): Run Setup again is the primary button then -->
+    <!-- RFC-HELPER-1 (test build): the Home button helper is on -->
+    <string name="manage_row_home_helper">Кнопка «Домой» открывает его. Родной экран телевизора остаётся включённым.</string>
+    <string name="manage_row_home_stock_back">Телевизор снова включил свой родной главный экран.</string>
+    <string name="manage_row_cards">Карточки и модули</string>
+    <!-- 0.4.7 (UX finding 9): a card installs as an app while the TV keeps its own home screen -->
+    <string name="manage_row_cards_own_home">Показываются как приложения: у этого телевизора остаётся родной главный экран</string>
+    <string name="manage_row_cards_none">Карточек пока нет</string>
+    <string name="manage_row_switched_off">{count, plural, one {Отключено (#)} few {Отключено (#)} many {Отключено (#)} other {Отключено (#)}}</string>
+    <string name="manage_row_switched_off_sub">Любое можно вернуть</string>
+    <string name="manage_row_better_back_on">{count, plural, one {# приложение лучше включить обратно} few {# приложения лучше включить обратно} many {# приложений лучше включить обратно} other {# приложения лучше включить обратно}}</string>
+    <string name="manage_row_leftovers">Проверить, что вернулось</string>
+    <string name="manage_row_leftovers_sub">После обновления ПО телевизора</string>
+    <string name="manage_row_restore">Точка восстановления</string>
+    <string name="manage_row_restore_sub">{date}. Отсюда можно отменить всё.</string>
+    <string name="manage_row_tvsettings">Параметры телевизора</string>
+    <string name="manage_add_tv">+ Настроить ещё один телевизор</string>
+    <string name="manage_offline_banner">Связь с телевизором потеряна. Он ещё включён?</string>
+    <string name="manage_reconnect">Переподключиться</string>
+    <string name="manage_reconnecting">Переподключение...</string>
+    <!-- 0.4.8: what the app counted across the TV's restarts (Restarts), and the one tap that tells us -->
+    <string name="manage_restarts_held">{count, plural, one {Без сбоев после # перезагрузки} few {Без сбоев после # перезагрузок} many {Без сбоев после # перезагрузок} other {Без сбоев после # перезагрузки}}</string>
+    <string name="manage_restarts_ask">Это важно для этой модели телевизора. Перед отправкой вы увидите, что именно уйдёт.</string>
+    <string name="manage_restarts_told">Вы сообщили нам об этом {date}. Спасибо.</string>
+    <string name="manage_restarts_tell">Сообщить, что всё работает</string>
+    <string name="manage_restarts_tell_again">Сообщить ещё раз</string>
+    <string name="manage_restart_failed">После перезагрузки вернулся родной главный экран телевизора.</string>
+    <string name="manage_restart_failed_body">Сообщите нам, чтобы мы разобрались с этой моделью телевизора.</string>
+    <string name="manage_restart_report">Сообщить о проблеме</string>
+
+    <!-- M1a Debugging step for a returning write (UX 4.3, returning) -->
+    <string name="debugstep_title">Чтобы внести изменения на телевизоре, нужно ненадолго включить отладку.</string>
+    <string name="debugstep_body">На телевизоре: «Настройки > Настройки устройства > Для разработчиков > Отладка по USB». Дальше мы всё сделаем сами и снова отключим её, когда закончим.</string>
+    <string name="debugstep_note">Снова нажимать на «Сборку» не нужно. Раздел «Для разработчиков» остаётся доступным.</string>
+    <string name="debugstep_waiting">Ждём телевизор...</string>
+    <string name="debugstep_connecting">Подключаемся...</string>
+    <!-- RFC-REACH-1: the debugging step says which case it is, and what the app sees -->
+    <string name="debugstep_off_why">Она выключена, потому что в прошлый раз мы, как и планировалось, отключили её по окончании работы.</string>
+    <string name="debugstep_nowifi_title">Ваш телефон не подключён к Wi-Fi</string>
+    <string name="debugstep_nowifi_body">Подключитесь к той же сети Wi-Fi, что и телевизор. Дальше мы продолжим сами.</string>
+    <string name="debugstep_allow_title">Посмотрите на телевизор и разрешите доступ этому телефону</string>
+    <string name="debugstep_allow_body">Телевизор спрашивает «Разрешить отладку по USB?». Отметьте «Всегда разрешать с этого компьютера» и нажмите «Разрешить» (на некоторых телевизорах — «OK»).</string>
+    <string name="debugstep_allow_code">Код на телевизоре заканчивается на {tail}. Это код этого телефона.</string>
+    <string name="debugstep_allow_waiting">Ждём вашего нажатия на телевизоре...</string>
+    <string name="debugstep_details_show">Показать подробности</string>
+    <string name="debugstep_details_hide">Скрыть подробности</string>
+    <string name="debugstep_sees">Что видит приложение</string>
+    <string name="debugstep_row_wifi">Телефон подключён к Wi-Fi</string>
+    <string name="debugstep_row_wifi_no">Подключитесь к той же сети Wi-Fi, что и телевизор.</string>
+    <string name="debugstep_row_network">Та же сеть, что и при настройке этого телевизора</string>
+    <string name="debugstep_row_network_no">После настройки сеть изменилась. Ищем телевизор в этой сети.</string>
+    <string name="debugstep_row_saved">Телевизор отвечает по сохранённому адресу</string>
+    <string name="debugstep_row_saved_no">Включите на телевизоре отладку по USB. Если она уже включена, возможно, у телевизора новый адрес.</string>
+    <string name="debugstep_row_found">Телевизор найден по другому адресу в этой сети</string>
+    <string name="debugstep_row_found_no">В этой сети Wi-Fi этот телевизор пока не откликнулся. Продолжаем искать.</string>
+    <string name="debugstep_row_allow">Телевизор ждёт, когда вы разрешите доступ этому телефону</string>
+    <string name="debugstep_row_allow_yes">Посмотрите на телевизор: отметьте «Всегда разрешать с этого компьютера» и нажмите «Разрешить».</string>
+    <string name="debugstep_yes">Да</string>
+    <string name="debugstep_no">Нет</string>
+    <string name="debugstep_checking">Проверяем...</string>
+    <string name="debugstep_unknown">Неизвестно</string>
+    <string name="debugstep_stuck">Всё ещё ничего? На некоторых телевизорах порт отладки по Wi-Fi открывается только после перезагрузки, поэтому перезагрузите телевизор один раз. Некоторым также нужно включить, помимо отладки по USB, параметр «Отладка по сети» или «Отладка по Wi-Fi». И ещё у телевизора мог смениться адрес: его можно посмотреть на телевизоре в разделе «Настройки > Сеть и Интернет».</string>
+    <string name="debugstep_report">Сообщить о проблеме</string>
+    <string name="debugstep_address">Ввести адрес телевизора</string>
+    <string name="debugstep_row_typed">Телевизор отвечает по введённому вами адресу</string>
+    <string name="debugstep_row_typed_no">Проверьте адрес на телевизоре в разделе «Настройки > Сеть и Интернет». Отладка по USB на нём тоже должна быть включена.</string>
+    <string name="details_copy">Скопировать данные подключения</string>
+    <string name="details_share">Поделиться</string>
+    <string name="details_collecting">Проверяем сеть Wi-Fi и ваши телевизоры...</string>
+    <string name="details_copied">Скопировано. Вставьте это в сообщение или обращение на GitHub.</string>
+    <string name="details_title">Данные подключения</string>
+    <string name="details_body">Около 10 секунд мы проверяем сеть Wi-Fi и каждый сохранённый телевизор, а затем копируем то, что увидели. В данных есть названия, которые вы дали телевизорам, но никогда нет названия сети Wi-Fi, полного адреса, серийного номера или ключа.</string>
+    <string name="appsettings_details">Данные подключения</string>
+    <string name="appsettings_details_note">Что приложение видит в вашей сети Wi-Fi и на телевизорах — чтобы скопировать или поделиться</string>
+
+    <!-- A Manage write that paused and left its run open (R5-W8 O2) -->
+    <string name="openwrite_title">Изменение на телевизоре «{tv}» не завершилось</string>
+    <string name="openwrite_body_lost">Телевизор перестал отвечать на полпути. Продолжите оставшееся или отмените то, что мы сделали. До тех пор на этом телевизоре больше ничего нельзя изменить.</string>
+    <string name="openwrite_body">Мы остановились на полпути. Продолжите оставшееся или отмените то, что мы сделали. До тех пор на этом телевизоре больше ничего нельзя изменить.</string>
+    <string name="openwrite_body_setup">Настройка телевизора «{tv}» не завершилась. Откройте её, чтобы продолжить или отменить то, что мы сделали.</string>
+    <string name="openwrite_not_taken">Телевизор не ответил. Убедитесь, что он включён и подключён к той же сети Wi-Fi, что и этот телефон, и повторите попытку.</string>
+    <string name="openwrite_busy">Выполняем...</string>
+    <string name="openwrite_carry_on">Продолжить</string>
+    <string name="openwrite_title_stale">Телевизор «{tv}» изменился с момента последней проверки</string>
+    <string name="openwrite_body_stale_nothing">После того как мы считали данные, на телевизоре что-то изменилось, поэтому мы остановились, не начав изменений. Ничего не изменено. Проверьте телевизор ещё раз, и мы начнём с его текущего состояния.</string>
+    <string name="openwrite_body_stale">После того как мы считали данные, на телевизоре что-то изменилось, поэтому мы остановились на полпути. Проверьте телевизор ещё раз, чтобы продолжить с его текущего состояния, или отмените то, что мы сделали.</string>
+    <string name="openwrite_check_again">Проверить снова</string>
+    <string name="openwrite_undo">Отменить сделанное</string>
+    <string name="openwrite_stop">Остановиться здесь</string>
+    <string name="openwrite_open_setup">Открыть настройку</string>
+    <string name="openwrite_later">Не сейчас</string>
+    <string name="openwrite_report">Сообщить о проблеме</string>
+    <string name="openwrite_title_took_home">Приложение «{app}» перехватило кнопку «Домой»</string>
+    <string name="openwrite_body_took_home">Когда приложение «{app}» снова включилось, телевизор отдал ему кнопку «Домой», и теперь она не открывает новый главный экран. Снова отключите «{app}», чтобы вернуть новый экран, или оставьте как есть.</string>
+    <string name="openwrite_switch_off_again">Снова отключить</string>
+    <string name="openwrite_keep_it">Оставить</string>
+    <!-- 0.4.7 (UX finding 19): a look send that paused did not reach the TV -->
+    <string name="openwrite_title_look">Оформление не дошло до телевизора «{tv}»</string>
+    <string name="openwrite_body_look">Больше ничего не изменилось. Отправьте оформление ещё раз или отмените, чтобы оставить то, что было на телевизоре. До тех пор на этом телевизоре больше ничего нельзя изменить.</string>
+    <string name="openwrite_send_again">Отправить снова</string>
+
+    <!-- M4 Switched off -->
+    <string name="switchedoff_title">{count, plural, one {Отключено (#)} few {Отключено (#)} many {Отключено (#)} other {Отключено (#)}}</string>
+    <string name="switchedoff_intro">Любое из них можно вернуть. Ничего не удаляется: «отключено» значит «усыплено».</string>
+    <string name="switchedoff_group_ads">Реклама и рекламные ряды</string>
+    <string name="switchedoff_group_tracking">Слежка и аналитика</string>
+    <string name="switchedoff_group_nobody">Приложения, о которых никто не просил</string>
+    <string name="switchedoff_group_brand">Фирменные дополнения {brand}</string>
+    <string name="switchedoff_group_shop">Режим магазина и демонстрации</string>
+    <string name="switchedoff_group_needed">Нужно для нового главного экрана</string>
+    <string name="switchedoff_group_other">Выбрано на экране «Выбор»</string>
+    <string name="switchedoff_put_back">Вернуть</string>
+    <string name="switchedoff_put_back_cd">Вернуть «{name}»</string>
+    <string name="switchedoff_group_better">Лучше включить обратно</string>
+    <string name="switchedoff_better_kept">Теперь по списку для этого телевизора оно остаётся включённым.</string>
+    <string name="switchedoff_switch_back_on">Включить обратно</string>
+    <string name="switchedoff_switch_back_on_cd">Включить «{name}» обратно</string>
+    <string name="switchedoff_snackbar">Приложение «{name}» снова включено.</string>
+    <string name="switchedoff_empty">Сейчас ничего не отключено.</string>
+    <string name="switchedoff_empty_sub">На телевизоре всё включено.</string>
+
+    <!-- M5 Check for leftovers -->
+    <string name="leftovers_title">Проверить, что вернулось</string>
+    <string name="leftovers_checking">Проверяем...</string>
+    <string name="leftovers_found">{count, plural, one {После обновления вернулся # элемент. Снова отключить?} few {После обновления вернулись # элемента. Снова отключить?} many {После обновления вернулись # элементов. Снова отключить?} other {После обновления вернулись # элемента. Снова отключить?}}</string>
+    <string name="leftovers_switch_off">Отключить</string>
+    <string name="leftovers_not_now">Не сейчас</string>
+    <string name="leftovers_none">Ничего не вернулось. Всё так, как вы оставили.</string>
+    <string name="leftovers_done">Снова отключено.</string>
+    <string name="leftovers_error">Сейчас не удалось проверить. Телевизор ещё включён?</string>
+    <string name="leftovers_notice">{count, plural, one {На телевизоре снова появился # элемент.} few {На телевизоре снова появились # элемента.} many {На телевизоре снова появились # элементов.} other {На телевизоре снова появились # элемента.}}</string>
+    <string name="leftovers_notice_action">Проверить</string>
+
+    <!-- M7 TV settings -->
+    <string name="tvsettings_title">Параметры телевизора</string>
+    <string name="tvsettings_name_room">Название и комната</string>
+    <string name="tvsettings_name_label">Название</string>
+    <string name="tvsettings_room_label">Комната</string>
+    <string name="tvsettings_level_label">Уровень</string>
+    <string name="tvsettings_level_simple">Простой</string>
+    <string name="tvsettings_level_custom">Выборочный</string>
+    <string name="tvsettings_level_note">При возврате к простому уровню дополнительные параметры скрываются. Телевизор остаётся как есть.</string>
+    <string name="tvsettings_address">Адрес</string>
+    <string name="tvsettings_last_seen">Последний раз в сети: {date}</string>
+    <string name="tvsettings_forget">Забыть этот телевизор</string>
+    <string name="tvsettings_forget_explain">Запись об этом телевизоре, его журналы и точки восстановления будут удалены с этого телефона. Сам телевизор не изменится, но отменить изменения с этого телефона потом будет нельзя.</string>
+    <string name="tvsettings_forget_title">Забыть телевизор «{tv}»?</string>
+    <string name="tvsettings_forget_confirm">Забыть этот телевизор</string>
+    <string name="tvsettings_forget_busy">Настройка этого телевизора ещё идёт. Дождитесь её окончания или сначала остановите её.</string>
+
+    <!-- M8 App settings -->
+    <string name="appsettings_title">Настройки приложения</string>
+    <string name="appsettings_large_text">Крупный текст как в системе</string>
+    <string name="appsettings_large_text_note">Размер текста соответствует размеру, заданному в настройках телефона.</string>
+    <string name="appsettings_haptics">Виброотклик</string>
+    <string name="appsettings_haptics_note">Короткая вибрация, когда что-то завершилось или нужно ваше участие.</string>
+    <string name="appsettings_about">О приложении</string>
+    <string name="appsettings_version">Версия {version}</string>
+    <string name="appsettings_launcher_pin_label">Встроенное приложение главного экрана</string>
+    <string name="appsettings_key_label">Ключ телефона</string>
+    <string name="appsettings_key_strongbox">Хранится в отдельном защищённом чипе (StrongBox).</string>
+    <string name="appsettings_key_tee">Хранится в защищённом оборудовании телефона (TEE).</string>
+    <string name="appsettings_key_wrapped">Хранится программно и зашифрован ключом из защищённого хранилища телефона. Этот телефон не может хранить его аппаратно.</string>
+    <string name="appsettings_check_updates">Проверить обновления</string>
+    <string name="appsettings_checking">Проверяем...</string>
+    <string name="appsettings_update_available">Доступна версия {version}</string>
+    <string name="appsettings_update_open">Открыть страницу релиза</string>
+    <string name="appsettings_up_to_date">У вас последняя версия</string>
+    <string name="appsettings_update_error">Не удалось проверить обновления</string>
+    <string name="appsettings_licences">Лицензии</string>
+    <string name="appsettings_licence_app">Clean Your TV: MIT</string>
+    <string name="appsettings_licence_font">Шрифт Outfit: SIL Open Font Licence 1.1</string>
+    <string name="appsettings_licence_apache">Адаптированный нами код dadb и Shizuku: уведомления Apache-2.0</string>
+    <string name="appsettings_licence_pictures">Изображения для оформления: наша собственная работа, CC0 1.0 (общественное достояние); Aurora, Glass и Autumn lake (Ruska) из лаунчера Clean Your TV, MIT</string>
+    <string name="appsettings_licence_bouncycastle">Криптографическая библиотека Bouncy Castle: лицензия Bouncy Castle</string>
+    <string name="appsettings_privacy">Конфиденциальность</string>
+    <string name="appsettings_privacy_text">Ничего не покидает вашу сеть, кроме загрузок с github.com. GitHub видит адрес вашего телефона и обезличенный user agent. Отчёт покидает телефон, только когда вы сами копируете, отправляете или публикуете его.</string>
+    <string name="appsettings_privacy_text_offline">Ничего не покидает вашу сеть. Приложение общается только с выбранным вами телевизором и само не делает запросов в интернет. Отчёт покидает телефон, только когда вы сами копируете, отправляете или публикуете его.</string>
+    <string name="appsettings_report">Сообщить о проблеме</string>
+    <string name="appsettings_report_note">Сначала посмотрите отчёт, затем поделитесь им или опубликуйте на GitHub</string>
+    <string name="appsettings_reset_key">Сбросить мой ключ</string>
+    <string name="appsettings_reset_key_note">Каждый телевизор снова попросит разрешить доступ этому телефону.</string>
+    <string name="appsettings_reset_key_title">Сбросить ключ на этом телефоне?</string>
+    <string name="appsettings_reset_key_confirm">Сбросить мой ключ</string>
+    <string name="appsettings_delete_all">Удалить всё</string>
+    <string name="appsettings_delete_all_note">С этого телефона будут удалены все записи о телевизорах, журналы, точки восстановления, журнал диагностики приложения и ключ. Сами телевизоры не изменятся, но отменить изменения с этого телефона потом будет нельзя.</string>
+    <string name="appsettings_delete_all_title">Удалить всё с этого телефона?</string>
+    <string name="appsettings_delete_all_confirm">Удалить всё</string>
+    <string name="appsettings_delete_all_busy">Настройка телевизора «{tv}» ещё идёт. Дождитесь её окончания или сначала остановите её.</string>
+
+
+    <!-- Stop and undo ask first (Confirmations): a question, one calm sentence, the verb and a way back -->
+    <string name="confirm_stop_title">Остановить сейчас?</string>
+    <string name="confirm_stop_body">Мы остановимся и вернём всё, что уже успели изменить. Телевизору ничего не грозит.</string>
+    <string name="confirm_stop_button">Остановить и отменить</string>
+    <string name="confirm_keep_going">Продолжить</string>
+    <string name="confirm_stop_here_title">Остановиться здесь?</string>
+    <string name="confirm_stop_here_body">Мы сохраним то, что уже сделано, и больше ничего не будем менять. Телевизору ничего не грозит.</string>
+    <string name="confirm_stop_here_button">Остановиться здесь</string>
+    <string name="confirm_undo_title">Отменить изменения на телевизоре?</string>
+    <string name="confirm_undo_body">Мы вернём всё, что сделало это изменение, и телевизор станет таким, как был. Ничего не удаляется.</string>
+    <string name="confirm_undo_button">Отменить изменения</string>
+
+    <!-- 0.3.2 B1: an unlisted TV on Manage -->
+    <string name="manage_help_add_tv_banner">Мы ещё не встречали именно этот телевизор, поэтому действовали осторожно. Короткий отчёт от вас поможет нам его добавить.</string>
+    <string name="manage_help_add_tv">Помочь добавить этот телевизор</string>
+    <!-- 0.4.7 (must 4): the report sent before (SentReports) -->
+    <string name="manage_report_sent_banner">Вы отправили отчёт об этом телевизоре {date}. Мы напишем в вашем обращении, когда появятся новости.</string>
+    <string name="manage_send_again">Отправить снова</string>
+    <string name="manage_wizard_home_title">Мастер настройки может перехватить кнопку «Домой»</string>
+    <string name="manage_wizard_home_body">Включите обратно родной главный экран, чтобы телевизор и дальше запускался нормально.</string>
+    <string name="manage_wizard_home_button">Включить обратно</string>
+    <string name="manage_wizard_home_working">Включаем обратно родной главный экран телевизора...</string>
+
+    <!-- 0.3.2 B1 and B2: the report preview -->
+    <string name="report_tv_title">Помочь добавить этот телевизор</string>
+    <string name="report_tv_body">В этом отчёте указано, что это за телевизор и какие приложения были на нём изначально, чтобы мы могли составить для него список. Приложения, которые вы установили сами, только подсчитываются и никогда не называются.</string>
+    <string name="report_problem_title">Сообщить о проблеме</string>
+    <!-- 0.4.8: "Tell us it worked", the confirmation's preview (ReportKind.CONFIRM) -->
+    <string name="report_confirm_title">Сообщить, что всё работает</string>
+    <string name="report_confirm_body">Здесь сказано, что новый главный экран удержался на этом телевизоре, а также указаны модель телевизора и то, что насчитало приложение. Больше ничего: ни имён, ни адресов.</string>
+    <string name="report_confirm_unavailable">На этом телевизоре ещё не учтено ни одной перезагрузки. Перезагрузите его один раз, пока приложение подключено, и повторите попытку.</string>
+    <string name="report_confirm_label">Что уйдёт на GitHub</string>
+    <string name="report_problem_body">В этом отчёте — шаги, которые мы выполнили, и краткие сведения о телевизоре в виде обычного текста. Адреса, серийные номера, ключи и коды предварительно удаляются. В шагах могут упоминаться приложения, которые мы отключили или пытались отключить.</string>
+    <string name="report_public">Если вы опубликуете отчёт на GitHub, он станет общедоступным. Само приложение ничего не отправляет: куда его отправить, решаете вы.</string>
+    <string name="report_preview_label">Отчёт</string>
+    <string name="report_paste_hint">Мы скопируем отчёт и откроем форму на GitHub. Вставьте его в поле, где его просят.</string>
+    <string name="report_copy_open">Скопировать и открыть GitHub</string>
+    <!-- 0.3.3 D1: the report fits in the link, so the form opens with it filled in -->
+    <string name="report_open">Открыть GitHub</string>
+    <string name="report_in_link_hint">Форма на GitHub откроется с уже вставленным отчётом. При желании добавьте пару слов и опубликуйте. Мы также скопируем отчёт на случай, если форма откроется без него.</string>
+    <!-- 0.4.6: the problem report is too long for the link, so the form gets its newest log lines -->
+    <string name="report_in_link_short_hint">Форма на GitHub откроется с этим отчётом, но из журнала в неё попадут только последние строки, чтобы всё поместилось. При желании добавьте пару слов и опубликуйте. Мы также скопируем полный отчёт на случай, если попросим остальное.</string>
+    <string name="report_too_long">Этот отчёт слишком длинный, чтобы сразу попасть в форму, поэтому мы скопируем его для вас. На GitHub нажмите и удерживайте поле для отчёта, выберите «Вставить» и опубликуйте.</string>
+    <string name="report_share">Поделиться</string>
+    <string name="report_loading">Готовим отчёт</string>
+    <string name="report_unavailable">Чтобы составить отчёт, нам нужно хотя бы раз считать данные этого телевизора. Настройте его или подключитесь к нему и повторите попытку.</string>
+    <!-- 0.4.7 (must 4): the TV report was sent before; the issue link once pasted -->
+    <string name="report_sent_line">Вы отправили отчёт об этом телевизоре {date}. Мы напишем в вашем обращении, когда появятся новости. Отчёт можно отправить ещё раз.</string>
+    <string name="report_sent_issue">Ваше обращение: {issue}. Откройте его, чтобы узнать новости.</string>
+    <string name="report_issue_label">Ссылка на ваше обращение (необязательно)</string>
+    <string name="report_issue_hint">Вставьте ссылку на обращение (issue), в которое ушёл отчёт, и мы запомним её здесь.</string>
+    <string name="report_issue_error">Это не ссылка на обращение (issue) к этому приложению на GitHub.</string>
+    <string name="report_issue_save">Запомнить</string>
+    <string name="report_issue_open">Открыть обращение</string>
+</resources>
