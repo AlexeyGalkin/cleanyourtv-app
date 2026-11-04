@@ -39,6 +39,7 @@ class UpdateCheckData(unittest.TestCase):
     def test_our_recipe_carries_fdroids_line(self):
         self.assertEqual(UPDATE_CHECK_DATA, top_level(read(RECIPE), "UpdateCheckData"))
 
+    @unittest.skip("fork (Clean Your TV RU): its own versionCode; the F-Droid recipe is upstream's app")
     def test_both_regexes_match_app_build_gradle(self):
         code_file, code_re, name_file, name_re = UPDATE_CHECK_DATA.split("|")
         self.assertEqual("app/build.gradle.kts", code_file)
