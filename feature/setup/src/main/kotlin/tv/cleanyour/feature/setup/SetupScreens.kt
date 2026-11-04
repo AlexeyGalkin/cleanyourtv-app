@@ -3,6 +3,7 @@
 
 package tv.cleanyour.feature.setup
 
+import tv.cleanyour.ui.design.text.CoreText
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -638,7 +639,7 @@ internal fun WhyContent(state: SetupState.Found, extras: SetupExtras = SetupExtr
         val why = when (extras.homeRoles[r.pkg]) {
             HomeRole.WIZARD -> stringResource(when { extras.helperOn -> R.string.customise_wizard_helper; kept != null -> R.string.customise_wizard_kept; else -> R.string.customise_switch_part })
             HomeRole.OWN_HOME -> stringResource(when { extras.helperOn -> R.string.customise_own_home_helper; kept != null -> R.string.customise_own_home_kept; else -> R.string.customise_switch_part })
-            null -> r.whyProtected ?: r.description
+            null -> CoreText.of(r.whyProtected ?: r.description)
         }
         Body(why, Modifier.padding(top = 4.dp))
     }

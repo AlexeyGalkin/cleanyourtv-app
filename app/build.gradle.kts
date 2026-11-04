@@ -11,8 +11,8 @@ android {
         // installs over 0.4.9-beta1 (31), 0.4.8 (30) and every earlier build with the same key; the 0.5.0 release takes 33.
         // Fork (Clean Your TV RU) 0.5.0: upstream 0.5.0-beta1 (code 32) plus Russian and the TV widgets.
         // Its own applicationId, so its codes never meet upstream's: upstream code * 100 + fork build.
-        versionCode = 3300
-        versionName = "0.5.0"
+        versionCode = 3301
+        versionName = "0.5.1"
     }
     // STORES-PLAN 1: one codebase, two store builds, the same applicationId and signing certificate.
     // `full` (GitHub and F-Droid) checks GitHub for a newer release and offers the optional add-ons;

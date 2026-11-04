@@ -2,6 +2,7 @@
 
 package tv.cleanyour.feature.manage
 
+import tv.cleanyour.ui.design.text.CoreText
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -348,12 +349,12 @@ fun SwitchedOffScreen(state: SwitchedOffState, onIntent: (SwitchedOffIntent) -> 
         state.groups.forEach { g ->
             // WP4 (C6): "Better back on" at the top, each row with our reason and the ordinary PutBack.
             if (g.id == OffGroup.BETTER_BACK_ON) { BetterBackOnGroup(g, state.busy, onIntent); return@forEach }
-            SectionLabel(g.title.ifEmpty { stringResource(R.string.switchedoff_group_other) })
+            SectionLabel(CoreText.of(g.title).ifEmpty { stringResource(R.string.switchedoff_group_other) })
             ListGroup {
                 g.rows.forEachIndexed { i, r ->
                     if (i > 0) ListDivider()
                     val cd = msg(R.string.switchedoff_put_back_cd, "name" to r.name)
-                    ListRow(r.name, subtitle = r.description, trailing = {
+                    ListRow(r.name, subtitle = CoreText.of(r.description), trailing = {
                         if (state.busy == r.pkg) Box(Modifier.padding(horizontal = 16.dp)) { Spinner() }
                         else TertiaryButton(stringResource(R.string.switchedoff_put_back), { onIntent(SwitchedOffIntent.PutBack(r.pkg)) },
                             Modifier.semantics { contentDescription = cd }, enabled = state.busy == null)
@@ -381,7 +382,7 @@ private fun BetterBackOnGroup(g: OffGroup, busy: PackageName?, onIntent: (Switch
             if (i > 0) ListDivider()
             val cd = msg(R.string.switchedoff_switch_back_on_cd, "name" to r.name)
             val kept = stringResource(R.string.switchedoff_better_kept)
-            ListRow(r.name, subtitle = listOfNotNull(r.reason, kept).joinToString(" "), trailing = {
+            ListRow(r.name, subtitle = listOfNotNull(r.reason?.let { CoreText.of(it) }, kept).joinToString(" "), trailing = {
                 if (busy == r.pkg) Box(Modifier.padding(horizontal = 16.dp)) { Spinner() }
                 else TertiaryButton(stringResource(R.string.switchedoff_switch_back_on), { onIntent(SwitchedOffIntent.PutBack(r.pkg)) },
                     Modifier.semantics { contentDescription = cd }, enabled = busy == null)

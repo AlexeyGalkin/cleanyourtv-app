@@ -20,6 +20,14 @@
 >   TV with the send. Its card opens full screens: the F1 weekend in your time zone with the weather per session,
 >   both championships, the last race, the 7-day forecast, and holidays. Data: Jolpica-F1 (mirrored on this
 >   repo's `f1-data` branch for networks that throttle Cloudflare) and Open-Meteo, no keys, no tracking.
+> - **Its own build of the home screen** (Gathin's launcher 3.3 plus [a widget panel](tv-launcher/panel.patch),
+>   still offline): every widget that is on shows at once as two equal cards, F1 on the left, the weather (now and
+>   three days, day and night, minimal line icons) and holidays on the right; F1 news in Russian from f1news.ru and
+>   Championat; a no-spoiler mode. With the original home screen the lines take turns instead.
+>   **To switch a TV that has the original home screen:** in the original app, open the TV's restore point → Undo everything
+>   and switch on "Remove it from the TV" under New home screen; then run Setup in this app (the TV asks once to allow
+>   it), and set the dock, look and widgets again from the phone.
+> - The TV's progress screen during the clean-up and every text of the app in Russian.
 > - Its own package (`tv.cleanyour.app.ru`), so it installs **next to** the upstream app, and "Check for updates"
 >   reads this fork's releases.
 >
@@ -226,8 +234,10 @@ reviewed and tested the app, and every change went through automated tests and r
   `./gradlew :app:assembleFullRelease` (with `CYT_RELEASE_KEYSTORE` and `CYT_RELEASE_KEYSTORE_PASSWORD`).
 - **Translations:** `python3 scripts/fork/check-translations.py . ru` checks every `values-ru` file against
   English (keys, ICU plurals, placeholders); the terms are in [scripts/fork/GLOSSARY-ru.md](scripts/fork/GLOSSARY-ru.md).
-- **Staying up to date with upstream:** `git fetch upstream && git merge upstream/<release branch>`, then the
-  translation check for new strings.
+- **Staying up to date with upstream:** every Monday the `upstream-sync` workflow merges the original's `main`
+  and opens a pull request (or an issue listing the conflicts). By hand: `git fetch upstream && git merge upstream/main`.
+  When the launcher submodule moves, run `scripts/fork/build-tv-apks.sh`: it applies the widget panel patch to the
+  new launcher, builds, signs and re-pins the TV apps.
 
 ## Credits
 

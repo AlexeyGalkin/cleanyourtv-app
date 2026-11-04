@@ -2,6 +2,7 @@
 
 package tv.cleanyour.feature.launcher
 
+import tv.cleanyour.ui.design.text.CoreText
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -270,7 +271,7 @@ internal fun ColumnScope.StockPreviewContent(plan: Plan, onIntent: (HomeScreenIn
     SheetHeader(stringResource(R.string.home_stock_preview_title))
     Body(stringResource(R.string.home_stock_preview_body), Modifier.padding(top = 8.dp))
     Column(Modifier.padding(top = 16.dp, start = 4.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        plan.steps.map { it.narration }.distinct().forEach { CheckLine(it, state = CheckState.NONE) }
+        plan.steps.map { it.narration }.distinct().forEach { CheckLine(CoreText.of(it), state = CheckState.NONE) }
     }
     ActionColumn(Modifier.padding(top = 20.dp)) {
         PrimaryButton(stringResource(R.string.home_stock_confirm), { onIntent(HomeScreenIntent.UseStock) })
@@ -285,7 +286,7 @@ internal fun ColumnScope.UpdatePreviewContent(plan: Plan, version: String, onInt
     SheetHeader(stringResource(R.string.home_update_preview_title))
     Body(msg(R.string.home_update_preview_body, "version" to version), Modifier.padding(top = 8.dp))
     Column(Modifier.padding(top = 16.dp, start = 4.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        plan.steps.map { it.narration }.filter { it.isNotBlank() }.distinct().forEach { CheckLine(it, state = CheckState.NONE) }
+        plan.steps.map { it.narration }.filter { it.isNotBlank() }.distinct().forEach { CheckLine(CoreText.of(it), state = CheckState.NONE) }
     }
     ActionColumn(Modifier.padding(top = 20.dp)) {
         PrimaryButton(stringResource(R.string.home_update_confirm), { onIntent(HomeScreenIntent.UpdateHomeScreen) })

@@ -1,5 +1,6 @@
 package tv.cleanyour.ui.design.component
 
+import tv.cleanyour.ui.design.text.CoreText
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -137,7 +138,7 @@ fun NarrationRow(line: NarrationLine, modifier: Modifier = Modifier, animate: Bo
             }
         }
         val color = if (line.state == NarrationState.UPCOMING || line.state == NarrationState.SKIPPED) c.textTertiary else c.textPrimary
-        Text(line.text, Modifier.weight(1f), color = color, style = CytTheme.type.bodyMedium)
+        Text(CoreText.of(line.text), Modifier.weight(1f), color = color, style = CytTheme.type.bodyMedium)
     }
 }
 

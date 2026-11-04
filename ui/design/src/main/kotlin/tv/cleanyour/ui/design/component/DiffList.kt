@@ -1,5 +1,6 @@
 package tv.cleanyour.ui.design.component
 
+import tv.cleanyour.ui.design.text.CoreText
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -88,7 +89,7 @@ fun PlanSummaryCard(groups: List<SummaryGroup>, seeListLabel: String, onSeeList:
     ListGroup(modifier, tone = GroupTone.RAISED) {
         groups.forEachIndexed { i, g ->
             if (i > 0) ListDivider()
-            ListRow(title = g.name, value = g.count.toString())
+            ListRow(title = CoreText.of(g.name), value = g.count.toString())
         }
         ListDivider()
         LinkRow(seeListLabel, onSeeList)
@@ -139,7 +140,7 @@ fun DiffRow(item: DiffItem, onToggle: ((DiffItem) -> Unit)?, modifier: Modifier 
     ) {
         Column(Modifier.weight(1f)) {
             Text(item.name, color = c.textPrimary, style = CytTheme.type.titleMedium.copy(fontSize = 16.sp))
-            Text(item.description, color = c.textTertiary, style = CytTheme.type.bodySmall, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            Text(CoreText.of(item.description), color = c.textTertiary, style = CytTheme.type.bodySmall, maxLines = 2, overflow = TextOverflow.Ellipsis)
             if (showPackageName && item.packageName != null) {
                 // One line; a long package keeps its start and end ("com.mitv…home.atv").
                 LtrText(item.packageName, maxLines = 1, overflow = TextOverflow.MiddleEllipsis)
@@ -214,7 +215,7 @@ fun CollapsedGroupsCard(groups: List<DiffGroup>, onExpand: (DiffGroup) -> Unit, 
                 Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable(role = Role.Button) { onExpand(g) }.padding(horizontal = 16.dp, vertical = 10.dp),
                 verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                Text(g.title, Modifier.weight(1f), color = c.textPrimary, style = CytTheme.type.bodyMedium)
+                Text(CoreText.of(g.title), Modifier.weight(1f), color = c.textPrimary, style = CytTheme.type.bodyMedium)
                 Text(stringResource(R.string.cyt_count_of, g.offCount, g.items.size), color = c.textSecondary, style = CytTheme.type.bodyMedium.copy(fontFeatureSettings = "tnum"))
                 CytIcon(CytIcons.ChevronDown, null, tint = c.textTertiary, size = 18.dp)
             }
@@ -228,7 +229,7 @@ fun ProtectedGroupSection(title: String, items: List<DiffItem>, onWhy: () -> Uni
     val c = CytTheme.colors
     Column(modifier.fillMaxWidth()) {
         Row(Modifier.fillMaxWidth().padding(start = 4.dp), verticalAlignment = Alignment.CenterVertically) {
-            Overline(title, Modifier.weight(1f).semantics { heading() })
+            Overline(CoreText.of(title), Modifier.weight(1f).semantics { heading() })
             TertiaryButton(stringResource(R.string.cyt_why), onWhy)
         }
         ListGroup {
