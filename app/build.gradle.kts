@@ -9,8 +9,10 @@ android {
     defaultConfig {
         // Test build 0.5.0-beta1 (a GitHub pre-release, never offered by a release's update check): code 32
         // installs over 0.4.9-beta1 (31), 0.4.8 (30) and every earlier build with the same key; the 0.5.0 release takes 33.
-        versionCode = 32
-        versionName = "0.5.0-beta1"
+        // Fork (Clean Your TV RU) 0.5.0: upstream 0.5.0-beta1 (code 32) plus Russian and the TV widgets.
+        // Its own applicationId, so its codes never meet upstream's: upstream code * 100 + fork build.
+        versionCode = 3300
+        versionName = "0.5.0"
     }
     // STORES-PLAN 1: one codebase, two store builds, the same applicationId and signing certificate.
     // `full` (GitHub and F-Droid) checks GitHub for a newer release and offers the optional add-ons;

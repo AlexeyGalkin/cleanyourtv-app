@@ -77,7 +77,8 @@ class AndroidAppConventionPlugin : Plugin<Project> {
             namespace = "tv.cleanyour.app"
             compileSdk = Toolchain.COMPILE_SDK
             defaultConfig {
-                applicationId = "tv.cleanyour.app"
+                // Fork (Clean Your TV RU): its own applicationId, so it installs beside the upstream app and its saved TVs.
+                applicationId = providers.gradleProperty("cyt.applicationId").getOrElse("tv.cleanyour.app")
                 minSdk = Toolchain.MIN_SDK
                 targetSdk = Toolchain.TARGET_SDK
                 // versionCode and versionName live in app/build.gradle.kts (STORES-PLAN 3), the one
