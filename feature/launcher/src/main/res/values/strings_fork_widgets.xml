@@ -13,6 +13,7 @@
     <string name="fork_widgets_holidays_sub">Today and the next one</string>
     <string name="fork_widgets_holidays_line">Today: World Television Day</string>
 
+    <string name="fork_widgets_needs_update">F1, weather and holidays under the clock need the newer home screen (3.3). Update it first with “Update the home screen” on the Make it yours page, then come back here.</string>
     <string name="fork_widgets_city_label">City for the weather</string>
     <string name="fork_widgets_city_now">Now: {city}</string>
     <string name="fork_widgets_city_field">City</string>

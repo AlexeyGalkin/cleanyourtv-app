@@ -913,7 +913,9 @@ private fun ColumnScope.UnderClockEditor(s: MakeItYoursState, onIntent: (MakeItY
 // what puts the Widgets add-on on the TV.
 @Composable
 private fun ColumnScope.ForkEditor(s: MakeItYoursState, onIntent: (MakeItYoursIntent) -> Unit) {
-    if (!s.forkAddon || !s.reads("game_day")) return
+    if (!s.forkAddon) return
+    // An older home screen (before 3.3) has no lines from another app under its clock: say how to get them.
+    if (!s.reads("game_day")) { Hint(stringResource(R.string.fork_widgets_needs_update), top = 16.dp); return }
     Label(stringResource(R.string.fork_widgets_city_label))
     s.fork.city?.let { Hint(msg(R.string.fork_widgets_city_now, "city" to it.label)) }
     var query by rememberSaveable { mutableStateOf("") }

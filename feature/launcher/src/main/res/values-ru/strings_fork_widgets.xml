@@ -12,6 +12,7 @@
     <string name="fork_widgets_holidays_sub">Сегодня и ближайший</string>
     <string name="fork_widgets_holidays_line">Сегодня: Всемирный день телевидения</string>
 
+    <string name="fork_widgets_needs_update">Для F1, погоды и праздников под часами нужен новый главный экран (3.3). Сначала обновите его кнопкой «Обновить главный экран» на странице «Под себя», потом вернитесь сюда.</string>
     <string name="fork_widgets_city_label">Город для погоды</string>
     <string name="fork_widgets_city_now">Сейчас: {city}</string>
     <string name="fork_widgets_city_field">Город</string>
