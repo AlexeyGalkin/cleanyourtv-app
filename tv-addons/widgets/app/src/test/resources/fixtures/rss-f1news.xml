@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+  <channel>
+    <title>Формула 1 на F1News.ru</title>
+    <description>Формула 1 - новости чемпионата 2026, эксклюзивные интервью, календарь Ф1 2026, личный зачёт, кубок конструкторов, техника Формулы 1, лицензионные фотографии с гран при, статьи о Формуле 1, прямые онлайн трансляции</description>
+    <link>https://www.f1news.ru/</link>
+    <language>ru</language> 
+    <copyright>f1news.ru</copyright>
+    <generator>DS RSS Generator 1.3.beta</generator>
+    <ttl>60</ttl>
+    <image>
+      <title>Формула 1 на F1News.ru</title>
+      <url>https://c.f1news.ru/bundles/f1newssite/img/f1news_logo.jpg</url>
+      <link>https://www.f1news.ru/</link>
+    </image>
+    <atom:link href="https://www.f1news.ru/export/news.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Баттон вспоминает, как в 2009-м в Бразилии выиграл титул</title>
+      <description>
+В своей колонке на сайте Aston Martin F1 Дженсон Баттон поделился воспоминаниями, связанными с Интерлагосом, где в 2009 году он отпраздновал победу в чемпионате мира...
+      </description>
+      <link>https://www.f1news.ru/news/f1-192306.html</link>
+      <guid>https://www.f1news.ru/news/f1-192306.html</guid>
+      <pubDate>Wed, 04 Nov 2026 20:03:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/button/192306.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>В Alpine изменят раскраску комбинезонов в Бразилии</title>
+      <description>
+В Alpine показали раскраску комбинезонов, которую команда будет использовать в дни проведения Гран При Сан-Паулу.
+      </description>
+      <link>https://www.f1news.ru/news/f1-192305.html</link>
+      <guid>https://www.f1news.ru/news/f1-192305.html</guid>
+      <pubDate>Wed, 04 Nov 2026 18:38:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/alpinef1team/192305.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>Вассёр: Погода может сделать уик-энд непредсказуемым</title>
+      <description>
+В Ferrari с оптимизмом ждут финальной гонки текущей серии из трёх гонок подряд – и нацелены на успех в Интерлагосе…
+      </description>
+      <link>https://www.f1news.ru/news/f1-192304.html</link>
+      <guid>https://www.f1news.ru/news/f1-192304.html</guid>
+      <pubDate>Wed, 04 Nov 2026 17:40:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/vasseur/191900.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>Камара: Понимаю, что мне предстоит многому научиться</title>
+      <description>
+Команда Haas F1 впервые выйдет на старт в Сан-Паулу в обновлённом составе: место Эстебана Окона занял бразильский дебютант Рафаэль Камара...
+      </description>
+      <link>https://www.f1news.ru/news/f1-192303.html</link>
+      <guid>https://www.f1news.ru/news/f1-192303.html</guid>
+      <pubDate>Wed, 04 Nov 2026 17:31:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/bearman/192303.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>Ферстаппен: В Интерлагосе я всегда хорошо выступал</title>
+      <description>
+После победы в Мехико в Red Bull надеются закрепить успех в Сан-Паулу…
+      </description>
+      <link>https://www.f1news.ru/news/f1-192302.html</link>
+      <guid>https://www.f1news.ru/news/f1-192302.html</guid>
+      <pubDate>Wed, 04 Nov 2026 16:33:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/max_verstappen/191286.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>Антонелли в Бразилии принимала семья Айртона Сенны</title>
+      <description>
+Кими Антонелли вчера прилетел в Бразилию уже в статусе нового чемпиона мира и сразу по приглашению семьи Айртона Сенны приехал в её поместье...
+      </description>
+      <link>https://www.f1news.ru/news/f1-192301.html</link>
+      <guid>https://www.f1news.ru/news/f1-192301.html</guid>
+      <pubDate>Wed, 04 Nov 2026 15:56:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/antonelli/192301.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>Шарль Леклер стал отцом</title>
+      <description>
+Шарль и Александра Леклер сообщили в социальных сетях о рождении дочки.
+      </description>
+      <link>https://www.f1news.ru/news/f1-192300.html</link>
+      <guid>https://www.f1news.ru/news/f1-192300.html</guid>
+      <pubDate>Wed, 04 Nov 2026 15:38:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/leclerc/192300.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>Владельцы клуба «Ливерпуль» претендуют на долю в Cadillac</title>
+      <description>
+По информации talkSPORT, одним из претендентов на долю в Cadillac F1 стал  холдинг Fenway Sports Group, который в том числе владеет футбольным клубом «Ливерпуль».
+      </description>
+      <link>https://www.f1news.ru/news/f1-192299.html</link>
+      <guid>https://www.f1news.ru/news/f1-192299.html</guid>
+      <pubDate>Wed, 04 Nov 2026 15:06:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/cadillacf1/192299.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>Гэри Андерсон о предстоящем дебюте Рафаэля Камары</title>
+      <description>
+Гэри Андерсон, бывший конструктор гоночных машин, а ныне эксперт онлайн-издания The Race, приветствует решение Haas F1 дать Рафаэлю Камаре возможность проявить себя уже в этот уик-энд...
+      </description>
+      <link>https://www.f1news.ru/news/f1-192298.html</link>
+      <guid>https://www.f1news.ru/news/f1-192298.html</guid>
+      <pubDate>Wed, 04 Nov 2026 14:02:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/camara_1/192298.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>Штрафные баллы перед Гран При Сан-Паулу</title>
+      <description>
+Перед Гран При Сан-Паулу штрафные баллы есть у тринадцати пилотов, лидер по их числу – Франко Колапинто.
+      </description>
+      <link>https://www.f1news.ru/news/f1-192297.html</link>
+      <guid>https://www.f1news.ru/news/f1-192297.html</guid>
+      <pubDate>Wed, 04 Nov 2026 13:50:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/192297-1.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>В Cadillac приняли меры после аварии Боттаса</title>
+      <description>
+Американская команда сообщила, что было проведено расследование причин аварии Валттери Боттаса, произошедшей в Мехико, и необходимые меры приняты...
+      </description>
+      <link>https://www.f1news.ru/news/f1-192296.html</link>
+      <guid>https://www.f1news.ru/news/f1-192296.html</guid>
+      <pubDate>Wed, 04 Nov 2026 12:47:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/bottas/192296.jpg" type="image/jpeg" length="0"/>
+    </item>
+<item>
+      <title>NTT станет официальным партнёром McLaren</title>
+      <description>
+McLaren Racing объявила о подписании многолетнего контракта с технологической компанией NTT...
+      </description>
+      <link>https://www.f1news.ru/news/f1-192295.html</link>
+      <guid>https://www.f1news.ru/news/f1-192295.html</guid>
+      <pubDate>Wed, 04 Nov 2026 11:38:00 +0300</pubDate>
+      <enclosure url="https://c.f1news.ru/userfiles/mclaren/192295.jpg" type="image/jpeg" length="0"/>
+    </item>
+</channel>
+</rss>

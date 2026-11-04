@@ -22,6 +22,7 @@ final class Background {
             try {
                 if (new Repo(app).refresh(System.currentTimeMillis(), all)) {
                     GamesProvider.changed(app);
+                    PanelProvider.changed(app);
                     if (done != null) done.run();
                 }
             } finally {

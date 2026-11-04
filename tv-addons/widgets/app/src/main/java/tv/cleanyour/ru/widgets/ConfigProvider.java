@@ -87,6 +87,7 @@ public final class ConfigProvider extends ContentProvider {
                     repo.file(Repo.WEATHER).delete();
                 }
                 GamesProvider.changed(app);
+                PanelProvider.changed(app);
                 Background.refresh(app, false, null);
             } catch (IOException | JSONException e) {
                 Log.w(TAG, "settings not applied: " + e.getMessage());

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+                                    <title>Чемпионат.com</title>
+                <description>Новости спорта, статистика и онлайн-трансляции на Чемпионат.com</description>
+                        <link>https://www.championat.com</link>
+            <language>ru</language>
+            <image>
+                <url>https://st.championat.com/i/rss-logo.png</url>
+                <title>Чемпионат.com</title>
+                <link>https://www.championat.com</link>
+            </image>
+            <atom:link rel="self" href="http://api.championat.com/export/rss/brief/?type=news&amp;category=auto"/>
+                            <atom:link rel="next" href="http://api.championat.com/export/rss/brief/?type=news&amp;category=auto&amp;cursor=6aea20f0061d2512c40f0ddb"/>
+                                        <item >
+                                                            <guid>https://www.championat.com/auto/news-6685798-hadzhar-ob-incidente-s-rassellom-ne-ozhidal-chto-on-polezet-povorot-byl-za-mnoj.html</guid>
+                                            <title>Хаджар — об инциденте с Расселлом: не ожидал, что он полезет, поворот был за мной</title>
+                                            <link>https://www.championat.com/auto/news-6685798-hadzhar-ob-incidente-s-rassellom-ne-ozhidal-chto-on-polezet-povorot-byl-za-mnoj.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 19:41:36 +0300</pubDate>
+                                            <description>Пилот «Ред Булл» Исак Хаджар прокомментировал столкновение с Джорджем Расселлом из «Мерседеса» на первом круге Гран-при Мексики.</description>
+                                <author>Дамир Медведев</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Ред Булл</category><category domain="tags">Мерседес</category><category domain="tags">Джордж Расселл</category><category domain="tags">Формула-1 Гран-при Мексики</category><category domain="tags">Исак Хаджар</category>        <category domain="content_type">news</category>
+                                                <enclosure
+                url="https://img.championat.com/news/big/g/a/hadzhar-ob-incidente-s-rassellom-ne-ozhidal-chto-on-polezet-povorot-byl-za-mnoj_1793810631108437848.jpg"
+                length="109270"
+                type="image/jpeg"
+                                source="Clive Rose/Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685778-bredli-lord-raskryl-chto-antonelli-chut-ne-soshyol-s-gran-pri-meksiki.html</guid>
+                                            <title>В «Мерседесе» раскрыли, что Антонелли чуть не сошёл с Гран-при Мексики</title>
+                                            <link>https://www.championat.com/auto/news-6685778-bredli-lord-raskryl-chto-antonelli-chut-ne-soshyol-s-gran-pri-meksiki.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 19:21:19 +0300</pubDate>
+                                            <description>Заместитель руководителя «Мерседеса» Брэдли Лорд раскрыл, что Андреа Кими Антонелли мог не добраться до финиша Гран-при Мексики из-за повреждения масляного поддона.</description>
+                                <author>Дамир Медведев</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Мерседес</category><category domain="tags">Андреа Кими Антонелли</category><category domain="tags">Формула-1 Гран-при Мексики</category>        <category domain="content_type">news</category>
+    <category domain="content_importance">breaking</category>                                            <enclosure
+                url="https://img.championat.com/news/big/b/r/v-mersedese-raskryli-chto-antonelli-chut-ne-soshyol-s-gran-pri-meksiki_1793809494181986741.jpg"
+                length="212042"
+                type="image/jpeg"
+                                source="Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685722-v-mersedese-priznali-chto-podveli-rassella-problemami-s-otdachej-energii-v-meksike.html</guid>
+                                            <title>«Заслуживает бороться за более высокие места». «Мерседес» — о проблемах Расселла в Мексике</title>
+                                            <link>https://www.championat.com/auto/news-6685722-v-mersedese-priznali-chto-podveli-rassella-problemami-s-otdachej-energii-v-meksike.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 18:41:56 +0300</pubDate>
+                                            <description>Заместитель технического директора «Мерседеса» Симоне Реста объяснил, почему Джордж Расселл потерял позиции на старте Гран-при Мексики.</description>
+                                <author>Дамир Медведев</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Мерседес</category><category domain="tags">Джордж Расселл</category><category domain="tags">Формула-1 Гран-при Мексики</category>        <category domain="content_type">news</category>
+    <category domain="content_importance">breaking</category>                                            <enclosure
+                url="https://img.championat.com/news/big/y/n/zasluzhivaet-borotsya-za-bolee-vysokie-mesta-mersedes-o-problemah-rassella-v-meksike_179380744746135554.jpg"
+                length="158212"
+                type="image/jpeg"
+                                source="Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685708-alpin-predstavil-specialnuyu-zhyoltuyu-formu-k-gran-pri-brazilii.html</guid>
+                                            <title>«Альпин» представила специальную жёлтую форму к Гран-при Бразилии</title>
+                                            <link>https://www.championat.com/auto/news-6685708-alpin-predstavil-specialnuyu-zhyoltuyu-formu-k-gran-pri-brazilii.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 18:23:44 +0300</pubDate>
+                                            <description>Команда «Альпин» представила специальную расцветку гоночной формы к этапу Формулы-1 в Бразилии.</description>
+                                <author>Дамир Медведев</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Фото</category><category domain="tags">Альпин</category><category domain="tags">Пьер Гасли</category><category domain="tags">Формула-1 Гран-при Бразилии</category><category domain="tags">Франко Колапинто</category>        <category domain="content_type">news</category>
+                                                <enclosure
+                url="https://img.championat.com/news/big/c/f/alpin-predstavila-specialnuyu-zhyoltuyu-formu-k-gran-pri-brazilii_17938096101181403361.jpg"
+                length="115382"
+                type="image/jpeg"
+                                source="Formula 1 via Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685644-rafael-kamara-vyskazalsya-o-debyute-v-formule-1-na-domashnem-interlagose.html</guid>
+                                            <title>Рафаэл Камара высказался о дебюте в Формуле-1 на домашнем «Интерлагосе»</title>
+                                            <link>https://www.championat.com/auto/news-6685644-rafael-kamara-vyskazalsya-o-debyute-v-formule-1-na-domashnem-interlagose.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 17:43:44 +0300</pubDate>
+                                            <description>Бразильский гонщик Рафаэл Камара поделился эмоциями перед дебютом в Формуле-1 на домашнем этапе в Бразилии.</description>
+                                <author>Дамир Медведев</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Хаас Ф-1</category><category domain="tags">Формула-1 Гран-при Бразилии</category><category domain="tags">Рафаэл Камара</category>        <category domain="content_type">news</category>
+                                                <enclosure
+                url="https://img.championat.com/news/big/i/a/rafael-kamara-vyskazalsya-o-debyute-v-formule-1-na-domashnem-interlagose_1793803422438715342.jpg"
+                length="108771"
+                type="image/jpeg"
+                                source="Clive Mason/Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685620-antonelli-o-smene-nomera-na-bolide-edinica-nikogda-ne-prinosila-mne-udachi.html</guid>
+                                            <title>Антонелли — о смене номера на болиде: единица никогда не приносила мне удачи</title>
+                                            <link>https://www.championat.com/auto/news-6685620-antonelli-o-smene-nomera-na-bolide-edinica-nikogda-ne-prinosila-mne-udachi.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 17:32:58 +0300</pubDate>
+                                            <description>Пилот «Мерседеса» Андреа Кими Антонелли намерен сохранить 12-й номер в следующем сезоне после того, как досрочно стал чемпионом мира.</description>
+                                <author>Дамир Медведев</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Мерседес</category><category domain="tags">Андреа Кими Антонелли</category>        <category domain="content_type">news</category>
+                                                <enclosure
+                url="https://img.championat.com/news/big/v/n/antonelli-o-smene-nomera-na-bolide-edinica-nikogda-ne-prinosila-mne-udachi_1793802775816192477.jpg"
+                length="111593"
+                type="image/jpeg"
+                                source="Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685554-lekler-o-borbe-s-hemiltonom-ne-dumayu-chto-etomu-stoit-udelyat-stolko-vnimaniya.html</guid>
+                                            <title>Леклер — о борьбе с Хэмилтоном: не думаю, что этому стоит уделять столько внимания</title>
+                                            <link>https://www.championat.com/auto/news-6685554-lekler-o-borbe-s-hemiltonom-ne-dumayu-chto-etomu-stoit-udelyat-stolko-vnimaniya.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 16:58:40 +0300</pubDate>
+                                            <description>Пилот «Феррари» Шарль Леклер считает, что столкновение интересов с напарником Льюисом Хэмилтоном на первом круге Гран-при Мексики не должно стать главной темой обсуждения внутри команды.</description>
+                                <author>Настасья Старкова</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Ред Булл</category><category domain="tags">Феррари</category><category domain="tags">Льюис Хэмилтон</category><category domain="tags">Макс Ферстаппен</category><category domain="tags">Шарль Леклер</category><category domain="tags">Формула-1 Гран-при Мексики</category>        <category domain="content_type">news</category>
+    <category domain="content_importance">breaking</category>                                            <enclosure
+                url="https://img.championat.com/news/big/o/a/lekler-o-borbe-s-hemiltonom-ne-dumayu-chto-etomu-stoit-udelyat-stolko-vnimaniya_179380071873823251.jpg"
+                length="109302"
+                type="image/jpeg"
+                                source="Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685508-ya-ego-ne-vinyu-brandl-podderzhal-reshenie-rassella-ne-vyhodit-k-presse-posle-gp-meksiki.html</guid>
+                                            <title>«Я его не виню». Брандл поддержал решение Расселла не выходить к прессе после ГП Мексики</title>
+                                            <link>https://www.championat.com/auto/news-6685508-ya-ego-ne-vinyu-brandl-podderzhal-reshenie-rassella-ne-vyhodit-k-presse-posle-gp-meksiki.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 16:38:19 +0300</pubDate>
+                                            <description>Бывший пилот Формулы-1 и эксперт Мартин Брандл вступился за гонщика «Мерседеса» Джорджа Расселла, который не пришёл на обязательное общение с журналистами после Гран-при Мексики.</description>
+                                <author>Настасья Старкова</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Мерседес</category><category domain="tags">Джордж Расселл</category><category domain="tags">Андреа Кими Антонелли</category><category domain="tags">Формула-1 Гран-при Мексики</category><category domain="tags">Мартин Брандл</category>        <category domain="content_type">news</category>
+    <category domain="content_importance">breaking</category>                                            <enclosure
+                url="https://img.championat.com/news/big/o/h/ya-ego-ne-vinyu-brandl-podderzhal-reshenie-rassella-ne-vyhodit-k-presse-posle-gp-meksiki_17937994971562613361.jpg"
+                length="86998"
+                type="image/jpeg"
+                                source="Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685464-pilot-ferrari-sharl-lekler-vpervye-stal-otcom.html</guid>
+                                            <title>Шарль Леклер впервые стал отцом. У гонщика «Феррари» родилась дочь</title>
+                                            <link>https://www.championat.com/auto/news-6685464-pilot-ferrari-sharl-lekler-vpervye-stal-otcom.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 15:27:51 +0300</pubDate>
+                                            <description>28-летний пилот «Феррари» Шарль Леклер и его жена Александра впервые стали родителями.</description>
+                                <author>Настасья Старкова</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Фото</category><category domain="tags">Феррари</category><category domain="tags">Шарль Леклер</category>        <category domain="content_type">news</category>
+    <category domain="content_importance">breaking</category>                                            <enclosure
+                url="https://img.championat.com/news/big/f/v/sharl-lekler-vpervye-stal-otcom-u-gonschika-ferrari-rodilas-doch_17937953681135888755.jpg"
+                length="137766"
+                type="image/jpeg"
+                                source="Clive Mason/Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/tennis/news-6685462-aleksandr-zverev-prinyal-uchastie-v-blic-oprose-nazvav-luchshih-atletov-v-raznyh-vidah-sporta.html</guid>
+                                            <title>Александр Зверев принял участие в блиц-опросе, назвав лучших атлетов в разных видах спорта</title>
+                                            <link>https://www.championat.com/tennis/news-6685462-aleksandr-zverev-prinyal-uchastie-v-blic-oprose-nazvav-luchshih-atletov-v-raznyh-vidah-sporta.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 15:24:20 +0300</pubDate>
+                                            <description>Двукратный чемпион турниров «Большого шлема», первая ракетка мира немецкий теннисист Александр Зверев принял участие в блиц-опросе, назвав лучших атлетов в разных видах спорта и ответив на некоторые личные вопросы.</description>
+                                <author>Екатерина Мищерикова</author>
+                                                        <category>Теннис</category>
+                                    <category domain="sections">ATP</category>
+                                <category>Футбол</category>
+                                    <category domain="sections">Германия</category>
+                                <category>Баскетбол</category>
+                                    <category domain="sections">НБА</category>
+                                <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Новак Джокович</category><category domain="tags">Australian Open</category><category domain="tags">Александр Зверев</category><category domain="tags">Михаэль Шумахер</category><category domain="tags">Майкл Джордан</category><category domain="tags">Тони Кроос</category>        <category domain="content_type">news</category>
+                                                <enclosure
+                url="https://img.championat.com/news/big/h/x/aleksandr-zverev-prinyal-uchastie-v-blic-oprose-nazvav-luchshih-atletov-v-raznyh-vidah-spo_1793795060743449553.jpg"
+                length="159255"
+                type="image/jpeg"
+                                source="Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685418-glava-aprili-raskritikoval-sopernikov-za-nezhelanie-ehat-na-gp-katara-motogp.html</guid>
+                                            <title>Глава «Априльи» раскритиковал соперников за нежелание ехать на ГП Катара MotoGP</title>
+                                            <link>https://www.championat.com/auto/news-6685418-glava-aprili-raskritikoval-sopernikov-za-nezhelanie-ehat-na-gp-katara-motogp.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 14:46:43 +0300</pubDate>
+                                            <description>Генеральный директор «Априльи» Массимо Ривола заявил, что участники чемпионата должны отправиться на Гран-при Катара, если организаторы подтвердят безопасность проведения этапа.</description>
+                                <author>Настасья Старкова</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Мотогонки</category>
+                                    <category domain="tags">MotoGP</category>        <category domain="content_type">news</category>
+                                                <enclosure
+                url="https://img.championat.com/news/big/s/k/glava-aprili-raskritikoval-sopernikov-za-nezhelanie-ehat-na-gp-katara-motogp_17937928021596003006.jpg"
+                length="138276"
+                type="image/jpeg"
+                                source="Mirco Lazzari gp/Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+<item >
+                                                            <guid>https://www.championat.com/auto/news-6685360-stella-norris-mog-by-s-zakrytymi-glazami-narisovat-zadnie-chasti-mashin-rassella-i-leklera.html</guid>
+                                            <title>Стелла: Норрис мог бы с закрытыми глазами нарисовать задние части машин Расселла и Леклера</title>
+                                            <link>https://www.championat.com/auto/news-6685360-stella-norris-mog-by-s-zakrytymi-glazami-narisovat-zadnie-chasti-mashin-rassella-i-leklera.html</link>
+                                                                <pubDate>Wed, 04 Nov 2026 13:55:14 +0300</pubDate>
+                                            <description>Руководитель «Макларена» Андреа Стелла подвёл итоги неудачного для команды Гран-при Мексики.</description>
+                                <author>Настасья Старкова</author>
+                                                        <category>Авто</category>
+                                    <category domain="sections">Формула-1</category>
+                                    <category domain="tags">Ред Булл</category><category domain="tags">Феррари</category><category domain="tags">Мерседес</category><category domain="tags">Макларен</category><category domain="tags">Шарль Леклер</category><category domain="tags">Ландо Норрис</category><category domain="tags">Джордж Расселл</category><category domain="tags">Оскар Пиастри</category><category domain="tags">Рейсинг Буллз</category><category domain="tags">Формула-1 Гран-при Мексики</category><category domain="tags">Андреа Стелла</category><category domain="tags">Арвид Линдблад</category>        <category domain="content_type">news</category>
+    <category domain="content_importance">breaking</category>                                            <enclosure
+                url="https://img.championat.com/news/big/f/t/stella-norris-mog-by-s-zakrytymi-glazami-narisovat-zadnie-chasti-mashin-rassella-i-leklera_1793789712414099110.jpg"
+                length="74262"
+                type="image/jpeg"
+                                source="Getty Images"
+                width="1350" height="900"
+            />
+                                                            </item>
+</channel>
+</rss>

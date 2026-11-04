@@ -1,0 +1,325 @@
+<title>Виджеты на экране ТВ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a reading column for the analysis, with two full-width TV frames (960×540 dp, scaled) as the evidence. */
+:root {
+  --bg: #0d0f13;
+  --panel: #161a21;
+  --line: #262c36;
+  --fg: #e9edf3;
+  --muted: #9aa3b2;
+  --accent: #ff4b3a;      /* F1 red, the one bold colour */
+  --sky: #6db3ff;         /* weather */
+  --gold: #ffc145;        /* holidays */
+  --ok: #57d18a;
+  --warn: #ffb547;
+  --display: "Onest", "Segoe UI", system-ui, sans-serif;
+  --body: "Onest", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 var(--body); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 40px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1 { font: 600 clamp(28px, 4vw, 40px)/1.15 var(--display); margin: 0 0 10px; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font: 600 24px/1.25 var(--display); margin: 56px 0 14px; text-wrap: balance; }
+h3 { font: 600 18px/1.3 var(--display); margin: 0 0 6px; }
+p { margin: 0 0 12px; max-width: 70ch; }
+.lead { color: var(--muted); font-size: 18px; max-width: 64ch; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 28px 0 14px; }
+.tab { font: 500 15px/1 var(--body); padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--fg); color: #0d0f13; border-color: var(--fg); }
+.tab:focus-visible, .toggle:focus-visible { outline: 2px solid var(--sky); outline-offset: 2px; }
+.toggle { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); cursor: pointer; margin-left: auto; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.caption { color: var(--muted); font-size: 14px; margin-top: 10px; max-width: 80ch; }
+.tvframe { position: relative; width: 100%; aspect-ratio: 16/9; max-width: 100%; border-radius: 14px; overflow: hidden; background: #000; box-shadow: 0 0 0 10px #050608, 0 30px 80px -30px rgba(0,0,0,.9); margin-top: 12px; }
+.tv { position: absolute; left: 0; top: 0; width: 960px; height: 540px; transform-origin: 0 0; overflow: hidden; font-family: var(--display); color: #fff; line-height: 1.2; }
+.wall { position: absolute; inset: 0; background: radial-gradient(ellipse 40% 55% at 37% 42%, #c4100d 0%, #6d0708 38%, #1d0306 70%, #0a0a14 100%); }
+.greet { position: absolute; left: 60px; top: 26px; font-size: 11px; letter-spacing: .26em; opacity: .85; }
+.clock { position: absolute; left: 56px; top: 38px; display: flex; align-items: flex-end; gap: 6px; }
+.clock .t { font-size: 52px; font-weight: 300; line-height: 1; letter-spacing: -0.02em; }
+.clock .div { width: 1px; height: 26px; background: rgba(255,255,255,.4); margin: 0 14px 6px; }
+.clock .d { font-size: 13px; letter-spacing: .18em; margin-bottom: 9px; }
+.pills { position: absolute; right: 56px; top: 46px; display: flex; gap: 8px; }
+.pill { height: 32px; padding: 0 14px; border-radius: 16px; border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.08); font-size: 12px; display: flex; align-items: center; gap: 6px; }
+.hero { position: absolute; left: 68px; top: 262px; font-size: 44px; font-weight: 500; }
+.dock { position: absolute; left: 66px; right: 66px; top: 330px; height: 118px; border-radius: 16px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 9px 12px; }
+.tile { border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; }
+.tile.f { outline: 3px solid rgba(255,255,255,.9); transform: scale(1.06); }
+.row2 { position: absolute; left: 78px; right: 78px; top: 478px; height: 70px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.row2 div { border-radius: 12px 12px 0 0; }
+/* the launcher's race panel (game_day turn) */
+.race { position: absolute; left: 60px; top: 150px; }
+.kick { display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: .14em; opacity: .9; }
+.kick i { width: 3px; height: 13px; display: block; }
+.head { font-size: 32px; font-weight: 400; margin-top: 6px; }
+.dots { display: flex; gap: 6px; margin-top: 12px; }
+.dots b { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.35); }
+.dots b.on { width: 18px; background: #fff; }
+/* the new panel: two equal cards, 412×176 dp, at the same height, mirrored about the screen's centre */
+.card2 { position: absolute; top: 112px; width: 412px; height: 176px; border-radius: 16px; background: rgba(0,0,0,.30);
+  border: 1px solid rgba(255,255,255,.13); padding: 12px 14px; display: grid;
+  grid-template-rows: 14px 34px 16px 48px 16px; row-gap: 5px; }
+.card2.l { left: 56px; } .card2.r { left: 492px; }
+.card2 .k { display: flex; align-items: center; gap: 9px; font-size: 11.5px; letter-spacing: .13em; white-space: nowrap; overflow: hidden; opacity: .92; }
+.card2 .k i { width: 3px; height: 12px; border-radius: 2px; flex: none; }
+.card2 .m { display: flex; align-items: center; gap: 10px; font-size: 25px; line-height: 34px; height: 34px; font-weight: 300; white-space: nowrap; overflow: hidden; }
+.card2 .m svg { flex: none; }
+.card2 .m b { font-weight: 300; font-size: 28px; line-height: 34px; }
+.card2 .m small { line-height: 34px; }
+.card2 .m small { font-size: 15px; font-weight: 500; opacity: .95; }
+.card2 .x { display: flex; gap: 7px; font-size: 10.5px; line-height: 16px; letter-spacing: .01em; white-space: nowrap; overflow: hidden; opacity: .9; }
+.card2 .x .done { opacity: .45; } .card2 .x .next { color: #ff6b5e; font-weight: 600; }
+.card2 .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.card2 .cols > div { border-radius: 10px; background: rgba(255,255,255,.06); padding: 5px 8px; display: grid; grid-template-rows: 13px 1fr; align-items: center; }
+.card2 .cols .lb { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; opacity: .75; white-space: nowrap; overflow: hidden; }
+.card2 .cols .vl { display: flex; align-items: center; gap: 4px; font-size: 14px; white-space: nowrap; }
+.card2 .cols .vl em { font-style: normal; font-size: 11px; opacity: .65; }
+.card2 .f { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; white-space: nowrap; overflow: hidden; }
+.card2 .f span { overflow: hidden; text-overflow: ellipsis; }
+.card2 .f b { font-weight: 600; flex: none; }
+/* annotations */
+.ann { position: absolute; border: 1.5px dashed rgba(109,179,255,.9); border-radius: 6px; background: rgba(109,179,255,.08); pointer-events: none; }
+.ann span { position: absolute; left: 6px; top: -18px; font: 500 11px/1 var(--mono); color: #9fd0ff; background: #0b1a2b; padding: 3px 5px; border-radius: 4px; white-space: nowrap; }
+.ann.red { border-color: rgba(255,120,110,.9); background: rgba(255,90,80,.08); }
+.ann.red span { color: #ffb2aa; background: #2b0d0b; }
+.hide-ann .ann { display: none; }
+/* icon gallery */
+.icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-top: 16px; }
+.ic { color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; min-width: 0; }
+.ic .n { font-size: 14px; }
+.ic .c { font: 400 11px/1.3 var(--mono); color: var(--muted); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; min-width: 0; }
+.card.pick { border-color: var(--ok); }
+.tag { display: inline-block; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 5px 8px; border-radius: 6px; margin-bottom: 10px; }
+.tag.g { background: rgba(87,209,138,.15); color: var(--ok); }
+.tag.w { background: rgba(255,181,71,.14); color: var(--warn); }
+.tag.r { background: rgba(255,75,58,.14); color: #ff8a7e; }
+ul { margin: 6px 0 0; padding-left: 20px; }
+li { margin: 4px 0; }
+.meas { overflow-x: auto; margin-top: 12px; }
+table { border-collapse: collapse; font-size: 14px; min-width: 560px; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.note { font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Clean Your TV RU · макет главного экрана</div>
+  <h1>Несколько виджетов сразу на экране телевизора</h1>
+  <p class="lead">Сравнение того, что умеет нынешний лаунчер, с вариантом, где погода, F1, новости и праздники видны одновременно. Экран нарисован в координатах самого лаунчера: 960×540 dp (Full HD телевизор), отступы и размеры взяты из его разметки <code>activity_main.xml</code>. Погода, время и новости в макете — примеры.</p>
+
+  <div class="bar" role="tablist" aria-label="Вариант экрана">
+    <button class="tab" role="tab" id="t-now" aria-selected="true" data-v="now">Сейчас (0.5.0)</button>
+    <button class="tab" role="tab" id="t-new" aria-selected="false" data-v="new">Новый вариант</button>
+    <label class="toggle"><input type="checkbox" id="ann" checked> Показать разметку</label>
+  </div>
+  <div class="tvframe" id="frame"><div class="tv" id="tv"></div></div>
+  <p class="caption" id="cap"></p>
+
+  <h2>Погодные иконки: видно, снегопадище или лёгкий мокрый снег</h2>
+  <p>Иконки минималистичные: однотонные линии одного цвета, без заливок. Тип погоды выбирается не по одному коду, а по количеству осадков за период: дождь в мм, снег в см, плюс ветер и облачность (Open-Meteo, по часам). Сила видна по числу и размеру капель и снежинок, а дождь со снегом рисуются вместе. Эти же рисунки пойдут в виджет на ТВ.</p>
+  <div class="icons" id="icons"></div>
+
+  <h2>Сколько места на экране</h2>
+  <div class="meas"><table>
+    <thead><tr><th>Зона</th><th>Где (dp)</th><th>Что там сейчас</th></tr></thead>
+    <tbody>
+      <tr><td>Шапка</td><td class="num">y 26–110</td><td>Приветствие, часы 52sp, дата; справа кнопки «Источники», Wi-Fi, «Настройки»</td></tr>
+      <tr><td>Под часами, слева</td><td class="num">x 60–480, y 140–280</td><td>Панель гонки: одна строка из game_day, по очереди</td></tr>
+      <tr><td>Середина, справа</td><td class="num">x 500–904, y 118–300</td><td>Пусто, видны обои</td></tr>
+      <tr><td>Название приложения</td><td class="num">y 262–315</td><td>Появляется над рядом, когда выбрано приложение</td></tr>
+      <tr><td>Ряд приложений и следующий ряд</td><td class="num">y 330–540</td><td>Панель приложений, ниже край второго ряда</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Свободно около 850×160 dp: это примерно треть экрана над рядом приложений. Места хватает и на прогноз с иконками, и на блок F1, и на строку праздников.</p>
+
+  <h2>Почему сейчас видна только одна строка</h2>
+  <p>Лаунчер Clean Your TV (автор Gathin) нарочно не ходит в интернет и показывает под часами только «панель гонки». Сторонние приложения могут дать ей строки через ключ <code>game_day</code>, но лаунчер берёт данные из одного приложения и показывает одну строку за раз: сверху короткая надпись, под ней «слово через N» или «Сейчас в эфире». Иконок, таблиц и свободного текста там нет, а остальное место лаунчер не отдаёт никому. Поэтому в 0.5.0 F1, погода и праздники сменяют друг друга по очереди.</p>
+
+  <h2>Варианты</h2>
+  <div class="grid2">
+    <div class="card">
+      <span class="tag w">Оставить как есть</span>
+      <h3>А. Официальный лаунчер</h3>
+      <ul>
+        <li>Одна строка под часами, по очереди</li>
+        <li>Подробности только по карточке «Widgets»: погода с иконками, F1, новости, праздники на весь экран</li>
+        <li>Ничего не переустанавливать, обновления лаунчера от автора приходят сами</li>
+      </ul>
+    </div>
+    <div class="card pick">
+      <span class="tag g">Рекомендую</span>
+      <h3>Б. Своя сборка лаунчера с панелью виджетов</h3>
+      <ul>
+        <li>Тот же лаунчер Gathin плюс одна добавка: панель справа и блок F1 слева, как на макете</li>
+        <li>Лаунчер по-прежнему без интернета: данные даёт надстройка «Виджеты» через провайдер, так же, как сейчас работает <code>game_day</code></li>
+        <li>Каждый виджет включается на телефоне отдельно, панель занимает только своё место</li>
+        <li>Один раз: на ТВ удалить старый лаунчер (Настройки → Приложения), затем «Настройка» в приложении поставит новый. Панель приложений и оформление вернутся с телефона, а вопрос про карточки ТВ задаст заново</li>
+        <li>Обновления лаунчера от автора нужно будет вливать в нашу сборку, это делается так же, как для приложения</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag r">Не советую</span>
+      <h3>В. Окно поверх экрана</h3>
+      <ul>
+        <li>Надстройка рисует виджеты поверх главного экрана</li>
+        <li>Нужно разрешение «поверх других окон», окно мешает пульту и остаётся над фильмами, если его не убрать вовремя</li>
+        <li>На части ТВ такое разрешение недоступно</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+// ---- weather icons: minimal line icons in one colour (currentColor), the same drawing the TV add-on uses
+// (WeatherIcon.java). 64×64, stroke 3. Strength shows as more and longer drops or more and bigger flakes.
+const CLOUD = 'M20 46 H46 A10 10 0 0 0 46 26 A14 14 0 0 0 20 23 A11.5 11.5 0 0 0 20 46 Z';
+const STROKE = 'fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"';
+let uid = 0;
+const L = {
+  sun: (cx, cy, r) => {
+    let rays = '';
+    for (let i = 0; i < 8; i++) {
+      const a = i * Math.PI / 4, c = Math.cos(a), s = Math.sin(a);
+      rays += `M${(cx + c * (r + 4)).toFixed(1)} ${(cy + s * (r + 4)).toFixed(1)} L${(cx + c * (r + 8)).toFixed(1)} ${(cy + s * (r + 8)).toFixed(1)} `;
+    }
+    return `<circle cx="${cx}" cy="${cy}" r="${r}" ${STROKE}/><path d="${rays}" ${STROKE}/>`;
+  },
+  moon: (cx, cy, r) => `<path d="M${cx + r * 0.3} ${cy - r} A${r} ${r} 0 1 0 ${cx + r} ${cy + r * 0.45} A${r * 0.78} ${r * 0.78} 0 0 1 ${cx + r * 0.3} ${cy - r} Z" ${STROKE}/>`,
+  cloud: (dx = 0, dy = 0, k = 1) => `<path d="${CLOUD}" transform="translate(${dx} ${dy}) scale(${k})" ${STROKE}/>`,
+  // something behind the cloud: hidden where the cloud (and a little around it) is
+  behind: (inner, dx = 0, dy = 0, k = 1) => {
+    const id = 'm' + (uid++);
+    return `<mask id="${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/>` +
+      `<path d="${CLOUD}" transform="translate(${dx} ${dy}) scale(${k})" fill="#000" stroke="#000" stroke-width="7"/></mask><g mask="url(#${id})">${inner}</g>`;
+  },
+  drop: (x, y, len) => `M${x} ${y} L${x - 2} ${y + len} `,
+  flake: (x, y, r) => [0, 60, 120].map(a => { const d = a * Math.PI / 180, c = Math.cos(d) * r, s = Math.sin(d) * r;
+    return `M${(x - c).toFixed(1)} ${(y - s).toFixed(1)} L${(x + c).toFixed(1)} ${(y + s).toFixed(1)} `; }).join(''),
+  path: (d, w = 3) => `<path d="${d}" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`,
+};
+// What falls from the cloud: [x, y, 'd' drop | 'f' flake | 'o' drizzle dot | 'h' hail], sized by `big`.
+function fall(items, big) {
+  let lines = '', dots = '';
+  for (const [x, y, k] of items) {
+    if (k === 'd') lines += L.drop(x, y, big ? 9 : 6);
+    else if (k === 'f') lines += L.flake(x, y + 3, big ? 4.2 : 3.2);
+    else if (k === 'o') dots += `<circle cx="${x}" cy="${y + 2}" r="1.8" fill="currentColor"/>`;
+    else if (k === 'h') dots += `<circle cx="${x}" cy="${y + 3}" r="2.6" fill="none" stroke="currentColor" stroke-width="2.4"/>`;
+  }
+  return L.path(lines, big ? 3 : 2.6) + dots;
+}
+const BOLT = 'M34 44 L28 53 H35 L31 62';
+// kind: clear, partly, cloudy, overcast, fog, drizzle, rain1..3, sleet1..2, snow1..3, blizzard, thunder, hail
+function icon(kind, day = true, size = 64) {
+  const sky = (cx, cy, r) => day ? L.sun(cx, cy, r) : L.moon(cx, cy, r + 1);
+  let g = '';
+  switch (kind) {
+    case 'clear': g = day ? L.sun(32, 32, 10) : L.moon(30, 32, 14); break;
+    case 'partly': g = L.behind(sky(26, 24, 9), 10, 12, 0.8) + L.cloud(10, 12, 0.8); break;
+    case 'cloudy': g = L.behind(sky(40, 18, 7), -4, 4) + L.cloud(-4, 4); break;
+    case 'overcast': g = L.behind(L.cloud(10, -6, 0.8), -4, 8) + L.cloud(-4, 8); break;
+    case 'fog': g = L.cloud(0, -4) + L.path('M14 52 H50 M18 58 H46'); break;
+    case 'drizzle': g = L.cloud(0, -2) + fall([[22, 50, 'o'], [32, 54, 'o'], [42, 50, 'o']]); break;
+    case 'rain1': g = L.cloud(0, -2) + fall([[26, 50, 'd'], [38, 50, 'd']]); break;
+    case 'rain2': g = L.cloud(0, -2) + fall([[20, 50, 'd'], [32, 50, 'd'], [44, 50, 'd']]); break;
+    case 'rain3': g = L.cloud(0, -4) + fall([[18, 48, 'd'], [28, 48, 'd'], [38, 48, 'd'], [48, 48, 'd']], true); break;
+    case 'sleet1': g = L.cloud(0, -2) + fall([[22, 50, 'd'], [33, 50, 'f'], [44, 50, 'd']]); break;
+    case 'sleet2': g = L.cloud(0, -4) + fall([[17, 48, 'f'], [27, 48, 'd'], [37, 48, 'f'], [47, 48, 'd']], true); break;
+    case 'snow1': g = L.cloud(0, -2) + fall([[26, 50, 'f'], [38, 50, 'f']]); break;
+    case 'snow2': g = L.cloud(0, -2) + fall([[20, 50, 'f'], [32, 50, 'f'], [44, 50, 'f']]); break;
+    case 'snow3': g = L.cloud(0, -6) + fall([[17, 45, 'f'], [29, 45, 'f'], [41, 45, 'f'], [23, 54, 'f'], [35, 54, 'f'], [47, 54, 'f']], true); break;
+    case 'blizzard': g = L.cloud(0, -6) + fall([[20, 44, 'f'], [32, 44, 'f'], [44, 44, 'f']]) + L.path('M10 55 H40 A3 3 0 1 0 37 52 M14 60 H46 A3 3 0 1 1 43 63', 2.6); break;
+    case 'thunder': g = L.cloud(0, -4) + L.path(BOLT); break;
+    case 'hail': g = L.cloud(0, -4) + L.path(BOLT) + fall([[20, 48, 'h'], [44, 48, 'h'], [44, 56, 'h']]); break;
+  }
+  return `<svg viewBox="0 0 64 64" width="${size}" height="${size}" aria-hidden="true">${g}</svg>`;
+}
+
+const ICONS = [
+  ['clear', 'Ясно', 'облачность < 20%'], ['partly', 'Малооблачно', '20–60%'], ['cloudy', 'Облачно с прояснениями', '60–85%'],
+  ['overcast', 'Пасмурно', '> 85%'], ['fog', 'Туман', 'WMO 45, 48'], ['drizzle', 'Морось', '< 0,5 мм/ч'],
+  ['rain1', 'Небольшой дождь', '< 2 мм за период'], ['rain2', 'Дождь', '2–10 мм'], ['rain3', 'Ливень', '> 10 мм'],
+  ['sleet1', 'Мокрый снег с дождём', 'дождь и снег, мало'], ['sleet2', 'Сильный мокрый снег', 'дождь и снег, много'],
+  ['snow1', 'Небольшой снег', '< 1 см'], ['snow2', 'Снег', '1–5 см'], ['snow3', 'Снегопад', '> 5 см'],
+  ['blizzard', 'Метель', 'снег и ветер > 10 м/с'], ['thunder', 'Гроза', 'WMO 95'], ['hail', 'Гроза с градом', 'WMO 96, 99'],
+];
+document.getElementById('icons').innerHTML = ICONS.map(([k, n, c]) =>
+  `<div class="ic">${icon(k, true, 64)}<div class="n">${n}</div><div class="c">${c}</div></div>`).join('');
+
+// ---- the two screens
+const tiles = [['Кинопоиск', '#ff6a00', '#fff'], ['YouTube', '#f2f2f2', '#d60000'], ['Okko', '#2a1f6e', '#fff'], ['Wink', '#6d2bd9', '#fff']];
+const common = `
+  <div class="wall"></div>
+  <div class="greet">ДОБРЫЙ ВЕЧЕР</div>
+  <div class="clock"><div class="t">20:41</div><div class="div"></div><div class="d">СРЕДА, 4 НОЯБРЯ</div></div>
+  <div class="pills"><div class="pill">⇥ Источники</div><div class="pill">◠ Дом 5G</div><div class="pill">⚙ Настройки</div></div>
+  <div class="dock">${tiles.map(([n, bg, fg], i) => `<div class="tile${i === 0 ? ' f' : ''}" style="background:${bg};color:${fg}">${n}</div>`).join('')}</div>
+  <div class="row2"><div style="background:#e8742a"></div><div style="background:#3b46e0"></div><div style="background:#e9eef5"></div><div style="background:#b0122a"></div></div>`;
+
+const NOW = common + `
+  <div class="race">
+    <div class="kick"><i style="background:#E10600"></i>ЭТАП 20 · ГРАН-ПРИ САН-ПАУЛУ</div>
+    <div class="head">Квалификация через 2 ч 14 мин</div>
+    <div class="dots"><b class="on"></b><b></b><b></b></div>
+  </div>
+  <div class="hero">Кинопоиск</div>
+  <div class="ann" style="left:56px;top:140px;width:424px;height:100px"><span>одна строка, по очереди: F1 → погода → праздники</span></div>
+  <div class="ann red" style="left:496px;top:116px;width:412px;height:150px"><span>пусто: ~410×150 dp</span></div>
+  <div class="ann edge"><span>верх ряда приложений, y 330</span></div>`;
+
+const NEW = common + `
+  <div class="card2 l">
+    <div class="k"><i style="background:#E10600"></i>ЭТАП 20 · ГРАН-ПРИ САН-ПАУЛУ</div>
+    <div class="m">Квалификация через 2 ч 14 мин</div>
+    <div class="x"><span class="done">П1 ПТ 18:30</span><span class="done">П2 ПТ 22:00</span><span class="done">П3 СБ 17:30</span><span class="next">КВАЛ. СБ 21:00</span><span>ГОНКА ВС 20:00</span></div>
+    <div class="cols">
+      <div><div class="lb">1 · Антонелли</div><div class="vl">380 <em>очк.</em></div></div>
+      <div><div class="lb">2 · Ферстаппен</div><div class="vl">261 <em>очк.</em></div></div>
+      <div><div class="lb">3 · Хэмилтон</div><div class="vl">259 <em>очк.</em></div></div>
+    </div>
+    <div class="f"><b style="color:#ff6b5e">F1 · 20:03</b><span>Баттон вспоминает, как в 2009-м в Бразилии выиграл титул</span></div>
+  </div>
+  <div class="card2 r">
+    <div class="k"><i style="background:#6db3ff"></i>МОСКВА · СЕЙЧАС</div>
+    <div class="m">${icon('snow3', false, 32)}<b>−3°</b><small>Снегопад</small></div>
+    <div class="x"><span>Ощущается −9°</span><span>ветер 7 м/с</span><span>закат 16:41</span></div>
+    <div class="cols">
+      <div><div class="lb">Чт, 5 ноя</div><div class="vl">${icon('sleet1', true, 20)}+1° ${icon('snow1', false, 20)}<em>−2°</em></div></div>
+      <div><div class="lb">Пт, 6 ноя</div><div class="vl">${icon('cloudy', true, 20)}−1° ${icon('clear', false, 20)}<em>−7°</em></div></div>
+      <div><div class="lb">Сб, 7 ноя</div><div class="vl">${icon('partly', true, 20)}−4° ${icon('blizzard', false, 20)}<em>−8°</em></div></div>
+    </div>
+    <div class="f"><b style="color:#ffc145">Сегодня</b><span>День народного единства · Новый год через 57 дн.</span></div>
+  </div>
+  <div class="hero" style="opacity:.0">Кинопоиск</div>
+  <div class="ann" style="left:52px;top:108px;width:420px;height:184px"><span>F1 · 412×176 dp</span></div>
+  <div class="ann" style="left:488px;top:108px;width:420px;height:184px"><span>погода и праздники · 412×176 dp</span></div>
+  <div class="ann" style="left:478px;top:96px;width:4px;height:210px;border-style:solid;padding:0"><span style="left:-30px;top:-16px">центр</span></div>
+  <div class="ann edge"><span>верх ряда приложений, y 330 · обе карточки до y 288</span></div>`;
+
+const CAP = {
+  now: 'Сейчас: лаунчер берёт строки из одного приложения (game_day) и показывает одну за раз. F1, погода и праздники сменяются каждые 20 секунд, точки внизу показывают очередь. Правая половина над рядом приложений пустая.',
+  new: 'Новый вариант: все включённые виджеты видны сразу. Слева F1: этап, отсчёт, сессии, тройка лидеров, свежая новость из русской ленты. Справа погода сейчас и на 3 дня (день и ночь) с иконками, внизу праздник. Две одинаковые карточки 412×176 dp на одной высоте, зеркально относительно центра экрана, с одинаковыми рядами внутри: заголовок, главная строка, подробности, три колонки и нижняя строка. Обе заканчиваются на 288 dp, ряд приложений начинается с 330 dp (красная линия). Название выбранного приложения прячется, пока карточки на экране.',
+};
+
+const tv = document.getElementById('tv'), frame = document.getElementById('frame');
+function show(v) {
+  tv.innerHTML = v === 'new' ? NEW : NOW;
+  document.getElementById('cap').textContent = CAP[v];
+  document.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', String(t.dataset.v === v)));
+}
+function fit() { tv.style.transform = `scale(${frame.clientWidth / 960})`; }
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => show(t.dataset.v)));
+document.getElementById('ann').addEventListener('change', e => frame.classList.toggle('hide-ann', !e.target.checked));
+new ResizeObserver(fit).observe(frame);
+show(location.hash === '#new' ? 'new' : 'now');
+fit();
+</script>

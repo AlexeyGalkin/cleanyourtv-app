@@ -937,13 +937,22 @@ private fun ColumnScope.ForkEditor(s: MakeItYoursState, onIntent: (MakeItYoursIn
             }
         }
     }
+    if (s.fork.f1) {
+        ListGroup(Modifier.padding(top = 12.dp)) {
+            SwitchRow(stringResource(R.string.fork_widgets_news), s.fork.news, { onIntent(MakeItYoursIntent.ForkNews(it)) },
+                subtitle = stringResource(R.string.fork_widgets_news_sub))
+            ListDivider()
+            SwitchRow(stringResource(R.string.fork_widgets_no_spoilers), s.fork.noSpoilers, { onIntent(MakeItYoursIntent.ForkNoSpoilers(it)) },
+                subtitle = stringResource(R.string.fork_widgets_no_spoilers_sub))
+        }
+    }
     if (s.fork.holidays) {
         ListGroup(Modifier.padding(top = 12.dp)) {
             SwitchRow(stringResource(R.string.fork_widgets_fun), s.fork.funHolidays, { onIntent(MakeItYoursIntent.ForkFun(it)) },
                 subtitle = stringResource(R.string.fork_widgets_fun_sub))
         }
     }
-    Hint(stringResource(R.string.fork_widgets_hint), top = 12.dp)
+    Hint(stringResource(if (s.forkPanel) R.string.fork_widgets_hint_panel else R.string.fork_widgets_hint), top = 12.dp)
     if (s.fork.any && !s.forkInstalled) Hint(stringResource(R.string.fork_widgets_install_hint))
 }
 

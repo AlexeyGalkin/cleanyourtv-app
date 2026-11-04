@@ -24,6 +24,11 @@
     <string name="fork_widgets_city_none">No city by that name.</string>
     <string name="fork_widgets_fun">Light-hearted days too</string>
     <string name="fork_widgets_fun_sub">Pizza Day, Programmers\' Day and the like on ordinary days</string>
-    <string name="fork_widgets_hint">The lines take turns under the clock, 20 seconds each. They come from the Widgets add-on, which “Put it on the TV” puts there; its card opens the full F1, weather and holiday screens.</string>
+    <string name="fork_widgets_hint">The lines take turns under the clock, 20 seconds each (the Clean Your TV RU home screen shows them all at once as two cards). They come from the Widgets add-on, which “Put it on the TV” puts there; its card opens the full F1, weather and holiday screens.</string>
     <string name="fork_widgets_install_hint">“Put it on the TV” also puts the Widgets add-on on the TV. The TV may ask once whether to show its card.</string>
+    <string name="fork_widgets_news">F1 news</string>
+    <string name="fork_widgets_news_sub">The newest headline from f1news.ru and Championat (in Russian)</string>
+    <string name="fork_widgets_no_spoilers">No spoilers</string>
+    <string name="fork_widgets_no_spoilers_sub">No standings, results or headlines on the home screen; the F1 card asks first</string>
+    <string name="fork_widgets_hint_panel">This TV has the Clean Your TV RU home screen: every widget that is on shows at once, F1 on the left, the weather and holidays on the right, as two equal cards. Their full screens open from the Widgets card.</string>
 </resources>

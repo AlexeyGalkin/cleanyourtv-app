@@ -1,0 +1,390 @@
+diff --git a/launcher/app/build.gradle b/launcher/app/build.gradle
+index 6bec3ba8..98474dbc 100644
+--- a/launcher/app/build.gradle
++++ b/launcher/app/build.gradle
+@@ -13,8 +13,8 @@ android {
+         applicationId providers.gradleProperty('launcherApplicationId').getOrElse('com.gathin.tvhome')
+         minSdk 26
+         targetSdk 34
+-        versionCode 12
+-        versionName '3.3'
++        versionCode 1201
++        versionName '3.3-ru.1'
+     }
+ 
+     buildTypes {
+diff --git a/launcher/app/src/main/java/com/gathin/tvhome/Config.java b/launcher/app/src/main/java/com/gathin/tvhome/Config.java
+index feb5a816..a963c1d0 100644
+--- a/launcher/app/src/main/java/com/gathin/tvhome/Config.java
++++ b/launcher/app/src/main/java/com/gathin/tvhome/Config.java
+@@ -154,6 +154,8 @@ final class Config {
+     final boolean showStats;
+     /** game_day: the package of an add-on that publishes each team's next game (GameDay); empty = off. */
+     final String gameDay;
++    /** widget_panel (Clean Your TV RU): the package whose pictures fill Home's two widget places (WidgetPanel). */
++    final String widgetPanel;
+     /** App library pill after the last Home row (config.xml app_library). */
+     final boolean appLibrary;
+     /** OK directly toggles Home membership in the library (app_library_selection). */
+@@ -284,7 +286,7 @@ final class Config {
+                    String sourcePanelExtra, boolean coocaaSources, String inputAction, List<String> inputSources,
+                    String inputUriScheme, int columns, int rowsBelowDock, boolean animations, boolean advancedEffects,
+                    boolean shamsiDate, String greetingName, boolean moduleCards, boolean reducedMotion, boolean bootToLiveTv, boolean openOnStartChoice, boolean dockTitle, boolean dockRow, boolean topMenu, boolean launcherSettingsButton, boolean reorderButton, boolean showNetworkPill, boolean showInputsPill, boolean iconOnlyButtons, boolean iconOnlyInputs, boolean libraryButton, boolean showLibraryPill, int wifiLabelWidth, boolean alwaysShowNames, boolean wallpaperTrueColor, boolean focusOvershoot, String vpnApp,
+-                   boolean showHomeSettingsShortcut, boolean showStats, String gameDay, boolean appLibrary, boolean appLibrarySelection, boolean libraryOkOpens, boolean uniformTiles, int backgroundColor, int skyIntensity,
++                   boolean showHomeSettingsShortcut, boolean showStats, String gameDay, String widgetPanel, boolean appLibrary, boolean appLibrarySelection, boolean libraryOkOpens, boolean uniformTiles, int backgroundColor, int skyIntensity,
+                    int[] settingsKeycodes, boolean settingsKeyPanel, boolean restoreKeyServices, boolean wallpaperEnabled, File wallpaper, List<File> wallpapers,
+                    int wallpaperRotationMinutes, int wallpaperDim, int dockOpacity, String wallpaperOrder, boolean overlayApplied,
+                    Festival festival, int[] inputKeycodes, List<String> appKeys, String stockHomeRedirect,
+@@ -354,6 +356,7 @@ final class Config {
+         this.showHomeSettingsShortcut = showHomeSettingsShortcut;
+         this.showStats = showStats;
+         this.gameDay = gameDay;
++        this.widgetPanel = widgetPanel;
+         this.appLibrary = appLibrary;
+         this.appLibrarySelection = appLibrarySelection;
+         this.libraryOkOpens = libraryOkOpens;
+@@ -487,6 +490,7 @@ final class Config {
+         boolean homeSettings = res.getBoolean(R.bool.show_home_settings_shortcut);
+         boolean showStats = res.getBoolean(R.bool.show_stats);
+         String gameDay = res.getString(R.string.game_day).trim();
++        String widgetPanel = res.getString(R.string.widget_panel).trim();
+         boolean library = res.getBoolean(R.bool.app_library);
+         boolean librarySelection = res.getBoolean(R.bool.app_library_selection);
+         boolean libraryOkOpens = res.getBoolean(R.bool.library_ok_opens);
+@@ -601,6 +605,7 @@ final class Config {
+             homeSettings = bool(json, "show_home_settings_shortcut", homeSettings);
+             showStats = bool(json, "show_stats", showStats);
+             gameDay = string(json, "game_day", gameDay);
++            widgetPanel = string(json, "widget_panel", widgetPanel);
+             library = bool(json, "app_library", library);
+             librarySelection = bool(json, "app_library_selection", librarySelection);
+             libraryOkOpens = bool(json, "library_ok_opens", libraryOkOpens);
+@@ -706,7 +711,7 @@ final class Config {
+                 Math.max(0, rowsBelow), animations, advancedEffects, shamsi, greetingName, moduleCards, reducedMotion, bootToLiveTv,
+                 openOnStartChoice, dockTitle, dockRow, topMenu, launcherSettingsButton, reorderButton, showNetworkPill, showInputsPill,
+                 iconOnlyButtons, iconOnlyInputs, libraryButton, showLibraryPill, wifiLabelWidth, alwaysShowNames, wallpaperTrueColor, focusOvershoot,
+-                vpn, homeSettings, showStats, gameDay, library, librarySelection, libraryOkOpens, uniformTiles, background,
++                vpn, homeSettings, showStats, gameDay, widgetPanel, library, librarySelection, libraryOkOpens, uniformTiles, background,
+                 Math.max(0, Math.min(100, skyIntensity)), settingsKeycodes, settingsKeyPanel, restoreKeyServices, wallpaperEnabled, wallpaper,
+                 wallpapers, rotationMinutes, wallpaperDim, dockOpacity, wallpaperOrder, applied, festival, inputKeycodes, appKeys, stockHomeRedirect,
+                 json == null ? Collections.emptyList() : raceCalendar(json), cinematic, ambientGlow, appGlow, fadeRows,
+diff --git a/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java b/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
+index 4e3b8bd0..39155129 100644
+--- a/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
++++ b/launcher/app/src/main/java/com/gathin/tvhome/MainActivity.java
+@@ -201,6 +201,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+     private TextView raceKicker, raceHeadline, raceSessions;
+     /** game_day: each team's next game from an add-on, rotating in the race panel; null when the key is off. */
+     private GameDay gameDay;
++    /** widget_panel (Clean Your TV RU): an add-on's pictures in Home's two widget places; null when the key is off. */
++    private WidgetPanel widgetPanel;
++    private android.widget.ImageView panelLeft, panelRight;
++    private boolean dockTitleOn;
+     private View raceBar;
+     private LinearLayout racePager;
+     private long rotationStart;
+@@ -437,6 +441,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         public void run() {
+             updateGreeting();
+             updatePanel();
++            // widget_panel: the add-on redraws its countdowns for the new minute when asked.
++            if (widgetPanel != null) widgetPanel.read();
+             // The pill follows the network callbacks and each return to Home; only the festive light follows the
+             // signal level, so only it needs this minute's binder calls (about 7 ms on the UI thread).
+             if (festive) updateWifiLabel();
+@@ -536,6 +542,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         // dock_title false: the name above the dock (and the cinematic lines under it) never shows; the glow
+         // still follows the dock.
+         if (!cfg.dockTitle) hero.setVisibility(View.GONE);
++        dockTitleOn = cfg.dockTitle;
+         greeting = findViewById(R.id.greeting);
+         clockBlock = findViewById(R.id.leftBlock);
+         clockRefresh = new ClockRefresh(clockBlock);
+@@ -578,6 +585,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         raceBar = findViewById(R.id.raceBar);
+         racePager = findViewById(R.id.racePager);
+         gameDay = GameDay.create(this, cfg.gameDay, handler, this::updatePanel);
++        panelLeft = findViewById(R.id.panelLeft);
++        panelRight = findViewById(R.id.panelRight);
++        widgetPanel = WidgetPanel.create(this, cfg.widgetPanel.isEmpty() ? cfg.gameDay : cfg.widgetPanel, handler, this::showWidgetPanel);
+         // The rotation runs on the clock that never jumps: setting the TV's time must not stall or stretch a turn.
+         rotationStart = SystemClock.elapsedRealtime();
+         showStats = cfg.showStats;
+@@ -1130,6 +1140,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         }
+         if (showStats) startStats();
+         if (gameDay != null) gameDay.start();
++        if (widgetPanel != null) widgetPanel.start();
+         sky.update();
+         wallpaperPlayer.start();
+         handler.postDelayed(minuteTick, MINUTE_MS);
+@@ -1315,6 +1326,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         startPending = null;   // leaving Home before the network came back: the boot's app stays closed
+         stopStats();
+         if (gameDay != null) gameDay.stop();
++        if (widgetPanel != null) widgetPanel.stop();
+         handler.removeCallbacks(turnTick);
+         if (lamp != null) lamp.stop();
+         cancelPendingFocusScroll();
+@@ -1375,6 +1387,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         RemoteKeys.release(this);
+         cancelHoldOk();
+         if (gameDay != null) gameDay.shutdown();
++        if (widgetPanel != null) widgetPanel.shutdown();
+         unregisterReceiver(packageReceiver);
+         if (openOnStartOnWake) unregisterReceiver(wakeReceiver);
+         wallpaperPlayer.close();
+@@ -2756,6 +2769,26 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+         if (lunar) lunarDate.setText(Lunar.today(getResources(), lunarOffset));
+     }
+ 
++    // ---- widget_panel (Clean Your TV RU) ------------------------------------------------------------
++
++    /** While the add-on's cards show, they take the race panel's place (its game_day lines would repeat them). */
++    private boolean panelOwnsLeft() {
++        return widgetPanel != null && (widgetPanel.left() != null || widgetPanel.right() != null);
++    }
++
++    /** New pictures from the add-on: show them; while any shows, the focused app's name above the dock stays hidden. */
++    private void showWidgetPanel() {
++        if (widgetPanel == null) return;
++        android.graphics.Bitmap l = widgetPanel.left(), r = widgetPanel.right();
++        panelLeft.setImageBitmap(l);
++        panelLeft.setVisibility(l == null ? View.GONE : View.VISIBLE);
++        panelRight.setImageBitmap(r);
++        panelRight.setVisibility(r == null ? View.GONE : View.VISIBLE);
++        if (l != null || r != null) racePanel.setVisibility(View.GONE);
++        else updatePanel();
++        if (dockTitleOn) hero.setVisibility(l != null || r != null ? View.INVISIBLE : View.VISIBLE);
++    }
++
+     // ---- race-weekend panel (a theme's race_calendar) -----------------------------------------------
+ 
+     private static final int RACE_RED = 0xFFFF3B2F;
+@@ -2814,7 +2847,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+             }
+             // No session times for a game: the line takes no room, so the dots sit under the countdown.
+             raceSessions.setVisibility(View.GONE);
+-            racePanel.setVisibility(View.VISIBLE);
++            racePanel.setVisibility(panelOwnsLeft() ? View.GONE : View.VISIBLE);
+         }
+         showPager(turns.size(), on);
+         if (turns.size() > 1 && !stopped) handler.postDelayed(turnTick, GameDay.delayToNextTurn(since, seconds));
+@@ -2887,7 +2920,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
+             row.setSpan(new android.text.style.ForegroundColorSpan(color), start, row.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+         }
+         raceSessions.setText(row);
+-        racePanel.setVisibility(View.VISIBLE);
++        racePanel.setVisibility(panelOwnsLeft() ? View.GONE : View.VISIBLE);
+     }
+ 
+     private void refreshPillsAfterNextDraw() {
+diff --git a/launcher/app/src/main/java/com/gathin/tvhome/WidgetPanel.java b/launcher/app/src/main/java/com/gathin/tvhome/WidgetPanel.java
+new file mode 100644
+index 00000000..48d513c7
+--- /dev/null
++++ b/launcher/app/src/main/java/com/gathin/tvhome/WidgetPanel.java
+@@ -0,0 +1,154 @@
++package com.gathin.tvhome;
++
++import android.content.ContentResolver;
++import android.content.Context;
++import android.content.pm.ApplicationInfo;
++import android.content.pm.PackageManager;
++import android.content.pm.ProviderInfo;
++import android.database.ContentObserver;
++import android.database.Cursor;
++import android.graphics.Bitmap;
++import android.graphics.BitmapFactory;
++import android.net.Uri;
++import android.os.Handler;
++
++import java.io.InputStream;
++import java.util.concurrent.ExecutorService;
++import java.util.concurrent.Executors;
++import java.util.concurrent.RejectedExecutionException;
++
++/**
++ * widget_panel (Clean Your TV RU): pictures an add-on draws for two places of Home, under the clock on the left and
++ * the empty middle on the right (two equal 412×176 dp cards), shown as they are. The launcher only reads what the add-on publishes and stays
++ * offline; the add-on draws the weather, F1 and the like into images at this screen's density.
++ * <p>
++ * Contract: the add-on names a read-only provider in {@code <meta-data android:name="com.gathin.tvhome.panel"
++ * android:value="<authority>">} on its application; {@code content://<authority>/panel} answers rows of
++ * {@code slot} ("left" or "right"), {@code uri} (a PNG of that provider) and {@code revision} (changes when the
++ * picture does). An empty cursor hides both. The owner turns it on by naming the package in widget_panel.
++ */
++final class WidgetPanel {
++    static final String META = "com.gathin.tvhome.panel";
++    private static final String[] COLUMNS = {"slot", "uri", "revision"};
++    /** A picture bigger than this is not shown (a 1080p screen's place is far smaller). */
++    private static final int MAX_BYTES = 4 * 1024 * 1024;
++
++    private final Context ctx;
++    private final String authority;
++    private final Uri uri;
++    private final Handler main;
++    private final Runnable onChange;
++    private final ExecutorService io = Executors.newSingleThreadExecutor();
++    private final ContentObserver observer;
++    private boolean watching;
++    private Bitmap left, right;
++    private long leftRev = -1, rightRev = -1;
++
++    private WidgetPanel(Context ctx, String authority, Handler main, Runnable onChange) {
++        this.ctx = ctx;
++        this.authority = authority;
++        this.uri = new Uri.Builder().scheme(ContentResolver.SCHEME_CONTENT).authority(authority).appendPath("panel").build();
++        this.main = main;
++        this.onChange = onChange;
++        observer = new ContentObserver(main) {
++            @Override
++            public void onChange(boolean selfChange) {
++                read();
++            }
++        };
++    }
++
++    /** Null when the key is empty, the package is not installed, or it names no provider of its own. */
++    static WidgetPanel create(Context ctx, String pkg, Handler main, Runnable onChange) {
++        if (pkg == null || pkg.trim().isEmpty()) return null;
++        try {
++            PackageManager pm = ctx.getPackageManager();
++            ApplicationInfo info = pm.getApplicationInfo(pkg.trim(), PackageManager.GET_META_DATA);
++            String authority = info.metaData == null ? null : info.metaData.getString(META);
++            if (authority == null || authority.trim().isEmpty()) return null;
++            ProviderInfo provider = pm.resolveContentProvider(authority.trim(), 0);
++            if (provider == null || !pkg.trim().equals(provider.packageName)) return null;
++            return new WidgetPanel(ctx, authority.trim(), main, onChange);
++        } catch (PackageManager.NameNotFoundException e) {
++            return null;
++        }
++    }
++
++    /** Home is on screen: read now and watch for changes. */
++    void start() {
++        if (!watching) {
++            try {
++                ctx.getContentResolver().registerContentObserver(uri, false, observer);
++                watching = true;
++            } catch (SecurityException e) {
++                // The provider went away; the panel keeps what it had.
++            }
++        }
++        read();
++    }
++
++    void stop() {
++        if (watching) ctx.getContentResolver().unregisterContentObserver(observer);
++        watching = false;
++    }
++
++    void shutdown() {
++        stop();
++        io.shutdownNow();
++    }
++
++    /** One query and the changed pictures off the main thread, then onChange on the main thread. */
++    void read() {
++        try {
++            io.execute(() -> {
++                String leftUri = null, rightUri = null;
++                long lr = -1, rr = -1;
++                try (Cursor c = ctx.getContentResolver().query(uri, COLUMNS, null, null, null)) {
++                    while (c != null && c.moveToNext()) {
++                        String slot = c.getString(0);
++                        if ("left".equals(slot)) { leftUri = c.getString(1); lr = c.getLong(2); }
++                        if ("right".equals(slot)) { rightUri = c.getString(1); rr = c.getLong(2); }
++                    }
++                } catch (RuntimeException gone) {
++                    return;   // uninstalled or crashed mid-query: keep what is on screen
++                }
++                Bitmap l = leftUri == null ? null : (lr == leftRev && left != null ? left : load(leftUri));
++                Bitmap r = rightUri == null ? null : (rr == rightRev && right != null ? right : load(rightUri));
++                final long flr = lr, frr = rr;
++                main.post(() -> {
++                    left = l;
++                    right = r;
++                    leftRev = l == null ? -1 : flr;
++                    rightRev = r == null ? -1 : frr;
++                    onChange.run();
++                });
++            });
++        } catch (RejectedExecutionException shutDown) {
++            // Home is being destroyed.
++        }
++    }
++
++    /** A picture of the add-on's own provider only, decoded at its size. */
++    private Bitmap load(String s) {
++        Uri u = Uri.parse(s);
++        if (!ContentResolver.SCHEME_CONTENT.equals(u.getScheme()) || !authority.equals(u.getAuthority())) return null;
++        try (InputStream in = ctx.getContentResolver().openInputStream(u)) {
++            if (in == null) return null;
++            byte[] bytes = new byte[MAX_BYTES + 1];
++            int n = 0, r;
++            while (n <= MAX_BYTES && (r = in.read(bytes, n, bytes.length - n)) > 0) n += r;
++            if (n > MAX_BYTES) return null;
++            return BitmapFactory.decodeByteArray(bytes, 0, n);
++        } catch (Exception e) {
++            return null;
++        }
++    }
++
++    Bitmap left() {
++        return left;
++    }
++
++    Bitmap right() {
++        return right;
++    }
++}
+diff --git a/launcher/app/src/main/res/layout/activity_main.xml b/launcher/app/src/main/res/layout/activity_main.xml
+index 70c6de30..c52777e8 100644
+--- a/launcher/app/src/main/res/layout/activity_main.xml
++++ b/launcher/app/src/main/res/layout/activity_main.xml
+@@ -106,6 +106,30 @@
+ 
+     <!-- Cinematic top shelf: darkens the edge behind the shelf and the lower half, so the text and the
+          dock stay readable over the artwork. -->
++    <!-- Clean Your TV RU: widget_panel's pictures (WidgetPanel), the left place under the clock and the right one in
++         the middle; both end well above the dock. -->
++    <ImageView
++        android:id="@+id/panelLeft"
++        android:layout_width="412dp"
++        android:layout_height="176dp"
++        android:layout_gravity="top|left"
++        android:layout_marginStart="56dp"
++        android:layout_marginTop="112dp"
++        android:scaleType="fitStart"
++        android:visibility="gone"
++        android:importantForAccessibility="no" />
++
++    <ImageView
++        android:id="@+id/panelRight"
++        android:layout_width="412dp"
++        android:layout_height="176dp"
++        android:layout_gravity="top|right"
++        android:layout_marginEnd="56dp"
++        android:layout_marginTop="112dp"
++        android:scaleType="fitStart"
++        android:visibility="gone"
++        android:importantForAccessibility="no" />
++
+     <View
+         android:id="@+id/heroScrim"
+         android:layout_width="match_parent"
+diff --git a/launcher/app/src/main/res/values/config.xml b/launcher/app/src/main/res/values/config.xml
+index 2255d16f..0f57e761 100644
+--- a/launcher/app/src/main/res/values/config.xml
++++ b/launcher/app/src/main/res/values/config.xml
+@@ -462,6 +462,9 @@
+          Empty = off: nothing is read or watched. The launcher only reads what the add-on publishes and never goes
+          online. A theme can set "game_day". -->
+     <string name="game_day" translatable="false"></string>
++    <!-- Clean Your TV RU: widget_panel (empty: game_day's package), an add-on that draws pictures for Home's left place
++         (under the clock) and right place (the empty middle), WidgetPanel.java. Empty = off. -->
++    <string name="widget_panel" translatable="false"></string>
+ 
+     <!-- Time-of-day backdrop behind everything: a dark gradient that follows the clock, with a warm
+          horizon glow around sunrise and sunset. 0 keeps the plain background (the default); 1 to 100

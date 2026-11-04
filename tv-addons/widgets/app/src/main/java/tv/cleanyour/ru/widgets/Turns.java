@@ -43,7 +43,7 @@ final class Turns {
         Object[] sun = Weather.nextSun(f, now);
         if (sun == null) return null;
         Instant at = (Instant) sun[1];
-        String top = cfg.city.name + " · " + Weather.degrees(f.temp) + ", " + Weather.text(f.code, ru);
+        String top = cfg.city.name + " · " + Weather.degrees(f.temp) + ", " + Sky.wordsInline(f.nowKind, ru);
         String word = (Boolean) sun[0] ? (ru ? "Рассвет" : "Sunrise") : (ru ? "Закат" : "Sunset");
         // One minute "live", then the launcher drops the row and asks again for the next sunrise or sunset.
         return new Turn(top, word, at.toEpochMilli(), at.toEpochMilli() + 60_000, Turn.WEATHER_BLUE, "weather");

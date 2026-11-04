@@ -19,7 +19,9 @@ final class Weather {
 
     static String url(Config.City c) {
         return String.format(Locale.ROOT, "https://api.open-meteo.com/v1/forecast?latitude=%.4f&longitude=%.4f"
-                + "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day"
+                + "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day,"
+                + "cloud_cover,rain,showers,snowfall"
+                + "&hourly=temperature_2m,weather_code,cloud_cover,rain,showers,snowfall,wind_speed_10m"
                 + "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset"
                 + "&wind_speed_unit=ms&timezone=auto&forecast_days=7", c.latitude, c.longitude);
     }
@@ -50,6 +52,21 @@ final class Weather {
         }
     }
 
+    /** Day (09:00 to 21:00) or night (21:00 to 09:00 the next morning), local time, with its look and temperature. */
+    static final class Period {
+        final LocalDate date;      // the day it belongs to (a night belongs to the evening it starts)
+        final boolean day;
+        final String kind;         // Sky kind
+        final double temp;         // the day's highest, the night's lowest
+
+        Period(LocalDate date, boolean day, String kind, double temp) {
+            this.date = date;
+            this.day = day;
+            this.kind = kind;
+            this.temp = temp;
+        }
+    }
+
     static final class Forecast {
         final ZoneId zone;
         final double temp;
@@ -59,8 +76,17 @@ final class Weather {
         final double wind;
         final boolean day;
         final List<Day> days;
+        final String nowKind;      // Sky kind right now
+        final List<Period> periods; // from the coming one on, day and night in turn
 
         Forecast(ZoneId zone, double temp, double feels, int humidity, int code, double wind, boolean day, List<Day> days) {
+            this(zone, temp, feels, humidity, code, wind, day, days, Sky.CLOUDY, new ArrayList<>());
+        }
+
+        Forecast(ZoneId zone, double temp, double feels, int humidity, int code, double wind, boolean day, List<Day> days,
+                 String nowKind, List<Period> periods) {
+            this.nowKind = nowKind;
+            this.periods = periods;
             this.zone = zone;
             this.temp = temp;
             this.feels = feels;
@@ -91,9 +117,59 @@ final class Weather {
                     d.has("precipitation_probability_max") ? d.getJSONArray("precipitation_probability_max").optInt(i, -1) : -1,
                     local(d.optJSONArray("sunrise"), i, zone), local(d.optJSONArray("sunset"), i, zone)));
         }
+        String nowKind = Sky.now(cur.optDouble("rain", 0) + cur.optDouble("showers", 0), cur.optDouble("snowfall", 0),
+                cur.optInt("weather_code", 0), cur.optDouble("cloud_cover", codeCloud(cur.optInt("weather_code", 0))),
+                cur.optDouble("wind_speed_10m", 0));
         return new Forecast(zone, cur.optDouble("temperature_2m", Double.NaN), cur.optDouble("apparent_temperature", Double.NaN),
                 cur.optInt("relative_humidity_2m", -1), cur.optInt("weather_code", 0), cur.optDouble("wind_speed_10m", Double.NaN),
-                cur.optInt("is_day", 1) == 1, days);
+                cur.optInt("is_day", 1) == 1, days, nowKind, periods(o.optJSONObject("hourly")));
+    }
+
+    /** Cloud cover a code implies, when the answer has no cloud_cover. */
+    private static double codeCloud(int code) {
+        return code == 0 ? 0 : code == 1 ? 30 : code == 2 ? 70 : 100;
+    }
+
+    /** The hours folded into day (09–21) and night (21–09) stretches; only whole ones. */
+    static List<Period> periods(JSONObject h) throws JSONException {
+        List<Period> out = new ArrayList<>();
+        if (h == null) return out;
+        JSONArray time = h.getJSONArray("time");
+        int n = time.length();
+        int i = 0;
+        while (i < n) {
+            LocalDateTime t = LocalDateTime.parse(time.getString(i));
+            int hour = t.getHour();
+            boolean day = hour >= 9 && hour < 21;
+            boolean start = hour == 9 || hour == 21;
+            if (!start) { i++; continue; }
+            if (i + 12 > n) break;
+            double rain = 0, snow = 0, cloud = 0, wind = 0, hi = -999, lo = 999;
+            int worst = 0;
+            for (int k = i; k < i + 12; k++) {
+                rain += h.getJSONArray("rain").optDouble(k, 0) + (h.has("showers") ? h.getJSONArray("showers").optDouble(k, 0) : 0);
+                snow += h.getJSONArray("snowfall").optDouble(k, 0);
+                cloud += h.has("cloud_cover") ? h.getJSONArray("cloud_cover").optDouble(k, 0) : codeCloud(h.getJSONArray("weather_code").optInt(k, 0));
+                wind = Math.max(wind, h.has("wind_speed_10m") ? h.getJSONArray("wind_speed_10m").optDouble(k, 0) : 0);
+                worst = Math.max(worst, h.getJSONArray("weather_code").optInt(k, 0));
+                double temp = h.getJSONArray("temperature_2m").optDouble(k, Double.NaN);
+                if (!Double.isNaN(temp)) { hi = Math.max(hi, temp); lo = Math.min(lo, temp); }
+            }
+            out.add(new Period(t.toLocalDate(), day, Sky.kind(rain, snow, worst, cloud / 12, wind), day ? hi : lo));
+            i += 12;
+        }
+        return out;
+    }
+
+    /** Tomorrow and the next two days: {day, night} for each (either may be null near the end of the answer). */
+    static Period[][] nextDays(Forecast f, LocalDate today, int count) {
+        Period[][] out = new Period[count][2];
+        for (Period p : f.periods) {
+            long d = p.date.toEpochDay() - today.toEpochDay() - 1;
+            if (d < 0 || d >= count) continue;
+            out[(int) d][p.day ? 0 : 1] = p;
+        }
+        return out;
     }
 
     private static Instant local(JSONArray a, int i, ZoneId zone) {

@@ -38,6 +38,8 @@ data class ForkWidgets(
     val holidays: Boolean = false,
     val funHolidays: Boolean = true,
     val city: WidgetCity? = null,
+    val news: Boolean = true,          // the newest F1 headline (f1news.ru, Чемпионат) on the F1 card
+    val noSpoilers: Boolean = false,   // no standings, results or headlines on Home
 ) {
     // Whether any line goes under the clock: weather needs its city.
     val any: Boolean get() = f1 || (weather && city != null) || holidays
@@ -47,7 +49,7 @@ data class ForkWidgets(
         put("spec", 1)
         put("lang", lang.takeIf { it == "ru" || it == "en" } ?: "")
         put("turn_seconds", TURN_SECONDS)
-        if (f1) put("f1", buildJsonObject { put("under_clock", true) })
+        if (f1) put("f1", buildJsonObject { put("under_clock", true); put("news", news); put("no_spoilers", noSpoilers) })
         city?.let { c ->
             put("weather", buildJsonObject {
                 put("under_clock", weather)
@@ -64,6 +66,8 @@ data class ForkWidgets(
         const val TURN_SECONDS = 20
         // game_day: launcher 3.3 (versionCode 11) reads it.
         const val GAME_DAY_KEY = "game_day"
+        // The fork's own launcher (3.3-ru, tv-launcher/panel.patch) shows every line at once as two cards.
+        const val PANEL_LAUNCHER_VERSION = 1201L
     }
 }
 
@@ -77,6 +81,7 @@ class ForkWidgetsPrefs(private val store: DocumentStore) {
     companion object {
         fun encode(w: ForkWidgets): String = buildJsonObject {
             put("f1", w.f1); put("weather", w.weather); put("holidays", w.holidays); put("fun", w.funHolidays)
+            put("news", w.news); put("no_spoilers", w.noSpoilers)
             w.city?.let { c ->
                 put("city", buildJsonObject {
                     put("name", c.name); put("admin1", c.admin1); put("country", c.country)
@@ -88,7 +93,8 @@ class ForkWidgetsPrefs(private val store: DocumentStore) {
         fun decode(text: String): ForkWidgets? = try {
             val o = Json.parseToJsonElement(text).jsonObject
             fun b(k: String, d: Boolean) = (o[k] as? JsonPrimitive)?.booleanOrNull ?: d
-            ForkWidgets(b("f1", false), b("weather", false), b("holidays", false), b("fun", true), (o["city"] as? JsonObject)?.let(::city))
+            ForkWidgets(b("f1", false), b("weather", false), b("holidays", false), b("fun", true), (o["city"] as? JsonObject)?.let(::city),
+                b("news", true), b("no_spoilers", false))
         } catch (e: Exception) {
             null
         }

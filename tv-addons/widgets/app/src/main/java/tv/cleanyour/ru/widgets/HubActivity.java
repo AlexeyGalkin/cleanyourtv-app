@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -118,7 +119,7 @@ public final class HubActivity extends Activity {
         LinearLayout row = new LinearLayout(this);
         row.setPadding(0, dp(14), 0, dp(14));
         String[] names = {t("F1: уик-энд", "F1 weekend"), t("Пилоты", "Drivers"), t("Конструкторы", "Constructors"),
-                t("Результаты", "Results"), t("Погода", "Weather"), t("Праздники", "Holidays")};
+                t("Результаты", "Results"), t("Новости", "News"), t("Погода", "Weather"), t("Праздники", "Holidays")};
         tabs.clear();
         for (int i = 0; i < names.length; i++) {
             final int index = i;
@@ -182,10 +183,11 @@ public final class HubActivity extends Activity {
         content.removeAllViews();
         switch (index) {
             case 0: weekend(); break;
-            case 1: drivers(); break;
-            case 2: constructors(); break;
-            case 3: results(); break;
-            case 4: weather(); break;
+            case 1: if (gate()) drivers(); break;
+            case 2: if (gate()) constructors(); break;
+            case 3: if (gate()) results(); break;
+            case 4: if (gate()) news(); break;
+            case 5: weather(); break;
             default: holidays(); break;
         }
     }
@@ -437,6 +439,50 @@ public final class HubActivity extends Activity {
         }
     }
 
+    /** No spoilers: standings, results and headlines wait behind one OK for this visit. */
+    private boolean revealed;
+
+    private boolean gate() {
+        if (!cfg.noSpoilers || revealed) return true;
+        heading(t("Без спойлеров", "No spoilers"), t("Таблицы, результаты и новости скрыты", "Standings, results and news are hidden"));
+        LinearLayout r = row(Turn.F1_RED);
+        cell(r, t("Нажмите ОК, чтобы показать", "Press OK to show them"), 1, 22, TEXT, Gravity.START);
+        r.setOnClickListener(v -> {
+            revealed = true;
+            show(tab);
+        });
+        return false;
+    }
+
+    private void news() {
+        updated(Repo.NEWS);
+        heading(t("Новости F1", "F1 news"), t("f1news.ru и Чемпионат", "f1news.ru and Championat (in Russian)"));
+        List<News.Item> items = repo.news();
+        if (items.isEmpty()) {
+            empty(t("Загружаем новости…", "Loading the news…"));
+            return;
+        }
+        for (News.Item n : items) {
+            LinearLayout r = row(0);
+            r.setGravity(Gravity.TOP);
+            Instant at = Instant.ofEpochMilli(n.timeMs);
+            String when = LocalDate.now(zone).equals(at.atZone(zone).toLocalDate()) ? time(at)
+                    : DateTimeFormatter.ofPattern(ru ? "d MMM, HH:mm" : "d MMM, HH:mm", locale()).format(at.atZone(zone));
+            TextView left = cell(r, when + "\n" + n.source, 1.3f, 15, DIM, Gravity.START);
+            left.setSingleLine(false);
+            left.setMaxLines(2);
+            TextView title = cell(r, n.title, 5, 20, TEXT, Gravity.START);
+            title.setSingleLine(false);
+            title.setMaxLines(2);
+        }
+    }
+
+    private ImageView icon(String kind, boolean day, int sizeDp) {
+        ImageView v = new ImageView(this);
+        v.setImageBitmap(WeatherIcon.bitmap(kind, day, dp(sizeDp), TEXT));
+        return v;
+    }
+
     private void weather() {
         updated(Repo.WEATHER);
         if (cfg.city == null) {
@@ -451,34 +497,53 @@ public final class HubActivity extends Activity {
             empty(t("Загружаем прогноз…", "Loading the forecast…"));
             return;
         }
-        TextView now = text(Weather.icon(f.code, f.day) + "  " + Weather.degrees(f.temp) + ", " + Weather.text(f.code, ru), 34, TEXT, true);
-        content.addView(now);
+        LinearLayout now = new LinearLayout(this);
+        now.setGravity(Gravity.CENTER_VERTICAL);
+        now.addView(icon(f.nowKind, f.day, 72), new LinearLayout.LayoutParams(dp(72), dp(72)));
+        TextView temp = text(Weather.degrees(f.temp), 54, TEXT, false);
+        temp.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+        temp.setPadding(dp(16), 0, dp(16), 0);
+        now.addView(temp);
+        LinearLayout words = new LinearLayout(this);
+        words.setOrientation(LinearLayout.VERTICAL);
+        words.addView(text(Sky.words(f.nowKind, ru), 24, TEXT, true));
         StringBuilder b = new StringBuilder();
         b.append(t("Ощущается как ", "Feels like ")).append(Weather.degrees(f.feels));
         if (!Double.isNaN(f.wind)) b.append(t(" · ветер ", " · wind ")).append(Math.round(f.wind)).append(t(" м/с", " m/s"));
         if (f.humidity >= 0) b.append(t(" · влажность ", " · humidity ")).append(f.humidity).append('%');
-        TextView details = text(b.toString(), 20, DIM, false);
-        details.setPadding(0, dp(4), 0, dp(6));
-        content.addView(details);
+        words.addView(text(b.toString(), 18, DIM, false));
+        now.addView(words);
+        content.addView(now);
         Instant nowI = Instant.now();
         Object[] sun = Weather.nextSun(f, nowI);
         if (sun != null) {
             Instant at = (Instant) sun[1];
             TextView sunLine = text(((Boolean) sun[0] ? t("Рассвет в ", "Sunrise at ") : t("Закат в ", "Sunset at "))
-                    + DateTimeFormatter.ofPattern("HH:mm").format(at.atZone(f.zone))
-                    + t(", через ", ", in ") + until(nowI, at), 20, 0xFFFFD27A, false);
-            sunLine.setPadding(0, 0, 0, dp(14));
+                    + time(at) + t(", через ", ", in ") + until(nowI, at), 20, 0xFFFFD27A, false);
+            sunLine.setPadding(0, dp(10), 0, dp(14));
             content.addView(sunLine);
         }
-        for (Weather.Day d : f.days) {
+        LocalDate today = LocalDate.now(f.zone);
+        Weather.Period[][] days = Weather.nextDays(f, today, 3);
+        for (int i = 0; i < 3; i++) {
             LinearLayout r = row(0);
-            cell(r, d.date.equals(LocalDate.now(f.zone)) ? t("Сегодня", "Today") : dayOf(d.date), 4, 20, TEXT, Gravity.START);
-            cell(r, Weather.icon(d.code, true) + " " + Weather.text(d.code, ru), 4, 18, DIM, Gravity.START);
-            cell(r, d.rainChance > 0 ? "☂ " + d.rainChance + "%" : "", 1.5f, 18, DIM, Gravity.END);
-            cell(r, Weather.degrees(d.max) + " / " + Weather.degrees(d.min), 2, 20, TEXT, Gravity.END);
-            String sunTimes = (d.sunrise == null ? "" : "↑" + DateTimeFormatter.ofPattern("HH:mm").format(d.sunrise.atZone(f.zone)))
-                    + (d.sunset == null ? "" : "  ↓" + DateTimeFormatter.ofPattern("HH:mm").format(d.sunset.atZone(f.zone)));
-            cell(r, sunTimes, 2.4f, 18, DIM, Gravity.END);
+            cell(r, dayOf(today.plusDays(i + 1)), 3, 20, TEXT, Gravity.START);
+            for (int k = 0; k < 2; k++) {
+                Weather.Period p = days[i][k];
+                if (p == null) { cell(r, "", 4, 18, DIM, Gravity.START); continue; }
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(dp(32), dp(32));
+                lp.rightMargin = dp(8);
+                r.addView(icon(p.kind, k == 0, 32), lp);
+                cell(r, (k == 0 ? t("днём ", "day ") : t("ночью ", "night ")) + Weather.degrees(p.temp) + " · "
+                        + Sky.wordsInline(p.kind, ru), 4, 18, k == 0 ? TEXT : DIM, Gravity.START);
+            }
+        }
+        for (Weather.Day dd : f.days) {
+            if (!dd.date.isAfter(today.plusDays(3))) continue;
+            LinearLayout r = row(0);
+            cell(r, dayOf(dd.date), 3, 18, DIM, Gravity.START);
+            cell(r, Weather.degrees(dd.max) + " / " + Weather.degrees(dd.min), 2, 18, TEXT, Gravity.START);
+            cell(r, dd.rainChance > 0 ? "☂ " + dd.rainChance + "%" : "", 2, 16, DIM, Gravity.END);
         }
     }
 

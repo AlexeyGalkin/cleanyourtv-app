@@ -225,6 +225,8 @@ data class MakeItYoursState(
 ) {
     // Fork: a send would change the add-on (its settings, or putting it on the TV again).
     val forkPending: Boolean get() = forkAddon && (fork != forkSent || (fork.any && !forkInstalled))
+    // Fork: this TV's home screen is the fork's own build, which shows every line at once.
+    val forkPanel: Boolean get() = (versionCode ?: 0L) >= ForkWidgets.PANEL_LAUNCHER_VERSION
     fun reads(key: String): Boolean = ConfigKeys.reads(key, versionCode)
     val secondDate: SecondDate get() = MakeItYoursEdits.secondDate(shown.widgets)
     val buttonsLook: ButtonsLook get() = MakeItYoursEdits.buttonsLook(shown.widgets)
@@ -277,6 +279,8 @@ sealed interface MakeItYoursIntent {
     // Fork (Clean Your TV RU): the Widgets add-on's lines under the clock.
     data class ForkWidget(val which: String, val on: Boolean) : MakeItYoursIntent   // "f1", "weather", "holidays"
     data class ForkFun(val on: Boolean) : MakeItYoursIntent
+    data class ForkNews(val on: Boolean) : MakeItYoursIntent
+    data class ForkNoSpoilers(val on: Boolean) : MakeItYoursIntent
     data class ForkCitySearch(val query: String) : MakeItYoursIntent
     data class ForkCity(val city: WidgetCity) : MakeItYoursIntent
 }
@@ -353,7 +357,8 @@ class MakeItYoursMachine(
             is MakeItYoursIntent.SaverAfter -> dr.copy(screensaver = dr.screensaver.copy(idleMinutes = i.minutes.coerceIn(1, 1440)))
             is MakeItYoursIntent.Behind -> dr.copy(screensaver = e.withBehind(dr.screensaver, i.behind))
             is MakeItYoursIntent.Captions -> dr.copy(wallpaper = dr.wallpaper.copy(captions = i.on))
-            is MakeItYoursIntent.ForkWidget, is MakeItYoursIntent.ForkFun, is MakeItYoursIntent.ForkCity -> return forkEdited(state, i)
+            is MakeItYoursIntent.ForkWidget, is MakeItYoursIntent.ForkFun, is MakeItYoursIntent.ForkCity,
+            is MakeItYoursIntent.ForkNews, is MakeItYoursIntent.ForkNoSpoilers -> return forkEdited(state, i)
             else -> return state
         }
         return edited(state, next)
@@ -372,6 +377,8 @@ class MakeItYoursMachine(
                 else -> f
             }
             is MakeItYoursIntent.ForkFun -> f.copy(funHolidays = i.on)
+            is MakeItYoursIntent.ForkNews -> f.copy(news = i.on)
+            is MakeItYoursIntent.ForkNoSpoilers -> f.copy(noSpoilers = i.on)
             is MakeItYoursIntent.ForkCity -> f.copy(city = i.city, weather = true)
             else -> f
         }

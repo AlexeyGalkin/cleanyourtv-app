@@ -41,6 +41,14 @@
             android:authorities="tv.cleanyour.ru.widgets.games"
             android:exported="true" />
 
+        <!-- Clean Your TV RU's launcher, widget_panel (tv-launcher/panel.patch): the pictures for Home's two widget
+             places. Read-only and holding nothing private: only what Home shows anyway. -->
+        <meta-data android:name="com.gathin.tvhome.panel" android:value="tv.cleanyour.ru.widgets.panel" />
+        <provider
+            android:name=".PanelProvider"
+            android:authorities="tv.cleanyour.ru.widgets.panel"
+            android:exported="true" />
+
         <!-- The phone app's door, over ADB: WRITE_SECURE_SETTINGS is held by the ADB shell only, so no app on the
              TV can read or change the settings (the city) through it. -->
         <provider

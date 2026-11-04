@@ -29,6 +29,7 @@ final class Repo {
     static final String F1_TEAMS = "f1-constructors.json";
     static final String F1_LAST = "f1-last.json";
     static final String WEATHER = "weather.json";
+    static final String NEWS = "news.json";
 
     private static final String JOLPICA = "https://api.jolpi.ca/ergast/f1/";
     private static final String MIRROR = "https://raw.githubusercontent.com/" + BuildConfig.FORK_REPO + "/f1-data/f1/";
@@ -149,6 +150,10 @@ final class Repo {
         }
     }
 
+    List<News.Item> news() {
+        return News.fromJson(read(NEWS));
+    }
+
     List<Turn> turns(long nowMs) {
         Config cfg = config();
         return Turns.all(cfg, cfg.f1 ? season() : null, cfg.weather ? forecast() : null, Instant.ofEpochMilli(nowMs),
@@ -181,6 +186,28 @@ final class Repo {
             changed |= fetch(F1_DRIVERS, now, every, "current/driverstandings.json", "driverstandings.json");
             changed |= fetch(F1_TEAMS, now, every, "current/constructorstandings.json", "constructorstandings.json");
             changed |= fetch(F1_LAST, now, every, "current/last/results.json", "last-results.json");
+        }
+        if ((cfg.f1 && cfg.news || all) && age(NEWS, now) > HOUR / 3) {
+            List<News.Item> a = new java.util.ArrayList<>(), b = new java.util.ArrayList<>();
+            try {
+                a = News.parse(Net.get(News.F1NEWS), "f1news.ru", false);
+            } catch (IOException | RuntimeException ignored) {
+                // the other feed may still answer
+            }
+            try {
+                b = News.parse(Net.get(News.CHAMPIONAT), "Чемпионат", true);
+            } catch (IOException | RuntimeException ignored) {
+                // keep what the first gave
+            }
+            List<News.Item> merged = News.merge(a, b);
+            if (!merged.isEmpty()) {
+                try {
+                    write(NEWS, News.toJson(merged));
+                    changed = true;
+                } catch (IOException ignored) {
+                    // next time
+                }
+            }
         }
         if (cfg.city != null && (cfg.weather || all) && age(WEATHER, now) > HOUR / 2) {
             try {

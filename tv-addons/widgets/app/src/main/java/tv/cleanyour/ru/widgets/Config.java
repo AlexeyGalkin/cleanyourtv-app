@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * The settings the phone app writes over ADB (ConfigProvider, config.json), spec 1:
  * <pre>
  * {"spec":1, "lang":"ru", "turn_seconds":20,
- *  "f1":{"under_clock":true},
+ *  "f1":{"under_clock":true, "news":true, "no_spoilers":false},
  *  "weather":{"under_clock":true, "name":"Москва", "admin1":"Москва", "country":"Россия",
  *             "latitude":55.75, "longitude":37.62, "timezone":"Europe/Moscow"},
  *  "holidays":{"under_clock":true, "fun":true}}
@@ -20,6 +20,8 @@ final class Config {
     final String lang;          // "ru", "en" or "" (the TV's language)
     final int turnSeconds;      // 10 to 120
     final boolean f1;
+    final boolean news;         // the newest F1 headline in the F1 block (and the hub's news)
+    final boolean noSpoilers;   // no standings, results or headlines on Home; the hub asks first
     final boolean weather;
     final boolean holidays;
     final boolean funHolidays;
@@ -44,9 +46,16 @@ final class Config {
     }
 
     Config(String lang, int turnSeconds, boolean f1, boolean weather, boolean holidays, boolean funHolidays, City city) {
+        this(lang, turnSeconds, f1, true, false, weather, holidays, funHolidays, city);
+    }
+
+    Config(String lang, int turnSeconds, boolean f1, boolean news, boolean noSpoilers, boolean weather, boolean holidays,
+           boolean funHolidays, City city) {
         this.lang = lang;
         this.turnSeconds = turnSeconds;
         this.f1 = f1;
+        this.news = news;
+        this.noSpoilers = noSpoilers;
         this.weather = weather;
         this.holidays = holidays;
         this.funHolidays = funHolidays;
@@ -84,6 +93,8 @@ final class Config {
         }
         return new Config(lang, turn,
                 f1 != null && f1.optBoolean("under_clock", true),
+                f1 == null || f1.optBoolean("news", true),
+                f1 != null && f1.optBoolean("no_spoilers", false),
                 w != null && city != null && w.optBoolean("under_clock", true),
                 h != null && h.optBoolean("under_clock", true),
                 h == null || h.optBoolean("fun", true),
