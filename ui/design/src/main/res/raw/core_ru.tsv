@@ -1,1 +1,1096 @@
-# Clean Your TV RU: English core text and app descriptions to Russian, shown by CoreText (filled from the translation review).
+# Clean Your TV RU: English core text and app descriptions to Russian, shown by CoreText (ui/design text/CoreText.kt).
+# "{1}" marks the one changing part. Edit with care: English must match the core byte for byte.
+Removing {1} from the TV	Удаляем {1} с телевизора
+Switching off {1}	Отключаем {1}
+Switching {1} back on	Включаем {1} обратно
+Also switched off	Тоже отключено
+Switching {1} back on: PatchWall needs it	Включаем {1} обратно: это нужно PatchWall
+Giving the TV {1} seconds to settle	Даём телевизору {1} сек., чтобы всё улеглось
+Removing the progress screen from the TV	Убираем с телевизора экран с ходом работы
+Installing the new home screen	Устанавливаем новый главный экран
+Preparing the TV	Готовим телевизор
+Copying the app to the TV	Копируем приложение на телевизор
+Tidying up	Наводим порядок
+Switching off {1}, which also answers the Home button	Отключаем {1} (тоже реагирует на кнопку «Домой»)
+Starting the new home screen	Запускаем новый главный экран
+Preparing the safety timer	Готовим страховочный таймер
+Arming the safety timer	Взводим страховочный таймер
+Switching off the TV's own home screen	Отключаем родной главный экран телевизора
+Making the new home screen the default	Назначаем новый главный экран по умолчанию
+Checking the home screen	Проверяем главный экран
+Confirming the new home screen	Подтверждаем новый главный экран
+Disarming the safety timer	Отключаем страховочный таймер
+Switching on accessibility for the helper	Включаем для помощника специальные возможности
+Letting the helper start	Даём помощнику запуститься
+Pressing Home	Нажимаем «Домой»
+Switching accessibility back off	Снова отключаем специальные возможности
+Keeping the new home screen as the default	Оставляем новый главный экран по умолчанию
+Switched off	Отключено
+Adding {1} to the TV	Добавляем {1} на телевизор
+Sending the widgets' settings to the TV	Отправляем настройки виджетов на телевизор
+Sending the look to the TV	Отправляем оформление на телевизор
+Restarting the home screen	Перезапускаем главный экран
+Clearing the old wallpaper	Убираем старые обои
+Preparing the home screen	Готовим главный экран
+Switching the home screen's remote buttons back on	Включаем обратно кнопки пульта для главного экрана
+Showing the home screen	Показываем главный экран
+Switching the TV's own home screen back on	Включаем обратно родной главный экран телевизора
+Switching the setup wizard back on	Включаем обратно мастер настройки
+Making the TV's own home screen the default	Назначаем родной главный экран телевизора по умолчанию
+Putting back the TV's {1} setting	Возвращаем настройку телевизора «{1}»
+Clearing the look	Сбрасываем оформление
+Switching wireless debugging off	Отключаем отладку по Wi-Fi
+Switching debugging off	Отключаем отладку
+Preparing the restore point folder	Готовим папку для точки восстановления
+Saving the restore point on the TV	Сохраняем точку восстановления на телевизоре
+Saving the restore list on the TV	Сохраняем список для восстановления на телевизоре
+Updating the home screen to version {1}	Обновляем главный экран до версии {1}
+Restarting the TV	Перезагружаем телевизор
+Switching {1} back off	Снова отключаем {1}
+Switching on the Home button helper	Включаем помощника кнопки «Домой»
+Switching on the Home button helper (the TV's other accessibility services stay as they are)	Включаем помощника кнопки «Домой» (остальные службы специальных возможностей телевизора не трогаем)
+Switching off the Home button helper	Отключаем помощника кнопки «Домой»
+Restarting the updated home screen	Перезапускаем обновлённый главный экран
+Showing the progress on the TV	Показываем ход работы на телевизоре
+Giving the TV a moment	Даём телевизору немного времени
+Switch off the first-run setup wizard so the new home screen can take over	Отключить мастер первоначальной настройки, чтобы управление перешло к новому главному экрану
+Removing the new home screen from the TV	Удаляем новый главный экран с телевизора
+Replace the home screen app (its look, order, app list, settings and card answers on the TV are reset)	Заменить приложение главного экрана (его оформление, порядок, список приложений, настройки и ответы в карточках на телевизоре сбросятся)
+Needed for the new home screen	Нужно для нового главного экрана
+The old home screen. Switched off only after the new one works.	Старый главный экран. Отключается только после того, как заработает новый.
+We switch it back on if you ever undo or reset the TV.	Мы включим его обратно, если вы отмените изменения или сбросите телевизор.
+Back on for PatchWall	Включено обратно для PatchWall
+Adverts and sponsored rows	Реклама и рекламные ряды
+More promoted content	Ещё продвигаемый контент
+Tracking and analytics	Слежка и аналитика
+More tracking services	Ещё службы слежки
+Apps nobody asked for	Приложения, о которых никто не просил
+Apps you may not use	Приложения, которыми вы, возможно, не пользуетесь
+More {1} features	Ещё функции {1}
+Shop and demo mode	Режим магазина и демонстрации
+Other background services	Другие фоновые службы
+More background services	Ещё фоновые службы
+Streaming apps you may not use	Стриминговые приложения, которыми вы, возможно, не пользуетесь
+Voice assistant	Голосовой помощник
+Casting and mirroring	Трансляция и дублирование экрана
+Photo screensaver	Заставка с фотографиями
+Accessibility helpers	Специальные возможности
+Software updates	Обновления ПО
+Off, the remote's PatchWall button stops working while the TV's own home screen is in use.	Если отключить, кнопка PatchWall на пульте не будет работать, пока используется родной главный экран телевизора.
+Your remote's mic button needs this.	Это нужно для кнопки микрофона на пульте.
+This brings TCL's software updates.	Отвечает за обновления ПО от TCL.
+With the TV's own home screen and setup wizard both off, this TV can restart over and over.	Если отключить и родной главный экран, и мастер настройки, этот телевизор может бесконечно перезагружаться.
+This brings NVIDIA's software updates and security patches.	Отвечает за обновления ПО и патчи безопасности от NVIDIA.
+The TV's own TV service needs this, or it can stop over and over.	Это нужно встроенной ТВ-службе телевизора, иначе она может постоянно останавливаться.
+This brings Xiaomi's software updates.	Отвечает за обновления ПО от Xiaomi.
+Freeview Play needs this on UK TVs: BBC iPlayer, ITVX, Channel 4 and 5.	Нужно для Freeview Play на британских телевизорах: BBC iPlayer, ITVX, Channel 4 и 5.
+Restore point saved	Точка восстановления сохранена
+We've put the old home screen back to be safe	На всякий случай мы вернули старый главный экран
+it is the Android framework itself	это сам фреймворк Android
+it draws the TV's status bar, dialogs and system UI	отрисовывает строку состояния, диалоги и системный интерфейс телевизора
+it is the TV's Settings app	это приложение «Настройки» телевизора
+it installs and removes apps	устанавливает и удаляет приложения
+it manages app permissions	управляет разрешениями приложений
+it stores the TV's settings	хранит настройки телевизора
+it stores the TV's channels and inputs	хранит каналы и источники телевизора
+it manages the TV's storage	управляет памятью телевизора
+it is the shell this app talks to	это оболочка (shell), с которой работает наше приложение
+it is the debugging service this app talks to	это служба отладки, с которой работает наше приложение
+it keeps the TV's certificates	хранит сертификаты телевизора
+it is a secure element service	это служба защищённого элемента
+it is a core location service	это базовая служба геолокации
+it pairs and talks to the remote	подключает пульт и поддерживает с ним связь
+it is a core service of this TV's chipset	это базовая служба чипсета этого телевизора
+it provides the TV's inputs	отвечает за источники телевизора
+it is Google Play services	это сервисы Google Play
+it is the Play Store	это Play Store
+it reads the screen aloud for people who need it	озвучивает экран для тех, кому это нужно
+it is the TV's text-to-speech voice, which TalkBack reads with	это синтезатор речи телевизора, голосом которого читает TalkBack
+it is part of the TV's accessibility settings	это часть настроек специальных возможностей телевизора
+it is the TV's hearing aid sound setting	это настройка звука телевизора для слуховых аппаратов
+it runs the phone remote and the remote's microphone	отвечает за пульт на телефоне и микрофон пульта
+it is part of the remote control service	это часть службы пульта
+it turns the TV on from a phone or smart speaker	включает телевизор с телефона или умной колонки
+it runs the Xiaomi TV's remote keys and TV services; Settings can stop working without it	отвечает за кнопки пульта и ТВ-службы телевизора Xiaomi; без него могут перестать работать «Настройки»
+it provides TCL Live's channels, a TV input	даёт каналы TCL Live — один из источников телевизора
+it runs the remote's hot keys on this TV	отвечает за быстрые кнопки пульта на этом телевизоре
+it runs the remote's quick menu and extra buttons on this TV	отвечает за быстрое меню и дополнительные кнопки пульта на этом телевизоре
+it is a core part of Android; a TV may not start again without it	это базовая часть Android; без неё телевизор может больше не загрузиться
+it describes Android's system modules; a TV may not start again without it	описывает системные модули Android; без него телевизор может больше не загрузиться
+it is the TV's own system layer (MediaTek); a TV restarted in a loop without it	это собственный системный слой телевизора (MediaTek); без него один телевизор уходил в бесконечную перезагрузку
+it provides the TV's inputs and tuner (MediaTek)	отвечает за источники и тюнер телевизора (MediaTek)
+it runs the TV's picture, sound and inputs (MediaTek)	отвечает за изображение, звук и источники телевизора (MediaTek)
+it keeps the TV's network running	поддерживает работу сети телевизора
+it keeps the TV's Wi-Fi running	поддерживает работу Wi-Fi телевизора
+it is part of Android's system modules; a TV may not start again without it	это часть системных модулей Android; без неё телевизор может больше не загрузиться
+it keeps data the TV's system needs (downloads, settings, media and more)	хранит данные, нужные системе телевизора (загрузки, настройки, медиафайлы и не только)
+the TV keeps it running at all times	телевизор держит его постоянно запущенным
+it provides a TV input (HDMI, tuner or CEC)	отвечает за источник телевизора (HDMI, тюнер или CEC)
+it is the TV's keyboard	это клавиатура телевизора
+it is the TV's screensaver	это заставка телевизора
+it is part of the TV's first-run setup	это часть первоначальной настройки телевизора
+it is this TV's own home screen	это родной главный экран этого телевизора
+it is the TV's own home screen; only the home screen switch changes it	это родной главный экран телевизора; его меняет только смена главного экрана
+it is Fire OS's own home screen, which Fire OS never lets anyone switch off	это родной главный экран Fire OS, который Fire OS никому не даёт отключить
+it brings the TV's software and security updates, which this version of the app always keeps on	отвечает за обновления ПО и безопасности телевизора, а такие приложения эта версия всегда оставляет включёнными
+it is a home screen app you installed, and we never switch those off	это установленное вами приложение главного экрана, а такие мы никогда не отключаем
+the first-run setup wizard holds on to the Home button on this TV	на этом телевизоре кнопку «Домой» удерживает мастер первоначальной настройки
+this TV's profile says never switch it off	профиль этого телевизора запрещает его отключать
+the Home button helper keeps the TV's own home screen, so it does not go with the home screen switch	помощник кнопки «Домой» сохраняет родной главный экран телевизора, поэтому при смене главного экрана он не отключается
+the Home button helper needs the look that names the TV's own home screen, and it could not be made	помощнику кнопки «Домой» нужно оформление, в котором указан родной главный экран телевизора, а создать его не удалось
+the new home screen needs Android 8 or newer, and this TV has an older Android	новому главному экрану нужен Android 8 или новее, а на этом телевизоре более старая версия Android
+on this TV the first-run setup wizard takes the Home button back; use the TV's own home screen first	на этом телевизоре мастер первоначальной настройки забирает кнопку «Домой» обратно; сначала вернитесь к родному главному экрану телевизора
+the TV's home screen is not one of the known ones, and the TV ranks it above the new one, so the switch could never take Home (issue #2028)	главный экран телевизора нам незнаком, и телевизор ставит его выше нового, поэтому кнопка «Домой» так и не перешла бы к новому (issue #2028)
+this TV only allows its own home screen, so the new one is not installed and the switch is not possible	этот телевизор разрешает только свой главный экран, поэтому новый не устанавливается и смена невозможна
+the first-run setup wizard is only switched off as part of the home screen switch	мастер первоначальной настройки отключается только в рамках смены главного экрана
+part of the home screen switch; it comes back on if the switch is undone	часть смены главного экрана; включится обратно, если смену отменить
+PatchWall stays on and needs it, so it stays on too; switch PatchWall off as well to switch this off	PatchWall остаётся включённым, и ему это нужно, поэтому тоже не отключаем; чтобы отключить, отключите и PatchWall
+PatchWall stays on and needs it, so it is switched back on	PatchWall остаётся включённым, и ему это нужно, поэтому включаем обратно
+TCL's software update needs this to find your TV.	Это нужно обновлению ПО от TCL, чтобы найти ваш телевизор.
+{1} extras	Фирменные дополнения {1}
+Installs partner apps without asking	Устанавливает приложения партнёров без спроса
+Streaming app	Стриминговое приложение
+Preloaded game	Предустановленная игра
+An Amazon background service	Фоновая служба Amazon
+On-screen user manual	Экранное руководство пользователя
+Empty placeholder app	Пустое приложение-заглушка
+Sports streaming app	Спортивное стриминговое приложение
+Store demo mode	Демо-режим для магазинов
+Remote key handling	Обработка кнопок пульта
+Music streaming app	Музыкальное стриминговое приложение
+Built-in web browser	Встроенный браузер
+Karaoke app	Приложение для караоке
+Live TV streaming app (Russia)	Приложение для просмотра телеканалов онлайн (Россия)
+Factory test tool	Утилита заводского тестирования
+Plays files from USB	Воспроизводит файлы с USB
+Factory test app	Приложение заводского тестирования
+Video calling app	Приложение для видеозвонков
+Web browser	Браузер
+Receives AirPlay from Apple devices	Принимает AirPlay с устройств Apple
+Film streaming app	Стриминговое приложение с фильмами
+Third-party app store	Сторонний магазин приложений
+Amazon's video streaming app	Приложение Amazon для стриминга видео
+Sends device usage metrics to Amazon	Отправляет в Amazon статистику использования устройства
+Free channels with ads	Бесплатные каналы с рекламой
+Collects performance data for Amazon	Собирает данные о производительности для Amazon
+Amazon shopping on the TV	Покупки в Amazon на телевизоре
+Live TV, HDMI and tuner inputs	Эфирное ТВ, источники HDMI и тюнера
+First-run setup screens	Экраны первоначальной настройки
+Amazon casting service	Служба трансляции Amazon
+Android test placeholder	Тестовая заглушка Android
+Leftover first-run setup tasks	Оставшиеся задачи первоначальной настройки
+Shop banners for store displays	Баннеры для витрин магазинов
+Store demo sticker overlay	Наклейки демо-режима поверх экрана
+Web browser for TVs	Браузер для телевизоров
+News app	Новостное приложение
+Preloaded app of unclear use	Предустановленное приложение неясного назначения
+Screen mirroring receiver	Приёмник дублирования экрана
+Preloaded web browser	Предустановленный браузер
+Video conferencing app	Приложение для видеоконференций
+Google's ad targeting service	Сервис таргетинга рекламы Google
+Updates the remote's firmware	Обновляет прошивку пульта
+Factory test app, left alone	Приложение заводского тестирования, не трогаем
+Picture wall app	Приложение-фотостена
+Uploads logs to Hisense	Отправляет журналы в Hisense
+Hotel mode settings	Настройки гостиничного режима
+Shop display mode	Режим витрины магазина
+Firmware updates	Обновления прошивки
+Cleaner and speed-up tool	Утилита очистки и ускорения
+Hisense system service, needed to boot	Системная служба Hisense, нужна для загрузки
+Alexa integration	Интеграция с Alexa
+Factory menu, needed by the system	Заводское меню, нужно системе
+A second web view the TV does not use	Второй WebView, который телевизор не использует
+Miracast receiver (Wi-Fi Display)	Приёмник Miracast (Wi-Fi Display)
+Film rental and streaming app	Приложение для проката и просмотра фильмов
+Sends usage statistics to Xiaomi	Отправляет статистику использования в Xiaomi
+Factory test mode	Режим заводского тестирования
+Remote support and device data	Удалённая поддержка и данные устройства
+Interactive broadcast services	Интерактивные сервисы телевещания
+Admin password for hotel and pro mode	Пароль администратора для гостиничного и профессионального режима
+Device admin settings for hotel and pro mode	Настройки администрирования для гостиничного и профессионального режима
+Shows photos from USB	Показывает фото с USB
+Plays music from USB	Воспроизводит музыку с USB
+Plays videos from USB	Воспроизводит видео с USB
+Service menu for the factory	Заводское сервисное меню
+TCL system service, needed	Системная служба TCL, нужна
+On-screen keyboard	Экранная клавиатура
+Remote key plumbing	Служебная обработка кнопок пульта
+Music app	Музыкальное приложение
+Plays media from USB	Воспроизводит медиафайлы с USB
+Video sharing app	Приложение видеохостинга
+Recognizes what is on screen	Распознаёт содержимое экрана
+Xiaomi payment service (China)	Платёжный сервис Xiaomi (Китай)
+French TV channel streaming app	Стриминговое приложение французского телеканала
+Film rental app	Приложение для проката фильмов
+Recognises what is on screen	Распознаёт содержимое экрана
+UK ITV streaming app	Стриминговое приложение ITV (Великобритания)
+Movie rental and purchase app	Приложение для проката и покупки фильмов
+Channel 9 catch-up TV (Australia)	Передачи Channel 9 в записи (Австралия)
+Australian streaming service	Австралийский стриминговый сервис
+ABC catch-up TV (Australia)	Передачи ABC в записи (Австралия)
+Brazilian football streaming app	Бразильское приложение для трансляций футбола
+Canadian news app	Канадское новостное приложение
+App store client for TCL-made sets	Клиент магазина приложений для телевизоров производства TCL
+Partner TV guide with sponsored show picks	Телепрограмма от партнёра со спонсорскими подборками передач
+News app preloaded on this TV	Новостное приложение, предустановленное на этом телевизоре
+US news app	Американское новостное приложение
+Local news app	Приложение местных новостей
+Weather app preloaded on this TV	Приложение погоды, предустановленное на этом телевизоре
+Cartoon Network's adult channel app	Приложение канала Cartoon Network для взрослой аудитории
+Telugu and Tamil video streaming app	Приложение для стриминга видео на телугу и тамильском
+Firmware updates for the Bluetooth remote	Обновления прошивки Bluetooth-пульта
+An Alexa helper service	Вспомогательная служба Alexa
+Connects Alexa skills to the TV	Подключает навыки Alexa к телевизору
+Old US Prime Video stub; the real app is separate	Старая американская заглушка Prime Video; настоящее приложение отдельное
+Stores Alexa settings and data	Хранит настройки и данные Alexa
+Lets Alexa control other media apps	Позволяет Alexa управлять другими медиаприложениями
+Passes Alexa commands to the TV	Передаёт команды Alexa телевизору
+Plays media for Alexa requests	Воспроизводит медиа по запросам Alexa
+Background connection to Amazon services	Фоновое подключение к сервисам Amazon
+Alexa speaker group audio	Звук для групп колонок Alexa
+Part of Amazon's telemetry group	Входит в группу телеметрии Amazon
+Receives videos cast to the TV	Принимает видео, транслируемые на телевизор
+Amazon's music app	Музыкальное приложение Amazon
+Amazon's photo app and screensaver	Приложение для фото и заставка Amazon
+Receives Miracast and Fire Cast screens	Принимает трансляцию экрана по Miracast и Fire Cast
+Collects device data for Amazon	Собирает данные устройства для Amazon
+Interface for the Amazon metrics service	Интерфейс службы метрик Amazon
+Amazon's web browser	Браузер Amazon
+Finds other Amazon devices nearby	Ищет другие устройства Amazon поблизости
+Runs Amazon web content on the TV	Запускает веб-контент Amazon на телевизоре
+Collects crash reports for Amazon	Собирает отчёты о сбоях для Amazon
+Collects device logs for Amazon	Собирает журналы устройства для Amazon
+Sale and deal campaigns	Рекламные акции и распродажи
+Checks for firmware updates	Проверяет обновления прошивки
+Settings for firmware updates	Настройки обновления прошивки
+Syncs settings with your Amazon account	Синхронизирует настройки с вашим аккаунтом Amazon
+Helper library for Amazon sync	Вспомогательная библиотека синхронизации Amazon
+Sends device telemetry to Amazon	Отправляет телеметрию устройства в Amazon
+Downloads settings from Amazon	Скачивает настройки из Amazon
+Lets phone apps start videos on the TV	Позволяет приложениям на телефоне запускать видео на телевизоре
+Logs device activity for Amazon	Записывает активность устройства для Amazon
+Amazon device management service	Служба управления устройствами Amazon
+Starts the Fire TV home screen	Запускает главный экран Fire TV
+Cloud sync service for Fire OS	Служба облачной синхронизации для Fire OS
+Connects Alexa skills to apps on the TV	Связывает навыки Alexa с приложениями на телевизоре
+Live TV input behind the Live tab	Источник эфирного ТВ для вкладки «Live»
+Amazon's idle screensaver	Заставка Amazon в режиме простоя
+Opens links from Fire TV adverts	Открывает ссылки из рекламы Fire TV
+Senses presence and indoor location near the TV	Определяет присутствие и положение людей в комнате у телевизора
+Amazon's game streaming hub	Центр стриминга игр Amazon
+Provides the ID used to target adverts	Выдаёт идентификатор для таргетинга рекламы
+Placeholder for Amazon's free streaming app	Заглушка бесплатного стримингового приложения Amazon
+Fetches sponsored banners and rows	Загружает рекламные баннеры и ряды
+Amazon background service for live content; purpose unclear	Фоновая служба Amazon для прямых трансляций; назначение неясно
+Content recommendations on the home screen	Рекомендации контента на главном экране
+Sends usage metrics to Amazon	Отправляет статистику использования в Amazon
+Amazon usage metrics client	Клиент статистики использования Amazon
+Amazon's free video app	Бесплатное видеоприложение Amazon
+Amazon's music streaming app	Музыкальное стриминговое приложение Amazon
+Preloaded Amazon content app	Предустановленное приложение с контентом Amazon
+Amazon usage metrics service	Служба статистики использования Amazon
+Collects logs for Amazon metrics	Собирает журналы для метрик Amazon
+Shows content sent from an Echo Show or Fire tablet	Показывает контент, отправленный с Echo Show или планшета Fire
+Amazon token service; purpose not documented	Служба токенов Amazon; назначение не описано
+Supplies content rows to the home screen	Поставляет ряды контента на главный экран
+Fox News web app	Веб-приложение Fox News
+Syncs security settings with Amazon	Синхронизирует настройки безопасности с Amazon
+Shows cameras and smart home devices on the TV	Показывает камеры и устройства умного дома на телевизоре
+Previews of Amazon content	Превью контента Amazon
+Lets Alexa play Spotify; the Spotify app is separate	Позволяет Alexa включать Spotify; приложение Spotify отдельное
+On-screen help for the Fire TV remote	Экранная справка по пульту Fire TV
+Helper for Amazon sync	Вспомогательный компонент синхронизации Amazon
+Syncs data with your Amazon account	Синхронизирует данные с вашим аккаунтом Amazon
+Shows notices from Amazon	Показывает сообщения от Amazon
+Kids profiles and parental controls; switching it off removes them	Детские профили и родительский контроль; при отключении они пропадут
+Amazon communication service	Служба связи Amazon
+Client for the Amazon communication service	Клиент службы связи Amazon
+Helper for the Amazon communication service	Вспомогательный компонент службы связи Amazon
+On-screen tutorial videos	Обучающие видео на экране
+Recognises what you watch for Amazon	Распознаёт, что вы смотрите, для Amazon
+Shows Alexa alarms and reminders	Показывает будильники и напоминания Alexa
+Shows Alexa notifications on the TV	Показывает уведомления Alexa на телевизоре
+Amazon customer service app	Приложение службы поддержки Amazon
+Demo videos for store displays	Демо-видео для витрин магазинов
+Shares viewing data for personalization	Передаёт данные о просмотрах для персонализации
+Preview programme for new Fire TV features	Программа предварительного доступа к новым функциям Fire TV
+Helps install system upgrades	Помогает устанавливать обновления системы
+Lets an Amazon phone app set this device up on Wi-Fi	Позволяет приложению Amazon на телефоне подключить это устройство к Wi-Fi
+Installs required firmware updates	Устанавливает обязательные обновления прошивки
+Ambient screensaver with art and widgets	Фоновая заставка с картинами и виджетами
+Sends system metrics to Amazon	Отправляет системные метрики в Amazon
+The Fire TV home screen	Главный экран Fire TV
+Shows legal notices	Показывает юридическую информацию
+Language text for legal notices	Тексты юридической информации на разных языках
+Text for legal notices	Тексты юридической информации
+Photo gallery for local files	Фотогалерея для локальных файлов
+Smart home (Matter) support	Поддержка умного дома (Matter)
+Shows Fire TV notifications	Показывает уведомления Fire TV
+Files used by first-run setup	Файлы для первоначальной настройки
+Single sign-on for streaming apps	Единый вход в стриминговые приложения
+Quick settings and inputs menu	Меню быстрых настроек и источников
+Shows what changed after an update	Показывает, что изменилось после обновления
+Picture, sound and system settings	Настройки изображения, звука и системы
+Help and support screens	Экраны справки и поддержки
+Shortcuts to websites	Ярлыки сайтов
+Shows Amazon system notifications	Показывает системные уведомления Amazon
+Alexa voice assistant on Fire TV	Голосовой помощник Alexa на Fire TV
+Telemundo web app	Веб-приложение Telemundo
+Media browser for multi-room audio	Медиабраузер для звука в нескольких комнатах
+Plays music on several Amazon devices	Воспроизводит музыку на нескольких устройствах Amazon
+Settings for multi-room audio	Настройки звука в нескольких комнатах
+Frustration-free setup of Amazon devices	Беспроблемная настройка устройств Amazon
+Sets up other Amazon devices on your Wi-Fi	Подключает другие устройства Amazon к вашей сети Wi-Fi
+Shares Wi-Fi with new Amazon devices	Передаёт данные Wi-Fi новым устройствам Amazon
+Sets up Amazon casting	Настраивает трансляцию Amazon
+Saves Wi-Fi passwords to Amazon	Сохраняет пароли Wi-Fi в Amazon
+Sends Wi-Fi usage metrics to Amazon	Отправляет статистику использования Wi-Fi в Amazon
+Amlogic voice subtitle overlay	Оверлей голосовых субтитров Amlogic
+Network speed test app	Приложение для проверки скорости сети
+On-device advertising framework	Рекламный фреймворк на устройстве
+Confirms a backup started from a computer	Подтверждает резервное копирование, запущенное с компьютера
+Android's built-in printing service	Встроенная служба печати Android
+Connects Bluetooth music keyboards	Подключает музыкальные клавиатуры по Bluetooth
+Old built-in web browser	Старый встроенный браузер
+Camera app for phones	Приложение камеры для телефонов
+Camera effects for phones	Эффекты камеры для телефонов
+Simple colour screensaver	Простая цветная заставка
+Boots test system images	Загружает тестовые образы системы
+Trains ad and usage models on the device	Обучает модели рекламы и использования на устройстве
+Old photo viewer	Старое приложение для просмотра фото
+Backs up fitness data, for phones	Создаёт резервные копии фитнес-данных, для телефонов
+Fitness data hub, for phones	Центр фитнес-данных, для телефонов
+Signs in to Passpoint Wi-Fi hotspots	Выполняет вход в точки доступа Wi-Fi Passpoint
+Voice training for OK Google	Обучение распознаванию голоса для OK Google
+Voice training for the voice hotword	Обучение распознаванию голоса для ключевой фразы
+Shows HTML files, for phones	Показывает HTML-файлы, для телефонов
+Sets up company-managed devices	Настраивает устройства, управляемые организацией
+Chinese video streaming app	Китайское приложение для стриминга видео
+Audio equalizer for phones	Аудиоэквалайзер для телефонов
+Personalizes ads on the device	Персонализирует рекламу на устройстве
+Installs, updates and removes apps and shows permission prompts	Устанавливает, обновляет и удаляет приложения, показывает запросы разрешений
+Printing service a TV rarely needs	Служба печати, которая редко нужна телевизору
+Stores calendar events for apps	Хранит события календаря для приложений
+Stores contacts for apps	Хранит контакты для приложений
+Watch Next and Live Channels data	Данные Watch Next и Live Channels
+Secure element support, needed by the system	Поддержка защищённого элемента, нужна системе
+The search box inside Settings	Строка поиска в «Настройках»
+Backs up shared storage, for phones	Создаёт резервные копии общего хранилища, для телефонов
+Handles push messages sent by SMS, for phones	Обрабатывает push-сообщения из SMS, для телефонов
+Android TV Live TV app	Приложение Live TV для Android TV
+Asks permission to send feedback	Запрашивает разрешение на отправку отзывов
+The Android TV settings app	Приложение настроек Android TV
+Picks animated wallpapers, for phones	Выбор живых обоев, для телефонов
+Backs up the wallpaper	Создаёт резервную копию обоев
+Radio app preloaded on this TV	Радиоприложение, предустановленное на этом телевизоре
+Lets Apple devices play to the TV	Позволяет устройствам Apple воспроизводить контент на телевизоре
+Apple TV+ films and series	Фильмы и сериалы Apple TV+
+Apple TV streaming app	Стриминговое приложение Apple TV
+Companion to the SCBC firmware updater (SANYO, Thomson)	Дополнение к средству обновления прошивки SCBC (SANYO, Thomson)
+SCBC content channels app	Приложение с каналами контента SCBC
+Memory cleaner app	Приложение для очистки памяти
+In-store demo and promo app	Демо- и промоприложение для магазинов
+Factory menus, needed by the system	Заводские меню, нужны системе
+Collects data-sharing consent	Собирает согласие на передачу данных
+Vendor game mode app	Приложение игрового режима от производителя
+Speed test app	Приложение для проверки скорости
+Checks for firmware updates on SCBC-made sets	Проверяет обновления прошивки на телевизорах производства SCBC
+Vendor sound app	Приложение звука от производителя
+Vendor screen mirroring app	Приложение дублирования экрана от производителя
+System settings provider	Поставщик системных настроек
+Clock app	Приложение «Часы»
+Lets the TV act as a Wi-Fi hotspot	Позволяет телевизору работать как точка доступа Wi-Fi
+Factory test service	Служба заводского тестирования
+Factory test manager	Диспетчер заводского тестирования
+Business news app	Приложение деловых новостей
+Cloud gaming service	Сервис облачных игр
+Preloaded card game	Предустановленная карточная игра
+Canal+ streaming app	Стриминговое приложение Canal+
+Paramount's streaming app	Стриминговое приложение Paramount
+Preloaded football game	Предустановленная футбольная игра
+Radio and podcast app	Приложение для радио и подкастов
+Free ad-supported TV channels	Бесплатные ТВ-каналы с рекламой
+Live TV app for this set	Приложение эфирного ТВ для этого телевизора
+Live TV support service	Вспомогательная служба эфирного ТВ
+Ambient sounds app with tracking	Приложение фоновых звуков со слежкой
+Skyworth retail demo mode	Демо-режим Skyworth для магазинов
+Factory test suite	Набор заводских тестов
+Anime streaming app	Стриминговое приложение с аниме
+Factory media demo app	Заводское приложение для демонстрации медиа
+Documentary streaming app	Стриминговое приложение с документальными фильмами
+Plays media pushed from phones over DLNA	Воспроизводит медиа, отправленные с телефонов по DLNA
+Hidden factory settings menu	Скрытое заводское меню настроек
+Manages Haier apps at startup	Управляет приложениями Haier при запуске
+Preloaded partner TV app	Предустановленное партнёрское ТВ-приложение
+Preloaded partner video-on-demand app	Предустановленное партнёрское приложение видео по запросу
+The TV maker's app store	Магазин приложений производителя телевизора
+Factory auto-test screen	Экран заводского автотеста
+Factory audio test	Заводской тест звука
+Factory burn-in test	Заводской тест-прогон
+Factory menu	Заводское меню
+The TV's own home screen	Родной главный экран телевизора
+Plays files from USB and the network	Воспроизводит файлы с USB и из сети
+Plays video files	Воспроизводит видеофайлы
+Account service of the TV maker	Служба аккаунтов производителя телевизора
+Background memory cleaner	Фоновая очистка памяти
+File manager for USB and network storage	Файловый менеджер для USB и сетевых хранилищ
+Indian TV channel app	Приложение индийского телеканала
+Retail demo app	Демо-приложение для магазинов
+Disney's streaming app for the Middle East	Стриминговое приложение Disney для Ближнего Востока
+Disney streaming app (Philippines)	Стриминговое приложение Disney (Филиппины)
+Dolby audio processing	Обработка звука Dolby
+Copies system logs to USB storage	Копирует системные журналы на USB-накопитель
+Xiaomi DLNA casting receiver	Приёмник DLNA-трансляций Xiaomi
+Factory test app that also claims Home	Приложение заводского тестирования; тоже перехватывает кнопку «Домой»
+Daily promoted video picks	Ежедневные подборки продвигаемых видео
+DLNA receiver for media from phones	Приёмник DLNA для медиа с телефонов
+Factory test app, always running	Приложение заводского тестирования, работает постоянно
+Facebook app preload	Предустановленное приложение Facebook
+Passes app usage data to Amazon	Передаёт данные об использовании приложений в Amazon
+Formula 1 streaming app	Стриминговое приложение Formula 1
+FOX network app	Приложение телесети FOX
+News app; adds a live channel input	Новостное приложение; добавляет источник прямого эфира
+Live TV streaming service	Сервис для просмотра телеканалов онлайн
+Indian music streaming app	Индийское музыкальное стриминговое приложение
+Preloaded Gameloft game	Предустановленная игра Gameloft
+Promotional demo video app	Приложение с рекламными демо-видео
+Adverts on the lock screen	Реклама на экране блокировки
+Preloaded app; purpose not documented	Предустановленное приложение; назначение не описано
+Lets phones cast to the TV	Позволяет транслировать с телефонов на телевизор
+Data-saver VPN service and data meter	VPN-служба экономии трафика и счётчик трафика
+Screensaver that mixes in recommendations	Заставка с подмешанными рекомендациями
+The stock Google TV home screen	Родной главный экран Google TV
+Reports network quality to Google	Отправляет в Google данные о качестве сети
+Google photo screensaver	Заставка Google с фотографиями
+Sends app backups to Google	Отправляет резервные копии приложений в Google
+Splash animation shown at startup	Анимация при запуске
+On-device learning from your usage	Обучение на устройстве по вашим действиям
+Sends feedback and crash reports	Отправляет отзывы и отчёты о сбоях
+Google Japanese input keyboard	Японская клавиатура Google
+The on-screen keyboard	Экранная клавиатура
+Voice search and the mic button	Голосовой поиск и кнопка микрофона
+The old Android TV home screen	Старый главный экран Android TV
+Provides data the TV service needs at boot	Передаёт данные, нужные ТВ-службе при загрузке
+Partner content widget for the stock home	Виджет контента партнёров для родного главного экрана
+Recommendation rows for the old home	Ряды рекомендаций для старого главного экрана
+Screen reader for blind users	Программа чтения с экрана для незрячих
+Music app; the service has shut down	Музыкальное приложение; сервис закрыт
+Personalises content from your usage	Персонализирует контент по вашим действиям
+Tracks which partner set up the TV	Отслеживает, какой партнёр настроил телевизор
+Google game app	Игровое приложение Google
+Understands voice commands on the TV itself	Распознаёт голосовые команды прямо на телевизоре
+Signs the TV in from a phone during setup	Выполняет вход на телевизоре с телефона при настройке
+Syncs Google Calendar	Синхронизирует Google Календарь
+Syncs contacts with your Google account	Синхронизирует контакты с аккаунтом Google
+Reads text aloud and turns speech into text for voice search in apps	Читает текст вслух и преобразует речь в текст для голосового поиска в приложениях
+First-run setup, can claim the Home key	Первоначальная настройка, может перехватить кнопку «Домой»
+Android TV Live Channels app	Приложение Live Channels для Android TV
+Controls the Assistant light and listening	Управляет индикатором и прослушиванием Ассистента
+Uploads bug reports to Google	Отправляет отчёты об ошибках в Google
+Updates the remote's own firmware	Обновляет прошивку самого пульта
+Phone remote; on some TVs also the remote's mic button	Пульт на телефоне; на некоторых ТВ ещё и кнопка микрофона на пульте
+Logs how you use the remote	Записывает, как вы пользуетесь пультом
+Partner settings for the setup screens	Параметры партнёра для экранов настройки
+The stock Android TV home screen	Родной главный экран Android TV
+Promoted rows; also the notification panel and sign-in notices	Рекламные ряды; также панель уведомлений и сообщения о входе
+First-use tutorial screens	Обучающие экраны при первом запуске
+Google's film store, recommendations and your purchased films	Магазин фильмов Google, рекомендации и купленные вами фильмы
+Videos from YouTube	Видео с YouTube
+Kids version of YouTube	Детская версия YouTube
+Live TV subscription app	Приложение для просмотра телеканалов по подписке
+Haier app promo page	Рекламная страница приложений Haier
+Zeasn content screen with promos	Экран контента Zeasn с рекламой
+Haier tab on the Google TV home	Вкладка Haier на главном экране Google TV
+Plays phone audio through the TV	Воспроизводит звук с телефона через телевизор
+Web view for Haier's share service	WebView для сервиса обмена Haier
+Cleaner app	Приложение для очистки
+Shares phone media to the TV	Выводит медиа с телефона на телевизор
+Haier smart device service	Служба умных устройств Haier
+News video app with recommendation cards	Приложение новостных видео с карточками рекомендаций
+Older HBO app, replaced by Max	Старое приложение HBO, его заменил Max
+Shows a phone screen on the TV	Показывает экран телефона на телевизоре
+Push messages and analytics	Push-сообщения и аналитика
+Links the TV to the OnePlus phone app	Связывает телевизор с приложением OnePlus на телефоне
+Collects system logs and uploads them	Собирает системные журналы и отправляет их
+OnePlus assistant app	Приложение-помощник OnePlus
+Plays TV sound on a Bluetooth speaker	Выводит звук телевизора на Bluetooth-колонку
+Camera app for a plug-in camera	Приложение для подключаемой камеры
+Browse files on the TV	Просмотр файлов на телевизоре
+Shows photos from USB storage	Показывает фото с USB-накопителя
+Plays music from USB storage	Воспроизводит музыку с USB-накопителя
+OnePlus remote control diagnostics app	Приложение диагностики пульта OnePlus
+Remote support and diagnosis	Удалённая поддержка и диагностика
+Plays videos from USB storage	Воспроизводит видео с USB-накопителя
+Alexa voice assistant	Голосовой помощник Alexa
+AR encyclopedia app	AR-энциклопедия
+Advertising and shopping SDK	SDK для рекламы и покупок
+Store demo videos and sound demos	Демо-ролики и демонстрация звука для магазинов
+Built-in electronic manual	Встроенное электронное руководство
+Content recognition and data sharing	Распознавание контента и передача данных
+First-time experience screens	Экраны первого запуска
+Reports usage data to Hisense	Отправляет в Hisense данные об использовании
+HiCloud account manager	Менеджер аккаунта HiCloud
+Hotel and business TV mode	Режим ТВ для отелей и бизнеса
+Hisense screensaver	Заставка Hisense
+Sends device reports to Hisense	Отправляет в Hisense отчёты об устройстве
+Firmware updates over the network	Обновления прошивки по сети
+Ad service that watches what is on screen	Рекламный сервис, следящий за тем, что на экране
+Background poller that runs all the time	Фоновая служба опроса, работает постоянно
+Push messages from Hisense	Push-сообщения от Hisense
+Hotel and business features	Функции для отелей и бизнеса
+Hisense launcher component, needed	Компонент лаунчера Hisense, нужен
+Fitness app for the TV camera	Фитнес-приложение для ТВ-камеры
+Recipe app	Приложение с рецептами
+Hisense phone remote	Пульт Hisense на телефоне
+Background service of the Hisense phone remote	Фоновая служба пульта Hisense на телефоне
+Handles TV and HDMI inputs	Обрабатывает ТВ- и HDMI-источники
+Core Hisense TV service	Основная служба телевизора Hisense
+Preloaded video chat app	Предустановленный видеочат
+Weather card on the home screen	Карточка погоды на главном экране
+Installs firmware updates from a USB stick	Устанавливает обновления прошивки с USB-флешки
+Operator content rows on the home screen	Ряды контента оператора на главном экране
+Interactive TV for ISDB-T broadcasts	Интерактивное ТВ для вещания ISDB-T
+Changhong's brand portal	Фирменный портал Changhong
+Installs apps without asking	Устанавливает приложения без спроса
+Homwee cleaner and system tools	Очистка и системные утилиты Homwee
+Firmware updates; CHiQ sets need it for system updates	Обновления прошивки; на ТВ CHiQ нужно для обновлений системы
+On-screen manual and help	Экранное руководство и справка
+Browse USB storage	Просмотр USB-накопителя
+View photos from USB	Просмотр фото с USB
+Mirror a screen to the TV	Дублирование экрана на телевизор
+Miracast and AirPlay receiver	Приёмник Miracast и AirPlay
+Changhong app store	Магазин приложений Changhong
+Remote key service, needed by the system	Служба кнопок пульта, нужна системе
+Vendor firmware and app updater	Средство обновления прошивки и приложений от производителя
+Series and films	Сериалы и фильмы
+Voice translation helper	Помощник голосового перевода
+Film and TV database app	Приложение с базой фильмов и сериалов
+Amazon's free streaming app (IMDb TV)	Бесплатное стриминговое приложение Amazon (IMDb TV)
+Instagram for TV	Instagram для телевизора
+Asian drama and film streaming app	Стриминговое приложение с азиатскими дорамами и фильмами
+Text-to-speech for Alexa	Синтез речи для Alexa
+Voice data for Alexa speech	Голосовые данные для речи Alexa
+Calendar app	Приложение «Календарь»
+Stock photo screensaver with captions and likes	Заставка со стоковыми фото, подписями и лайками
+First-run setup, used again after a factory reset	Первоначальная настройка, снова нужна после сброса к заводским настройкам
+Plays USB and network media	Воспроизводит медиа с USB и из сети
+Films, series and live sport	Фильмы, сериалы и спортивные трансляции
+Jio's web browser	Браузер Jio
+Help app with an app download service	Справка с сервисом загрузки приложений
+Ambient scenes screensaver	Заставка с фоновыми сценами
+Reports location and app usage	Передаёт местоположение и данные об использовании приложений
+Voice assistant screens, the mic key and a second home	Экраны голосового помощника, кнопка микрофона и второй главный экран
+Live streaming app	Приложение для прямых трансляций
+Game streaming from a PC	Стриминг игр с ПК
+Preloaded game portal	Предустановленный игровой портал
+Screen sharing receiver	Приёмник трансляции экрана
+MediaTek's store demo app	Демо-приложение MediaTek для магазинов
+MediaTek measurement service	Служба измерений MediaTek
+Background service for AirPlay	Фоновая служба AirPlay
+Partner rows; some MediaTek TVs need it for the TV service at boot	Ряды партнёров; на некоторых ТВ с MediaTek нужно ТВ-службе при загрузке
+Pairs and wakes the remote	Подключает и пробуждает пульт
+MediaTek background service	Фоновая служба MediaTek
+Lets phone apps find the TV to cast	Позволяет приложениям на телефоне находить телевизор для трансляции
+Antenna TV tuner (North America)	Тюнер эфирного ТВ (Северная Америка)
+Remote hotkeys including Source	Быстрые кнопки пульта, включая Source
+Network monitor, needed by the system	Монитор сети, нужен системе
+Satellite operator apps for Europe	Приложения спутниковых операторов для Европы
+System part of AirPlay	Системная часть AirPlay
+MediaTek picture quality tool	Инструмент качества изображения MediaTek
+Power, HbbTV and keys	Питание, HbbTV и кнопки
+Factory diagnostics	Заводская диагностика
+UK catch-up and on-demand TV from the guide	Британское ТВ в записи и по запросу из телегида
+Partner rows on the stock home screen	Ряды партнёров на родном главном экране
+Core TV service	Основная ТВ-служба
+HDMI, AV and tuner inputs	Источники HDMI, AV и тюнера
+Live TV channel scan wizard	Мастер поиска телеканалов
+Live TV and HDMI app	Приложение эфирного ТВ и HDMI
+MediaTek recommendation feed	Лента рекомендаций MediaTek
+Web view shell used by the vendor	Оболочка WebView от производителя
+Preloaded meeting room app	Предустановленное приложение для переговорных
+Mercado Libre's free streaming app	Бесплатное стриминговое приложение Mercado Libre
+Remote and Bluetooth pairing	Подключение пульта и Bluetooth
+Xiaomi payment wallet (China)	Платёжный кошелёк Xiaomi (Китай)
+Broadcasters' interactive apps (ISDB-Tb)	Интерактивные приложения телеканалов (ISDB-Tb)
+Shows the progress of a firmware update	Показывает ход обновления прошивки
+Reminders and alarms, also those set by XiaoAI voice	Напоминания и будильники, в том числе заданные голосом через XiaoAI
+Lets Xiaomi push apps to the TV remotely	Позволяет Xiaomi удалённо устанавливать приложения на телевизор
+Download helper for the Mi updater	Загрузчик для средства обновления Mi
+Xiaomi MiDream screensaver	Заставка Xiaomi MiDream
+Xiaomi photo gallery	Фотогалерея Xiaomi
+Live TV and input switching	Эфирное ТВ и переключение источников
+Cast from Xiaomi phones	Трансляция с телефонов Xiaomi
+Xiaomi video streaming app (China)	Приложение Xiaomi для стриминга видео (Китай)
+Netflix key and remote handling	Обработка кнопки Netflix и пульта
+Xiaomi's stock screensaver	Стандартная заставка Xiaomi
+Xiaomi setup service	Служба настройки Xiaomi
+Shopping channel plugin (TV Taobao)	Плагин торгового канала (TV Taobao)
+Xiaomi tools app	Утилиты Xiaomi
+Xiaomi's home screen with adverts	Главный экран Xiaomi с рекламой
+Xiaomi content rows on the home screen	Ряды контента Xiaomi на главном экране
+Sponsored live channels	Спонсорские телеканалы
+Xiaomi tab added to Google TV home	Вкладка Xiaomi на главном экране Google TV
+Parental lock and password; switching it off removes the lock	Родительская блокировка и пароль; при отключении блокировка снимется
+Xiaomi firmware updater	Средство обновления прошивки Xiaomi
+Xiaomi video player	Видеоплеер Xiaomi
+Runs Xiaomi mini apps and promotions	Запускает мини-приложения и промоакции Xiaomi
+Remote diagnostics and log upload to Xiaomi	Удалённая диагностика и отправка журналов в Xiaomi
+Reports what you watch to Xiaomi	Сообщает Xiaomi, что вы смотрите
+Vendor video meeting service	Сервис видеовстреч от производителя
+Factory media test cases	Заводские тесты медиа
+Disclaimer screen	Экран с отказом от ответственности
+Runs the remote's Netflix button; turns Netflix back on at startup	Обслуживает кнопку Netflix на пульте; снова включает Netflix при запуске
+Video player and streaming app	Видеоплеер и стриминговое приложение
+Operator TV app (Colombia)	ТВ-приложение оператора (Колумбия)
+Local Telemundo station app	Приложение местного канала Telemundo
+Factory test for the TV tuner	Заводской тест ТВ-тюнера
+Films and series	Фильмы и сериалы
+Netflix helper for the TV maker	Помощник Netflix для производителя ТВ
+Partner sign-in token service used only by Netflix	Служба токенов входа для партнёров, нужна только Netflix
+Chinese TV streaming app	Китайское приложение онлайн-ТВ
+Live TV streaming app	Приложение для просмотра телеканалов онлайн
+French news and sport streaming app	Французское стриминговое приложение с новостями и спортом
+Game controller mapping	Назначение кнопок геймпада
+Key combo update service	Служба обновления по сочетанию кнопок
+Display control service	Служба управления дисплеем
+Updates NVIDIA system components	Обновляет системные компоненты NVIDIA
+Audio and video sync	Синхронизация звука и видео
+Remote pairing	Подключение пульта
+Developer tools service	Служба инструментов разработчика
+Log collector for NVIDIA support	Сбор журналов для поддержки NVIDIA
+Accessory bundle promotions	Акции на комплекты аксессуаров
+Factory system test	Заводской тест системы
+Crash reports and the feedback form	Отчёты о сбоях и форма обратной связи
+Input test viewer	Средство проверки ввода
+Infrared remote support	Поддержка ИК-пульта
+Audio processing	Обработка звука
+Old NVIDIA GameStream service	Старый сервис NVIDIA GameStream
+In-game overlay	Внутриигровой оверлей
+Firmware updates for the SHIELD	Обновления прошивки для SHIELD
+Package management service	Служба управления пакетами
+Finds a lost remote	Помогает найти потерянный пульт
+Beta programme sign-up	Запись в бета-программу
+Shares SHIELD storage on the network	Открывает доступ к памяти SHIELD по сети
+Registers the device with NVIDIA	Регистрирует устройство в NVIDIA
+Sign-in for the file share	Вход в общую папку
+Transfers files over the local network	Передаёт файлы по локальной сети
+First-run promo screens	Рекламные экраны при первом запуске
+Beta programme app	Приложение бета-программы
+Core SHIELD service	Основная служба SHIELD
+Controller and accessory screens	Экраны геймпадов и аксессуаров
+Sends anonymous usage statistics	Отправляет анонимную статистику использования
+Permissions for NVIDIA's profiler	Разрешения для профилировщика NVIDIA
+NVIDIA games app and row	Приложение и ряд игр NVIDIA
+Lets the vendor manage the device remotely	Позволяет производителю удалённо управлять устройством
+Quiz game	Игра-викторина
+OnePlus content page	Страница контента OnePlus
+OnePlus's own screensaver	Собственная заставка OnePlus
+Built-in user guide	Встроенное руководство пользователя
+Opera TV SDK sample app	Пример приложения на Opera TV SDK
+Middle East series and film streaming app	Ближневосточное стриминговое приложение с сериалами и фильмами
+NBC series, films and live sport	Сериалы, фильмы и спортивные трансляции NBC
+Wi-Fi helper for Play-Fi speakers	Помощник Wi-Fi для колонок Play-Fi
+Multi-room audio to Play-Fi speakers	Звук в нескольких комнатах через колонки Play-Fi
+Your own films and music, and free channels	Ваши фильмы и музыка, а также бесплатные каналы
+Firmware updates for Bluetooth remotes	Обновления прошивки для Bluetooth-пультов
+Chinese digital TV tuner input	Источник китайского цифрового ТВ-тюнера
+Digital tuner input	Источник цифрового тюнера
+Factory tools, needed by the system	Заводские утилиты, нужны системе
+User guide for the karaoke app	Руководство к приложению для караоке
+Partner rows; on some sets also the stock home's Inputs button	Ряды партнёров; на некоторых ТВ ещё и кнопка «Источники» на родном главном экране
+In-store demo mode	Демо-режим в магазине
+North American TV tuner input	Источник ТВ-тюнера для Северной Америки
+Japanese and South American tuner input	Источник тюнера для Японии и Южной Америки
+Roku's free streaming channel app	Приложение бесплатного стримингового канала Roku
+Plays videos and photos from USB	Воспроизводит видео и фото с USB
+Smart home app	Приложение для умного дома
+SBS catch-up TV (Australia)	Передачи SBS в записи (Австралия)
+Helper for MHshare screen sharing	Помощник трансляции экрана MHshare
+Factory test menu	Заводское тестовое меню
+Hardware info and diagnostics	Сведения об оборудовании и диагностика
+Partner customer service, purpose unclear	Служба поддержки клиентов партнёра, назначение неясно
+Partner customization and home channels	Настройки партнёра и каналы главного экрана
+Reports device information	Передаёт сведения об устройстве
+Factory key and USB test	Заводской тест кнопок и USB
+Tuya smart home preload	Предустановленное приложение умного дома Tuya
+Red button interactive TV (Europe)	Интерактивное ТВ по красной кнопке (Европа)
+Recognises what is on screen for recommendations	Распознаёт содержимое экрана для рекомендаций
+Tracks boot, network and location	Отслеживает загрузку, сеть и местоположение
+Remote connection and battery	Подключение и заряд пульта
+Store demo app	Демо-приложение для магазинов
+Background service started at boot	Фоновая служба, запускается при загрузке
+Quick menu, Art Time and IP control	Быстрое меню, Art Time и управление по IP
+AirPlay and Miracast receiver	Приёмник AirPlay и Miracast
+Bluetooth audio support	Поддержка Bluetooth-аудио
+Shop-floor promo player	Рекламный плеер для торгового зала
+Panel calibration service	Служба калибровки панели
+Skyworth background service; purpose not documented	Фоновая служба Skyworth; назначение не описано
+Hot keys and find my remote	Быстрые кнопки и поиск пульта
+Adds rows to the home screen	Добавляет ряды на главный экран
+Skyworth apps screen	Экран приложений Skyworth
+Content recommendation rows	Ряды рекомендаций контента
+Records first activation	Фиксирует первую активацию
+Skyworth first-run and privacy setup	Первоначальная настройка и конфиденциальность Skyworth
+AirPlay and screen mirroring receiver	Приёмник AirPlay и дублирования экрана
+A second firmware updater (updateos)	Второе средство обновления прошивки (updateos)
+The only on-screen keyboard	Единственная экранная клавиатура
+Partner settings for first setup	Параметры партнёра для первоначальной настройки
+Sony's guide to the accessibility settings	Руководство Sony по специальным возможностям
+Connects the remote mic to Assistant	Подключает микрофон пульта к Ассистенту
+Interactive services for ATSC 3.0 broadcasts	Интерактивные сервисы для вещания ATSC 3.0
+Hotel and pro mode service	Служба гостиничного и профессионального режима
+Imports and exports hotel mode settings	Импорт и экспорт настроек гостиничного режима
+Node.js runtime for hotel mode apps	Среда Node.js для приложений гостиничного режима
+Privileged Node.js runtime for hotel apps	Привилегированная среда Node.js для гостиничных приложений
+Extension for the hotel mode runtime	Расширение среды гостиничного режима
+Node.js 12 extension for hotel mode	Расширение Node.js 12 для гостиничного режима
+Settings for hotel and pro mode	Настройки гостиничного и профессионального режима
+Lets a serial controller drive the TV	Позволяет управлять телевизором через последовательный порт
+Hotspot for hotel and pro mode	Точка доступа для гостиничного и профессионального режима
+Broadcasts TV details for home automation	Рассылает данные о телевизоре для умного дома
+Content list that feeds Discover	Список контента для Discover
+Sony tips and tricks app	Советы и подсказки Sony
+Clock rules for ATSC broadcasts	Правила времени для вещания ATSC
+Sets the clock from the TV broadcast	Устанавливает часы по сигналу телевещания
+Settings for antenna TV channels	Настройки эфирных телеканалов
+Picture calibration helper	Помощник калибровки изображения
+Help tile	Плитка справки
+Retail demo mode	Демо-режим для розничной торговли
+Shop demo mode	Демо-режим для магазинов
+Shop demo support service	Вспомогательная служба демо-режима
+Shop demo system service	Системная служба демо-режима
+Sony content bar	Панель контента Sony
+BRAVIA CAM warns when you sit too close	BRAVIA CAM предупреждает, если вы сидите слишком близко
+Sony's energy settings dashboard tile	Плитка настроек энергосбережения Sony
+Hand gesture control with BRAVIA CAM	Управление жестами через BRAVIA CAM
+Content for the Help app	Материалы для приложения «Справка»
+Lets the Apple Home app control the TV	Позволяет приложению Apple Home управлять телевизором
+On-screen manual	Экранное руководство
+Content recommendation feed	Лента рекомендаций контента
+Recommendation feed for cable boxes	Лента рекомендаций для кабельных приставок
+Sony agent that records recent use	Агент Sony, записывающий недавние действия
+Sony settings for the Google TV home	Настройки Sony для главного экрана Google TV
+Sony ambient mode and default screensaver	Фоновый режим Sony и стандартная заставка
+Shop demo of multiple screens	Демонстрация нескольких экранов в магазине
+Wi-Fi Direct connection	Подключение Wi-Fi Direct
+Online content recommendation feed	Лента рекомендаций онлайн-контента
+Sony notifications inbox	Входящие уведомления Sony
+Now-playing pop-up for Sony music	Всплывающее окно «Сейчас играет» для музыки Sony
+Sony promotions	Промоакции Sony
+Recommendation service for home rows	Служба рекомендаций для рядов главного экрана
+Sign-in for Sony's smart home link	Вход для связи Sony с умным домом
+Phone app and smart speaker link	Связь с приложением на телефоне и умной колонкой
+Turns the TV on from a phone or smart speaker	Включает телевизор с телефона или умной колонки
+Firmware updates for BRAVIA CAM	Обновления прошивки BRAVIA CAM
+Settings for BRAVIA CAM	Настройки BRAVIA CAM
+Service menu for the tuner	Сервисное меню тюнера
+Help and support app	Приложение справки и поддержки
+Links the TV to Alexa	Связывает телевизор с Alexa
+Sends bug reports to Sony	Отправляет отчёты об ошибках в Sony
+Sets how much the TV logs for bug reports	Задаёт подробность журналов для отчётов об ошибках
+Sony app store and promos	Магазин приложений и промоакции Sony
+Resource overlay for the Sony Select promo tile	Оверлей ресурсов для рекламной плитки Sony Select
+Sony content shelf on the home screen	Полка контента Sony на главном экране
+Core Sony TV service	Основная служба телевизора Sony
+Sony partner content on the home screen	Контент партнёров Sony на главном экране
+Tutorial for the touchpad remote	Обучение работе с сенсорным пультом
+Tuner and HDMI control for Sony TVs	Управление тюнером и HDMI на телевизорах Sony
+Antenna TV tuner (ATSC 3.0)	Тюнер эфирного ТВ (ATSC 3.0)
+DRM licences for the ATSC 3.0 tuner	DRM-лицензии для тюнера ATSC 3.0
+Sony tweaks to home rows	Доработки Sony для рядов главного экрана
+Live TV, tuner and HDMI app	Приложение эфирного ТВ, тюнера и HDMI
+Viewing context for recommendations	Контекст просмотра для рекомендаций
+Sony's voice search for the remote mic	Голосовой поиск Sony через микрофон пульта
+Recommendations for live TV	Рекомендации для эфирного ТВ
+Recommendation feed for home rows	Лента рекомендаций для рядов главного экрана
+UK TV service	Британский ТВ-сервис
+DLNA media renderer	DLNA-медиарендерер
+Settings for the DLNA renderer	Настройки DLNA-рендерера
+Sony video store; service has ended	Видеомагазин Sony; сервис закрыт
+DLNA media sharing service	Служба обмена медиафайлами по DLNA
+Plays protected DLNA streams	Воспроизводит защищённые DLNA-потоки
+Device data agent	Агент данных об устройстве
+Sony's series, films and live sport	Сериалы, фильмы и спортивные трансляции Sony
+Sony film streaming app	Стриминговое приложение Sony с фильмами
+First-time setup guide	Мастер первоначальной настройки
+Factory settings menu	Заводское меню настроек
+Factory feature test app	Заводское приложение для проверки функций
+Channel 7 catch-up TV (Australia)	Передачи Channel 7 в записи (Австралия)
+Sign-in service for Huan content apps	Служба входа для контентных приложений Huan
+Links the TV with TCL's phone app	Связывает телевизор с приложением TCL на телефоне
+Updates TCL soundbar firmware	Обновляет прошивку саундбаров TCL
+TCL copy of the web view	Копия WebView от TCL
+TCL's own app store	Собственный магазин приложений TCL
+Art wallpaper content	Контент для художественных обоев
+Reacts to boot, network and app changes	Реагирует на загрузку, изменения сети и приложений
+TCL voice service	Голосовая служба TCL
+Recommendation cards on the home screen	Карточки рекомендаций на главном экране
+Pairs the Bluetooth remote	Подключает Bluetooth-пульт
+Reports usage data to TCL	Отправляет в TCL данные об использовании
+Full-screen advert at startup	Полноэкранная реклама при включении
+Keeps a connection open for TCL push messages	Держит открытое соединение для push-сообщений TCL
+Free ad-supported TCL channels	Бесплатные каналы TCL с рекламой
+Device management; watches app installs	Управление устройством; следит за установкой приложений
+Weather widget service	Служба виджета погоды
+Copies phone data to the TV	Копирует данные с телефона на телевизор
+TCL's home screen on China sets; a content service on others	Главный экран TCL на китайских моделях; на остальных — служба контента
+TCL dashboard and promos; newer TCL Google TVs need it for inputs	Панель и промоакции TCL; новым TCL на Google TV нужна для источников
+Dashboard service, needed by the system	Служба панели, нужна системе
+Electronic warranty sheet	Электронный гарантийный талон
+Retail demo stickers	Наклейки демо-режима для магазинов
+TCL voice assistant layer	Слой голосового помощника TCL
+Factory wizard, needed by the system	Заводской мастер настройки, нужен системе
+Kids and education content	Детский и обучающий контент
+USB photo gallery; on some sets also the TCL screensaver	Галерея фото с USB; на некоторых моделях также заставка TCL
+Game mode overlay for consoles	Оверлей игрового режима для консолей
+Game store	Магазин игр
+Remote key overlay, needed	Оверлей кнопок пульта, нужен
+TCL support, usage tracking and cleaner	Поддержка TCL, слежка за использованием и очистка
+Hearing test and volume adaptation	Проверка слуха и подстройка громкости
+Hotel mode menu	Меню гостиничного режима
+Setup service, needed by the system	Служба настройки, нужна системе
+TCL TIAS background service	Фоновая служба TCL TIAS
+Remote key help overlays; some TCL sets need it for remote keys	Подсказки по кнопкам пульта; на некоторых TCL нужны для работы кнопок
+Captures and uploads logs	Собирает и отправляет журналы
+Help pages for the menus	Справка по меню
+Mirrors a phone with TCL's app	Дублирует экран телефона через приложение TCL
+TCL pushed messages and promos	Push-сообщения и промоакции TCL
+Manages the remote's microphone	Управляет микрофоном пульта
+Screen mirroring from phones and PCs	Дублирование экрана с телефонов и ПК
+Note and reminder app	Заметки и напоминания
+Recommended apps; on some sets turns promo apps back on at boot	Рекомендуемые приложения; на некоторых моделях снова включает рекламные приложения при загрузке
+App installer service, needed	Служба установки приложений, нужна
+TCL home rows; on some sets also the T key and Inputs icon	Ряды главного экрана TCL; на некоторых моделях также кнопка T и значок «Источники»
+Resources for TCL's promo rows	Ресурсы рекламных рядов TCL
+Tips app	Приложение с советами
+Builds an audience profile for TCL	Составляет профиль аудитории для TCL
+Settings provider, needed for Wi-Fi	Поставщик настроек, нужен для Wi-Fi
+Plays recorded TV shows	Воспроизводит записанные передачи
+Recognizes what is on screen; can also install apps	Распознаёт содержимое экрана; может также устанавливать приложения
+Repair help	Помощь с ремонтом
+SMB file sharing server	Сервер общего доступа к файлам по SMB
+TCL settings app	Приложение настроек TCL
+Alexa voice service	Голосовая служба Alexa
+Includes a silent app installer	Содержит скрытый установщик приложений
+Quick panel behind the remote's Input key; off, that key stops	Быстрая панель кнопки выбора источника; без неё кнопка не работает
+System UI add-on, needed	Дополнение системного интерфейса, нужно
+Bluetooth headphones for one listener	Bluetooth-наушники для одного слушателя
+Bluetooth remote pairing	Подключение Bluetooth-пульта
+Samba TV and TCL analytics; on some TCL TVs the firmware updater	Аналитика Samba TV и TCL; на некоторых TCL — средство обновления прошивки
+Live TV, HDMI and tuner app	Приложение эфирного ТВ, HDMI и тюнера
+TCL's ad-funded channels	Каналы TCL с рекламой
+TCL channel app with Google ads	Приложение каналов TCL с рекламой Google
+Pushes TCL content to the home screen	Выводит контент TCL на главный экран
+Pushes TCL content at boot	Показывает контент TCL при загрузке
+Diagnostics uploader	Отправка диагностических данных
+Live TV tuner and HDMI inputs	Тюнер эфирного ТВ и источники HDMI
+Photo album app	Фотоальбом
+Cleaner widget service	Служба виджета очистки
+End-user agreement screen; some TCL Google TVs need it	Экран пользовательского соглашения; нужен некоторым TCL на Google TV
+TCL account sign-in	Вход в аккаунт TCL
+TCL firmware updates	Обновления прошивки TCL
+Voice control for the remote's voice key	Голосовое управление через голосовую кнопку пульта
+Web content feed	Лента веб-контента
+WeChat app for the TV	WeChat для телевизора
+Searches across TCL content	Поиск по контенту TCL
+Remote support app	Приложение удалённой поддержки
+TED talks	Лекции TED
+Asian drama streaming app	Стриминговое приложение с азиатскими дорамами
+Short video app	Приложение коротких видео
+Shows NFT artwork	Показывает NFT-картины
+Philips screenshot sharing service	Служба Philips для отправки снимков экрана
+TPV background content and data service	Фоновая служба контента и данных TPV
+Free films and series with adverts	Бесплатные фильмы и сериалы с рекламой
+Part of the Freeview Play app layer	Часть платформы приложений Freeview Play
+IR control of cable boxes and soundbars	ИК-управление кабельными приставками и саундбарами
+Spanish-language TV app	ТВ-приложение на испанском
+Factory test app that starts from a USB stick	Приложение заводского тестирования, запускается с USB-флешки
+Records app, screen and power events; crash reports	Записывает события приложений, экрана и питания; отчёты о сбоях
+The stock home; also the remote pairing screen	Родной главный экран; также экран подключения пульта
+Background service that sees which apps you run	Фоновая служба, которая видит, какие приложения вы запускаете
+Vestel logging service	Служба ведения журналов Vestel
+Memory cleaner that can read system logs	Очистка памяти с доступом к системным журналам
+Sends usage reports to Vestel at boot	Отправляет в Vestel отчёты об использовании при загрузке
+Web app store and browser	Магазин веб-приложений и браузер
+App store and HbbTV core service	Магазин приложений и основная служба HbbTV
+Feeds the VIDAA tab on the home	Наполняет вкладку VIDAA на главном экране
+Core VIDAA service, needed	Основная служба VIDAA, нужна
+Children's picture book app	Детские книжки с картинками
+Alexa for Hisense TVs	Alexa для телевизоров Hisense
+Factory test and service menu	Заводское тестовое и сервисное меню
+Walkthrough shown at first setup	Пошаговый обзор при первоначальной настройке
+Photo and camera app with a screensaver	Приложение фото и камеры с заставкой
+Hisense room audio calibration prompt	Предложение Hisense настроить звук под комнату
+Hotel and commercial mode	Гостиничный и коммерческий режим
+Professional picture calibration link	Связь с профессиональной калибровкой изображения
+DLNA media renderer, starts at boot	DLNA-медиарендерер, запускается при загрузке
+Hisense player for USB and DLNA files	Плеер Hisense для файлов с USB и DLNA
+Miracast receiver and its tips	Приёмник Miracast и подсказки к нему
+Hisense system screens, needed to boot	Системные экраны Hisense, нужны для загрузки
+Updates firmware from USB	Обновляет прошивку с USB
+HBO's streaming app	Стриминговое приложение HBO
+HBO series and films	Сериалы и фильмы HBO
+Vodafone's TV app	ТВ-приложение Vodafone
+Preloaded rally app (game or WRC+ video)	Предустановленное приложение о ралли (игра или видео WRC+)
+Animated screensaver	Анимированная заставка
+Factory Wi-Fi test	Заводской тест Wi-Fi
+Uploads bug reports to XGIMI	Отправляет отчёты об ошибках в XGIMI
+Factory burn-in test that runs at startup	Заводской тест-прогон, запускается при включении
+Reports usage data to XGIMI	Отправляет в XGIMI данные об использовании
+XGIMI music app and speaker-mode screen	Музыкальное приложение XGIMI и экран режима колонки
+File manager with network sharing	Файловый менеджер с доступом по сети
+Plays your own videos and photos	Воспроизводит ваши видео и фото
+Factory menu and test services	Заводское меню и тестовые службы
+Firmware updates for the remote, speaker and other accessories	Обновления прошивки пульта, колонки и других аксессуаров
+Atmosphere screensaver and ambient scenes	Атмосферная заставка и фоновые сцены
+XGIMI firmware updates	Обновления прошивки XGIMI
+Xiaomi account, for Xiaomi's paid content	Аккаунт Xiaomi для платного контента Xiaomi
+Sign-in service for the Xiaomi account	Служба входа в аккаунт Xiaomi
+Translates subtitles with AI	Переводит субтитры с помощью ИИ
+Xiaomi audio debugging tool	Инструмент отладки звука Xiaomi
+Remote pairing and shortcut keys	Подключение пульта и быстрые кнопки
+A second home screen for office use	Второй главный экран для офиса
+Floating promo overlay	Плавающая реклама поверх экрана
+Sign-in and payments for Xiaomi store games	Вход и оплата для игр из магазина Xiaomi
+Links the TV with Xiaomi phones and devices	Связывает телевизор с телефонами и устройствами Xiaomi
+Child mode and privacy lock screen	Детский режим и экран защиты приватности
+Lets a Xiao Ai speaker control the TV	Позволяет управлять телевизором с колонки Xiao Ai
+Xiaomi music app	Музыкальное приложение Xiaomi
+Casting from Xiaomi phones	Трансляция с телефонов Xiaomi
+Xiaomi's own app store (China)	Собственный магазин приложений Xiaomi (Китай)
+Xiaomi calendar app	Календарь Xiaomi
+Uploads satisfaction surveys to Xiaomi	Отправляет в Xiaomi опросы об удовлетворённости
+Collects logs for Xiaomi	Собирает журналы для Xiaomi
+Xiaomi health app	Приложение Xiaomi о здоровье
+Xiaomi health app add-on	Дополнение к приложению Xiaomi о здоровье
+Xiaomi screensaver with adverts	Заставка Xiaomi с рекламой
+Karaoke service	Служба караоке
+Shows the terms and privacy policy	Показывает условия использования и политику конфиденциальности
+Light effect app	Приложение световых эффектов
+Plays videos, music and photos from USB	Воспроизводит видео, музыку и фото с USB
+Xiaomi phone remote and air mouse service	Служба Xiaomi: пульт на телефоне и аэромышь
+Framework resources, needed	Ресурсы фреймворка, нужны
+Game mode and picture modes	Игровой режим и режимы изображения
+Xiaomi shopping app	Приложение Xiaomi для покупок
+The Menu button's panel, with smart home controls	Панель кнопки «Меню» с управлением умным домом
+Share media from phones	Передача медиафайлов с телефонов
+Cleaner; Xiao Ai voice also opens apps through it	Очистка; через неё голосовой помощник Xiao Ai тоже открывает приложения
+Delivers Xiaomi push messages and promos	Доставляет push-сообщения и промоакции Xiaomi
+Firmware and PatchWall updates	Обновления прошивки и PatchWall
+Downloads and installs firmware updates	Скачивает и устанавливает обновления прошивки
+Records the TV screen	Записывает экран телевизора
+The TV's first-run setup	Первоначальная настройка телевизора
+Xiaomi smart home app; also lets a Xiao Ai speaker control the TV	Умный дом Xiaomi; также позволяет управлять телевизором с колонки Xiao Ai
+Wallpaper and photo app with advert code	Приложение обоев и фото с рекламным кодом
+Uploads crash and performance data to Xiaomi	Отправляет в Xiaomi данные о сбоях и производительности
+Firebase analytics uploader	Отправка аналитики Firebase
+Uploads quality logs to Xiaomi	Отправляет в Xiaomi журналы качества
+Xiaomi weather app	Приложение погоды Xiaomi
+Xiaomi voice assistant and the remote's voice key	Голосовой помощник Xiaomi и голосовая кнопка пульта
+Listens for the Xiao Ai wake word	Слушает фразу активации Xiao Ai
+Xiaomi Miracast receiver helper	Вспомогательная служба приёмника Miracast Xiaomi
+Old partner copy of the Sony LIV app	Старая партнёрская копия приложения Sony LIV
+Legal and privacy screens	Экраны юридической информации и конфиденциальности
+Promo web content	Рекламный веб-контент
+File transfer app preload	Предустановленное приложение для передачи файлов
+Smart light app preloaded by Hisense	Приложение умного освещения, предустановленное Hisense
+UK TV guide and catch-up	Британская телепрограмма и передачи в записи
+Background service for YouView	Фоновая служба YouView
+Indian TV streaming app	Индийское приложение онлайн-ТВ
+Vendor cloud link and system updates	Связь с облаком производителя и обновления системы
+Old partner copy of the ZEE5 app	Старая партнёрская копия приложения ZEE5
+Media player app for web content	Медиаплеер для веб-контента
+Deutsche Welle news app	Новостное приложение Deutsche Welle
+france.tv app for children	Детское приложение france.tv
+Free's news app	Новостное приложение Free
+Free's shortcut to the Disney+ app	Ярлык Free для приложения Disney+
+Sends usage statistics to Free	Отправляет в Free статистику использования
+TF1 app for children	Детское приложение TF1
+Retail demo app; on some MediaTek and Vestel TVs also the Input key	Демо-приложение для магазинов; на некоторых ТВ с MediaTek и Vestel также кнопка выбора источника
+Indonesian streaming app	Индонезийское стриминговое приложение
+Mimi hearing based sound processing	Обработка звука Mimi с учётом слуха
+Czech news video app	Чешское приложение с видеоновостями
+Links Haier home appliances	Связь с бытовой техникой Haier
+Italian streaming app	Итальянское стриминговое приложение
+Italian radio app	Итальянское радиоприложение
+Map app preloaded on this TV	Приложение карт, предустановленное на этом телевизоре
+Core Xiaomi TV service	Основная служба телевизора Xiaomi
+News streaming app	Новостное стриминговое приложение
+Device analytics	Аналитика устройства
+Data for the device manager	Данные для диспетчера устройства
+Weather app	Приложение погоды
+Hisense VIDAA app preload	Предустановленное приложение Hisense VIDAA
+Smart home control	Управление умным домом
+AOSP test browser for the web view, not the web view itself	Тестовый браузер AOSP для WebView, а не сам WebView
+Alexa bridge for the TV	Мост Alexa для телевизора
+Fitness app	Фитнес-приложение
+Calman picture calibration service	Служба калибровки изображения Calman
+Uploads viewing and device data	Отправляет данные о просмотре и устройстве
+Ad consent screen	Экран согласия на рекламу
+Control4 smart home service	Служба умного дома Control4
+Control4 smart home adapter	Адаптер умного дома Control4
+Control4 smart home integration	Интеграция с умным домом Control4
+Lets Control4 find the TV	Позволяет Control4 найти телевизор
+Collects logs for TP Vision	Собирает журналы для TP Vision
+Media server and renderer for the network	Сетевой медиасервер и рендерер
+Collects metrics for the analytics uploader	Собирает метрики для отправки аналитики
+Interactive features of broadcast TV	Интерактивные функции эфирного ТВ
+Setup for USB keyboards and mice	Настройка USB-клавиатур и мышей
+Control from apps on the home network	Управление из приложений в домашней сети
+Satellite operator promo app	Рекламное приложение спутникового оператора
+Philips Matter smart home service	Служба умного дома Matter от Philips
+Philips Multi View picture in picture	Картинка в картинке Philips Multi View
+Philips app gallery	Галерея приложений Philips
+Opens the NetTV app gallery	Открывает галерею приложений NetTV
+European culture channel app	Приложение европейского канала о культуре
+Preloaded games	Предустановленные игры
+Film trailers app	Приложение с трейлерами фильмов
+Film and TV streaming app	Стриминговое приложение с фильмами и телешоу
+Spanish TV catch-up app	Испанское приложение с передачами в записи
+TV streaming app	Приложение онлайн-ТВ
+Free games app	Приложение с бесплатными играми
+Kids cartoons app	Приложение с детскими мультфильмами
+Fishing video app	Приложение с видео о рыбалке
+Installs gallery apps without asking	Устанавливает приложения из галереи без спроса
+Promoted content row	Ряд с продвигаемым контентом
+Philips account and NetTV registration	Аккаунт Philips и регистрация в NetTV
+Mimi personalised sound settings	Персональные настройки звука Mimi
+Backend for the Top Picks row	Служба для ряда Top Picks
+Philips wake-up light alarm	Световой будильник Philips
+Sends reboot reasons and update records to the Philips logger	Отправляет в журнал Philips причины перезагрузок и записи об обновлениях
+Logs usage and device data	Записывает данные об использовании и устройстве
+UK red button services	Британские сервисы «красной кнопки»
+Video player	Видеоплеер
+Russian streaming app	Российское стриминговое приложение
+Sends bug reports to Sber	Отправляет отчёты об ошибках в Сбер
+Gamepad support service	Служба поддержки геймпадов
+Screen sharing from Huawei phones	Трансляция экрана с телефонов Huawei
+Sber music app	Музыкальное приложение Сбера
+Beta software sign-up	Запись на бета-тестирование
+Parental control	Родительский контроль
+Sber games	Игры Сбера
+Smart home adverts	Реклама умного дома
+Memory cleaning screen	Экран очистки памяти
+Kids section	Детский раздел
+The stock Salute TV home screen	Родной главный экран Salute TV
+Sber online channels	Онлайн-каналы Сбера
+Sber app store	Магазин приложений Сбера
+User profiles	Профили пользователей
+Sber's YouTube wrapper	Обёртка YouTube от Сбера
+Subscriptions	Подписки
+Surveys	Опросы
+TV provider setup for the guide	Настройка ТВ-провайдера для телепрограммы
+Video catalogue	Каталог видео
+Miracast receiver	Приёмник Miracast
+Radio streaming app	Приложение онлайн-радио
+Airtel streaming app (India)	Стриминговое приложение Airtel (Индия)
+Recognises what you watch to target ads	Распознаёт, что вы смотрите, чтобы подбирать рекламу
+Brazilian interactive broadcast middleware	Бразильское промежуточное ПО для интерактивного вещания
+Streaming app (Russia)	Стриминговое приложение (Россия)
+Free streaming TV app	Бесплатное приложение онлайн-ТВ
+Reports what you watch	Сообщает, что вы смотрите
+Opt-in and privacy screens for Samba TV	Экраны согласия и конфиденциальности Samba TV
+Ukrainian TV streaming app	Украинское приложение онлайн-ТВ
+Live game streaming app	Приложение для прямых трансляций игр
+BBC channels and programmes	Каналы и передачи BBC
+App store tile that shows Google ads	Плитка магазина приложений с рекламой Google
