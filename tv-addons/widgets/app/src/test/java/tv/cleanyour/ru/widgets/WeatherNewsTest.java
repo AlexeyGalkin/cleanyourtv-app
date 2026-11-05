@@ -108,6 +108,33 @@ public class WeatherNewsTest {
     }
 
     @Test
+    public void onlyFormulaOneFromTheMotorSportFeed() {
+        assertTrue(News.isF1("Формула-1"));
+        assertTrue(News.isF1("Формула 1"));
+        assertTrue(News.isF1("Формула-1 Гран-при Бразилии"));
+        assertTrue(News.isF1("Хаас Ф-1"));
+        assertTrue(News.isF1("Формула–1"));
+        assertFalse(News.isF1("Формула-2"));
+        assertFalse(News.isF1("Формула-3"));
+        assertFalse(News.isF1("Формула E"));
+        assertFalse(News.isF1("Формула-1000"));
+        assertFalse(News.isF1("Авто"));
+        String feed = "<rss><channel>"
+                + item("Ферстаппен выиграл в Бразилии", "Формула-1", "Wed, 04 Nov 2026 10:00:00 +0300")
+                + item("Чемпион Формулы E продлил контракт", "Формула E", "Wed, 04 Nov 2026 11:00:00 +0300")
+                + item("Камара выиграл гонку Формулы-2", "Формула-2", "Wed, 04 Nov 2026 12:00:00 +0300")
+                + "</channel></rss>";
+        List<News.Item> got = News.parse(feed, "Чемпионат", true);
+        assertEquals(1, got.size());
+        assertEquals("Ферстаппен выиграл в Бразилии", got.get(0).title);
+    }
+
+    private static String item(String title, String section, String date) {
+        return "<item><title>" + title + "</title><link>https://www.championat.com/auto/news-1.html</link><pubDate>" + date
+                + "</pubDate><category>Авто</category><category domain=\"sections\">" + section + "</category></item>";
+    }
+
+    @Test
     public void entitiesAndCdataAreCleaned() {
         assertEquals("a b", News.clean("a &#99999999; &#xD800; b"));   // bad code points become spaces, folded
         assertEquals("«Мерседес» — о проблемах & планах", News.clean("<![CDATA[&laquo;Мерседес&raquo; &mdash; о <b>проблемах</b> &amp; планах]]>"));

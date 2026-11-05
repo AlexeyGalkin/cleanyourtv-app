@@ -50,6 +50,14 @@ final class News {
         return m.find() ? clean(m.group(1)) : "";
     }
 
+    /** "Формула-1", "Формула 1", "Формула-1 Гран-при Бразилии", "Ф-1"; not "Формула-2", "Формула E" nor "Формула-1000". */
+    static boolean isF1(String category) {
+        String c = category.toLowerCase(Locale.ROOT).replace('\u00a0', ' ');
+        return F1_TAG.matcher(c).find();
+    }
+
+    private static final Pattern F1_TAG = Pattern.compile("(^|[^\\p{L}\\d])(формула|ф)[-– ]?1(?!\\d)");
+
     private static List<String> tags(String item, String name) {
         List<String> out = new ArrayList<>();
         Matcher m = Pattern.compile("<" + name + "[^>]*>(.*?)</" + name + ">", Pattern.DOTALL).matcher(item);
@@ -90,7 +98,10 @@ final class News {
         }
     }
 
-    /** One feed's items; {@code f1Only} keeps those whose categories name Формула-1. */
+    /**
+     * One feed's items; {@code f1Only} keeps those whose section or tags name Формула-1 (the motor-sport feed also has
+     * Формула E, Формула-2, Формула-3, rallies and MotoGP).
+     */
     static List<Item> parse(String xml, String source, boolean f1Only) {
         List<Item> out = new ArrayList<>();
         if (xml == null) return out;
@@ -99,7 +110,7 @@ final class News {
             String it = m.group(1);
             if (f1Only) {
                 boolean f1 = false;
-                for (String c : tags(it, "category")) if (c.toLowerCase(Locale.ROOT).contains("формула")) f1 = true;
+                for (String c : tags(it, "category")) if (isF1(c)) f1 = true;
                 if (!f1) continue;
             }
             String title = tag(it, "title");

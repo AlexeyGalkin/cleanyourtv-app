@@ -24,10 +24,11 @@
 >   still offline): every widget that is on shows at once as two equal cards, F1 on the left, the weather (now and
 >   three days, day and night, minimal line icons) and holidays on the right; F1 news in Russian from f1news.ru and
 >   Championat; a no-spoiler mode. With the original home screen the lines take turns instead.
->   **To switch a TV that has the original home screen:** in the original app, open the TV's restore point → Undo everything
->   and switch on "Remove it from the TV" under New home screen; then run Setup in this app (the TV asks once to allow
->   it), and set the dock, look and widgets again from the phone.
-> - The TV's progress screen during the clean-up and every text of the app in Russian.
+>   **To switch a TV that has the original home screen:** in the original app, open Restore point → Undo everything,
+>   choose "Remove it from the TV" under New home screen and tap Put everything back. Then set the TV up again in this
+>   app (the TV asks once to allow it), and set the dock, look and widgets again from the phone.
+> - The TV's progress screen during the clean-up (when the TV's language is Russian) and every text of the app in
+>   Russian.
 > - Its own package (`tv.cleanyour.app.ru`), so it installs **next to** the upstream app, and "Check for updates"
 >   reads this fork's releases.
 >
