@@ -89,7 +89,27 @@ public class WeatherNewsTest {
     }
 
     @Test
+    public void afterTheRaceTheNextWeekendCountsDownAtOnce() throws Exception {
+        F1.Season s = F1.season(fixture("current.json"));
+        F1.Race brazil = s.races.get(19);
+        assertEquals(20, brazil.round);
+        java.time.Instant hourAfter = brazil.race().end().plusSeconds(3600);
+        Turn t = Turns.f1(s, hourAfter, true);
+        assertNotNull(t);
+        assertTrue(t.topLine, t.topLine.startsWith("Этап 21"));
+    }
+
+    @Test
+    public void currentAmountsAreForFifteenMinutesAndACodeOfSnowIsSnow() {
+        // 0.02 cm in 15 minutes is about 1 cm in 12 hours: snow, not "light snow" nor overcast.
+        assertEquals(Sky.SNOW2, Sky.now(48, 0, 0.025, 73, 100, 2));
+        assertEquals(Sky.SNOW1, Sky.now(48, 0, 0, 71, 100, 2));     // the code says snow, the amount rounds to 0
+        assertEquals(Sky.OVERCAST, Sky.now(48, 0, 0, 3, 100, 2));
+    }
+
+    @Test
     public void entitiesAndCdataAreCleaned() {
+        assertEquals("a b", News.clean("a &#99999999; &#xD800; b"));   // bad code points become spaces, folded
         assertEquals("«Мерседес» — о проблемах & планах", News.clean("<![CDATA[&laquo;Мерседес&raquo; &mdash; о <b>проблемах</b> &amp; планах]]>"));
         assertEquals("Ferrari's \"car\"", News.clean("Ferrari&#39;s &quot;car&quot;"));
         assertEquals(new ArrayList<News.Item>().size(), News.parse(null, "x", false).size());

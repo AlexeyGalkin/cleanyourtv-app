@@ -71,6 +71,7 @@ final class News {
             } catch (NumberFormatException e) {
                 code = ' ';
             }
+            if (code <= 0 || !Character.isValidCodePoint(code) || (code >= 0xD800 && code <= 0xDFFF)) code = ' ';
             m.appendReplacement(b, Matcher.quoteReplacement(new String(Character.toChars(code))));
         }
         m.appendTail(b);

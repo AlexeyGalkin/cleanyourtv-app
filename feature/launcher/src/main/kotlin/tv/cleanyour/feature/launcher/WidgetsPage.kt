@@ -913,9 +913,14 @@ private fun ColumnScope.UnderClockEditor(s: MakeItYoursState, onIntent: (MakeItY
 // what puts the Widgets add-on on the TV.
 @Composable
 private fun ColumnScope.ForkEditor(s: MakeItYoursState, onIntent: (MakeItYoursIntent) -> Unit) {
+    if (s.forkTvTooOld) { Hint(stringResource(R.string.fork_widgets_old_android), top = 16.dp); return }
     if (!s.forkAddon) return
-    // An older home screen (before 3.3) has no lines from another app under its clock: say how to get them.
-    if (!s.reads("game_day")) { Hint(stringResource(R.string.fork_widgets_needs_update), top = 16.dp); return }
+    // An older home screen (before 3.3) has no lines from another app under its clock: say how to get them. One the
+    // original app installed cannot be updated from here (another key): it has to be replaced.
+    if (!s.reads("game_day")) {
+        Hint(stringResource(if (s.forkLauncherOther) R.string.fork_widgets_other_launcher else R.string.fork_widgets_needs_update), top = 16.dp)
+        return
+    }
     Label(stringResource(R.string.fork_widgets_city_label))
     s.fork.city?.let { Hint(msg(R.string.fork_widgets_city_now, "city" to it.label)) }
     var query by rememberSaveable { mutableStateOf("") }
@@ -953,6 +958,7 @@ private fun ColumnScope.ForkEditor(s: MakeItYoursState, onIntent: (MakeItYoursIn
         }
     }
     Hint(stringResource(if (s.forkPanel) R.string.fork_widgets_hint_panel else R.string.fork_widgets_hint), top = 12.dp)
+    if (!s.forkPanel && s.forkLauncherOther) Hint(stringResource(R.string.fork_widgets_other_launcher_panel))
     if (s.fork.any && !s.forkInstalled) Hint(stringResource(R.string.fork_widgets_install_hint))
 }
 

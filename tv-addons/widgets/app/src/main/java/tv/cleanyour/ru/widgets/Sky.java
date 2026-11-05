@@ -38,9 +38,21 @@ final class Sky {
         return OVERCAST;
     }
 
-    /** Right now: this hour's amounts, scaled to a 12-hour stretch so the same thresholds hold. */
+    /**
+     * Right now: the latest amounts (Open-Meteo's 'current' is a sum over its interval, 15 minutes) scaled by
+     * {@code toTwelveHours} so the same thresholds hold; a code that says it is raining or snowing wins over amounts
+     * too small to count.
+     */
+    static String now(double toTwelveHours, double rainMm, double snowCm, int code, double cloudPct, double windMs) {
+        String k = kind(rainMm * toTwelveHours, snowCm * toTwelveHours, code, cloudPct, windMs);
+        boolean dry = k.equals(CLEAR) || k.equals(PARTLY) || k.equals(CLOUDY) || k.equals(OVERCAST);
+        if (dry && (code >= 71 && code <= 77 || code == 85 || code == 86)) return SNOW1;
+        if (dry && (code >= 61 && code <= 67 || code >= 80 && code <= 82)) return RAIN1;
+        return k;
+    }
+
     static String now(double rainMmHour, double snowCmHour, int code, double cloudPct, double windMs) {
-        return kind(rainMmHour * 6, snowCmHour * 6, code, cloudPct, windMs);
+        return now(12, rainMmHour, snowCmHour, code, cloudPct, windMs);
     }
 
     static String words(String kind, boolean ru) {

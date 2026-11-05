@@ -31,4 +31,7 @@
     <string name="fork_widgets_no_spoilers">No spoilers</string>
     <string name="fork_widgets_no_spoilers_sub">No standings, results or headlines on the home screen; the F1 card asks first</string>
     <string name="fork_widgets_hint_panel">This TV has the Clean Your TV RU home screen: every widget that is on shows at once, F1 on the left, the weather and holidays on the right, as two equal cards. Their full screens open from the Widgets card.</string>
+    <string name="fork_widgets_old_android">The Widgets add-on needs Android 10 or newer on the TV, and this TV has an older Android.</string>
+    <string name="fork_widgets_other_launcher">This TV\'s home screen was installed by the original Clean Your TV app, so this app cannot update it. To use the widgets, replace it: in the original app open the restore point, Undo everything with Remove it from the TV on, then run Setup here.</string>
+    <string name="fork_widgets_other_launcher_panel">To see every widget at once as two cards, replace this home screen with the Clean Your TV RU one: in the original app, Undo everything with Remove it from the TV on, then Setup here.</string>
 </resources>

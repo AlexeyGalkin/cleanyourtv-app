@@ -16,11 +16,15 @@ final class Background {
 
     /** Fetch what is due; tell the launcher and {@code done} (may be null) when something new came in. */
     static void refresh(Context ctx, boolean all, Runnable done) {
+        refresh(ctx, all ? Repo.Need.ALL : Repo.Need.LINES, done);
+    }
+
+    static void refresh(Context ctx, Repo.Need need, Runnable done) {
         Context app = ctx.getApplicationContext();
         if (!BUSY.compareAndSet(false, true)) return;
         ONE.execute(() -> {
             try {
-                if (new Repo(app).refresh(System.currentTimeMillis(), all)) {
+                if (new Repo(app).refresh(System.currentTimeMillis(), need)) {
                     GamesProvider.changed(app);
                     PanelProvider.changed(app);
                     if (done != null) done.run();

@@ -117,7 +117,8 @@ final class Weather {
                     d.has("precipitation_probability_max") ? d.getJSONArray("precipitation_probability_max").optInt(i, -1) : -1,
                     local(d.optJSONArray("sunrise"), i, zone), local(d.optJSONArray("sunset"), i, zone)));
         }
-        String nowKind = Sky.now(cur.optDouble("rain", 0) + cur.optDouble("showers", 0), cur.optDouble("snowfall", 0),
+        double perTwelveHours = 12 * 3600.0 / Math.max(60, cur.optInt("interval", 3600));
+        String nowKind = Sky.now(perTwelveHours, cur.optDouble("rain", 0) + cur.optDouble("showers", 0), cur.optDouble("snowfall", 0),
                 cur.optInt("weather_code", 0), cur.optDouble("cloud_cover", codeCloud(cur.optInt("weather_code", 0))),
                 cur.optDouble("wind_speed_10m", 0));
         return new Forecast(zone, cur.optDouble("temperature_2m", Double.NaN), cur.optDouble("apparent_temperature", Double.NaN),

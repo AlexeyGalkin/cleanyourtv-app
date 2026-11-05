@@ -354,7 +354,7 @@ fun SwitchedOffScreen(state: SwitchedOffState, onIntent: (SwitchedOffIntent) -> 
                 g.rows.forEachIndexed { i, r ->
                     if (i > 0) ListDivider()
                     val cd = msg(R.string.switchedoff_put_back_cd, "name" to r.name)
-                    ListRow(r.name, subtitle = CoreText.of(r.description), trailing = {
+                    ListRow(r.name, subtitle = r.description?.let { CoreText.of(it) }, trailing = {
                         if (state.busy == r.pkg) Box(Modifier.padding(horizontal = 16.dp)) { Spinner() }
                         else TertiaryButton(stringResource(R.string.switchedoff_put_back), { onIntent(SwitchedOffIntent.PutBack(r.pkg)) },
                             Modifier.semantics { contentDescription = cd }, enabled = state.busy == null)

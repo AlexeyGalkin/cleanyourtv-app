@@ -21,7 +21,8 @@ class SignerAndWifiTest {
     private val prober = AdbProber(ProbeFixtures.clock())
     private val bundled = File(Fixtures.repoRoot, "android/platform/src/main/assets/bundled")
     // SHA-256 of the launcher key K1's certificate, as PinnedLauncher.SIGNER_SHA256 holds it.
-    private val k1 = Sha256("576418154bec6505bfc709ccaa6ae85b6e09d98eb89f4a25147ca1b4b0505132")
+    // Fork (Clean Your TV RU): the bundled launcher and curtain are the fork's builds, signed with its key.
+    private val k1 = Sha256("c02a76c8034b6ecd835dd88161e751fe5689c40b5f42d4715768769580a7051c")
 
     @Test fun signerOfTheBundledApks() {
         assertEquals(k1, ApkSigners.signerSha256(File(bundled, "cleanyourtv-launcher.apk").readBytes()))

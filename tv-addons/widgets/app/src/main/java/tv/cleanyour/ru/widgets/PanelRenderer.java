@@ -164,6 +164,19 @@ final class PanelRenderer {
         }
     }
 
+    private String sessionLabel(F1.Session s) {
+        return shortSession(s.kind, ru) + " " + weekday(s.start) + " " + time(s.start);
+    }
+
+    /** The detail row's width in dp for these sessions, as detail() draws them. */
+    private float sessionsWidth(List<F1.Session> list) {
+        TextPaint p = paint(regular, 10.5f, WHITE);
+        p.setLetterSpacing(0.01f);
+        float w = 0;
+        for (F1.Session s : list) w += p.measureText(sessionLabel(s)) / d + 7;
+        return w - 7;
+    }
+
     private String weekday(Instant i) {
         return DateTimeFormatter.ofPattern("EEE", locale).format(i.atZone(zone)).replace(".", "").toUpperCase(locale);
     }
@@ -181,9 +194,10 @@ final class PanelRenderer {
     /** Null when F1 is off or there is no weekend to show (no calendar yet, the season is over). */
     Bitmap left(Config cfg, F1.Season season, F1.Table drivers, List<News.Item> news, Instant now) {
         if (!cfg.f1 || season == null) return null;
-        F1.Race race = season.current(now);
-        F1.Session next = F1.next(race, now);
-        if (race == null || next == null) return null;
+        Object[] up = F1.upcoming(season, now);
+        if (up == null) return null;
+        F1.Race race = (F1.Race) up[0];
+        F1.Session next = (F1.Session) up[1];
         Bitmap b = card();
         Canvas c = new Canvas(b);
         frame(c);
@@ -195,10 +209,21 @@ final class PanelRenderer {
                 : word + t(" через ", " in ") + until(now, next.start);
         text(c, main, PAD_X, R1 + 26, paint(light, 25, live ? RED : WHITE), W - 2 * PAD_X);
 
+        // The weekend's sessions; when they do not all fit, past ones go first, so the next one and the race stay.
+        List<F1.Session> shown = new ArrayList<>(race.sessions);
+        while (shown.size() > 2 && sessionsWidth(shown) > W - 2 * PAD_X && !now.isBefore(shown.get(0).end()) && shown.get(0) != next) {
+            shown.remove(0);
+        }
+        while (shown.size() > 2 && sessionsWidth(shown) > W - 2 * PAD_X) {
+            int drop = -1;
+            for (int i = 0; i < shown.size() - 1; i++) if (shown.get(i) != next) { drop = i; break; }
+            if (drop < 0) break;
+            shown.remove(drop);
+        }
         List<String> pieces = new ArrayList<>();
         List<Integer> colours = new ArrayList<>();
-        for (F1.Session s : race.sessions) {
-            pieces.add(shortSession(s.kind, ru) + " " + weekday(s.start) + " " + time(s.start));
+        for (F1.Session s : shown) {
+            pieces.add(sessionLabel(s));
             colours.add(s == next ? RED : !now.isBefore(s.end()) ? 0x73FFFFFF : WHITE);
         }
         detail(c, pieces, colours);
@@ -225,9 +250,12 @@ final class PanelRenderer {
             }
         }
 
-        if (cfg.news && !cfg.noSpoilers && news != null && !news.isEmpty()) {
-            News.Item n = news.get(0);
-            footer(c, "F1 · " + time(Instant.ofEpochMilli(n.timeMs)), RED, n.title);
+        News.Item n = cfg.news && !cfg.noSpoilers && news != null && !news.isEmpty() ? news.get(0) : null;
+        if (n != null && News.fresh(n, now, 3 * 86_400_000L)) {
+            Instant at = Instant.ofEpochMilli(n.timeMs);
+            boolean today = at.atZone(zone).toLocalDate().equals(now.atZone(zone).toLocalDate());
+            String when = today ? time(at) : DateTimeFormatter.ofPattern("d MMM", locale).format(at.atZone(zone)).replace(".", "");
+            footer(c, "F1 · " + when, RED, n.title);
         } else {
             F1.Race after = null;
             for (F1.Race r : season.races) if (r.round > race.round && (after == null || r.round < after.round)) after = r;

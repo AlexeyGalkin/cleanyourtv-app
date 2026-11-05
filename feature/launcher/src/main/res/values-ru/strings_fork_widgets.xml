@@ -30,4 +30,7 @@
     <string name="fork_widgets_no_spoilers">Без спойлеров</string>
     <string name="fork_widgets_no_spoilers_sub">На главном экране нет таблицы, результатов и новостей; карточка F1 спросит перед показом</string>
     <string name="fork_widgets_hint_panel">На этом ТВ главный экран Clean Your TV RU: все включённые виджеты видны сразу, F1 слева, погода и праздники справа, двумя одинаковыми карточками. Полные экраны открываются карточкой «Widgets».</string>
+    <string name="fork_widgets_old_android">Надстройке «Виджеты» нужен Android 10 или новее, а на этом телевизоре Android старше.</string>
+    <string name="fork_widgets_other_launcher">Главный экран на этом телевизоре поставлен оригинальным приложением Clean Your TV, и обновить его отсюда нельзя. Чтобы включить виджеты, замените его: в оригинальном приложении откройте точку восстановления → «Undo everything» с включённым «Remove it from the TV», затем запустите здесь «Настройку».</string>
+    <string name="fork_widgets_other_launcher_panel">Чтобы видеть все виджеты сразу двумя карточками, замените этот главный экран на главный экран Clean Your TV RU: в оригинальном приложении «Undo everything» с включённым «Remove it from the TV», затем «Настройка» здесь.</string>
 </resources>

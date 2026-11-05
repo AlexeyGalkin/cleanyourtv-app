@@ -174,20 +174,34 @@ final class Repo {
      * Fetches whatever is due; true when anything new arrived. {@code all} also fetches what only the screens show
      * (standings and results), which the lines under the clock do not need.
      */
+    /** The lines under the clock, the launcher's cards, or everything the hub shows. */
+    enum Need { LINES, PANEL, ALL }
+
     boolean refresh(long now, boolean all) {
+        return refresh(now, all ? Need.ALL : Need.LINES);
+    }
+
+    /** Fetches what is due for {@code need} and switched on; true when anything new arrived. */
+    boolean refresh(long now, Need need) {
         Config cfg = config();
+        boolean all = need == Need.ALL;
+        boolean standings = all || need == Need.PANEL && cfg.f1 && !cfg.noSpoilers;
+        boolean wantNews = all || need == Need.PANEL && cfg.f1 && cfg.news && !cfg.noSpoilers;
         boolean changed = false;
         boolean weekend = raceWeekend(now);
         if (cfg.f1 || all) {
             changed |= fetch(F1_SEASON, now, 3 * HOUR, "current.json", "current.json");
         }
-        if (all) {
+        if (standings) {
             long every = weekend ? HOUR / 2 : 6 * HOUR;
             changed |= fetch(F1_DRIVERS, now, every, "current/driverstandings.json", "driverstandings.json");
+        }
+        if (all) {
+            long every = weekend ? HOUR / 2 : 6 * HOUR;
             changed |= fetch(F1_TEAMS, now, every, "current/constructorstandings.json", "constructorstandings.json");
             changed |= fetch(F1_LAST, now, every, "current/last/results.json", "last-results.json");
         }
-        if ((cfg.f1 && cfg.news || all) && age(NEWS, now) > HOUR / 3) {
+        if (wantNews && age(NEWS, now) > HOUR / 3) {
             List<News.Item> a = new java.util.ArrayList<>(), b = new java.util.ArrayList<>();
             try {
                 a = News.parse(Net.get(News.F1NEWS), "f1news.ru", false);
@@ -235,11 +249,19 @@ final class Repo {
     }
 
     /** Saves a forecast for an F1 circuit's weekend (hourly, UTC). */
-    String circuitWeather(F1.Race r) {
+    static String circuitWeatherFile(String season, F1.Race r) {
+        return "f1-weather-" + season + "-" + r.round + ".json";
+    }
+
+    private static long lastCircuitTry;
+
+    /** The circuit's hourly forecast for the weekend: saved, fetched again after 3 hours, tried at most every 15 minutes. */
+    String circuitWeather(String season, F1.Race r) {
         if (Double.isNaN(r.lat) || Double.isNaN(r.lon)) return null;
-        String name = "f1-weather-" + r.round + ".json";
+        String name = circuitWeatherFile(season, r);
         long now = System.currentTimeMillis();
-        if (age(name, now) < 3 * HOUR) return read(name);
+        if (age(name, now) < 3 * HOUR || now - lastCircuitTry < HOUR / 4) return read(name);
+        lastCircuitTry = now;
         LocalDate from = r.sessions.get(0).start.atZone(ZoneId.of("UTC")).toLocalDate();
         LocalDate to = r.race().start.atZone(ZoneId.of("UTC")).toLocalDate();
         try {

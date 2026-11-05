@@ -68,6 +68,8 @@ data class ForkWidgets(
         const val GAME_DAY_KEY = "game_day"
         // The fork's own launcher (3.3-ru, tv-launcher/panel.patch) shows every line at once as two cards.
         const val PANEL_LAUNCHER_VERSION = 1201L
+        // `content write`, which the add-on's settings go through (ThemeProviderLines.MIN_SDK), is Android 10 and later.
+        const val MIN_SDK = 29
     }
 }
 
@@ -125,10 +127,11 @@ class CityLookup(private val http: HttpFetcher?) {
             "&count=8&language=" + (if (lang == "ru") "ru" else "en") + "&format=json"
         return try {
             val r = http.get(url, null, null)
-            val body = r.body
-            if (r.code != 200 || body == null) return Result.Offline
-            // InputStream.readNBytes is Android 13+; the app runs from Android 9.
-            val text = withContext(Dispatchers.IO) { body.use { readCapped(it) }.decodeToString() }
+            val body = r.body ?: return Result.Offline
+            // Closed on every answer, an error one too, so the connection is let go. (readCapped: InputStream.readNBytes
+            // is Android 13+; the app runs from Android 9.)
+            val text = withContext(Dispatchers.IO) { body.use { if (r.code == 200) readCapped(it) else null } }?.decodeToString()
+                ?: return Result.Offline
             Result.Found(parse(text))
         } catch (e: Exception) {
             Result.Offline

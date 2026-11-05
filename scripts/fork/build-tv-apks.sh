@@ -42,9 +42,10 @@ open(path, "w", encoding="utf-8", newline="").write(s[:start] + new + s[end:])
 PY
 }
 
+# Refuse a submodule with work of its own (tracked or not) before anything can touch it; only then put it back on exit.
+[ -z "$(git -C "$sub" status --porcelain --untracked-files=all -- . ':!launcher/local.properties')" ]   || { echo "$sub has changes of its own; commit or drop them first" >&2; exit 1; }
 restore() { git -C "$sub" checkout -q -- . && git -C "$sub" clean -qfd launcher/app/src; }
 trap restore EXIT
-git -C "$sub" diff --quiet || { echo "$sub has changes of its own; commit or drop them first" >&2; exit 1; }
 for p in tv-launcher/*.patch; do git -C "$sub" apply "$root/$p"; done
 
 echo "== launcher"

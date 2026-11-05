@@ -58,7 +58,8 @@ public final class HubActivity extends Activity {
     private final Runnable tick = new Runnable() {
         @Override
         public void run() {
-            show(tab);
+            // Only the F1 weekend counts down; rebuilding other tabs would lose the place in a long list.
+            if (tab == 0) show(tab);
             main.postDelayed(this, 30_000);
         }
     };
@@ -93,6 +94,7 @@ public final class HubActivity extends Activity {
     @Override
     protected void onPause() {
         main.removeCallbacks(tick);
+        revealed = false;   // no spoilers: the next visit asks again
         super.onPause();
     }
 
@@ -177,10 +179,26 @@ public final class HubActivity extends Activity {
         }
     }
 
+    private boolean rebuilding;
+
     private void show(int index) {
-        tab = index;
-        styleTabs();
-        content.removeAllViews();
+        if (rebuilding) return;
+        rebuilding = true;
+        try {
+            tab = index;
+            // A focused row about to be removed would hand focus to the first tab, whose listener would show(0) inside
+            // this call: put focus on this tab first.
+            View focus = getCurrentFocus();
+            if (focus != null && !tabs.contains(focus)) tabs.get(index).requestFocus();
+            styleTabs();
+            content.removeAllViews();
+            fill(index);
+        } finally {
+            rebuilding = false;
+        }
+    }
+
+    private void fill(int index) {
         switch (index) {
             case 0: weekend(); break;
             case 1: if (gate()) drivers(); break;
@@ -324,14 +342,15 @@ public final class HubActivity extends Activity {
         }
 
         JSONObject hourly = null;
-        String w = repo.read("f1-weather-" + r.round + ".json");
-        if (w == null) {
-            Background.execute(() -> {
-                if (repo.circuitWeather(r) != null) main.post(() -> {
-                    if (tab == 0) show(0);
-                });
+        String w = repo.read(Repo.circuitWeatherFile(s.year, r));
+        // Fetched again once three hours old (Repo.circuitWeather), redrawn only when it changed.
+        Background.execute(() -> {
+            String fresh = repo.circuitWeather(s.year, r);
+            if (fresh != null && !fresh.equals(w)) main.post(() -> {
+                if (tab == 0) show(0);
             });
-        } else {
+        });
+        if (w != null) {
             try {
                 hourly = new JSONObject(w).optJSONObject("hourly");
             } catch (JSONException ignored) {

@@ -3,8 +3,8 @@ package tv.cleanyour.ui.design.text
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import tv.cleanyour.ui.design.R
 
 // Fork (Clean Your TV RU): English the core modules make reaches the screen in the app's language. The planner's
@@ -54,11 +54,13 @@ object CoreText {
         }.getOrDefault(EMPTY).also { loaded = it }
     }
 
-    /** [text] in Russian when the app speaks Russian and the table has it, else as it is. */
+    /**
+     * [text] in Russian when the app's resources resolved to Russian (core_text_lang, so a phone set to Ukrainian
+     * then Russian, which Android shows in values-ru, gets it too) and the table has it, else as it is.
+     */
     @Composable
-    fun of(text: String?): String {
-        if (text.isNullOrEmpty()) return text.orEmpty()
-        if (LocalConfiguration.current.locales[0].language != "ru") return text
+    fun of(text: String): String {
+        if (text.isEmpty() || stringResource(R.string.core_text_lang) != "ru") return text
         val context = LocalContext.current
         val t = remember(context) { table(context.applicationContext) }
         return t.translate(text)

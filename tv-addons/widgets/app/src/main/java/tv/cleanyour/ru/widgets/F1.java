@@ -314,6 +314,16 @@ final class F1 {
         return lead > remaining[0] * 25 + remaining[1] * 8;
     }
 
+    /** The first weekend with a session not over yet, and that session; null after the season. */
+    static Object[] upcoming(Season season, Instant now) {
+        if (season == null) return null;
+        for (Race r : season.races) {
+            Session s = next(r, now);
+            if (s != null) return new Object[] {r, s};
+        }
+        return null;
+    }
+
     /** The session to count down to, or the one live now; null when the weekend (and season) is over. */
     static Session next(Race race, Instant now) {
         if (race == null) return null;

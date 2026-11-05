@@ -29,9 +29,11 @@ final class Turns {
     /** The F1 line: "Этап 20 · Гран-при Сан-Паулу" over "Квалификация через 2 ч 14 мин". */
     static Turn f1(F1.Season season, Instant now, boolean ru) {
         if (season == null) return null;
-        F1.Race race = season.current(now);
-        F1.Session s = F1.next(race, now);
-        if (s == null) return null;
+        // The next weekend as soon as this one's race is over, not four hours later.
+        Object[] up = F1.upcoming(season, now);
+        if (up == null) return null;
+        F1.Race race = (F1.Race) up[0];
+        F1.Session s = (F1.Session) up[1];
         String top = (ru ? "Этап " : "Round ") + race.round + " · " + Names.grandPrix(race, ru);
         String word = s.kind == F1.Kind.RACE ? (ru ? "Старт гонки" : "Lights out") : session(s.kind, ru);
         return new Turn(top, word, s.start.toEpochMilli(), s.end().toEpochMilli(), Turn.F1_RED, "f1");

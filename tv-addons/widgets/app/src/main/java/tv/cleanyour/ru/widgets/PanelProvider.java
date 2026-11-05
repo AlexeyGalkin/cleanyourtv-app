@@ -31,7 +31,7 @@ public final class PanelProvider extends ContentProvider {
     private static final String LEFT = "panel-left.png", RIGHT = "panel-right.png";
 
     private static long drawnKey = Long.MIN_VALUE;
-    private static boolean hasLeft, hasRight;
+    private static long leftRev = -1, rightRev = -1;   // -1: no picture; else the picture's checksum
 
     static void changed(Context ctx) {
         ctx.getContentResolver().notifyChange(PANEL, null);
@@ -47,22 +47,23 @@ public final class PanelProvider extends ContentProvider {
         if (!"panel".equals(uri.getLastPathSegment())) return null;
         Context ctx = getContext();
         if (ctx == null) return null;
-        long key = draw(ctx);
+        long[] revs = draw(ctx);
         MatrixCursor c = new MatrixCursor(COLUMNS);
-        if (hasLeft) c.addRow(new Object[] {"left", "content://" + AUTHORITY + "/" + LEFT + "?r=" + key, key});
-        if (hasRight) c.addRow(new Object[] {"right", "content://" + AUTHORITY + "/" + RIGHT + "?r=" + key, key});
+        // The revision changes only when the picture does, so the launcher decodes it again only then.
+        if (revs[0] >= 0) c.addRow(new Object[] {"left", "content://" + AUTHORITY + "/" + LEFT + "?r=" + revs[0], revs[0]});
+        if (revs[1] >= 0) c.addRow(new Object[] {"right", "content://" + AUTHORITY + "/" + RIGHT + "?r=" + revs[1], revs[1]});
         c.setNotificationUri(ctx.getContentResolver(), PANEL);
-        Background.refresh(ctx, true, null);
+        Background.refresh(ctx, Repo.Need.PANEL, null);
         return c;
     }
 
     /** Draws both pictures when this minute or the saved data differ from the last drawing; returns their revision. */
-    private static synchronized long draw(Context ctx) {
+    private static synchronized long[] draw(Context ctx) {
         Repo repo = new Repo(ctx);
         long now = System.currentTimeMillis();
         long key = now / 60_000L * 31 + repo.savedAt(Repo.CONFIG) + repo.savedAt(Repo.GOOD) + repo.savedAt(Repo.F1_SEASON)
                 + repo.savedAt(Repo.F1_DRIVERS) + repo.savedAt(Repo.NEWS) + repo.savedAt(Repo.WEATHER);
-        if (key == drawnKey) return key;
+        if (key == drawnKey) return new long[] {leftRev, rightRev};
         Config cfg = repo.config();
         boolean ru = repo.russian(cfg);
         ZoneId zone = ZoneId.systemDefault();
@@ -72,8 +73,8 @@ public final class PanelProvider extends ContentProvider {
         try {
             left = r.left(cfg, cfg.f1 ? repo.season() : null, cfg.f1 ? repo.drivers() : null, cfg.f1 && cfg.news ? repo.news() : null, t);
             right = r.right(cfg, cfg.weather ? repo.forecast() : null, LocalDate.now(zone), t);
-            hasLeft = save(repo.file(LEFT), left);
-            hasRight = save(repo.file(RIGHT), right);
+            leftRev = save(repo.file(LEFT), left, leftRev);
+            rightRev = save(repo.file(RIGHT), right, rightRev);
             drawnKey = key;
         } catch (RuntimeException e) {
             // keep the last pictures
@@ -81,22 +82,33 @@ public final class PanelProvider extends ContentProvider {
             if (left != null) left.recycle();
             if (right != null) right.recycle();
         }
-        return key;
+        return new long[] {leftRev, rightRev};
     }
 
-    private static boolean save(File f, Bitmap b) {
+    /** Writes the picture when it differs from the saved one; returns its checksum, or -1 for none. */
+    private static long save(File f, Bitmap b, long was) {
         if (b == null) {
             //noinspection ResultOfMethodCallIgnored
             f.delete();
-            return false;
+            return -1;
         }
+        java.io.ByteArrayOutputStream png = new java.io.ByteArrayOutputStream(64 * 1024);
+        if (!b.compress(Bitmap.CompressFormat.PNG, 100, png)) return f.isFile() ? was : -1;
+        byte[] bytes = png.toByteArray();
+        java.util.zip.CRC32 crc = new java.util.zip.CRC32();
+        crc.update(bytes);
+        long rev = crc.getValue();
+        if (rev == was && f.isFile()) return rev;
         File tmp = new File(f.getPath() + ".tmp");
         try (FileOutputStream out = new FileOutputStream(tmp)) {
-            b.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.write(bytes);
+            out.getFD().sync();
         } catch (IOException e) {
-            return f.isFile();
+            //noinspection ResultOfMethodCallIgnored
+            tmp.delete();
+            return f.isFile() ? was : -1;
         }
-        return tmp.renameTo(f) || f.isFile();
+        return tmp.renameTo(f) ? rev : (f.isFile() ? was : -1);
     }
 
     @Override
