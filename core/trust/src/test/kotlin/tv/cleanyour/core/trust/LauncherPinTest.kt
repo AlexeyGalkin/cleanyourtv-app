@@ -44,9 +44,8 @@ class LauncherPinTest {
         val bytes = apk.readBytes()
         val artifact = BundledLauncherPin(OneBlob(PinnedLauncher.ASSET_NAME, bytes)).bundled()
         assertEquals(PackageName("com.gathin.tvhome"), artifact.pkg)
-        // Fork (Clean Your TV RU): upstream 3.3 with the widget panel (tv-launcher/panel.patch), upstream code * 100 + 1.
-        assertEquals(1202L, artifact.versionCode)
-        assertEquals("3.3-ru.2", artifact.versionName)
+        assertEquals(12L, artifact.versionCode)
+        assertEquals("3.3", artifact.versionName)
         assertEquals(Sha256(PinnedLauncher.SHA256), artifact.sha256)
         assertEquals(Sha256(PinnedLauncher.SIGNER_SHA256), artifact.signer)
         assertEquals(artifact.sha256, artifact.blob.sha256)

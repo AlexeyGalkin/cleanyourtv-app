@@ -159,7 +159,7 @@
     <!-- S3a Customise sheet -->
     <string name="customise_title">Выбор</string>
     <string name="customise_live">{total, plural, one {Отключено: {off} из #} few {Отключено: {off} из #} many {Отключено: {off} из #} other {Отключено: {off} из #}}</string>
-    <string name="customise_nothing_deleted">Ничего не удаляется: „отключено“ значит „спит“.</string>
+    <string name="customise_nothing_deleted">Ничего не удаляется: «отключено» значит «спит».</string>
     <string name="customise_show_fewer">Показать меньше</string>
     <string name="customise_group_voice">Голосовой помощник</string>
     <string name="customise_group_cast">Chromecast</string>

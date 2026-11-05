@@ -30,12 +30,12 @@ object PinnedLauncher {
     const val ASSET_NAME = "cleanyourtv-launcher.apk"
     const val UPSTREAM_COMMIT = "d7b0d4a5284d3934a1fce192bd4e2f43aa1fbf97"
     const val PACKAGE = "com.gathin.tvhome"
-    const val VERSION_CODE = 1202L
-    const val VERSION_NAME = "3.3-ru.2"
-    const val SIZE = 598169L
-    const val SHA256 = "be16bd0bb27fb0f859009bb1d04fc4c412071d087ee57cb5a3386d1bd6d5e4a5"
+    const val VERSION_CODE = 12L
+    const val VERSION_NAME = "3.3"
+    const val SIZE = 594_073L
+    const val SHA256 = "38458c96b8a2b24ee12c3b877aaf1a76775bff1f8833056bd3672f449bcb0b3a"
     // SHA-256 of the signing certificate (DER), "O=cleanyourtv, CN=Clean Your TV launcher", v2 and v3.
-    const val SIGNER_SHA256 = "c02a76c8034b6ecd835dd88161e751fe5689c40b5f42d4715768769580a7051c"
+    const val SIGNER_SHA256 = "576418154bec6505bfc709ccaa6ae85b6e09d98eb89f4a25147ca1b4b0505132"
 }
 
 // The TV curtain bundled in the phone app (RFC-CURTAIN-1): module :tv:curtain of this repo, built
@@ -51,7 +51,9 @@ object PinnedCurtain {
     const val VERSION_NAME = "0.1"
     const val SIZE = 70051L
     const val SHA256 = "fd539747137aacacff1e640072c03b1267c3b009bf27daf16ac32891c20a090b"
-    const val SIGNER_SHA256 = PinnedLauncher.SIGNER_SHA256
+    // Fork (Clean Your TV RU): the curtain is this fork's build (Russian strings), signed with the fork's key; the
+    // launcher is the original app's own 3.3, so a TV the original app set up keeps one home screen it can update.
+    const val SIGNER_SHA256 = "c02a76c8034b6ecd835dd88161e751fe5689c40b5f42d4715768769580a7051c"
 }
 
 // LauncherPin over the BlobStore's bundled asset. bundled() refuses an asset whose bytes are not the

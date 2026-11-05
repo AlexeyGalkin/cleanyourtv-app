@@ -2,6 +2,6 @@
 <!-- Clean Your TV RU (форк): язык приложения в настройках. -->
 <resources>
     <string name="appsettings_language">Язык</string>
-    <string name="appsettings_language_system">Как в системе</string>
+    <string name="appsettings_language_system">Системный</string>
     <string name="appsettings_language_system_cd">Язык телефона</string>
 </resources>

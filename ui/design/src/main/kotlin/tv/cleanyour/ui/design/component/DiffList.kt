@@ -154,7 +154,7 @@ fun DiffRow(item: DiffItem, onToggle: ((DiffItem) -> Unit)?, modifier: Modifier 
 @Composable
 fun DiffGroupHeader(title: String, offCount: Int, total: Int, modifier: Modifier = Modifier) {
     Overline(
-        stringResource(R.string.cyt_group_count, title, offCount, total),
+        stringResource(R.string.cyt_group_count, CoreText.of(title), offCount, total),
         modifier.padding(start = 4.dp, end = 4.dp, bottom = 8.dp).semantics { heading() },
     )
 }

@@ -127,7 +127,7 @@ fun ManageScreen(state: ManageState, onIntent: (ManageIntent) -> Unit, modifier:
             val checked = msg(R.string.manage_checked, "date" to shortDate(tv.checkedAtMs, locale))
             TvCard(
                 name = if (room != null) msg(R.string.manage_tv_title, "tv" to tv.name, "room" to room) else msg(R.string.manage_tv_title_noroom, "tv" to tv.name),
-                statusLine = "$stateWord. $checked.",
+                statusLine = "$stateWord. ${checked.trimEnd('.')}.",
                 thumbnail = rememberPng(tv.thumbnail),
                 thumbnailDescription = msg(R.string.manage_thumbnail_cd, "tv" to tv.name),
                 modifier = Modifier.padding(top = 20.dp),

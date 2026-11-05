@@ -19,14 +19,12 @@
 >   They come from the **Widgets** TV add-on ([tv-addons/widgets](tv-addons/widgets)), which the app puts on the
 >   TV with the send. Its card opens full screens: the F1 weekend in your time zone with the weather per session,
 >   both championships, the last race, the 7-day forecast, and holidays. Data: Jolpica-F1 (mirrored on this
->   repo's `f1-data` branch for networks that throttle Cloudflare) and Open-Meteo, no keys, no tracking.
-> - **Its own build of the home screen** (Gathin's launcher 3.3 plus [a widget panel](tv-launcher/panel.patch),
->   still offline): every widget that is on shows at once as two equal cards, F1 on the left, the weather (now and
->   three days, day and night, minimal line icons) and holidays on the right; F1 news in Russian from f1news.ru and
->   Championat; a no-spoiler mode. With the original home screen the lines take turns instead.
->   **To switch a TV that has the original home screen:** in the original app, open Restore point → Undo everything,
->   choose "Remove it from the TV" under New home screen and tap Put everything back. Then set the TV up again in this
->   app (the TV asks once to allow it), and set the dock, look and widgets again from the phone.
+>   repo's `f1-data` branch for networks that throttle Cloudflare) and Open-Meteo, no keys, no tracking. Also: F1
+>   news in Russian from f1news.ru and Championat, a no-spoiler mode, and the weather now and for three days, day
+>   and night, with minimal icons that show how heavy the rain or snow is.
+> - **The original home screen, as in 0.5.0-beta1:** the app carries the original app's own launcher 3.3, signed by
+>   its author, so a TV the original app (0.4.x) set up is simply updated to 3.3 from *Make it yours*, and the
+>   widgets appear under its clock. Nothing has to be undone first.
 > - The TV's progress screen during the clean-up (when the TV's language is Russian) and every text of the app in
 >   Russian.
 > - Its own package (`tv.cleanyour.app.ru`), so it installs **next to** the upstream app, and "Check for updates"
@@ -237,8 +235,8 @@ reviewed and tested the app, and every change went through automated tests and r
   English (keys, ICU plurals, placeholders); the terms are in [scripts/fork/GLOSSARY-ru.md](scripts/fork/GLOSSARY-ru.md).
 - **Staying up to date with upstream:** every Monday the `upstream-sync` workflow merges the original's `main`
   and opens a pull request (or an issue listing the conflicts). By hand: `git fetch upstream && git merge upstream/main`.
-  When the launcher submodule moves, run `scripts/fork/build-tv-apks.sh`: it applies the widget panel patch to the
-  new launcher, builds, signs and re-pins the TV apps.
+  A new launcher comes with the merge (the original's signed APK and its pin). When `tv/curtain` changes, run
+  `scripts/fork/build-tv-apks.sh`: it rebuilds the Russian TV progress screen, signs it and re-pins it.
 
 ## Credits
 
